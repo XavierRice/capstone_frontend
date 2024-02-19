@@ -24,7 +24,7 @@ Welcome to the frontend repository of the Civic Engagement App! This frontend is
 4. Update API endpoint URLs in the frontend codebase if necessary.
 5. Start the development server with `npm start`.
 
-Access the frontend at [https://group2app.netlify.app/](https://group2app.netlify.app/)
+Access the frontend at [here](https://group2app.netlify.app/)
 
 ## Usage 🚀
 
