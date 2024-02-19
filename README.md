@@ -21,7 +21,7 @@ Ensure the backend server is running and accessible.
 Update API endpoint URLs in the frontend codebase if necessary.
 Start the development server with <npm start>.
 
-Access the frontend at http://localhost:3000 by default.
+Access the frontend at [https://group2app.netlify.app/]
 
 Usage 🚀
 Browse events in your area.
