@@ -9,6 +9,7 @@ import News from "./Pages/News";
 import Events from "./Pages/Events";
 import "./App.css";
 
+
 function App() {
   return (
     <div className="" bg="">
