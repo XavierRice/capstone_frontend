@@ -12,35 +12,40 @@ function Carousel() {
   const data = [
     {
       src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236',
-      title: 'Night ',
+      title: 'Night1',
 
     },
     {
       src: 'https://images.unsplash.com/photo-1527549993586-dff825b37782',
-      title: 'Lake',
+      title: 'Lake1',
     }, {
       src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236',
-      title: 'Night ',
+      title: 'Night 2 ',
 
     },
     {
       src: 'https://images.unsplash.com/photo-1527549993586-dff825b37782',
-      title: 'Lake ',
+      title: 'Lake 2 ',
     }, {
       src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236',
-      title: 'Night ',
+      title: 'Night 3 ',
 
     },
     {
       src: 'https://images.unsplash.com/photo-1527549993586-dff825b37782',
-      title: 'Lake',
+      title: 'Lake 3',
     }, {
       src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236',
-      title: 'Night ',
+      title: 'Night 4',
 
     },
    
   ];
+
+//  function handlePicClick(){
+//   console.log("I will navigate")
+
+//  }
 
   return (
     <Box
@@ -68,6 +73,7 @@ function Carousel() {
             padding: "0",
             minWidth: 90, // Adjusted minimum width for responsiveness
           }}
+          
         >
           <Box sx={{ position: 'relative', width: '100%' }}>
             <AspectRatio ratio="1"  >
