@@ -1,12 +1,12 @@
 import React from "react";
-import Carousel from "../Components/Carousel";
-
+import Carousel from "../Components/Carousel/Carousel";
 
 function Discover() {
-  return <div>
-  Discover
-  <Carousel/>
-  </div>;
+  return (
+    <div>
+      <Carousel />
+    </div>
+  );
 }
 
 export default Discover;
