@@ -12,27 +12,27 @@ function Carousel() {
   const data = [
     {
       src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236',
-      title: 'Night view',
+      title: 'Night ',
 
     },
     {
       src: 'https://images.unsplash.com/photo-1527549993586-dff825b37782',
-      title: 'Lake view',
+      title: 'Lake',
     }, {
       src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236',
-      title: 'Night view',
+      title: 'Night ',
 
     },
     {
       src: 'https://images.unsplash.com/photo-1527549993586-dff825b37782',
-      title: 'Lake view',
+      title: 'Lake ',
     },
 
   ];
 
   return (
     <Box
-      sx={{
+      sx={{      //sx prop is a shortcut for defining custom styles that has access to the theme.
         display: 'flex',
         gap: 0.5,
         overflow: 'auto',
@@ -46,7 +46,7 @@ function Carousel() {
     >
       {data.map((item) => (
         <Card orientation="horizontal"
-          size="md"
+          size="lg"
           key={item.title}
           sx={{
             position: 'relative',
@@ -74,7 +74,7 @@ function Carousel() {
                 bottom: 0,
                 left: 0,
                 backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background for better readability
-                color: 'white', // Text color
+                color: '#D5E673', // Text color
                 padding: '4px 8px', // Adjust padding as needed
                 borderRadius: '0 4px', // Optional: Add border radius to the text box
               }}>
