@@ -1,8 +1,10 @@
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import Discover from "./Pages/Discover";
 import NavigationBar from "./Components/NavigationBar";
 import Header from "./Components/Header";
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       </Router>
     </div>
   );
+
 }
 
 export default App;
