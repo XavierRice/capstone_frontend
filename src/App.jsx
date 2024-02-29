@@ -10,6 +10,7 @@ import Events from "./Pages/Events";
 import "./App.css";
 import Search from "./Pages/Search";
 
+
 function App() {
   return (
     <div className="" bg="">
