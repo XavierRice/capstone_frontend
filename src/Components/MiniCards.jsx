@@ -8,20 +8,17 @@ import { CardActionArea } from '@mui/material';
 
 const MiniCards = () => {
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 305, height: 150, borderRadius: 5 }}>
         <CardActionArea>
           <CardMedia
             component="img"
-            height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
+            height="80"
+            image="https://images.unsplash.com/photo-1502657877623-f66bf489d236"
             alt="green iguana"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-           
-            </Typography>
             <Typography variant="body2" color="text.secondary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, quaerat deserunt repellat ad eligendi quisquam? Neque, ad sequi commodi quos quis vero accusamus qui rerum. Quibusdam temporibus id inventore. Ratione!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, quaerat deserunt repellat ad eligendi quisquam..
             </Typography>
           </CardContent>
         </CardActionArea>

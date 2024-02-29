@@ -12,10 +12,10 @@ function App() {
       <Router>
         <Header />
         <h1 className=" ">Welcome to impactify</h1>
-        <ResultsSection/>
         <Routes>
           <Route path="/" element={<Discover />} />
         </Routes>
+        <ResultsSection/>
         <NavigationBar />
       </Router>
     </div>
