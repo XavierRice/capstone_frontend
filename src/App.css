@@ -1,5 +1,8 @@
 /* Navigation bar */
 /* styles.css */
+body {
+  background: black;
+}
 
 .content {
   padding-bottom: 50px; /* Adjust bottom padding for the height of the navbar */

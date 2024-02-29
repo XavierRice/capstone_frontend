@@ -1,7 +1,12 @@
 import React from "react";
+import SearchBar from "../Components/SearchBar";
 
 function Search() {
-  return <div>Search</div>;
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
 }
 
 export default Search;

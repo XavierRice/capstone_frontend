@@ -8,13 +8,14 @@ import EventDetails from "./Pages/EventDetailsPage";
 import News from "./Pages/News";
 import Events from "./Pages/Events";
 import "./App.css";
+import Search from "./Pages/Search";
 
 function App() {
   return (
     <div className="" bg="">
       <Router>
         <Header />
-        <h1 className="">Welcome to impactify</h1>
+        <Search />
         <div className="content">
           <Routes>
             <Route path="/discover" element={<Discover />} />
