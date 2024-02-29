@@ -4,7 +4,7 @@ import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import Card from '@mui/joy/Card';
-
+import { CardActionArea } from '@mui/material'
 
 
 function Carousel() {
@@ -64,6 +64,7 @@ function Carousel() {
       }}
     >
       {data.map((item) => (
+        <CardActionArea>
         <Card orientation="horizontal"
           size="md" // Set to medium size
           key={item.title}
@@ -103,6 +104,7 @@ function Carousel() {
             </Typography>
           </Box>
         </Card>
+        </CardActionArea>
       ))}
     </Box>
 
