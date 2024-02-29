@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router";
 import AspectRatio from '@mui/joy/AspectRatio';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
@@ -26,8 +26,20 @@ function Carousel() {
     {
       src: 'https://images.unsplash.com/photo-1527549993586-dff825b37782',
       title: 'Lake ',
-    },
+    }, {
+      src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236',
+      title: 'Night ',
 
+    },
+    {
+      src: 'https://images.unsplash.com/photo-1527549993586-dff825b37782',
+      title: 'Lake',
+    }, {
+      src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236',
+      title: 'Night ',
+
+    },
+   
   ];
 
   return (
@@ -35,8 +47,10 @@ function Carousel() {
       sx={{      //sx prop is a shortcut for defining custom styles that has access to the theme.
         display: 'flex',
         gap: 0.5,
-        overflow: 'auto',
-        width: 343,
+        py:1,
+        overflowX: 'auto',// Enable horizontal scrolling
+        width: 300,
+        maxWidth: "100%",
         scrollSnapType: 'x mandatory',
         '& > *': {
           scrollSnapAlign: 'center',
@@ -46,16 +60,17 @@ function Carousel() {
     >
       {data.map((item) => (
         <Card orientation="horizontal"
-          size="lg"
+          size="md" // Set to medium size
           key={item.title}
           sx={{
             position: 'relative',
             overflow: 'hidden', // Ensure text doesn't overflow
-            padding: "0"
+            padding: "0",
+            minWidth: 90, // Adjusted minimum width for responsiveness
           }}
         >
           <Box sx={{ position: 'relative', width: '100%' }}>
-            <AspectRatio ratio="1" sx={{ minWidth: 90 }} >
+            <AspectRatio ratio="1"  >
               <img
                 srcSet={`${item.src}?h=120&fit=crop&auto=format&dpr=2 2x`}
                 src={`${item.src}?h=120&fit=crop&auto=format`}
@@ -81,7 +96,6 @@ function Carousel() {
               {item.title}
             </Typography>
           </Box>
-
         </Card>
       ))}
     </Box>
