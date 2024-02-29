@@ -13,7 +13,7 @@ function App() {
     <div>
       <Router>
         <Header />
-        <GoogleMap/>
+      
         <h1 className=" ">Welcome to impactify</h1>
         <Routes>
           <Route path="/" element={<Discover />} />
