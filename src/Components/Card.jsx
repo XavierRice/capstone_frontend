@@ -13,5 +13,4 @@ const Card = ({ title, imageSrc, text, updatedAt }) => {
     </BootstrapCard>
   );
 };
-
 export default Card;

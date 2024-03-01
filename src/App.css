@@ -1,34 +1,6 @@
-/* Navigation bar */
-/* styles.css */
+/* Entire App */
 body {
   background: black;
-}
-
-.content {
-  padding-bottom: 50px; /* Adjust bottom padding for the height of the navbar */
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-/* categories section */
-
-.circle-btn {
-  background-color: #bc9ec1; /* Example background color */
-  color: white; /* Text color */
-
-  transition: background-color 0.3s ease;
-}
-
-.circle-btn:hover {
-  background-color: #9973a0; /* Change color on hover */
-}
-
-.custom {
-  color: #d5e673;
 }
 
 /* loading state site wide */
@@ -36,7 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 50vh;
 }
 
 .loader {
@@ -52,4 +24,31 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Navigation bar */
+.custom {
+  color: #d5e673;
+}
+
+.content {
+  padding-bottom: 50px; /* Adjust bottom padding for the height of the navbar */
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* categories section */
+.circle-btn {
+  background-color: #bc9ec1; /* Example background color */
+  color: white; /* Text color */
+
+  transition: background-color 0.3s ease;
+}
+
+.circle-btn:hover {
+  background-color: #9973a0; /* Change color on hover */
 }
