@@ -13,3 +13,43 @@ body {
   bottom: 0;
   width: 100%;
 }
+
+/* categories section */
+
+.circle-btn {
+  background-color: #bc9ec1; /* Example background color */
+  color: white; /* Text color */
+
+  transition: background-color 0.3s ease;
+}
+
+.circle-btn:hover {
+  background-color: #9973a0; /* Change color on hover */
+}
+
+.custom {
+  color: #d5e673;
+}
+
+/* loading state site wide */
+.loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader {
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #d5e673;
+  animation: spin 1s infinite linear;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
