@@ -3,6 +3,8 @@ import Carousel from "../Components/Carousel/Carousel";
 import CategoriesSection from "../Components/CategoriesSection";
 import ResultsSection from "../Components/ResultsSection";
 
+
+
 function Discover() {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -11,11 +13,9 @@ function Discover() {
   };
 
   return (
-    <div>
-      <div>
-        <Carousel />
-      </div>
 
+    <div>
+      <Carousel />
       <CategoriesSection onSelectCategory={handleSelectCategory} />
       <ResultsSection selectedCategory={selectedCategory} />
     </div>

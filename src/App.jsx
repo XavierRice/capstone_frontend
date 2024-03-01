@@ -18,6 +18,7 @@ function App() {
       <Router>
         <Header />
         <Search />
+        <Discover />
         <div className="content">
           <Routes>
             <Route path="/discover" element={<Discover />} />
