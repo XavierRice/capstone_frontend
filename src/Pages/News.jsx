@@ -41,7 +41,7 @@ const News = () => {
     <div>
       {loading ? (
         <div className="loader-wrapper">
-          <div className="loader">Loading...</div>
+          <div className="loader"></div>
         </div>
       ) : (
         <div>

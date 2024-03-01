@@ -54,7 +54,7 @@ const Events = () => {
     <div>
       {loading ? (
         <div className="loader-wrapper">
-          <div className="loader">Loading...</div>
+          <div className="loader"></div>
         </div>
       ) : (
         <div>
@@ -65,6 +65,7 @@ const Events = () => {
               imageSrc={event.imageSrc}
               text={event.text}
               updatedAt={event.updatedAt}
+              onLoad={handleImageLoad}
             />
           ))}
         </div>
