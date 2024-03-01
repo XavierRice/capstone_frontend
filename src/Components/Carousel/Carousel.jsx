@@ -48,29 +48,38 @@ function Carousel() {
       sx={{
         //sx prop is a shortcut for defining custom styles that has access to the theme.
         display: "flex",
+        justifyContent: "center",
         gap: 0.5,
         py: 1,
         overflowX: "auto", // Enable horizontal scrolling
-        width: 300,
-        maxWidth: "100%",
+        width: "100%",
+        maxWidth: 640,
+        margin: '0 auto', // Center the component horizontally
+        '-ms-overflow-style': 'none', // Hide scrollbar on Internet Explorer
+        scrollbarWidth: 'none',
         scrollSnapType: "x mandatory",
         "& > *": {
           scrollSnapAlign: "center",
         },
         "::-webkit-scrollbar": { display: "none" },
+        '@media (min-width: 1024px)': {
+          width: 600, // Adjust the width for larger screens
+        },
       }}
     >
-      {data.map((item) => (
-        <CardActionArea>
+      {data.map((item, index) => (
+        <CardActionArea key={index}>
           <Card
             orientation="horizontal"
             size="md" // Set to medium size
-            key={item.title}
             sx={{
               position: "relative",
               overflow: "hidden", // Ensure text doesn't overflow
               padding: "0",
               minWidth: 90, // Adjusted minimum width for responsiveness
+              '@media (min-width: 124px)': {
+                minWidth: 480, // Adjust the minimum width for larger screens
+              },
             }}
           >
             <Box sx={{ position: "relative", width: "100%" }}>
@@ -82,6 +91,7 @@ function Carousel() {
                   sx={{
                     width: "100%", // Ensure the image fills its container
                     display: "block", // Ensure it's block-level element
+                    maxHeight: "50vh",
                   }}
                 />
               </AspectRatio>
