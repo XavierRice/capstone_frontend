@@ -37,7 +37,6 @@ function Carousel() {
     }, {
       src: 'https://images.unsplash.com/photo-1502657877623-f66bf489d236',
       title: 'Night 4',
-
     },
 
   ];
