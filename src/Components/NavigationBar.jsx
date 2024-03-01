@@ -1,6 +1,8 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 
+import "../App.css";
+
 function NavigationBar() {
   return (
     <Navbar bg="dark" fixed="bottom">
