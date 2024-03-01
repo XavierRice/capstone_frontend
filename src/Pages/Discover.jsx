@@ -2,9 +2,11 @@ import React from "react";
 import Carousel from "../Components/Carousel/Carousel";
 import CategoriesSection from "../Components/CategoriesSection";
 
+
+
 function Discover() {
   return (
-    <div>
+    <div style={{justifyContent:"center"}}>
       <Carousel />
       <CategoriesSection />
     </div>
