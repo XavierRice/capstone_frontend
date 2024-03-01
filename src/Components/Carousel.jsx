@@ -128,3 +128,4 @@ export default Carousel;
               '@media (min-width: 124px)': {
                 minWidth: 480, // Adjust the minimum width for larger screens
               },*/
+
