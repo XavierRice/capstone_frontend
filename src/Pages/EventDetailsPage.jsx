@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import GoogleMap from "../Components/Maps/GoogleMap";
 
 function EventDetailsPage() {
   const location = useLocation();
@@ -41,9 +42,9 @@ function EventDetailsPage() {
           Sign Up Now
         </Button>
       </div>
-      {/* <Container>
-        Map Stuff can go here
-      </Container> */}
+      <Container>
+        <GoogleMap />
+      </Container>
     </div>
   );
 }
