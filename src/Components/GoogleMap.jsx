@@ -6,7 +6,7 @@ import {
     useMap
 } from "@vis.gl/react-google-maps"
 
-const GoogleMap = () => {
+const GoogleMap = ({lat, lng}) => {
     const GoogleKey = import.meta.env.VITE_X_GOOGLE_API_KEY
     const position = { lat: 43.6532, lng: -79.3832}
 
