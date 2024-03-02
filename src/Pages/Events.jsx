@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Card from "../Components/Card"; // Adjust the path as needed
+import { useNavigate } from "react-router-dom"
 
 const Events = () => {
   const [loading, setLoading] = useState(true);
   const [eventsData, setEventsData] = useState([]);
   const [mobilizeEvents, setMobilizeEvents] = useState([]);
   const [virtualEvents, setVirtualEvents] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchMobilizeEvents = async () => {
@@ -29,6 +31,10 @@ const Events = () => {
     fetchMobilizeEvents();
 }, []);
 
+const handleCardClick = (event) => {
+  console.log('We are moving...')
+  navigate('/discover/events-details', {state: {event} } )
+}
 
 console.log(virtualEvents)
   // useEffect(() => {
@@ -91,7 +97,7 @@ console.log(virtualEvents)
               imageSrc={event.sponsor.logo_url}
               text={event.description}
               onLoad={handleImageLoad}
-              
+              onClick={() => handleCardClick(event)}
             />
           ))}
         </div>
