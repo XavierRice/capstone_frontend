@@ -22,7 +22,7 @@ const Events = () => {
             setVirtualEvents(virtualEvents)
         } catch (error) {
             console.error('Error fetching Mobilize Events:', error);
-        } finally {
+        } finally { //finally: This block executes after the try and catch blocks, regardless of the outcome.
           setLoading(false)
         }
     };
@@ -30,7 +30,7 @@ const Events = () => {
 }, []);
 
 
-
+console.log(virtualEvents)
   // useEffect(() => {
   //   fetchData();
   // }, []);
@@ -88,9 +88,10 @@ const Events = () => {
             <Card
               key={event.id}
               title={event.title}
-              imageSrc={event.featured_image_url}
-              text={event.summary}
+              imageSrc={event.sponsor.logo_url}
+              text={event.description}
               onLoad={handleImageLoad}
+              
             />
           ))}
         </div>
