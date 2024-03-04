@@ -8,7 +8,7 @@ function Header() {
       bg="dark"
       variant="dark"
       expand="lg"
-      className="d-flex justify-content-around w-100"
+      className="d-flex justify-content-around w-100 "
     >
       <Link to="/discover" className="mx-auto">
         <Navbar.Brand>

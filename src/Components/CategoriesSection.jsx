@@ -5,21 +5,21 @@ function CategoriesSection({ onSelectCategory }) {
     onSelectCategory(category);
   };
   return (
-    <div className="m-4 d-flex justify-content-around">
+    <div className="mt-4 d-flex justify-content-center">
       <div
-        className="btn rounded-pill circle-btn"
+        className="btn rounded-pill circle-btn m-2"
         onClick={() => handleClick("Global Issues")}
       >
         Global Issues
       </div>
       <div
-        className="btn rounded-pill circle-btn"
+        className="btn rounded-pill circle-btn m-2"
         onClick={() => handleClick("Politics")}
       >
         Politics
       </div>
       <div
-        className="btn  rounded-pill circle-btn"
+        className="btn  rounded-pill circle-btn m-2"
         onClick={() => handleClick("Social Causes")}
       >
         Social Causes
