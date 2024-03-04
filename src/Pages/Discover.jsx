@@ -15,21 +15,24 @@ function Discover() {
   return (
     <div className="d-flex justify-content-center">
       <Box sx={{ padding: "16px", display: "flex", flexDirection: "column" }}>
-        {/* SearchBar */}
         <SearchBar />
 
-        {/* Carousel */}
-        <div style={{ flex: "1 0 auto", overflow: "none" }}>
+        <div
+          style={{ flex: "1 0 auto", overflow: "none" }}
+          className="text-light"
+        >
+          <div className="d-flex justify-content-center m-3">
+            {" "}
+            Featured Events
+          </div>
           <Carousel />
         </div>
 
-        {/* Categories Section */}
         <CategoriesSection
           onSelectCategory={handleSelectCategory}
           sx={{ marginBottom: "16px" }}
         />
 
-        {/* Results Section */}
         <div className="">
           <ResultsSection selectedCategory={selectedCategory} />
         </div>
