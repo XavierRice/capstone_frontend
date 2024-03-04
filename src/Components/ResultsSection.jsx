@@ -28,7 +28,7 @@ function ResultsSection({ selectedCategory }) {
     ? cards.filter((card) => card.text === selectedCategory)
     : cards;
   return (
-    <div className="my-5 ">
+    <div className="mx-5 px-5">
       {filteredCards.map((card, index) => (
         <div key={index}>
           <Card
@@ -37,7 +37,7 @@ function ResultsSection({ selectedCategory }) {
             imageSrc={card.imageSrc}
             text={card.text}
             updatedAt={card.updatedAt}
-            sx={{ maxWidth: 405, height: 100, borderRadius: 5 }}
+            sx={{ maxWidth: 405, borderRadius: 10 }}
           />
         </div>
       ))}

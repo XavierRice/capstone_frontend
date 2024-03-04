@@ -52,17 +52,18 @@ function Carousel() {
         gap: 0.5,
         py: 1,
         overflowX: "auto", // Enable horizontal scrolling
-        width: "100%",
+        width: "200%",
         maxWidth: 640,
-        margin: '0 auto', // Center the component horizontally
-        '-ms-overflow-style': 'none', // Hide scrollbar on Internet Explorer
-        scrollbarWidth: 'none',
+
+        margin: "0 auto", // Center the component horizontally
+        "-ms-overflow-style": "none", // Hide scrollbar on Internet Explorer
+        scrollbarWidth: "none",
         scrollSnapType: "x mandatory",
         "& > *": {
           scrollSnapAlign: "center",
         },
         "::-webkit-scrollbar": { display: "none" },
-        '@media (min-width: 1024px)': {
+        "@media (min-width: 1024px)": {
           width: 600, // Adjust the width for larger screens
         },
       }}
@@ -71,14 +72,15 @@ function Carousel() {
         <CardActionArea key={index}>
           <Card
             orientation="horizontal"
-            size="md" // Set to medium size
+            size="md"
             sx={{
               position: "relative",
-              overflow: "hidden", // Ensure text doesn't overflow
+              overflow: "hidden",
               padding: "0",
-              minWidth: 90, // Adjusted minimum width for responsiveness
-              '@media (min-width: 124px)': {
-                minWidth: 480, // Adjust the minimum width for larger screens
+              minWidth: 90,
+              height: 250,
+              "@media (min-width: 124px)": {
+                minWidth: 480,
               },
             }}
           >
