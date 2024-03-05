@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Carousel from "../Components/Carousel/Carousel";
+import CarouselComponent from "../Components/Carousel2";
 import CategoriesSection from "../Components/CategoriesSection";
 import ResultsSection from "../Components/ResultsSection";
 import Box from "@mui/joy/Box";
@@ -21,11 +22,12 @@ function Discover() {
           style={{ flex: "1 0 auto", overflow: "none" }}
           className="text-light"
         >
-          <div className="d-flex justify-content-center m-3">
-            {" "}
-            Featured Events
+          <div className=" fs-2 m-3 d-flex justify-content-center display-2">
+            Top ways to get involved
           </div>
-          <Carousel />
+          <div className="m-2">
+            <CarouselComponent />
+          </div>
         </div>
 
         <CategoriesSection

@@ -7,19 +7,19 @@ function CategoriesSection({ onSelectCategory }) {
   return (
     <div className="mt-4 d-flex justify-content-center">
       <div
-        className="btn rounded-pill circle-btn m-2"
+        className="btn rounded-pill circle-btn mx-2 mt-2"
         onClick={() => handleClick("Global Issues")}
       >
         Global Issues
       </div>
       <div
-        className="btn rounded-pill circle-btn m-2"
+        className="btn rounded-pill circle-btn mx-2 mt-2"
         onClick={() => handleClick("Politics")}
       >
         Politics
       </div>
       <div
-        className="btn  rounded-pill circle-btn m-2"
+        className="btn  rounded-pill circle-btn mx-2 mt-2"
         onClick={() => handleClick("Social Causes")}
       >
         Social Causes
