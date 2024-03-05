@@ -1,10 +1,11 @@
 import React from "react";
+import './Card.css'
 import { Card as BootstrapCard } from "react-bootstrap";
 
 const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
   return (
     <div onClick={onClick} style={{ cursor: 'pointer' }}>
-    <BootstrapCard bg="dark" text="white" className="m-5">
+    <BootstrapCard bg="dark" text="text-custom-color m-5">
       <BootstrapCard.Img src={imageSrc} alt="Card image" />
       <BootstrapCard.ImgOverlay>
         <BootstrapCard.Title>{title}</BootstrapCard.Title>

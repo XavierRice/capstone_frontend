@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Card from "../Components/Card"; // Adjust the path as needed
+import Card from "../Components/Card/Card"; // Adjust the path as needed
 import { useNavigate } from "react-router-dom";
 
 const Events = () => {
