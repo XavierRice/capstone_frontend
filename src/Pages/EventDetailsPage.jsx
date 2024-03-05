@@ -8,6 +8,9 @@ function EventDetailsPage() {
   const { event } = location.state;
   console.log(event);
 
+
+  const { } = event
+
   const formatDate = (timestamp) => {
     const date = new Date(timestamp * 1000);
     return date.toLocaleDateString();
