@@ -10,6 +10,26 @@ const Events = () => {
   const [virtualEvents, setVirtualEvents] = useState([]);
   const navigate = useNavigate();
 
+
+  const backend =  import.meta.env.ITE_BACKEND_URL
+
+  useEffect(() => {
+    const fetchBackendEvents = async () => {
+      try {
+       const response = await axios.get(`${backend}/events`)
+       console.log(response)
+       setEventsData(response)
+      } catch(error){
+        console.error("Error fetching BackEnd Events:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchBackendEvents()
+  }, [] )
+
+
+
   useEffect(() => {
     const fetchMobilizeEvents = async () => {
       try {
@@ -38,7 +58,7 @@ const Events = () => {
     navigate("/discover/events-details", { state: { event } });
   };
 
-  console.log(virtualEvents);
+  console.log(eventsData);
 
   const handleImageLoad = () => {
     setLoading(false);
