@@ -23,7 +23,7 @@ const News = () => {
 
       setLoading(false);
     } catch (e) {
-      console.error("Error etching data:", e);
+      console.error("Error fetching data:", e);
     }
   }
   console.log(newsData);
