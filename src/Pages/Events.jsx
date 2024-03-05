@@ -74,7 +74,6 @@ const Events = () => {
         <>
         <div>
             {eventsData.map((event, index) => (
-    
               <Card
                 key={index}
                 title={event.title}
