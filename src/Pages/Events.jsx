@@ -11,14 +11,14 @@ const Events = () => {
   const navigate = useNavigate();
 
 
-  const backend =  import.meta.env.ITE_BACKEND_URL
+  const backend =  import.meta.env.VITE_BACKEND_URL
 
   useEffect(() => {
     const fetchBackendEvents = async () => {
       try {
        const response = await axios.get(`${backend}/events`)
-       console.log(response)
-       setEventsData(response)
+       const backendEvents = response.data.data
+       setEventsData(backendEvents)
       } catch(error){
         console.error("Error fetching BackEnd Events:", error);
       } finally {
