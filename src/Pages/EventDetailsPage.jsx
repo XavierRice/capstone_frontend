@@ -23,16 +23,16 @@ function EventDetailsPage() {
           <Col>
             <h1 className="header">{event.title}</h1>
             <p>{event.summary}</p>
-            <p>Date: {formatDate(event.modified_date)}</p>
+            <p>Date: {formatDate(event.sponsorCreatedDate)}</p>
           </Col>
         </Row>
         <Row className="mt-4">
           <Col xs={12} md={6}>
-            <Image src={event.sponsor.logo_url} alt="Event" fluid />
+            <Image src={event.logo_url} alt="Event" fluid />
           </Col>
           <Col xs={12} md={6}>
             <p>{event.description}</p>
-            <p>Location: Virtual</p>
+            <p>{event.location === false ? "Virtual" : "Route Below"}</p>
           </Col>
         </Row>
       </Container>
