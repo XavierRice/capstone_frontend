@@ -11,22 +11,22 @@ const Events = () => {
   const navigate = useNavigate();
 
 
-  const backend =  import.meta.env.VITE_BACKEND_URL
+  const backend = import.meta.env.VITE_BACKEND_URL
 
   useEffect(() => {
     const fetchBackendEvents = async () => {
       try {
-       const response = await axios.get(`${backend}/events`)
-       const backendEvents = response.data.data
-       setEventsData(backendEvents)
-      } catch(error){
+        const response = await axios.get(`${backend}/events`)
+        const backendEvents = response.data.data
+        setEventsData(backendEvents)
+      } catch (error) {
         console.error("Error fetching BackEnd Events:", error);
       } finally {
         setLoading(false);
       }
     }
     fetchBackendEvents()
-  }, [] )
+  }, [])
 
 
 
@@ -71,20 +71,37 @@ const Events = () => {
           <div className="loader"></div>
         </div>
       ) : (
+        <>
         <div>
-          {virtualEvents.map((event) => (
-            <Card
-              key={event.id}
-              title={event.title}
-              imageSrc={event.sponsor.logo_url}
-              text={event.description}
-              onLoad={handleImageLoad}
-              onClick={() => handleCardClick(event)}
-            />
-          ))}
-        </div>
+            {eventsData.map((event, index) => (
+    
+              <Card
+                key={index}
+                title={event.title}
+                imageSrc={event.photo}
+                text={event.event_details}
+                onLoad={handleImageLoad}
+                onClick={() => handleCardClick(event)}
+              />
+            ))}
+          </div>
+        
+          <div>
+            {virtualEvents.map((event) => (
+              <Card
+                key={event.id}
+                title={event.title}
+                imageSrc={event.sponsor?.logo_url}
+                text={event.description}
+                onLoad={handleImageLoad}
+                onClick={() => handleCardClick(event)}
+              />
+            ))}
+          </div>
+        </>
       )}
     </div>
+
   );
 };
 
