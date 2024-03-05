@@ -4,12 +4,12 @@ import { InputGroup, FormControl, Button } from "react-bootstrap";
 function SearchBar() {
   const [searchInput, setSearchInput] = useState("");
 
-  const handleChange = (e) => {
-    setSearchInput(e.target.value);
-  };
+  // const handleChange = (e) => {
+  //   setSearchInput(e.target.value);
+  // };
 
   const handleSearch = () => {
-    console.log("Searching for:", searchInput);
+    console.log("Searching for:::", searchInput);
   };
 
   return (
