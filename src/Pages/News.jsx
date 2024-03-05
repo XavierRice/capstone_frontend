@@ -1,38 +1,40 @@
 import React, { useState, useEffect } from "react";
 import Card from "../Components/Card";
-import { useNavigate } from "react-router-dom";
-import "../App.css";
+import "../App.css"; // Adjust the path as needed
 
 const News = () => {
   const [loading, setLoading] = useState(true);
   const [newsData, setNewsData] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  async function fetchData() {
-    try {
-      const response = await fetch("http://localhost:4000/news");
-      if (!response.ok) {
-        throw new Error("Failed to fetch data:");
-      }
-      const data = await response.json();
-      setNewsData(data.data);
-
+  function fetchData() {
+    setTimeout(() => {
+      const mockData = [
+        {
+          id: 1,
+          title: "New Discoveries in Space",
+          imageSrc: "https://source.unsplash.com/random/800x600/?space",
+          text: "Scientists have made groundbreaking discoveries in the field of astrophysics, shedding new light on the mysteries of the universe. Recent observations from telescopes around the world have revealed...",
+          updatedAt: "Just now",
+        },
+        {
+          id: 2,
+          title: "Climate Change Summit Recap",
+          imageSrc: "https://source.unsplash.com/random/800x600/?climate",
+          text: "World leaders gathered for the annual Climate Change Summit to address the pressing issues facing our planet. Discussions ranged from renewable energy initiatives to...",
+          updatedAt: "1 hour ago",
+        },
+      ];
+      setNewsData(mockData);
       setLoading(false);
-    } catch (e) {
-      console.error("Error fetching data:", e);
-    }
+    }, 3000);
   }
-  console.log(newsData);
+
   const handleImageLoad = () => {
     setLoading(false);
-  };
-
-  const handleCardClick = (id) => {
-    navigate(`/discover/news-details/${id}`);
   };
 
   return (
@@ -45,13 +47,12 @@ const News = () => {
         <div>
           {newsData.map((news) => (
             <Card
-              key={news.news_id}
+              key={news.id}
               title={news.title}
               imageSrc={news.imageSrc}
               text={news.text}
               updatedAt={news.updatedAt}
               onLoad={handleImageLoad}
-              onClick={() => handleCardClick(news.news_id)}
             />
           ))}
         </div>

@@ -22,7 +22,7 @@ function App() {
           <Routes>
             <Route path="/discover" element={<Discover />} />
             <Route
-              path="/discover/news-details/:id"
+              path="/discover/news-details"
               element={<NewsDetailsPage />}
             />
             <Route
