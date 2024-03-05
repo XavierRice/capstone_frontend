@@ -29,7 +29,6 @@ const Events = () => {
   }, [])
 
 
-
   useEffect(() => {
     const fetchMobilizeEvents = async () => {
       try {
@@ -39,9 +38,17 @@ const Events = () => {
           },
         });
         const events = response.data.data;
-        const virtualEvents = events.filter(
-          (event) => event.is_virtual === true
-        );
+  
+        const virtualEvents = events
+          .filter(event => event.is_virtual === true)
+          .map(({ id, title, sponsor: { logo_url } = {}, summary, description }) => ({
+            id,
+            title,
+            logo_url, 
+            summary,
+            description
+          }));
+  
         setMobilizeEvents(events);
         setVirtualEvents(virtualEvents);
       } catch (error) {
@@ -58,7 +65,7 @@ const Events = () => {
     navigate("/discover/events-details", { state: { event } });
   };
 
-  console.log(eventsData);
+  console.log (virtualEvents[0]);
 
   const handleImageLoad = () => {
     setLoading(false);
@@ -76,8 +83,8 @@ const Events = () => {
             {eventsData.map((event, index) => (
               <Card
                 key={index}
-                title={event.title}
-                imageSrc={event.photo}
+                title={event.event_title}
+                imageSrc={event.event_photo}
                 text={event.event_details}
                 onLoad={handleImageLoad}
                 onClick={() => handleCardClick(event)}
@@ -90,8 +97,8 @@ const Events = () => {
               <Card
                 key={event.id}
                 title={event.title}
-                imageSrc={event.sponsor?.logo_url}
-                text={event.description}
+                imageSrc={event.logo_url}
+                text={event.summary}
                 onLoad={handleImageLoad}
                 onClick={() => handleCardClick(event)}
               />
