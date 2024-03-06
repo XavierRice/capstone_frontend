@@ -45,15 +45,16 @@ function ResultsSection({ selectedCategory }) {
   const filteredCards = selectedCategory
     ? cards.filter((card) => card.text === selectedCategory)
     : cards;
+
   return (
-    <div className="mx-4">
+    <div className="mx-3">
       {filteredCards.map((card, index) => (
         <div key={index}>
           <Card
             key={index}
             title={card.title}
             imageSrc={card.imageSrc}
-            sx={{ maxWidth: 405, borderRadius: 10 }}
+            sx={{ maxWidth: 305, borderRadius: 10 }}
           />
         </div>
       ))}

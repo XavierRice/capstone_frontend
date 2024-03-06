@@ -19,7 +19,7 @@ function NavigationBar() {
         <Nav.Link href="/discover/events" className="mx-2">
           <i className="fs-4 fi fi-tr-videoconference d-flex justify-content-center mt-2 text-light"></i>{" "}
         </Nav.Link>
-        <Nav.Link href="#" className="mx-2">
+        <Nav.Link href="/discover/donations" className="mx-2">
           <i className="fs-4 fi fi-tr-hands-heart d-flex justify-content-center mt-2 text-light"></i>{" "}
         </Nav.Link>
       </Nav>

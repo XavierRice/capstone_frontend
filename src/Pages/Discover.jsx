@@ -14,7 +14,7 @@ function Discover() {
 
   return (
     <div className="d-flex justify-content-center">
-      <Box sx={{ padding: "16px", display: "flex", flexDirection: "column" }}>
+      <Box sx={{ padding: "10px", display: "flex", flexDirection: "column" }}>
         <SearchBar />
 
         <div
