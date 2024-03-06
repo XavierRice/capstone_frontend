@@ -1,18 +1,57 @@
 .custom-signup-btn {
-    background-color: #4E2855; /* Green background */
-    border-color: #BC94C1; /* Green border */
-    color: #D5E673; /* White text */
-  }
-  
-  .custom-signup-btn:hover {
-    background-color: #D5E673; /* Darker green on hover */
-    border-color: #BC9EC1; /* Darker green border on hover */
-  }
+  background-color: #4E2855; /* Green background */
+  border-color: #BC94C1; /* Green border */
+  color: #D5E673; /* White text */
+}
 
-  .text-custom-color {
-    color: #D5E673;
-  }
+.custom-signup-btn:hover {
+  background-color: #D5E673; /* Darker green on hover */
+  border-color: #BC9EC1; /* Darker green border on hover */
+}
 
-  .header {
-    color: #BC94C1; /* Example: Sets a unique color for the header */
+.text-custom-color {
+  color: #D5E673;
+}
+
+.map-container {
+  width: 100%; /* Ensure the map container is full width */
+  height: 0;
+  padding-bottom: 56.25%; /* Aspect ratio for a responsive map */
+  position: relative;
+}
+
+.map-container iframe,
+.map-container object,
+.map-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.text-center {
+  text-align: center; 
+}
+
+.text-white {
+  color: #fff; 
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    padding-bottom: 75%; /* Increase the aspect ratio for smaller devices */
   }
+}
+
+.centered-image-container {
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 200px; /* Set a fixed height, adjust as needed */
+}
+
+.centered-image-container img {
+  max-width: 100%; /* Ensure the image is responsive and does not overflow its container */
+  max-height: 100%; /* Limit the image height to make it smaller */
+  object-fit: contain; /* Ensure the aspect ratio of the image is maintained */
+}
