@@ -1,23 +1,41 @@
 import React from "react";
 import MiniCards from "./MiniCards";
-import Card from "./Card/Card"
+import Card from "./Card/Card";
 
 function ResultsSection({ selectedCategory }) {
   const cards = [
     {
-      title: "Title 1",
+      title: "Humanitarian Crisis in Gaza",
       imageSrc: "https://source.unsplash.com/random/400x300?global",
       text: "Global Issues",
       updatedAt: "2024-03-01",
     },
     {
-      title: "Title 2",
+      title: "Humanitarian Crisis in Congo & Sudan",
+      imageSrc: "https://source.unsplash.com/random/400x300?politics",
+      text: "Global Issues",
+      updatedAt: "2024-03-01",
+    },
+    {
+      title: "Climate Action Forum",
+      imageSrc: " https://source.unsplash.com/random/400x300?global",
+      text: "Politics",
+      updatedAt: "2024-03-02",
+    },
+    {
+      title: "Immigration Reform Town Hall",
       imageSrc: "https://source.unsplash.com/random/400x300?politics",
       text: "Politics",
       updatedAt: "2024-03-02",
     },
     {
-      title: "Title 3",
+      title: "Food Drive for the Homeless",
+      imageSrc: "https://source.unsplash.com/random/400x300?social",
+      text: "Social Causes",
+      updatedAt: "2024-03-03",
+    },
+    {
+      title: "Park Cleanup Initiative",
       imageSrc: "https://source.unsplash.com/random/400x300?social",
       text: "Social Causes",
       updatedAt: "2024-03-03",
@@ -35,8 +53,6 @@ function ResultsSection({ selectedCategory }) {
             key={index}
             title={card.title}
             imageSrc={card.imageSrc}
-            text={card.text}
-            updatedAt={card.updatedAt}
             sx={{ maxWidth: 405, borderRadius: 10 }}
           />
         </div>

@@ -21,17 +21,15 @@ function Discover() {
           style={{ flex: "1 0 auto", overflow: "none" }}
           className="text-light"
         >
-          <div className="d-flex justify-content-center m-3">
-            {" "}
-            Featured Events
+          <div className=" fs-2 m-1 d-flex justify-content-center display-2">
+            Top ways to get involved
           </div>
-          <Carousel />
+          <div className="mt-3">
+            <Carousel />
+          </div>
         </div>
 
-        <CategoriesSection
-          onSelectCategory={handleSelectCategory}
-          sx={{ marginBottom: "16px" }}
-        />
+        <CategoriesSection onSelectCategory={handleSelectCategory} />
 
         <div className="">
           <ResultsSection selectedCategory={selectedCategory} />
