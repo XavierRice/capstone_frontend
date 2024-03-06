@@ -11,31 +11,15 @@ function CarouselComponent() {
   const data = [
     {
       src: "https://images.unsplash.com/photo-1502657877623-f66bf489d236",
-      title: "Night1",
+      title: "March to DC: Rally for Change - Join Sarah's Movement!",
     },
     {
       src: "https://images.unsplash.com/photo-1527549993586-dff825b37782",
-      title: "Lake1",
+      title: "Community Cleanup: Let's Make Our Neighborhood Shine ",
     },
     {
       src: "https://images.unsplash.com/photo-1502657877623-f66bf489d236",
-      title: "Night 2",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1527549993586-dff825b37782",
-      title: "Lake 2",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1502657877623-f66bf489d236",
-      title: "Night 3",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1527549993586-dff825b37782",
-      title: "Lake 3",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1502657877623-f66bf489d236",
-      title: "Night 4",
+      title: "Global Solidarity Summit: Uniting for a Fairer, More Just World!",
     },
   ];
 
@@ -54,28 +38,3 @@ function CarouselComponent() {
 }
 
 export default CarouselComponent;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
