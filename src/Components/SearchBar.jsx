@@ -9,7 +9,7 @@ function SearchBar() {
   };
 
   const handleSearch = () => {
-    console.log("Searching for:", searchInput);
+    console.log("Searching for:::", searchInput);
   };
 
   return (

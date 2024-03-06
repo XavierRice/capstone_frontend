@@ -4,11 +4,12 @@ import {
     useMap
 } from "@vis.gl/react-google-maps"
 
-const Directions = ({destination}) => {
+const Directions = ({destination, desLat, desLng}) => {
     const map = useMap();
     const routesLibrary = useMapsLibrary("routes")
     const [directionService, setDirectionService] = useState()
     const [directionsRenderer, setDirectionsRenderer] = useState()
+    const [userLocation, setUserLocation] = useState(null);
     const [routes, setRoutes] = useState([])
     const [routeIndex, setRouteIndex] = useState(0)
 
@@ -16,29 +17,55 @@ const Directions = ({destination}) => {
     const leg = selected?.legs[0]
 
     useEffect(() => {
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              console.log(position.coords.latitude, position.coords.longitude);
+              const { latitude, longitude } = position.coords;
+              setUserLocation({ lat: latitude, lng: longitude });
+            },
+            (error) => {
+              console.error("Error obtaining user location", error);
+            }
+          );
+        } else {
+          console.log("Geolocation is not working.");
+        }
+      }, []);
+
+
+    useEffect(() => {
         if(!routesLibrary || !map) return;
-        setDirectionService(new routesLibrary.DirectionsService())
-        setDirectionsRenderer(new routesLibrary.DirectionsRenderer({ map }))
+        const ds = new routesLibrary.DirectionsService()
+        const dr = new routesLibrary.DirectionsRenderer({ map })
+        setDirectionService(ds);
+        setDirectionsRenderer(dr);
     }, [routesLibrary, map])
 
     useEffect(()=> {
-        if( !directionService || !directionsRenderer) return;
+        if( !directionService || !directionsRenderer || !userLocation) return;
+
+        const origin = `${userLocation.lat}, ${userLocation.lng}`;
+        const destinationLatLng = `${desLat}, ${desLng}`;
 
         directionService.route({
-            origin: "21702 w. 53 Terrace, Shawnee Ks",
-            destination: "4934 Briar St, Roeland Park Ks",
+            origin,
+            destination: destinationLatLng,
             travelMode: google.maps.TravelMode.DRIVING,
             provideRouteAlternatives: true,
         }).then(response => {
             directionsRenderer.setDirections(response) 
             setRoutes(response.routes)      
+         }).catch(err => {
+            console.error("failed to fetch directions", err)
          });
-    }, [directionService, directionsRenderer])
+    }, [directionService, directionsRenderer, userLocation, desLat, desLng])
+
+
 
     if (!leg) return null
     return (
         <div className='direction'>
-            <h3>{selected.summary}</h3>
         </div>
     );
 };

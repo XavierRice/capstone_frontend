@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Card from "../Components/Card";
+import Card from "../Components/Card/Card";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
@@ -23,7 +23,7 @@ const News = () => {
 
       setLoading(false);
     } catch (e) {
-      console.error("Error fetching data:", e);
+      console.error("Error etching data:", e);
     }
   }
   console.log(newsData);
@@ -32,7 +32,8 @@ const News = () => {
   };
 
   const handleCardClick = (id) => {
-    navigate(`/discover/news-details/${id}`);
+    const selectedNews = newsData.find((news) => news.news_id === id);
+    navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
   };
 
   return (
@@ -46,10 +47,10 @@ const News = () => {
           {newsData.map((news) => (
             <Card
               key={news.news_id}
-              title={news.title}
-              imageSrc={news.imageSrc}
+              id={news.news_id}
+              title={news.news_title}
+              imageSrc={news.news_image}
               text={news.text}
-              updatedAt={news.updatedAt}
               onLoad={handleImageLoad}
               onClick={() => handleCardClick(news.news_id)}
             />
