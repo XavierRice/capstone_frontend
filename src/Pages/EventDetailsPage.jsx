@@ -29,15 +29,14 @@ function EventDetailsPage() {
 
   let imageSrc = event.logo_url || event.event_photo || defaultImage;
 
-  console.log(date)
-
+  console.log(event)
   const formatDate = (timestamp) => {
 
     if (typeof timestamp === 'number'){
       const date = new Date(timestamp * 1000);
       return date.toLocaleDateString();
     } else {
-      const cleanedupTimeStamp = timestamp.slice(0, 10)
+      const cleanedupTimeStamp = timestamp.toString().slice(0, -14)
       return cleanedupTimeStamp
     } 
 
@@ -45,7 +44,8 @@ function EventDetailsPage() {
   };
   
   const hasRequiredKeys = ['event_location', 'lat', 'lng'].every(key => Object.keys(event).includes(key));
-  
+  const eventDate = date || event.sponsorCreatedDate
+  ;
   
 
 
@@ -56,7 +56,7 @@ function EventDetailsPage() {
         <Col className="text-center text-white">
           <h1 className="text-custom-color">{title}</h1>
           <p>{description}</p>
-          <p>Date: {formatDate(date)}</p>
+          <p>Date: {formatDate(eventDate)}</p>
         </Col>
       </Row>
       <Row className="my-4">
@@ -78,7 +78,7 @@ function EventDetailsPage() {
             </div>
           ):(
             <div className="centered-image-container">
-              <Image src={photo} alt="Event" fluid />
+              <Image src={imageSrc} alt="Event" fluid />
             </div>
           )}
         </Col>
