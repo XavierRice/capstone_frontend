@@ -13,7 +13,7 @@ function NavigationBar() {
         <Nav.Link href="/discover/news" className="mx-2">
           <i className="fs-4 fi fi-tr-newspaper d-flex justify-content-center mt-2 text-light"></i>{" "}
         </Nav.Link>
-        <Nav.Link href="#" className="mx-2">
+        <Nav.Link href="/discover/create-event" className="mx-2">
           <i className="fs-4 fi fi-tr-plus-hexagon d-flex justify-content-center mt-2 text-light"></i>{" "}
         </Nav.Link>
         <Nav.Link href="/discover/events" className="mx-2">

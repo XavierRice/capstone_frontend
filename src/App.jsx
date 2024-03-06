@@ -12,6 +12,7 @@ import Events from "./Pages/Events";
 import "./App.css";
 import Search from "./Pages/Search";
 import NewsDetailsPage from "./Pages/NewsDetailsPage";
+import CreateEventPage from "./Pages/CreateEventPage";
 
 function App() {
   return (
@@ -31,6 +32,10 @@ function App() {
             />
             <Route path="/discover/news" element={<News />} />
             <Route path="/discover/events" element={<Events />} />
+            <Route
+              path="/discover/create-event"
+              element={<CreateEventPage />}
+            />
           </Routes>
         </div>
         <NavigationBar className="footer" />
