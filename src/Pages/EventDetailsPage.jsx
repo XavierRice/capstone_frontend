@@ -29,13 +29,18 @@ function EventDetailsPage() {
   let imageSrc = event.logo_url || event.event_photo || defaultImage;
 
   console.log(date)
+
   const formatDate = (timestamp) => {
 
+    if (typeof timestamp === 'number'){
+      const date = new Date(timestamp * 1000);
+      return date.toLocaleDateString();
+    } else {
+      const cleanedupTimeStamp = timestamp.slice(0, 10)
+      return cleanedupTimeStamp
+    } 
 
 
-    
-    const date = new Date(timestamp * 1000);
-    return date.toLocaleDateString();
   };
   
   const hasRequiredKeys = ['event_location', 'lat', 'lng'].every(key => Object.keys(event).includes(key));
