@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import RelatedEvents from "./RelatedEvents";
 
 const NewsDetails = () => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const NewsDetails = () => {
           {paragraph}
         </p>
       ))}
+      <RelatedEvents/>
     </div>
   );
 };
