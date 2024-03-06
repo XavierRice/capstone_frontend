@@ -1,0 +1,18 @@
+.custom-signup-btn {
+    background-color: #4E2855; /* Green background */
+    border-color: #BC94C1; /* Green border */
+    color: #D5E673; /* White text */
+  }
+  
+  .custom-signup-btn:hover {
+    background-color: #D5E673; /* Darker green on hover */
+    border-color: #BC9EC1; /* Darker green border on hover */
+  }
+
+  .text-custom-color {
+    color: #D5E673;
+  }
+
+  .header {
+    color: #BC94C1; /* Example: Sets a unique color for the header */
+  }

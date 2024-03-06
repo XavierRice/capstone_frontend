@@ -5,12 +5,12 @@ import { Card as BootstrapCard } from "react-bootstrap";
 const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
   return (
     <div onClick={onClick} style={{ cursor: 'pointer' }}>
-    <BootstrapCard bg="dark" text="text-custom-color">
-      <BootstrapCard.Img src={imageSrc} alt="Card image" />
+    <BootstrapCard bg="dark">
+      <BootstrapCard.Img src={imageSrc} alt="Card image" onLoad={onLoad} />
       <BootstrapCard.ImgOverlay>
-        <BootstrapCard.Title>{title}</BootstrapCard.Title>
-        {/* <BootstrapCard.Text>{text}</BootstrapCard.Text> */}
-        <BootstrapCard.Text>Last updated {updatedAt}</BootstrapCard.Text>
+        <BootstrapCard.Title className="text-custom-color">{title}</BootstrapCard.Title>
+        <BootstrapCard.Text className="text-custom-color">{text}</BootstrapCard.Text> 
+        <BootstrapCard.Text className="text-custom-color">Last updated {updatedAt}</BootstrapCard.Text>
       </BootstrapCard.ImgOverlay>
     </BootstrapCard>
     </div>
