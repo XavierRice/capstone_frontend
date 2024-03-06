@@ -7,6 +7,7 @@ import defaultImage from "../assets/NoImage.jpg"
 
 function EventDetailsPage() {
   const location = useLocation();
+  
   const { event } = location.state;
   
 
