@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Card from "../Components/Card"; // Adjust the path as needed
+import Card from "../Components/Card/Card"; 
 import { useNavigate } from "react-router-dom";
 
 const Events = () => {
@@ -41,12 +41,14 @@ const Events = () => {
   
         const virtualEvents = events
           .filter(event => event.is_virtual === true)
-          .map(({ id, title, sponsor: { logo_url } = {}, summary, description }) => ({
+          .map(({ id, title, sponsor: { logo_url , created_date:sponsorCreatedDate } = {}, summary, description }) => ({
             id,
             title,
             logo_url, 
+           sponsorCreatedDate,
             summary,
-            description
+            description,
+            location:false,
           }));
   
         setMobilizeEvents(events);
@@ -66,6 +68,7 @@ const Events = () => {
   };
 
   console.log (virtualEvents[0]);
+  console.log (eventsData[0])
 
   const handleImageLoad = () => {
     setLoading(false);
