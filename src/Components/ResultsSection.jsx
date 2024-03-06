@@ -28,7 +28,7 @@ function ResultsSection({ selectedCategory }) {
     ? cards.filter((card) => card.text === selectedCategory)
     : cards;
   return (
-    <div className="mx-5 px-5">
+    <div className="mx-4">
       {filteredCards.map((card, index) => (
         <div key={index}>
           <Card
