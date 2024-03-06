@@ -21,7 +21,7 @@ const GoogleMap = ({ location, lat, lng }) => {
             <APIProvider apiKey={GoogleKey}>
                 <Map
                     center={position}
-                    zoom={16}
+                    zoom={12}
                     mapId={import.meta.env.VITE_GOOGLE_MAP_ID}
                 >
                     <Directions destination={location} desLat={latitude} desLng={longitude}/>

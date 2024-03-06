@@ -61,10 +61,11 @@ const Directions = ({destination, desLat, desLng}) => {
          });
     }, [directionService, directionsRenderer, userLocation, desLat, desLng])
 
+
+
     if (!leg) return null
     return (
         <div className='direction'>
-            <h3>{selected.summary}</h3>
         </div>
     );
 };

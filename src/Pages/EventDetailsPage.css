@@ -1,12 +1,12 @@
 .custom-signup-btn {
-  background-color: #4E2855; /* Green background */
-  border-color: #BC94C1; /* Green border */
-  color: #D5E673; /* White text */
+  background-color: #4E2855; 
+  border-color: #BC94C1;
+  color: #D5E673; 
 }
 
 .custom-signup-btn:hover {
-  background-color: #D5E673; /* Darker green on hover */
-  border-color: #BC9EC1; /* Darker green border on hover */
+  background-color: #D5E673; 
+  border-color: #BC9EC1; 
 }
 
 .text-custom-color {
@@ -14,9 +14,9 @@
 }
 
 .map-container {
-  width: 100%; /* Ensure the map container is full width */
+  width: 100%; 
   height: 0;
-  padding-bottom: 56.25%; /* Aspect ratio for a responsive map */
+  padding-bottom: 56.25%; /*set for aspect ratio stuff */
   position: relative;
 }
 
@@ -39,19 +39,24 @@
 
 @media (max-width: 768px) {
   .map-container {
-    padding-bottom: 75%; /* Increase the aspect ratio for smaller devices */
+    padding-bottom: 75%; 
   }
 }
 
 .centered-image-container {
-  display: flex; /* Use flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 200px; /* Set a fixed height, adjust as needed */
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 200px; 
 }
 
 .centered-image-container img {
-  max-width: 100%; /* Ensure the image is responsive and does not overflow its container */
-  max-height: 100%; /* Limit the image height to make it smaller */
-  object-fit: contain; /* Ensure the aspect ratio of the image is maintained */
+  max-width: 100%; 
+  max-height: 100%; 
+  object-fit: contain; 
+}
+
+.image-border {
+  border: 3px solid #BC94C1;
+  box-sizing: border-box;
 }
