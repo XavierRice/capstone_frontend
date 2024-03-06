@@ -37,6 +37,12 @@ const News = () => {
     setLoading(false);
   };
 
+  const handleCardClick = (id) => {
+    const selectedNews = newsData.find((news) => news.news_id === id);
+    navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
+  };
+
+
   return (
     <div>
       {loading ? (
@@ -47,9 +53,11 @@ const News = () => {
         <div>
           {newsData.map((news) => (
             <Card
-              key={news.id}
-              title={news.title}
-              imageSrc={news.imageSrc}
+
+              key={news.news_id}
+              title={news.news_title}
+              imageSrc={news.news_image}
+
               text={news.text}
               updatedAt={news.updatedAt}
               onLoad={handleImageLoad}
