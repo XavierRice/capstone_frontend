@@ -32,7 +32,11 @@ const News = () => {
   };
 
   const handleCardClick = (id) => {
-    navigate(`/discover/news-details/${id}`);
+    // Find the specific news item based on its id
+    const selectedNews = newsData.find((news) => news.news_id === id);
+
+    // Navigate to the NewsDetails component and pass the selected news item as state
+    navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
   };
 
   return (
@@ -46,10 +50,10 @@ const News = () => {
           {newsData.map((news) => (
             <Card
               key={news.news_id}
-              title={news.title}
-              imageSrc={news.imageSrc}
+              id={news.news_id}
+              title={news.news_title}
+              imageSrc={news.news_image}
               text={news.text}
-              updatedAt={news.updatedAt}
               onLoad={handleImageLoad}
               onClick={() => handleCardClick(news.news_id)}
             />

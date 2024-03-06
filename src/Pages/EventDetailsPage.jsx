@@ -10,7 +10,6 @@ function EventDetailsPage() {
   
   const { event } = location.state;
   
-
   const {
     event_id,
     user_id,
