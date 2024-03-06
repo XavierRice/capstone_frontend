@@ -1,0 +1,62 @@
+.custom-signup-btn {
+  background-color: #4E2855; 
+  border-color: #BC94C1;
+  color: #D5E673; 
+}
+
+.custom-signup-btn:hover {
+  background-color: #D5E673; 
+  border-color: #BC9EC1; 
+}
+
+.text-custom-color {
+  color: #D5E673;
+}
+
+.map-container {
+  width: 100%; 
+  height: 0;
+  padding-bottom: 56.25%; /*set for aspect ratio stuff */
+  position: relative;
+}
+
+.map-container iframe,
+.map-container object,
+.map-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.text-center {
+  text-align: center; 
+}
+
+.text-white {
+  color: #fff; 
+}
+
+@media (max-width: 768px) {
+  .map-container {
+    padding-bottom: 75%; 
+  }
+}
+
+.centered-image-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 200px; 
+}
+
+.centered-image-container img {
+  max-width: 100%; 
+  max-height: 100%; 
+  object-fit: contain; 
+}
+
+.image-border {
+  border: 3px solid #BC94C1;
+  box-sizing: border-box;
+}

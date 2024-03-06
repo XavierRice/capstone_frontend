@@ -1,6 +1,8 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Logo from "../assets/ImpactifySSLogo.jpg"
+import "./Header.css"
 
 function Header() {
   return (
@@ -12,12 +14,13 @@ function Header() {
     >
       <Link to="/discover" className="mx-auto">
         <Navbar.Brand>
-          <img src="/" height="40" alt="Impactify Logo" />
+          <img src={Logo} height="80" alt="Impactify Logo" />
+          <span className="custom-header">Impactify</span>
         </Navbar.Brand>
       </Link>
       <Nav className="ml-auto">
-        <Nav.Link href="#" className="text-light mx-3">
-          sign up
+        <Nav.Link href="#" className="text-light mx-3 ">
+          <p className="signup-custom-color">sign up</p>
         </Nav.Link>
       </Nav>
     </Navbar>

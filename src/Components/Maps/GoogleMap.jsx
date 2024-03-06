@@ -7,19 +7,24 @@ import {
     useMap
 } from "@vis.gl/react-google-maps"
 
-const GoogleMap = ({ lat, lng }) => {
+const GoogleMap = ({ location, lat, lng }) => {
+    const latitude = Number(lat)
+    const longitude = Number(lng)
+
+    console.log(latitude, longitude)
+
     const GoogleKey = import.meta.env.VITE_X_GOOGLE_API_KEY
-    const position = { lat: 43.6532, lng: -79.3832 }
+    const position = { lat: latitude, lng: longitude }
 
     return (
         <div style={{ height: '80vh', width: "100%" }}>
             <APIProvider apiKey={GoogleKey}>
                 <Map
                     center={position}
-                    zoom={9}
+                    zoom={12}
                     mapId={import.meta.env.VITE_GOOGLE_MAP_ID}
                 >
-                    <Directions />
+                    <Directions destination={location} desLat={latitude} desLng={longitude}/>
                 </Map>
             </APIProvider>
         </div>

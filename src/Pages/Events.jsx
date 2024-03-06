@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Card from "../Components/Card"; // Adjust the path as needed
+import Card from "../Components/Card/Card"; 
 import { useNavigate } from "react-router-dom";
 
 const Events = () => {
@@ -9,6 +9,25 @@ const Events = () => {
   const [mobilizeEvents, setMobilizeEvents] = useState([]);
   const [virtualEvents, setVirtualEvents] = useState([]);
   const navigate = useNavigate();
+
+
+  const backend = import.meta.env.VITE_BACKEND_URL
+
+  useEffect(() => {
+    const fetchBackendEvents = async () => {
+      try {
+        const response = await axios.get(`${backend}/events`)
+        const backendEvents = response.data.data
+        setEventsData(backendEvents)
+      } catch (error) {
+        console.error("Error fetching BackEnd Events:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchBackendEvents()
+  }, [])
+
 
   useEffect(() => {
     const fetchMobilizeEvents = async () => {
@@ -19,9 +38,19 @@ const Events = () => {
           },
         });
         const events = response.data.data;
-        const virtualEvents = events.filter(
-          (event) => event.is_virtual === true
-        );
+  
+        const virtualEvents = events
+          .filter(event => event.is_virtual === true)
+          .map(({ id, title, sponsor: { logo_url , created_date:sponsorCreatedDate } = {}, summary, description }) => ({
+            id,
+            title,
+            logo_url, 
+           sponsorCreatedDate,
+            summary,
+            description,
+            location:false,
+          }));
+  
         setMobilizeEvents(events);
         setVirtualEvents(virtualEvents);
       } catch (error) {
@@ -38,7 +67,8 @@ const Events = () => {
     navigate("/discover/events-details", { state: { event } });
   };
 
-  console.log(virtualEvents);
+  console.log (virtualEvents[0]);
+  console.log (eventsData[0])
 
   const handleImageLoad = () => {
     setLoading(false);
@@ -51,20 +81,36 @@ const Events = () => {
           <div className="loader"></div>
         </div>
       ) : (
+        <>
         <div>
-          {virtualEvents.map((event) => (
-            <Card
-              key={event.id}
-              title={event.title}
-              imageSrc={event.sponsor.logo_url}
-              text={event.description}
-              onLoad={handleImageLoad}
-              onClick={() => handleCardClick(event)}
-            />
-          ))}
-        </div>
+            {eventsData.map((event, index) => (
+              <Card
+                key={index}
+                title={event.event_title}
+                imageSrc={event.event_photo}
+                text={event.event_details}
+                onLoad={handleImageLoad}
+                onClick={() => handleCardClick(event)}
+              />
+            ))}
+          </div>
+        
+          <div>
+            {virtualEvents.map((event) => (
+              <Card
+                key={event.id}
+                title={event.title}
+                imageSrc={event.logo_url}
+                text={event.summary}
+                onLoad={handleImageLoad}
+                onClick={() => handleCardClick(event)}
+              />
+            ))}
+          </div>
+        </>
       )}
     </div>
+
   );
 };
 
