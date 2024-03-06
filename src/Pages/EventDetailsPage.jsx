@@ -15,7 +15,8 @@ function EventDetailsPage() {
     const date = new Date(timestamp * 1000);
     return date.toLocaleDateString();
   };
-
+  const hasRequiredKeys = ['event_location', 'lat', 'lng'].every(key => Object.keys(event).includes(key));
+  const imageSrc = event.logo_url || event.event_photo || "path/to/default/image.png";
   return (
     <div>
       <Container>
@@ -28,7 +29,7 @@ function EventDetailsPage() {
         </Row>
         <Row className="mt-4">
           <Col xs={12} md={6}>
-            <Image src={event.logo_url} alt="Event" fluid />
+            <Image src={imageSrc} alt="Event" fluid />
           </Col>
           <Col xs={12} md={6}>
             <p>{event.description}</p>
@@ -46,7 +47,11 @@ function EventDetailsPage() {
         </Button>
       </div>
       <Container>
-        <GoogleMap />
+        { hasRequiredKeys ? (
+          <GoogleMap location={event.event_location} lat={event.lat} lng={event.lng} />
+        ):(
+          <Image src={event.logo_url} alt="Event" fluid />
+        )}
       </Container>
     </div>
   );
