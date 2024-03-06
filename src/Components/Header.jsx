@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Logo from "../assets/ImpactifySSLogo.jpg"
+import Logo from "../assets/ImpactifySSLogoNB.png"
 import "./Header.css"
 
 function Header() {
