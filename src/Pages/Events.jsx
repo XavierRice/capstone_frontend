@@ -8,6 +8,7 @@ const Events = () => {
   const [eventsData, setEventsData] = useState([]);
   const [mobilizeEvents, setMobilizeEvents] = useState([]);
   const [virtualEvents, setVirtualEvents] = useState([]);
+  
   const navigate = useNavigate();
 
 
