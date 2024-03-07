@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Card from "../Components/Card/Card"
+import Card from "../Components/Card/Card";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 
@@ -32,10 +32,7 @@ const News = () => {
   };
 
   const handleCardClick = (id) => {
-    // Find the specific news item based on its id
     const selectedNews = newsData.find((news) => news.news_id === id);
-
-    // Navigate to the NewsDetails component and pass the selected news item as state
     navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
   };
 
