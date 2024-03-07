@@ -12,6 +12,8 @@ import Events from "./Pages/Events";
 import "./App.css";
 import Search from "./Pages/Search";
 import NewsDetailsPage from "./Pages/NewsDetailsPage";
+import CreateEventPage from "./Pages/CreateEventPage";
+import Donations from "./Pages/Donations";
 
 function App() {
   return (
@@ -22,7 +24,7 @@ function App() {
           <Routes>
             <Route path="/discover" element={<Discover />} />
             <Route
-              path="/discover/news-details"
+              path="/discover/news-details/:id"
               element={<NewsDetailsPage />}
             />
             <Route
@@ -31,6 +33,11 @@ function App() {
             />
             <Route path="/discover/news" element={<News />} />
             <Route path="/discover/events" element={<Events />} />
+            <Route path="/discover/donations" element={<Donations />} />
+            <Route
+              path="/discover/create-event"
+              element={<CreateEventPage />}
+            />
           </Routes>
         </div>
         <NavigationBar className="footer" />
