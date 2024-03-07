@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 const NewsDetails = () => {
   const location = useLocation();
+  // const location = useLocation();
   const { news } = location.state;
 
   const paragraphs = news.news_content.split(/\n\n/);
