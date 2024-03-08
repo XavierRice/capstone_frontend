@@ -48,7 +48,7 @@ const AutoComplete = ({ location, setLocation, setLat, setLng }) => {
     data.map((suggestion) => {
       const {
         place_id,
-        structure_formatting: { main_text, secondary_text },
+        structured_formatting: { main_text, secondary_text },
       } = suggestion
 
       return (
