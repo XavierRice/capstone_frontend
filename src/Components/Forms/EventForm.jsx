@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from "react-router-dom";
-// import usePlacesAutocomplete, {
-//   getGeocode,
-//   getLatLng,
-// } from "use-places-autocomplete";
-
-
-import axios from 'axios';
+import AutoComplete from '../GeoLocation/AutoComplete';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -17,19 +11,23 @@ const EventForm = () => {
 let { user_id } = useParams();
 const naviagte = useNavigate();
 
+const [location, setLocation] = useState("")
+const [lat, setLat] = useState(0)
+const [lng, setLng] = useState(0)
 const [error, setError] = useState(false)
 const [user_event, setUser_Event] = useState({
   event_title:"",
   event_date:"",
   event_time:"",
-  lat:0,
-  lng:0,
-  event_location:"",
+  lat:lat,
+  lng:lng,
+  event_location:location,
   event_details:"",
   event_photo:"",
   is_virtual:false,
-  donation_id:0,
-  mobilize_id:0,
+  is_donation:false,
+  event_keyword:"",
+  stripe_id:"",
   rsvp:false,
 });
 
@@ -65,6 +63,8 @@ const handleSubmit = (event) =>{
   addEvent()
 }
 
+
+
 useEffect(() => {
   fetch(`${backend}/events/${user_id}`)
   .then((res) => res.json())
@@ -77,25 +77,22 @@ useEffect(() => {
         <Form>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="event_title">
-            <Form.Label htmlFor='event_title'>Event Title</Form.Label>
+            <Form.Label >Event Title</Form.Label>
             <Form.Control type="text" placeholder="Enter email" />
           </Form.Group>
   
           <Form.Group as={Col} controlId="event_date">
-            <Form.Label htmlFor='event_date'>Event Date</Form.Label>
+            <Form.Label >Event Date</Form.Label>
             <Form.Control type="date" placeholder="12/12/2024" />
           </Form.Group>
         </Row>
   
         <Form.Group className="mb-3" controlId="event_time">
-          <Form.Label htmlFor='event_time'>Event Time</Form.Label>
+          <Form.Label >Event Time</Form.Label>
           <Form.Control  type="time" placeholder="12:00pm" />
         </Form.Group>
   
-        <Form.Group className="mb-3" controlId="event_location">
-          <Form.Label>Location</Form.Label>
-          <Form.Control type='text' placeholder="Other location indicators" />
-        </Form.Group>
+       <AutoComplete  location={location} setLocation={setLocation} setLat={setLat} setLng={setLng}/>
         
         <Form.Group className="mb-3" controlId="event_details">
           <Form.Label>Description</Form.Label>
