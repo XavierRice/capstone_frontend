@@ -5,6 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
+import "./EventForm.css"
+
+
 const backend = import.meta.env.VITE_BACKEND_URL
 
 const EventForm = () => {
@@ -74,7 +77,7 @@ useEffect(() => {
 })
 
     return (
-        <Form>
+        <Form className='custom-text'>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="event_title">
             <Form.Label >Event Title</Form.Label>
@@ -92,7 +95,7 @@ useEffect(() => {
           <Form.Control  type="time" placeholder="12:00pm" />
         </Form.Group>
   
-       <AutoComplete  location={location} setLocation={setLocation} setLat={setLat} setLng={setLng}/>
+       <AutoComplete  setLocation={setLocation} setLat={setLat} setLng={setLng}/>
         
         <Form.Group className="mb-3" controlId="event_details">
           <Form.Label>Description</Form.Label>

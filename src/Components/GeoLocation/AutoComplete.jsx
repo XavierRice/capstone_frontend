@@ -5,7 +5,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
-const AutoComplete = ({ location, setLocation, setLat, setLng }) => {
+const AutoComplete = ({ setLocation, setLat, setLng }) => {
 
   const {
     ready,
@@ -29,18 +29,16 @@ const AutoComplete = ({ location, setLocation, setLat, setLng }) => {
     setValue(event.target.value)
   }
 
-  const handleSelect = ({ description }) =>
-    () => {
-
+  const handleSelect = ({ description }) => () => {
       setValue(description, false);
       clearSuggestions();
 
       getGeocode({ address: description }).then((results) => {
-        const { event_lat, event_lng } = getLatLng(results[0]);
-        setLat(event_lat)
-        setLng(event_lng)
+        const { lat, lng } = getLatLng(results[0]);
+        setLat(lat)
+        setLng(lng)
         setLocation(results[0].formatted_address)
-        console.log("📍 Coordinates: ", { lat, lng });
+        console.log("📍 Coordinates: ", { lat, lng }, location)
       })
     }
 
@@ -52,7 +50,7 @@ const AutoComplete = ({ location, setLocation, setLat, setLng }) => {
       } = suggestion
 
       return (
-        <li style={{ color: "#4E2855" }} key={place_id} onClick={handleSelect(suggestion)}>
+        <li style={{ color: "#D5E673" }} key={place_id} onClick={handleSelect(suggestion)} >
           <strong>{main_text}</strong> <small>{secondary_text}</small>
         </li>
       )
@@ -62,10 +60,11 @@ const AutoComplete = ({ location, setLocation, setLat, setLng }) => {
 
   return (
 
-    <Form.Group className="mb-3" controlId="event_location" ref={ref}>
+    <Form.Group className="mb-3" controlId="event_location"  ref={ref}>
       <Form.Label>Location</Form.Label>
       <Form.Control 
       type='text'
+      value={value}
       onChange={handleInput}
       placeholder="Where is your event" 
       disabled={!ready}
