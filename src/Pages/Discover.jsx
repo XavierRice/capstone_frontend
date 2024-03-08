@@ -4,7 +4,7 @@ import CategoriesSection from "../Components/CategoriesSection";
 import ResultsSection from "../Components/ResultsSection";
 
 import SearchBar from "../Components/SearchBar";
-import EventForm from "../Components/Forms/EventForm";
+
 
 function Discover() {
   const [selectedCategory, setSelectedCategory] = useState(null);
