@@ -50,7 +50,7 @@ const AutoComplete = ({ setLocation, setLat, setLng }) => {
       } = suggestion
 
       return (
-        <li style={{ color: "#D5E673" }} key={place_id} onClick={handleSelect(suggestion)} >
+        <li  className="dropdown-item-hover" style={{ color: "#D5E673" }} key={place_id} onClick={handleSelect(suggestion)} >
           <strong>{main_text}</strong> <small>{secondary_text}</small>
         </li>
       )
