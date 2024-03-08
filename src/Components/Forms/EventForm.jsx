@@ -1,30 +1,93 @@
 import React, { useEffect, useState } from 'react';
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-
-
+const backend = import.meta.env.VITE_BACKEND_URL
 
 const EventForm = () => {
+let { user_id } = useParams();
+const naviagte = useNavigate();
+
+const [error, setError] = useState(false)
+const [user_event, setUser_Event] = useState({
+  event_title:"",
+  event_date:"",
+  event_time:"",
+  lat:0,
+  lng:0,
+  event_location:"",
+  event_details:"",
+  event_photo:"",
+  is_virtual:false,
+  donation_id:0,
+  mobilize_id:0,
+  rsvp:false,
+});
+
+
+
+
+
+
+const handleTextChange = (event) => {
+  setEvent({...user_event, [event.target.id] : event.target.value } )
+}
+
+const handleIsVirtual = (event) => {
+  setEvent({...user_event, is_virtual: !user_event.is_virtual})
+}
+
+const handleRSVP = (event) => {
+  setEvent({...user_event, rsvp: !user_event.rsvp})
+}
+
+const addEvent = (event) => {
+  fetch(`${backend}/events/${user_id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user_event)
+  })
+  .then((res) => res.json())
+  .then((res) => {
+    naviagte(`/events/${user_id}`)
+  })
+}
+
+const handleSubmit = (event) =>{
+  event.preventDefault();
+  addEvent()
+}
+
+useEffect(() => {
+  fetch(`${backend}/events/${user_id}`)
+  .then((res) => res.json())
+  .then((res) =>{
+    
+  })
+})
+
     return (
         <Form>
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Event Title</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+          <Form.Group as={Col} controlId="event_title">
+            <Form.Label htmlFor='event_title'>Event Title</Form.Label>
+            <Form.Control type="text" placeholder="Enter email" />
           </Form.Group>
   
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Event Date</Form.Label>
+          <Form.Group as={Col} controlId="event_date">
+            <Form.Label htmlFor='event_date'>Event Date</Form.Label>
             <Form.Control type="date" placeholder="12/12/2024" />
           </Form.Group>
         </Row>
   
-        <Form.Group className="mb-3" controlId="formGridAddress1">
-          <Form.Label>Location</Form.Label>
-          <Form.Control placeholder="1234 Main St" />
+        <Form.Group className="mb-3" controlId="event_time">
+          <Form.Label htmlFor='event_time'>Location</Form.Label>
+          <Form.Control  type="time" placeholder="12:00pm" />
         </Form.Group>
   
         <Form.Group className="mb-3" controlId="formGridAddress2">
