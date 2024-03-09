@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Select, { createFilter, components } from "react-select"
 import AutoComplete from '../GeoLocation/AutoComplete';
+import Is_donation from '../DonationModal.jsx/IsDonation';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -86,13 +87,13 @@ const EventForm = () => {
 
 
 
-  useEffect(() => {
-    fetch(`${backend}/events/${user_id}`)
-      .then((res) => res.json())
-      .then((res) => {
+  // useEffect(() => {
+  //   fetch(`${backend}/events/${user_id}`)
+  //     .then((res) => res.json())
+  //     .then((res) => {
 
-      })
-  })
+  //     })
+  // })
 
   return (
     <Form className='custom-text'>
@@ -152,10 +153,7 @@ const EventForm = () => {
       </Form.Group>
 
 
-      <Form.Group className="mb-3" id="is_donation">
-        <Form.Label>Are you seeking donations?</Form.Label>
-        <Form.Check type="checkbox" label="is_donation" />
-      </Form.Group>
+      <Is_donation/>
 
       <Button variant="primary" type="submit">
         Submit
