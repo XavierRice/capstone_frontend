@@ -24,18 +24,18 @@ const EventForm = () => {
   const [user_event, setUser_Event] = useState({
     user_id: userId,
     event_title: "",
+    event_date: "",
+    event_time: "",
     event_location: location,
     lat: lat,
     lng: lng,
-    event_keyword: "",
     event_details: "",
+    event_keyword: "",
     event_photo: "",
     is_virtual: false,
-    event_date: "",
-    event_time: "",
-    stripe_id: "",
     rsvp: false,
     is_donation: false,
+    stripe_id: "",
   });
 
   const keywordOptions = [
@@ -97,22 +97,23 @@ const EventForm = () => {
   return (
     <Form className='custom-text'>
       <Row className="mb-3">
-        <Form.Group as={Col} controlId="event_title">
+        <Form.Group className='mb-3' controlId="event_title">
           <Form.Label >Event Title</Form.Label>
-          <Form.Control type="text" placeholder="Enter email" />
+          <Form.Control type="text" placeholder="Enter Title" />
         </Form.Group>
 
         <Form.Group as={Col} controlId="event_date">
           <Form.Label >Event Date</Form.Label>
           <Form.Control type="date" placeholder="12/12/2024" />
         </Form.Group>
+
+        <Form.Group as={Col} controlId="event_time">
+          <Form.Label >Start Time</Form.Label>
+          <Form.Control type="time" placeholder="???" />
+        </Form.Group>
+
       </Row>
-
-      <Form.Group className="mb-3" controlId="event_time">
-        <Form.Label >Event Time</Form.Label>
-        <Form.Control type="time" placeholder="12:00pm" />
-      </Form.Group>
-
+    
       <AutoComplete setLocation={setLocation} setLat={setLat} setLng={setLng} />
 
       <Form.Group className="mb-3" controlId="event_details">
@@ -148,6 +149,12 @@ const EventForm = () => {
       <Form.Group className="mb-3" id="rsvp">
         <Form.Label>Should guests RSVP?</Form.Label>
         <Form.Check type="checkbox" label="rsvp" />
+      </Form.Group>
+
+
+      <Form.Group className="mb-3" id="is_donation">
+        <Form.Label>Are you seeking donations?</Form.Label>
+        <Form.Check type="checkbox" label="is_donation" />
       </Form.Group>
 
       <Button variant="primary" type="submit">
