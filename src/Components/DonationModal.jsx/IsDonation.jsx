@@ -4,10 +4,10 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router';
 
-function Is_donation({ isDonation, setIsDonation}) {
+function Is_donation({ isDonation, setIsDonation, setStripeId, stripeId}) {
     const navigate = useNavigate()
     const [show, setShow] = useState(false);
-    const [stripeId, setStripeId] = useState("")
+    
  
     
     const handleClose = () => {

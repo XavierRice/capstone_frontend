@@ -21,8 +21,10 @@ const EventForm = () => {
   const [location, setLocation] = useState("")
   const [lat, setLat] = useState(0)
   const [lng, setLng] = useState(0)
+  const [stripeId, setStripeId] = useState("")
   const [error, setError] = useState(false)
   const [userId, setUserId] = useState(user_id)
+  const [user_keywords, setUserKeywords] = useState([])
   const [user_event, setUser_Event] = useState({
     user_id: userId,
     event_title: "",
@@ -44,11 +46,26 @@ const EventForm = () => {
 
     { value: 'equality', label: 'equality' },
     { value: 'politics', label: 'politics' },
+    { value: 'global issues', label: 'global issues'},
+    { value: 'lgbt rights', label: 'lgbt rights'},
+    { value: 'lgbt rights', label: 'lgbt rights'}
 
   ]
+  function KeywordMaker (){
+   for (let word of user_keywords){
+    keywordOptions.push({ value: word, label: word})
+   }
+  }
 
   const handleKeywords = (selectedOption) => {
-    setSelectedKeywords(selectedOption)
+
+   const selectedValues = selectedOption.map(option => option.value)
+
+    setUser_Event(prev => ({
+      ...prev,
+      event_keyword: selectedValues
+    }));
+    setSelectedKeywords(selectedValues)
   }
   
   const CreatableSelectInput = (props) => (
@@ -88,9 +105,19 @@ const EventForm = () => {
     event.preventDefault();
     addEvent()
   }
+  useEffect(()=> {
+    setUser_Event(prev => ({
+      ...prev,
+      event_location: location,
+      lat:lat,
+      lng:lng,
+      stripe_id:stripeId
+    }))
+  },[location, lat, lng, stripeId])
 
 
 
+console.log(user_event)
   // useEffect(() => {
   //   fetch(`${backend}/events/${user_id}`)
   //     .then((res) => res.json())
@@ -115,7 +142,8 @@ const EventForm = () => {
 
         <Form.Group as={Col} controlId="event_time">
           <Form.Label >Start Time</Form.Label>
-          <Form.Control type="time" placeholder="???"  onChange={handleTextChange}/>
+          
+          <Form.Control type="time" placeholder="???"  value={user_event.event_time} onChange={handleTextChange}/>
         </Form.Group>
 
       </Row>
@@ -128,13 +156,13 @@ const EventForm = () => {
       </Form.Group>
 
       <Row className="mb-3">
-        <Form.Group as={Col} controlId="event_keyword">
+        <Form.Group as={Col} controlId="event_keyword" >
           <Form.Label>Keywords</Form.Label>
           <Select
             isMulti
             onChange={handleKeywords}
             options={keywordOptions}
-            className='basic-mulit-select'
+            className='basic-mulit-select custom-text-dark'
             classNamePrefix="select"
             components={{ Input: CreatableSelectInput }}
           />
@@ -158,7 +186,7 @@ const EventForm = () => {
       </Form.Group>
 
 
-      <Is_donation isDonation={isDonation} setIsDonation={setIsDonation}/>
+      <Is_donation setStripeId={setStripeId} isDonation={isDonation} setIsDonation={setIsDonation} stripeId={stripeId}/>
 
       <Button variant="primary" type="submit">
         Submit

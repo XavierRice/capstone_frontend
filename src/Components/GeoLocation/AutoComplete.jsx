@@ -37,7 +37,7 @@ const AutoComplete = ({ setLocation, setLat, setLng, lat, lng }) => {
         const { lat, lng } = getLatLng(results[0]);
         setLat(lat)
         setLng(lng)
-        setLocation(value)
+        setLocation(description)
         console.log("📍 Coordinates: ", { lat, lng })
         
       })
