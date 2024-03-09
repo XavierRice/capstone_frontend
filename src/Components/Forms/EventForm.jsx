@@ -16,6 +16,7 @@ const EventForm = () => {
   let { user_id } = useParams();
   const naviagte = useNavigate();
 
+  const [isDonation, setIsDonation] = useState(false)
   const [selectedKeywords, setSelectedKeywords] = useState([])
   const [location, setLocation] = useState("")
   const [lat, setLat] = useState(0)
@@ -35,7 +36,7 @@ const EventForm = () => {
     event_photo: "",
     is_virtual: false,
     rsvp: false,
-    is_donation: false,
+    is_donation: isDonation,
     stripe_id: "",
   });
 
@@ -55,16 +56,19 @@ const EventForm = () => {
   );
 
   const handleTextChange = (event) => {
-    setEvent({ ...user_event, [event.target.id]: event.target.value })
+    setUser_Event({ ...user_event, [event.target.id]: event.target.value })
   }
 
   const handleIsVirtual = (event) => {
-    setEvent({ ...user_event, is_virtual: !user_event.is_virtual })
+    setUser_Event({ ...user_event, is_virtual: event.target.checked })
   }
 
   const handleRSVP = (event) => {
-    setEvent({ ...user_event, rsvp: !user_event.rsvp })
+    setUser_Event({ ...user_event, rsvp: event.target.checked })
   }
+
+
+  console.log(user_event)
 
   const addEvent = (event) => {
     fetch(`${backend}/events/${user_id}`, {
@@ -100,26 +104,27 @@ const EventForm = () => {
       <Row className="mb-3">
         <Form.Group className='mb-3' controlId="event_title">
           <Form.Label >Event Title</Form.Label>
-          <Form.Control type="text" placeholder="Enter Title" />
+         
+          <Form.Control type="text" placeholder="Enter Title"  onChange={handleTextChange} />
         </Form.Group>
 
         <Form.Group as={Col} controlId="event_date">
           <Form.Label >Event Date</Form.Label>
-          <Form.Control type="date" placeholder="12/12/2024" />
+          <Form.Control type="date" placeholder="12/12/2024"   onChange={handleTextChange}/>
         </Form.Group>
 
         <Form.Group as={Col} controlId="event_time">
           <Form.Label >Start Time</Form.Label>
-          <Form.Control type="time" placeholder="???" />
+          <Form.Control type="time" placeholder="???"  onChange={handleTextChange}/>
         </Form.Group>
 
       </Row>
     
-      <AutoComplete setLocation={setLocation} setLat={setLat} setLng={setLng} />
+      <AutoComplete setLocation={setLocation} setLat={setLat} setLng={setLng} lat={lat} lng={lng}/>
 
       <Form.Group className="mb-3" controlId="event_details">
         <Form.Label>Description</Form.Label>
-        <Form.Control as="textarea" placeholder="Description" />
+        <Form.Control as="textarea" placeholder="Description"  onChange={handleTextChange}/>
       </Form.Group>
 
       <Row className="mb-3">
@@ -137,23 +142,23 @@ const EventForm = () => {
 
         <Form.Group as={Col} controlId="event_photo">
           <Form.Label>Photo</Form.Label>
-          <Form.Control type='text' />
+          <Form.Control type='text'  onChange={handleTextChange}/>
         </Form.Group>
 
       </Row>
 
-      <Form.Group className="mb-3" id="is_virtual">
-        <Form.Label>is it virtual?</Form.Label>
-        <Form.Check type="checkbox" label="is_virtual" />
+      <Form.Group className="mb-3" controlId="is_virtual">
+        <Form.Label>Virtual Event</Form.Label>
+        <Form.Check type="checkbox" label="Is this event virtual?"  onChange={handleIsVirtual} checked={user_event.is_virtual}/>
       </Form.Group>
 
-      <Form.Group className="mb-3" id="rsvp">
-        <Form.Label>Should guests RSVP?</Form.Label>
-        <Form.Check type="checkbox" label="rsvp" />
+      <Form.Group className="mb-3" controlId="rsvp"  onChange={handleRSVP} checked={user_event.rsvp}>
+        <Form.Label>Yes,everyone should rsvp!</Form.Label>
+        <Form.Check type="checkbox" label="yes, guests should rsvp!" />
       </Form.Group>
 
 
-      <Is_donation/>
+      <Is_donation isDonation={isDonation} setIsDonation={setIsDonation}/>
 
       <Button variant="primary" type="submit">
         Submit

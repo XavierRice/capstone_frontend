@@ -4,20 +4,31 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router';
 
-function Is_donation() {
+function Is_donation({ isDonation, setIsDonation}) {
     const navigate = useNavigate()
-
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [stripeId, setStripeId] = useState("")
+ 
+    
+    const handleClose = () => {
+        setShow(false);
+        if(!stripeId){
+            setIsDonation(false)
+        }
+    }
 
     const redirectToStripe = () => {
         navigate("/discover")
+        handleClose();
     }
 
     const handleChange = (event) => {
+        setIsDonation(event.target.checked)
         setShow(event.target.checked)
+    }
 
+    const handleStripeId = (event) => {
+        setStripeId(event.target.value)
     }
 
     return (
@@ -26,6 +37,7 @@ function Is_donation() {
                 <Form.Label>Are you seeking donations?</Form.Label>
                 <Form.Check
                     type="checkbox"
+                    checked={isDonation}
                     label="yes, im am seeking donations."
                     onChange={handleChange} />
             </Form.Group>
@@ -42,6 +54,7 @@ function Is_donation() {
                                 type="text"
                                 placeholder="Enter your Strip_Id"
                                 autoFocus
+                                onChange={handleStripeId}
                             />
                         </Form.Group>
                     </Form>

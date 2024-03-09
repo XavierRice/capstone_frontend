@@ -5,7 +5,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
-const AutoComplete = ({ setLocation, setLat, setLng }) => {
+const AutoComplete = ({ setLocation, setLat, setLng, lat, lng }) => {
 
   const {
     ready,
@@ -37,10 +37,13 @@ const AutoComplete = ({ setLocation, setLat, setLng }) => {
         const { lat, lng } = getLatLng(results[0]);
         setLat(lat)
         setLng(lng)
-        setLocation(results[0].formatted_address)
-        console.log("📍 Coordinates: ", { lat, lng }, location)
+        setLocation(value)
+        console.log("📍 Coordinates: ", { lat, lng })
+        
       })
     }
+
+    console.log(`The lat: ${lat}, the lng: ${lng}, and location :${value}`)
 
   const renderSuggestions = () =>
     data.map((suggestion) => {
