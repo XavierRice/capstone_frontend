@@ -1,20 +1,55 @@
-import React from 'react';
-import { StripeProvider } from '@stripe/stripe-react-native';
 
+import React,{ useState, useEffect } from 'react';
+import {loadConnectAndInitialize} from '@stripe/connect-js';
+import {
+  ConnectPayments,
+  ConnectComponentsProvider,
+} from "@stripe/react-connect-js";
 
 const StripeDonation = () => {
-    const stripeKey = import.meta.env.VITE_STRIP_PUBLISHABLE
-    return (
-        <div>
-            <StripeProvider
-                publishableKey={stripeKey}
-                urlScheme="your-url-scheme" // required for 3D Secure and bank redirects
-                merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
-            >
-      // Your app code here
-            </StripeProvider>
-        </div>
-    );
+
+  const stripePublishKey = import.meta.env.VITE_STRIP_PUBLISHABLE  
+  // We use `useState` to ensure the Connect instance is only initialized once
+  const [stripeConnectInstance] = useState(() => {
+
+    const fetchClientSecret = async () => {
+      // Fetch the AccountSession client secret
+      const response = await fetch('/account_session', { method: "POST" });
+      if (!response.ok) {
+        // Handle errors on the client side here
+        const {error} = await response.json();
+        console.error('An error occurred: ', error);
+        document.querySelector('#error').removeAttribute('hidden');
+        return undefined;
+      } else {
+        const {client_secret: clientSecret} = await response.json();
+        document.querySelector('#error').setAttribute('hidden', '');
+        return clientSecret;
+      }
+    }
+
+    return loadConnectAndInitialize({
+      // This is your test publishable API key.
+      publishableKey: stripePublishKey,
+      fetchClientSecret: fetchClientSecret,
+      appearance: {
+        overlays: 'dialog',
+        variables: {
+          colorPrimary: '#625afa',
+        },
+      },
+    })
+  });
+
+  return (
+    <div className="container">
+      <ConnectComponentsProvider connectInstance={stripeConnectInstance}>
+        <ConnectPayments />
+      </ConnectComponentsProvider>
+    </div>
+  )
 };
+
+
 
 export default StripeDonation;
