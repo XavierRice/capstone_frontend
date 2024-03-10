@@ -8,7 +8,7 @@ import {
 
 const StripeDonation = () => {
 
-  const stripePublishKey = import.meta.env.VITE_STRIP_PUBLISHABLE  
+  const stripePublishKey = import.meta.env.VITE_STRIPE_PUBLISHABLE  
   const backend = import.meta.env.VITE_BACKEND_URL
   // We use `useState` to ensure the Connect instance is only initialized once
   const [stripeConnectInstance] = useState(() => {

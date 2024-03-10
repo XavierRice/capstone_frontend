@@ -19,7 +19,7 @@
     "@stripe/react-connect-js": "^3.3.3",
     "@stripe/react-stripe-js": "^2.5.1",
     "@stripe/stripe-js": "^3.0.7",
-    "@stripe/stripe-react-native": "^0.37.0",
+    "@types/react": "^18.2.64",
     "@vis.gl/react-google-maps": "^0.7.1",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
@@ -33,7 +33,6 @@
     "use-places-autocomplete": "^4.0.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.56.0",
