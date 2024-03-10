@@ -1,4 +1,6 @@
+import React, {useState} from "react";
 import { StripeProvider } from '@stripe/stripe-react-native';
+import StripeDonation from "./StripeDonation";
 
 function Stripe_Provider() {
   const stripePublishKey = import.meta.env.VITE_STRIP_PUBLISHABLE  
@@ -6,7 +8,9 @@ function Stripe_Provider() {
     <StripeProvider
       publishableKey={stripePublishKey}
     >
-      // Your app code here
+      <StripeDonation/>
     </StripeProvider>
   );
-}
+};
+
+export default Stripe_Provider;

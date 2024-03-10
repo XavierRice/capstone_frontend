@@ -9,12 +9,13 @@ import {
 const StripeDonation = () => {
 
   const stripePublishKey = import.meta.env.VITE_STRIP_PUBLISHABLE  
+  const backend = import.meta.env.VITE_BACKEND_URL
   // We use `useState` to ensure the Connect instance is only initialized once
   const [stripeConnectInstance] = useState(() => {
 
     const fetchClientSecret = async () => {
       // Fetch the AccountSession client secret
-      const response = await fetch('/account_session', { method: "POST" });
+      const response = await fetch(`${backend}/payments`, { method: "POST" });
       if (!response.ok) {
         // Handle errors on the client side here
         const {error} = await response.json();
