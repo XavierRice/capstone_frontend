@@ -88,8 +88,8 @@ const EventForm = () => {
   console.log(user_event)
 
   const addEvent = (event) => {
-    fetch(`${backend}/events/${user_id}`, {
-      method: "PUT",
+    fetch(`${backend}/events`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -97,7 +97,8 @@ const EventForm = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        naviagte(`/events/${user_id}`)
+        console.log(res)
+        // naviagte('/discover/create-event/donation')
       })
   }
 
@@ -105,6 +106,7 @@ const EventForm = () => {
     event.preventDefault();
     addEvent()
   }
+
   useEffect(()=> {
     setUser_Event(prev => ({
       ...prev,
@@ -117,7 +119,7 @@ const EventForm = () => {
 
 
 
-console.log(user_event)
+// console.log(user_event)
   // useEffect(() => {
   //   fetch(`${backend}/events/${user_id}`)
   //     .then((res) => res.json())
@@ -127,7 +129,7 @@ console.log(user_event)
   // })
 
   return (
-    <Form className='custom-text'>
+    <Form className='custom-text' onSubmit={handleSubmit}>
       <Row className="mb-3">
         <Form.Group className='mb-3' controlId="event_title">
           <Form.Label >Event Title</Form.Label>
@@ -188,7 +190,7 @@ console.log(user_event)
 
       <Is_donation setStripeId={setStripeId} isDonation={isDonation} setIsDonation={setIsDonation} stripeId={stripeId}/>
 
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" >
         Submit
       </Button>
     </Form>

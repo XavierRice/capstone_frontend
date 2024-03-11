@@ -18,7 +18,7 @@ function Is_donation({ isDonation, setIsDonation, setStripeId, stripeId}) {
     }
 
     const redirectToStripe = () => {
-        navigate("/discover")
+        navigate("/discover/create-event/donation")
         handleClose();
     }
 

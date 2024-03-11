@@ -11,6 +11,7 @@ const StripeDonation = () => {
   const stripePublishKey = import.meta.env.VITE_STRIPE_PUBLISHABLE  
   const backend = import.meta.env.VITE_BACKEND_URL
   // We use `useState` to ensure the Connect instance is only initialized once
+  const [fetched_acc, setFetched_Acc] = useState("")
   const [stripeConnectInstance] = useState(() => {
 
     const fetchClientSecret = async () => {
@@ -25,6 +26,7 @@ const StripeDonation = () => {
       } else {
         const {client_secret: clientSecret} = await response.json();
         document.querySelector('#error').setAttribute('hidden', '');
+        setFetched_Acc(clientSecret)
         return clientSecret;
       }
     }
@@ -41,6 +43,11 @@ const StripeDonation = () => {
       },
     })
   });
+
+
+  useEffect(()=>{
+    console.log(fetched_acc)
+  }, [fetched_acc])
 
   return (
     <div className="container">
