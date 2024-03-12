@@ -6,7 +6,7 @@ import User_loginMod from "../Components/UserModals/User_loginMod"
 
 function CreateEventPage() {
 
-  const [showLogin, setShowLogin] = useState(true)
+  const [showLogin, setShowLogin] = useState(false)
   const handleClose = () => setShowLogin(false)
 
   return (
