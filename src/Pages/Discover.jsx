@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Carousel from "../Components/Carousel/Carousel";
 import CategoriesSection from "../Components/CategoriesSection";
 import ResultsSection from "../Components/ResultsSection";
-import Box from "@mui/joy/Box";
+
 import SearchBar from "../Components/SearchBar";
-import EventForm from "../Components/Forms/EventForm";
+
 
 function Discover() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -22,7 +22,7 @@ function Discover() {
 
   return (
     <div className="d-flex justify-content-center">
-      <Box sx={{ padding: "10px", display: "flex", flexDirection: "column" }}>
+      <div className="custom-padding d-flex flex-column">
         <SearchBar />
 
         {isLoading ? (
@@ -50,7 +50,7 @@ function Discover() {
             </div>
           </>
         )}
-      </Box>
+      </div>
     </div>
   );
 }

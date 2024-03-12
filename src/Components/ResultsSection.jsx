@@ -1,5 +1,5 @@
 import React from "react";
-import MiniCards from "./MiniCards";
+
 import Card from "./Card/Card";
 
 function ResultsSection({ selectedCategory }) {

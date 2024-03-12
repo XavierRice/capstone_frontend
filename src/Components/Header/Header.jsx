@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Logo from "../assets/ImpactifySSLogoNB.png";
+// import Logo from "../assets/ImpactifySSLogoNB.png";
 import "./Header.css";
 
 function Header() {
@@ -14,7 +14,7 @@ function Header() {
     >
       <Link to="/discover" className="m-auto text-decoration-none">
         <Navbar.Brand>
-          <img src={Logo} height="80" alt="Impactify Logo" />
+          <img src="" height="80" alt="Impactify Logo" />
           <span className="custom-header m-3 ">Impactify</span>
         </Navbar.Brand>
       </Link>
