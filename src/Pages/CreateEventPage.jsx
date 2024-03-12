@@ -1,5 +1,7 @@
+
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
+
 import { Container } from "react-bootstrap";
 import EventForm from "../Components/Forms/EventForm";
 import User_loginMod from "../Components/UserModals/User_loginMod"
@@ -10,6 +12,7 @@ function CreateEventPage() {
   const handleClose = () => setShowLogin(false)
 
   return (
+
     <>
       {showLogin && (
         <User_loginMod show={showLogin} onHide={handleClose} />

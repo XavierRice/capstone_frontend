@@ -19,7 +19,7 @@ const NewsDetails = () => {
           {paragraph}
         </p>
       ))}
-      <RelatedEvents/>
+      <RelatedEvents />
     </div>
   );
 };
