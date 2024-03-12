@@ -1,22 +1,37 @@
-// SignUpPage.jsx
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import SignUpForm from "./components/users/SignUpForm";
+import React, { useContext } from "react";
+import { AuthData } from "../Provider/AuthProv";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import SignUpForm from "../Components/userManagement/SignUpForm";
 
 const SignUpPage = () => {
-  const handleSignUp = (userData) => {
-    // Handle sign up logic, e.g., make API call to register user
-    console.log("Signing up with:", userData);
+  const { API, setUser, setToken } = useContext(AuthData);
+
+  const handleSignUp = async (userData) => {
+    try {
+      const response = await API.post("/users/register", userData);
+      console.log("Sign-up response:", response.data);
+
+      const { user, token } = response.data;
+
+      setUser(user);
+      setToken(token);
+
+      console.log("User info:", user);
+    } catch (error) {
+      console.error("Sign-up error:", error);
+    }
   };
 
   return (
-    <Container>
-      <Row className="justify-content-center">
-        <Col md={6}>
-          <h2>Sign Up</h2>
-          <SignUpForm onSubmit={handleSignUp} />
-        </Col>
-      </Row>
+    <Container className="">
+      <Card className="d-flex justify-content-center m-5 p-4">
+        <Row className="">
+          <Col className="">
+            <h2>Sign Up</h2>
+            <SignUpForm onSubmit={handleSignUp} />
+          </Col>
+        </Row>
+      </Card>
     </Container>
   );
 };
