@@ -12,6 +12,8 @@ import "./App.css";
 import NewsDetailsPage from "./Pages/NewsDetailsPage";
 import CreateEventPage from "./Pages/CreateEventPage";
 import Donations from "./Pages/Donations";
+import SignUpPage from "./Pages/SignupPage";
+import LoginPage from "./Pages/LoginPage";
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
               path="/discover/create-event"
               element={<CreateEventPage />}
             />
+            <Route path="/user/signup" element={<SignUpPage />} />
+            <Route path="/user/login" element={<LoginPage />} />
           </Routes>
         </div>
         <NavigationBar className="footer" />
