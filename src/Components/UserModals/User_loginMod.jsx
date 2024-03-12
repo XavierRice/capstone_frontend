@@ -1,9 +1,15 @@
 import React, {useState, useEffect} from 'react';
+import { useNavigate } from 'react-router';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import './User_loginCss.css'
 
+
 function User_loginMod({show, onHide}) {
+  const navigate = useNavigate()
+  const handleRedirect = (event) => {
+    navigate('/discover')
+  }
 
   return (
     <Modal
@@ -24,7 +30,7 @@ function User_loginMod({show, onHide}) {
       </Modal.Body>
       <Modal.Footer className='justify-content-center'>
       <Button variant="secondary">Signup/login</Button>
-          <Button variant="primary">go back</Button>
+          <Button variant="primary" onClick={handleRedirect}>go back</Button>
       </Modal.Footer>
     </Modal>
   );
