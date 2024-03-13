@@ -1,29 +1,27 @@
-// LoginForm.jsx
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
-import InputField from "./inputField";
-import Button from "./Button";
+import { Form, Button } from "react-bootstrap";
+import InputField from "./InputField";
 import ErrorMessage from "./ErrorMessage";
 
 const LoginForm = ({ onSubmit }) => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Validation and submission logic
-    onSubmit({ email, password });
+
+    onSubmit({ username, password });
   };
 
   return (
     <Form onSubmit={handleSubmit}>
       <InputField
-        label="Email"
-        type="email"
-        placeholder="Enter email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        label="Username"
+        type="text"
+        placeholder="Enter username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
       />
       <InputField
         label="Password"
@@ -33,9 +31,11 @@ const LoginForm = ({ onSubmit }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       {error && <ErrorMessage message={error} />}
-      <Button variant="primary" type="submit">
-        Login
-      </Button>
+      <div className="m-3 justify-content-center d-flex">
+        <Button variant="primary" type="submit">
+          Login
+        </Button>
+      </div>
     </Form>
   );
 };
