@@ -28,6 +28,7 @@ const StripeDonation = () => {
             setIsLoading(false);
             return undefined;
           } else {
+           debugger
             const { client_secret: clientSecret } = await response.json();
             setFetched_Acc(clientSecret);
             setIsLoading(false);
