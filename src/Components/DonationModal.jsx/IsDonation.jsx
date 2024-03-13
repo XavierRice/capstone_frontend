@@ -29,17 +29,20 @@ function Is_donation({ isDonation, setIsDonation, setStripeId, stripeId}) {
 
     const handleStripeId = (event) => {
         setStripeId(event.target.value)
+       
     }
 
     return (
         <>
-            <Form.Group className="mb-3" id="is_donation">
+            <Form.Group className="mb-3" >
                 <Form.Label>Are you seeking donations?</Form.Label>
                 <Form.Check
                     type="checkbox"
                     checked={isDonation}
                     label="yes, im am seeking donations."
-                    onChange={handleChange} />
+                    onChange={handleChange}
+                    name='is_donation'
+                    id="is_donation" />
             </Form.Group>
 
             <Modal show={show} onHide={handleClose}>
@@ -55,6 +58,7 @@ function Is_donation({ isDonation, setIsDonation, setStripeId, stripeId}) {
                                 placeholder="Enter your Strip_Id"
                                 autoFocus
                                 onChange={handleStripeId}
+                                id='stripe_id'
                             />
                         </Form.Group>
                     </Form>
