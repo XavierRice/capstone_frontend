@@ -14,14 +14,20 @@ function Header() {
     >
       <Link to="/discover" className="m-auto text-decoration-none">
         <Navbar.Brand>
-          <img src="" height="80" alt="Impactify Logo" />
+
+          <img src="/ImpactifySSLogo.svg" height="80" alt="Impactify Logo" />
+
           <span className="custom-header m-3 ">Impactify</span>
         </Navbar.Brand>
       </Link>
       <Nav className="ml-auto">
-        <Nav.Link href="#" className="text-light mx-3 ">
-          {/* <p className="signup-custom-color">sign up</p> */}
-        </Nav.Link>
+        <Link to="/user/signup" className="nav-link text-light mx-3">
+          Sign Up
+        </Link>
+
+        <Link to="/user/login" className="nav-link text-light mx-3">
+          Login
+        </Link>
       </Nav>
     </Navbar>
   );
