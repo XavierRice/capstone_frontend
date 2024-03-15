@@ -6,7 +6,7 @@ const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
   return (
     <div onClick={onClick} style={{ cursor: "pointer" }}>
       <BootstrapCard bg="dark" className="m-5">
-        <BootstrapCard.Img src={imageSrc} alt="Card image" onLoad={onLoad} />
+        <BootstrapCard.Img  variant="top" src={imageSrc} alt="Card image" onLoad={onLoad} />
         <BootstrapCard.ImgOverlay>
           <BootstrapCard.Title className="text-custom-color">
             {title}
