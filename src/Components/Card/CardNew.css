@@ -1,0 +1,9 @@
+.custom-pill {
+    position: absolute;
+    top: 0.5rem; /* Adjust as needed */
+    left: 0.5rem; /* Adjust as needed */
+    z-index: 1; /* Ensure it's above the image */
+    background-color: #007bff; /* Your choice of color */
+    color: white; /* Text color */
+  }
+  
