@@ -17,7 +17,7 @@ import Donations from "./Pages/Donations";
 import StripeDonation from "./Components/Stripe/StripeDonation";
 import StripePaymentEvent from './Components/Stripe/StripePaymentEvent';
 
-import DiscoverMonitor from './Pages/DiscoverMonitor'
+import ProofHero from './Components/SocialProof/ProofHero';
 function App() {
 
   const [usersId, setUsersId] = useState("")
@@ -45,7 +45,7 @@ function App() {
             {/* { protected route w/ boolen } */}
             <Route
               path="/discover/test"
-              element={<DiscoverMonitor />}
+              element={<ProofHero/>}
             />
 
             <Route
