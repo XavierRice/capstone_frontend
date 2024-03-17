@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../Components/Card/Card"; 
 import { useNavigate } from "react-router-dom";
+import DCTrip from "../Components/Stripe/DCTrip";
 
 const Events = () => {
   const [loading, setLoading] = useState(true);
@@ -85,6 +86,7 @@ const Events = () => {
         <>
         <div>
             {eventsData.map((event, index) => (
+              <div key={event.id || index} style={{marginBottom: "20px"}}>
               <Card
                 key={index}
                 title={event.event_title}
@@ -92,7 +94,10 @@ const Events = () => {
                 text={event.event_details}
                 onLoad={handleImageLoad}
                 onClick={() => handleCardClick(event)}
+
               />
+              {index === 2 && <DCTrip />}
+              </div>
             ))}
           </div>
         

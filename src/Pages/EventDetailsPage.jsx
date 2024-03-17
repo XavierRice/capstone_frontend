@@ -1,13 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import './EventDetailsPage.css'
 import { useLocation } from "react-router";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import GoogleMap from "../Components/Maps/GoogleMap";
 import defaultImage from "../assets/NoImage.jpg"
+import DCTrip from "../Components/Stripe/DCTrip";
 
 function EventDetailsPage() {
   const location = useLocation();
   
+  const [showDonationButton, setShowDonationButton] = useState(false)
+
   const { event } = location.state;
   
   const {
@@ -91,6 +94,7 @@ function EventDetailsPage() {
         Sign Up Now
       </Button>
     </div>
+
   </div>
   );
 }

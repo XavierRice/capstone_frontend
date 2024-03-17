@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Discover from "./Pages/Discover";
@@ -18,6 +18,10 @@ import StripeDonation from "./Components/Stripe/StripeDonation";
 import StripePaymentEvent from './Components/Stripe/StripePaymentEvent';
 
 import ProofHero from './Components/SocialProof/ProofHero';
+import ThankYou from './Pages/ThankYou';
+
+
+
 function App() {
 
   const [usersId, setUsersId] = useState("")
@@ -45,16 +49,19 @@ function App() {
             {/* { protected route w/ boolen } */}
             <Route
               path="/discover/test"
-              element={<ProofHero/>}
+              element={<ProofHero />}
             />
-
+            <Route
+              path="/discover/thankyou"
+              element={<ThankYou />}
+            />
             <Route
               path="/discover/create-event"
               element={<CreateEventPage />}
             />
-             <Route
+            <Route
               path="/discover/create-event/donation"
-              element={<StripeDonation/>}
+              element={<StripeDonation />}
             />
           </Routes>
         </div>
