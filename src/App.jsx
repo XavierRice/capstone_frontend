@@ -16,10 +16,11 @@ import Donations from "./Pages/Donations";
 
 import StripeDonation from "./Components/Stripe/StripeDonation";
 import StripePaymentEvent from './Components/Stripe/StripePaymentEvent';
+import StripeBuy from './Components/Stripe/StripeBuy';
 
 import ProofHero from './Components/SocialProof/ProofHero';
 import ThankYou from './Pages/ThankYou';
-
+import CardNew from './Components/Card/CardNew';
 
 
 function App() {
@@ -49,11 +50,11 @@ function App() {
             {/* { protected route w/ boolen } */}
             <Route
               path="/discover/test"
-              element={<ProofHero />}
+              element={<CardNew />}
             />
             <Route
               path="/discover/thankyou"
-              element={<ThankYou />}
+              element={<StripeBuy />}
             />
             <Route
               path="/discover/create-event"
