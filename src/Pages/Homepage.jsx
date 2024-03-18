@@ -2,18 +2,18 @@
 import React from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Container, Button } from "react-bootstrap";
-// import HeroImage from "./assets/HeroImage.jpg";
+import MainContent from "../Components/MainContent";
 
 function Homepage() {
   return (
     <div
-      className="homepage" 
+      className="homepage " 
     >
       <Container
         fluid
-        className="text-white position-relative"
+        className="d-flex align-items-center justify-content-center"
         style={{
-          height: "70vh",
+          height: "100vh",
           width: "100vw",
         }}
       >
@@ -25,23 +25,25 @@ function Homepage() {
         </Button>
       </Container>
 
-      <div className="hero-content d-flex justify-content-around "></div>
-
-      {/* Content to scroll over the container above */}
+      <div className=" d-flex justify-content-center align-items-center ">
+     
       <Parallax pages={1}>
         <ParallaxLayer
           offset={0} 
+          speed={1}
           style={{ backgroundColor: "white", borderRadius: "30px" }}
-          className="navbar-shadow"
+          className="navbar-shadow d-flex justify-content-center "
         >
           <div
-            style={{ color: "white", fontSize: "2rem", textAlign: "center" }}
+            style={{ color: "white", }}
           >
-            Components
+            <MainContent />
           </div>
         </ParallaxLayer>
       </Parallax>
     </div>
+      </div>
+
   );
 }
 

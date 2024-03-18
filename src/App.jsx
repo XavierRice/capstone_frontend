@@ -34,12 +34,18 @@ function App() {
       backgroundSize: "cover",
       backgroundPosition: "center", 
       minHeight: "100vh", 
+      height: "90vh",
+      width: "100vw",
+      
     }}
   >
 
       <Router>
         {/* <Header /> */}
+   
+
         <MainNavigationBar />
+      
         <div className="content">
           <Routes>
             <Route path="/" element={<Homepage />} />

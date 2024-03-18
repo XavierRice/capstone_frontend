@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import "./Card.css";
 import { Card as BootstrapCard } from "react-bootstrap";
@@ -5,8 +6,8 @@ import { Card as BootstrapCard } from "react-bootstrap";
 const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
   return (
     <div onClick={onClick} style={{ cursor: "pointer" }}>
-      <BootstrapCard bg="dark" className="m-5">
-        <BootstrapCard.Img src={imageSrc} alt="Card image" onLoad={onLoad} />
+      <BootstrapCard bg="dark" className="mb-3">
+        <BootstrapCard.Img src={imageSrc} alt="Card image" onLoad={onLoad} style={{height:'30vh'}} />
         <BootstrapCard.ImgOverlay>
           <BootstrapCard.Title className="text-custom-color">
             {title}
