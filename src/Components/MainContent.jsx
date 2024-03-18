@@ -50,7 +50,7 @@ function MainContent() {
       
   return (
     <Container className="m-5">
-    <div className="fs-4 mb-3 fw-bold text-dark">
+    <div className="fs-4 my-4 mt-5 fw-bold text-dark">
       Discover events inspired by what you care about
   
     </div>

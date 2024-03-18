@@ -43,6 +43,7 @@ function MainNavigationBar() {
       />
     </Form>
 
+  
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
         <NavDropdown
@@ -50,21 +51,22 @@ function MainNavigationBar() {
           id="basic-nav-dropdown"
           className="mx-3"
         >
-          <NavDropdown.Item href="#news">Nearby</NavDropdown.Item>
-          <NavDropdown.Item href="#events">Online</NavDropdown.Item>
-          <NavDropdown.Item href="#events">All</NavDropdown.Item>
+          
+          <NavDropdown.Item href="#news">About us</NavDropdown.Item>
+          <NavDropdown.Item href="#events">News</NavDropdown.Item>
+          <NavDropdown.Item href="#events">All Events</NavDropdown.Item>
           <NavDropdown.Item href="#donations">Donations</NavDropdown.Item>
-          <NavDropdown.Item href="#donations">News</NavDropdown.Item>
           <NavDropdown.Item href="#votingtoolkit">
             Voting Toolkit
           </NavDropdown.Item>
           <NavDropdown.Item href="#aboutus">About Us</NavDropdown.Item>
         </NavDropdown>
-        {/* Option for Organizations goes here */}
+        
       </Nav>
       <Navbar.Brand className="mx-auto display-2" href="#home">
         Impactify
       </Navbar.Brand>
+      
       <Nav className="ml-auto">
         <Nav.Link href="#howitworks" className="mx-3">
           How It Works

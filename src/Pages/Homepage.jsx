@@ -13,7 +13,7 @@ function Homepage() {
         fluid
         className="d-flex align-items-center justify-content-center"
         style={{
-          height: "100vh",
+          height: "130vh",
           width: "100vw",
         }}
       >
@@ -30,7 +30,7 @@ function Homepage() {
       <Parallax pages={1}>
         <ParallaxLayer
           offset={0} 
-          speed={1}
+          speed={0}
           style={{ backgroundColor: "white", borderRadius: "30px" }}
           className="navbar-shadow d-flex justify-content-center "
         >
