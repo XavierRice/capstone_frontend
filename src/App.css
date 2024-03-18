@@ -1,7 +1,52 @@
 /* Entire App */
 body {
-  background: black;
+  background-image: url('./assets/HeroImage.jpg'); 
+  background-size: cover;
+  background-position: center; 
 }
+
+img {
+ 
+  width: 100vw; 
+  height: 60vh; 
+}
+/* -------------------- Main Navigation Bar--------------------------- */
+.navbar-shadow {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+  transition: padding 0.5s, border-radius 0.5s;
+}
+.navbar-shadow {
+  transition: padding 0.5s, border-radius 0.5s; /* Add transition effect */
+}
+
+/* .scrolling {
+  padding: 10px 50px;
+  border-radius: 50px; 
+} */
+/* add the code below when screen is not moving */
+.not-scrolling {
+  padding: 5px 50px;
+  border-radius: 50px 
+}
+
+/* add the code below when the screen is scrolling */
+.scrolling {
+  padding: 15px ;
+  border-radius: 0px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); 
+}
+/* ----------------- Start Event Btn ------------------------------ */
+.btn {
+  background-color: #630f76; 
+  color: #ffffff; 
+  border: #630f76;
+}
+
+.btn:hover {
+  background-color: #bc9ec1; /* Light purple on hover */
+}
+
+/* ----------------------------------------------- */
 
 /* loading state site wide */
 .loader-wrapper {

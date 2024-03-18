@@ -1,9 +1,9 @@
 // import {useState, useEffect} from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import Discover from "./Pages/Discover";
-// import NavigationBar from "./Components/NavigationBar";
-// import Header from "./Components/Header/Header";
+import Discover from "./Pages/Discover";
+import NavigationBar from "./Components/NavigationBar";
+import Header from "./Components/Header/Header";
 
 import EventDetailsPage from "./Pages/EventDetailsPage";
 import News from "./Pages/News";
@@ -13,12 +13,11 @@ import "./App.css";
 import NewsDetailsPage from "./Pages/NewsDetailsPage";
 import CreateEventPage from "./Pages/CreateEventPage";
 import Donations from "./Pages/Donations";
-// import SignUpPage from "./Pages/SignupPage";
-// import LoginPage from "./Pages/LoginPage";
-import HeroImage from './assets/HeroImage.jpg'
+import SignUpPage from "./Pages/SignupPage";
+import LoginPage from "./Pages/LoginPage";
+
 import StripeDonation from "./Components/Stripe/StripeDonation";
-import MainNavigationBar from "./Components/MainNavigationBar";
-import Homepage from "./Pages/Homepage";
+// import MainNavigationBar from "./Components/MainNavigationBar";
 
 
 function App() {
@@ -27,22 +26,13 @@ function App() {
   // const [loggedIn, setLoggedIn] = useState(false)
 
   return (
-    <div
-    className="app-container" 
-    style={{
-      backgroundImage: `url(${HeroImage})`, 
-      backgroundSize: "cover",
-      backgroundPosition: "center", 
-      minHeight: "100vh", 
-    }}
-  >
-
+    <div className="" >
       <Router>
-        {/* <Header /> */}
-        <MainNavigationBar />
+        <Header />
+
         <div className="content">
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/discover" element={<Discover />} />
             <Route
               path="/discover/news-details/:id"
               element={<NewsDetailsPage />}
@@ -61,8 +51,8 @@ function App() {
               element={<CreateEventPage />}
             />
 
-            {/* <Route path="/user/signup" element={<SignUpPage />} /> */}
-            {/* <Route path="/user/login" element={<LoginPage />} /> */}
+            <Route path="/user/signup" element={<SignUpPage />} />
+            <Route path="/user/login" element={<LoginPage />} />
 
              <Route
               path="/discover/create-event/donation"
@@ -71,7 +61,7 @@ function App() {
 
           </Routes>
         </div>
-        {/* <NavigationBar className="footer" /> */}
+        <NavigationBar className="footer" />
       </Router>
     </div>
   );
