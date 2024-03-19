@@ -18,8 +18,8 @@ const reducedCard = {
 
   return (
     <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}> {/* This div centers the card vertically */}
-      <Card className="shadow">
-        <span className="badge rounded-pill custom-pill">{reducedCard.card_keywords[0]}</span> 
+      <Card className="new_card">
+        <span className="badge rounded-pill card-pill">{reducedCard.card_keywords[0]}</span> 
         <Card.Img variant="top" src={reducedCard.card_photo} />
         <Card.Body>
           <Card.Title>{reducedCard.card_title}</Card.Title>

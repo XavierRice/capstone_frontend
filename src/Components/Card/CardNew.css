@@ -1,37 +1,27 @@
-.card {
+div.d-flex.justify-content-center.align-items-center.new_card {
   width: 18rem;
-  position: relative;
-  margin: 0 auto; 
+  margin: auto; /* Centers card without specifying left and right */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-left: 2px solid #4E2855; /* Left border */
-  border-right: 2px solid #4E2855; /* Right border */
-  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 4px solid #4E2855; /* Simplified border */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Simplified transition */
 }
 
-
-
-.card:hover {
-  background-color: #BC9EC1;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+div.d-flex.justify-content-center.align-items-center .new_card:hover {
+  background-color: #BC9EC1 !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
 }
 
-.custom-pill {
+.card-pill {
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
-  z-index: 1;
-  color: #ffffff;
+  color: black;
   padding: 0.25em 0.6em;
   font-size: 0.75em;
   border-radius: 1rem;
+  background-color: #4E2855;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border: 1px solid #4E2855;
   font-weight: bold;
-  background-color: #4E2855; 
-  transition: all 0.3s ease-in-out;
-}
-
-.card-body:hover {
-  background-color: #BC9EC1;
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s;
 }

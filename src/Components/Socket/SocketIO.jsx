@@ -12,7 +12,10 @@ export const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     // Create socket instance
-    const socketInstance = io(backendURL);
+    const socketInstance = io(backendURL, {
+      withCredentials: true,
+      transports:['websocket', 'polling']
+    });
 
     // Event listeners
     socketInstance.on('connect', () => {
