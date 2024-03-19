@@ -17,8 +17,9 @@ import SignUpPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 
 import StripeDonation from "./Components/Stripe/StripeDonation";
+import StripePaymentEvent from './Components/Stripe/StripePaymentEvent';
 
-
+import DiscoverMonitor from './Pages/DiscoverMonitor'
 function App() {
 
   const [usersId, setUsersId] = useState("")
@@ -44,6 +45,11 @@ function App() {
             <Route path="/discover/donations" element={<Donations />} />
 
             {/* { protected route w/ boolen } */}
+            <Route
+              path="/discover/test"
+              element={<DiscoverMonitor />}
+            />
+
             <Route
               path="/discover/create-event"
               element={<CreateEventPage />}
