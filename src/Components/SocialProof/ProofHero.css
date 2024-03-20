@@ -1,49 +1,63 @@
 /* ProofHero.css */
+.container-fluid {
+  position: relative;
+  width: 100%;
+  padding: 0;
+}
 
-.card-container {
-    position: relative;
-    max-width: 640px; /* Medium size */
-    margin: auto; /* Center the card on the page */
-    border: 15px solid #d5e673; /* Purple border around the card */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
-    cursor: pointer; /* Change cursor on hover over the card */
+.row {
+  min-height: 50vh;
+  align-items: center;
+}
+
+.text-section {
+  position: relative; /* For z-index to work correctly */
+  background-color: rgba(67, 40, 85, 0.8);
+  color: white;
+  padding: 1rem;
+  z-index: 2; /* Ensures text section is above the background image */
+}
+
+.card-image {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Image should be behind everything else */
+}
+
+.impact-button {
+  background-color: #432855;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 0.25rem;
+}
+
+/* Styling for video-player */
+.video-player {
+  position: relative;
+  /* We use padding-bottom to maintain aspect ratio of the video. */
+  /* 56.25% for 16:9 aspect ratio. Adjust accordingly if you have a different aspect ratio */
+  padding-bottom: 56.25%;
+  height: 0; /* Height is now zero, but padding gives it space */
+  overflow: hidden;
+  z-index: 2; /* Ensure video is above the background image */
+}
+
+/* Ensure ReactPlayer fills the video-player div correctly */
+.video-player > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .text-section, .video-player {
+    padding: 1rem;
   }
-  
-  .card-image {
-    display: block; /* Remove any default margin/padding */
-    width: 100%; /* Make image expand to cover the card area */
-    height: auto; /* Keep image aspect ratio */
-  }
-  
-  .impact-button {
-    background-color: #432855;
-    color: white; /* White text */
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    position: absolute;
-    bottom: 20px; /* Position at the bottom of the card */
-    left: 50%; /* Center button horizontally */
-    transform: translateX(-50%); /* Center button precisely */
-    cursor: pointer; /* Indicate the element is clickable */
-    border-radius: 5px; /* Rounded corners for the button */
-  }
-  
-  .video-player {
-    position: absolute;
-    top: 45px;
-    bottom: 50px; /* Space for the button */
-    left: 0;
-    right: 0;
-    z-index: 10; /* Ensure video is above the image */
-    cursor: auto; 
-  }
-  
-  /* Add responsive adjustments as needed for smaller screens */
-  @media (max-width: 768px) {
-    .card-container {
-      width: 90%; /* Take more screen space on small screens */
-    }
-  }
-  
+}

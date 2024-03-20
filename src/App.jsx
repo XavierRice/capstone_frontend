@@ -53,7 +53,7 @@ function App() {
             {/* { protected route w/ boolen } */}
             <Route
               path="/discover/test"
-              element={<CardNew />}
+              element={<ProofHero />}
             />
             <Route
               path="/discover/thankyou"
