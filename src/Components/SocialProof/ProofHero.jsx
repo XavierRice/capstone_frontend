@@ -26,8 +26,9 @@ const ProofHero = () => {
     <img src={socialProof} alt="Social Proof" className="card-image"/>
     <div className="row g-0 align-items-center"  style={{ minHeight: '50vh' }}>
       <div className="col-lg-6 col-md-6 text-section">
-        <h2>Amplify Your Influence! Simplify your Impact</h2>
-        <p></p>
+        <h2>Amplify Your Influence! With Impactify</h2>
+        <p>2023 has unveiled a striking shift in charitable giving, with figures reaching $319.04 billion—a notable decline of 6.4% from 2021, Yet, the spirit of giving and volunteerism lives on, with approximately 63 million individuals seeking to make a difference.</p>
+        <p>By slicing through the noise, we connect you to local causes and events that resonate with your passion for change. Our platform simplifies the journey from intention to action, offering a centralized space for both hands-on volunteering and impactful micro-donations that, collectively, fuel larger initiatives. Together, let's revitalize the culture of community involvement and reignite the fire of altruism, even amidst challenging times.</p>
         <button className="btn btn-primary impact-button" onClick={handleButtonClick}>
           Play
         </button>

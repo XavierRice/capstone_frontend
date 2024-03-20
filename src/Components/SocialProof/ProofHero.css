@@ -40,6 +40,7 @@
 .video-player {
   position: relative;
   /* We use padding-bottom to maintain aspect ratio of the video. */
+  padding-top: 6.25%;
   /* 56.25% for 16:9 aspect ratio. Adjust accordingly if you have a different aspect ratio */
   padding-bottom: 56.25%;
   height: 0; /* Height is now zero, but padding gives it space */
