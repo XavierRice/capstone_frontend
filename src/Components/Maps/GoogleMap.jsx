@@ -3,15 +3,14 @@ import Directions from './Directions';
 import {
     APIProvider,
     Map,
-    useMapsLibrary,
-    useMap
 } from "@vis.gl/react-google-maps"
+import './GoogleMap.css'
 
-const GoogleMap = ({ location, lat, lng }) => {
+const GoogleMap = ({ location, lat, lng, travelMode }) => {
+    
+
     const latitude = Number(lat)
     const longitude = Number(lng)
-
-    console.log(latitude, longitude)
 
     const GoogleKey = import.meta.env.VITE_X_GOOGLE_API_KEY
     const position = { lat: latitude, lng: longitude }
@@ -24,7 +23,7 @@ const GoogleMap = ({ location, lat, lng }) => {
                     zoom={12}
                     mapId={import.meta.env.VITE_GOOGLE_MAP_ID}
                 >
-                    <Directions destination={location} desLat={latitude} desLng={longitude}/>
+                    <Directions destination={location} desLat={latitude} desLng={longitude} travelMode={travelMode}/>
                 </Map>
             </APIProvider>
         </div>

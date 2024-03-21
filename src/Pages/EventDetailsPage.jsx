@@ -8,7 +8,7 @@ import DCTrip from "../Components/Stripe/DCTrip";
 
 function EventDetailsPage() {
   const location = useLocation();
-  
+  const [travelMode, setTravelMode] = useState("DRIVING")
   const [showDonationButton, setShowDonationButton] = useState(false)
 
   const { event } = location.state;
@@ -30,9 +30,6 @@ function EventDetailsPage() {
     rsvp = true, // Provide a default value in case it's missing
   } = event;
 
-  let imageSrc = event.logo_url || event.event_photo || defaultImage;
-
-  console.log(event)
   const formatDate = (timestamp) => {
 
     if (typeof timestamp === 'number'){
@@ -47,56 +44,47 @@ function EventDetailsPage() {
   };
   
   const hasRequiredKeys = ['event_location', 'lat', 'lng'].every(key => Object.keys(event).includes(key));
-  const eventDate = date || event.sponsorCreatedDate
-  ;
+  
+  const displayMap = locationName && lat && lng;
+  let imageSrc = event.logo_url || event.event_photo || defaultImage;
+  const eventDate = formatDate(date);
+  
   
 
 
   return (
-    <div>
-    <Container>
-      <Row className="my-4">
-        <Col className="text-center text-white">
-          <h1 className="text-custom-color">{title}</h1>
-          <p>{description}</p>
-          <p>Date: {formatDate(eventDate)}</p>
-        </Col>
-      </Row>
-      <Row className="my-4">
-        <Col xs={12} md={6} className="mb-3 text-center">
+<Container fluid className="my-4">
+      <Row>
+        {/* Image Section */}
+        <Col md={6} className="mb-3">
           <Image src={imageSrc} alt="Event" fluid className="image-border"/>
         </Col>
-        <Col xs={12} md={6} className="text-center text-white">
-          <p>{description}</p>
-          <p>{isVirtual ? " Your event is Virtual" : "Route Below"}</p>
-        </Col>
-      </Row>
-    </Container>
-    <Container>
-      <Row>
-        <Col>
-          { hasRequiredKeys ? (
-            <div className="map-container">
-              <GoogleMap location={locationName} lat={lat} lng={lng} />
-            </div>
-          ):(
-            <div className="centered-image-container">
-              <Image src={imageSrc} alt="Event" fluid />
-            </div>
-          )}
-        </Col>
-      </Row>
-    </Container>
-    <div className="d-flex justify-content-center my-3">
-      <Button
-        size="lg"
-        className="rounded-pill py-2 custom-signup-btn"
-      >
-        Sign Up Now
-      </Button>
-    </div>
 
-  </div>
+        {/* Details Section */}
+        <Col md={6} className="text-center text-white">
+          <h1 className="text-custom-color mb-3">{title}</h1>
+          <p className="mb-2">{description}</p>
+          {date && <p className="mb-4">Date: {eventDate}</p>}
+          <p className="mb-4">{isVirtual ? "This event is virtual." : "See route below."}</p>
+          <Button size="lg" className="rounded-pill py-2 custom-signup-btn">Sign Up Now</Button>
+        </Col>
+      </Row>
+
+      {/* Optionally Display Map */}
+      {displayMap && (
+        <Row className="mt-3">
+          <Col md={{ span: 6, offset: 6 }}>
+            <div className="map-container">
+              <GoogleMap location={locationName} lat={lat} lng={lng} travelMode={travelMode} />
+            </div>
+          <div className="map-controls">
+                <button onClick={() => setTravelMode("DRIVING")}>Driving</button>
+                <button onClick={() => setTravelMode("WALKING")}>Walking</button>
+            </div>
+          </Col>
+        </Row>
+      )}
+    </Container>
   );
 }
 
