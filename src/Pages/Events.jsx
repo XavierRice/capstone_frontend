@@ -3,13 +3,14 @@ import axios from "axios";
 import Card from "../Components/Card/Card"; 
 import CardNew from "../Components/Card/CardNew";
 import { useNavigate } from "react-router-dom";
-import DCTrip from "../Components/Stripe/DCTrip";
+
 
 const Events = () => {
   const [loading, setLoading] = useState(true);
   const [eventsData, setEventsData] = useState([]);
   const [mobilizeEvents, setMobilizeEvents] = useState([]);
   const [virtualEvents, setVirtualEvents] = useState([]);
+  const [clickedEvents, setClickedEvents] = useState([])
   const [allEvents, setAllEvents] = useState([])
 
   const navigate = useNavigate();
@@ -58,8 +59,9 @@ const Events = () => {
   fetchEvents();
 }, [])
 
-  const handleCardClick = (event) => {
-    navigate("/discover/events-details", { state: { event } });
+  const handleCardClick = (eventData) => {
+    console.log("you clicked me", eventData)
+     navigate("/discover/events-details", { state: { event: eventData } });
   };
 
   
@@ -84,9 +86,9 @@ const Events = () => {
               cardObj={event}
               tag={"Event"}
               imageLoad={handleImageLoad}
-              cardClick={handleCardClick}
+              cardClick={() => handleCardClick(event)}
               />
-             {index === 2 && <div style={{marginTop: "0px"}}><DCTrip /></div>}
+         
               </div>
             ))}
           </div>

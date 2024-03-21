@@ -12,7 +12,8 @@ function EventDetailsPage() {
   const [showDonationButton, setShowDonationButton] = useState(false)
 
   const { event } = location.state;
-  
+  console.log(event)
+
   const {
     event_id,
     user_id,

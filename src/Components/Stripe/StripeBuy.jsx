@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 
 
-const StripeBuy = () => {
+const StripeBuy = ({userStripeId}) => {
+
+  const butButtonId = userStripeId
 
 const stripePublishKey= import.meta.env.VITE_STRIPE_PUBLISHABLE
 const buyButtonId = import.meta.env.VITE_EVENT1

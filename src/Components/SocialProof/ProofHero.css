@@ -1,4 +1,6 @@
-/* ProofHero.css */
+
+
+
 .container-fluid {
   position: relative;
   width: 100%;
@@ -16,6 +18,10 @@
   color: white;
   padding: 1rem;
   z-index: 2; /* Ensures text section is above the background image */
+}
+
+.text-section  h2{
+font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .card-image {
