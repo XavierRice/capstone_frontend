@@ -16,6 +16,8 @@ import "./App.css";
 import NewsDetailsPage from "./Pages/NewsDetailsPage";
 import CreateEventPage from "./Pages/CreateEventPage";
 import Donations from "./Pages/Donations";
+import SignUpPage from "./Pages/SignupPage";
+import LoginPage from "./Pages/LoginPage";
 
 import StripeDonation from "./Components/Stripe/StripeDonation";
 import StripePaymentEvent from './Components/Stripe/StripePaymentEvent';
@@ -63,10 +65,15 @@ function App() {
               path="/discover/create-event"
               element={<CreateEventPage />}
             />
-            <Route
+            <Route path="/user/signup" element={<SignUpPage />} />
+            <Route path="/user/login" element={<LoginPage />} />
+
+             <Route
+
               path="/discover/create-event/donation"
               element={<StripeDonation />}
             />
+
           </Routes>
         </div>
         <NavigationBar className="footer" />
