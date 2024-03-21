@@ -1,50 +1,64 @@
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useEffect, useRef }  from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
-import { Container, Button } from "react-bootstrap";
+import { Container, Button, Navbar } from "react-bootstrap";
 import MainContent from "../Components/MainContent";
+import TrustAndSafety from "../Components/TrustAndSafety/TrustAndSafety";
+import HeroImage from '../assets/HeroImage.jpg'
+import MainNavigationBar from "../Components/MainNavigationBar";
+import useScrollPosition from "../Hooks/ScrollPositionProvider";
 
 function Homepage() {
-  return (
-    <div
-      className="homepage " 
-    >
-      <Container
-        fluid
-        className="d-flex align-items-center justify-content-center"
-        style={{
-          height: "130vh",
-          width: "100vw",
-        }}
-      >
-        <Button
-          variant="primary"
-          className="position-absolute top-50 start-50 translate-middle my-5"
-        >
-          Start Event
-        </Button>
-      </Container>
 
-      <div className=" d-flex justify-content-center align-items-center ">
-     
-      <Parallax pages={1}>
-        <ParallaxLayer
-          offset={0} 
-          speed={0}
-          style={{ backgroundColor: "white", borderRadius: "30px" }}
-          className="navbar-shadow d-flex justify-content-center "
-        >
-          <div
-            style={{ color: "white", }}
-          >
-            <MainContent />
-          </div>
+  // try onMouseOver
+  const parallaxRef = useRef(null);
+  const scrolling = useScrollPosition({
+    element: parallaxRef
+  });
+
+  console.log({ scrolling })
+ 
+
+  return (
+      
+      <div className="d-flex justify-content-center align-items-center parallax-container"   
+      style={{
+        height: "100vh",
+        width: "100vw",
+      }}>
+        <Parallax pages={2} ref={parallaxRef}  style={{display: "flex", flexDirection: "column", alignItems:"center", 
+         backgroundImage:`url(${HeroImage})`, backgroundSize: '100vw 90vh', backgroundRepeat:'no-repeat'
+         }} > 
+          <ParallaxLayer horizontal sticky={{ start: 0 }} isSticky style={{}}>
+         
+              <MainNavigationBar scrolling={scrolling} />
         </ParallaxLayer>
-      </Parallax>
-    </div>
+        <ParallaxLayer
+            offset={0.7}
+            speed={0.5}
+            factor={2}
+            style={{ backgroundColor: "white", borderRadius: "30px" }}
+            className=" d-flex justify-content-center"
+          >
+            <div >
+              <MainContent />
+              <TrustAndSafety />
+            </div>
+          </ParallaxLayer>
+
+         
+        </Parallax>
       </div>
+  
 
   );
+
 }
+
+
+/**
+ * 
+ */
 
 export default Homepage;

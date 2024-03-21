@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import {useState, useEffect} from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,34 +20,28 @@ import HeroImage from './assets/HeroImage.jpg'
 import StripeDonation from "./Components/Stripe/StripeDonation";
 import MainNavigationBar from "./Components/MainNavigationBar";
 import Homepage from "./Pages/Homepage";
+import useScrollPosition from "./Hooks/ScrollPositionProvider";
 
 
 function App() {
+  
 
   // const [usersId, setUsersId] = useState("")
   // const [loggedIn, setLoggedIn] = useState(false)
 
   return (
     <div
-    className="app-container" 
-    style={{
-      backgroundImage: `url(${HeroImage})`, 
-      backgroundSize: "cover",
-      backgroundPosition: "center", 
-      minHeight: "100vh", 
-      height: "90vh",
-      width: "100vw",
-      
-    }}
+    className=''
+   
   >
 
       <Router>
         {/* <Header /> */}
    
-
-        <MainNavigationBar />
       
-        <div className="content">
+        {/* <MainNavigationBar /> */}
+    
+        <div>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route
@@ -77,7 +72,7 @@ function App() {
 
           </Routes>
         </div>
-        {/* <NavigationBar className="footer" /> */}
+     
       </Router>
     </div>
   );

@@ -9,28 +9,13 @@ import {
   Button,
 } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
+import useScrollPosition from "../Hooks/ScrollPositionProvider";
 
-function MainNavigationBar() {
-    const [scrolling, setScrolling] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+function MainNavigationBar({ scrolling = false }) {
+  //  const scrolling = useScrollPosition()
 
   return (
-    <Navbar bg="light" expand="lg" sticky="top"  className={`navbar-shadow ${scrolling ? "scrolling" : "not-scrolling"}`}>
+    <Navbar bg="light" expand="lg" sticky="top"  className={` navbar-shadow ${scrolling ? "scrolling" : "not-scrolling"}`}>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <FaSearch className="mx-3" style={{ marginRight: "5px" }} />
 
@@ -38,7 +23,7 @@ function MainNavigationBar() {
       <FormControl
         type="text"
         placeholder="Search"
-        className="mr-sm-2"
+        className="mr-sm-2 "
         style={{ width: "110px" }}
       />
     </Form>

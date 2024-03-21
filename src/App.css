@@ -1,20 +1,9 @@
-/* Entire App */
+/*---------------------------- Entire App ----------------------------*/
 body {
-  
- 
-    background-color: #fff;
-    color: inherit;
-    line-height: inherit;
-    margin: 0;
-    overflow-x: hidden;
-
+  overflow-x: hidden;
 }
 
-.imgSize {
-  width: 100vw; 
-  height: 60vh; 
-}
-/* -------------------- Main Navigation Bar--------------------------- */
+/* ------------------------ Main Navigation Bar--------------------------- */
 .navbar-shadow {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); 
   transition: padding 0.5s, border-radius 0.5s;
@@ -22,14 +11,47 @@ body {
 
 .not-scrolling {
   padding: 5px 50px;
-  border-radius: 50px 
+  border-radius: 50px;
+  top: 40px; 
+  /* width: 60rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.1); 
+  transition: padding 0.5s, border-radius 0.5s;
+ 
 }
 
 .scrolling {
   padding: 20px ;
   border-radius: 0px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); 
 }
-/* ----------------- Start Event Btn ------------------------------ */
+
+.pill-header {
+  transition: top 0.2s ease;
+  
+}
+
+.sticky-navbar {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  z-index: 1000; 
+}
+
+@media (max-width: 450px) { 
+  .not-scrolling{
+    padding: 20px ;
+    border-radius: 0px;
+    top: 0px; 
+    width: 100vw;
+
+  }
+}
+
+/* ---------------------------- Btn ------------------------------ */
 .btn {
   background-color: #630f76; 
   color: #ffffff; 
@@ -90,4 +112,11 @@ body {
 
 .circle-btn:hover {
   background-color: #9973a0; /* Change color on hover */
+}
+
+/* ----------------------------------------------- Parallax Homepage------------------------------------- */
+.parallax-container {
+  position: relative;
+  overflow-x: hidden; 
+  height: 100vh; 
 }
