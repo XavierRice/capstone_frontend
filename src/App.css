@@ -1,122 +1,122 @@
 /*---------------------------- Entire App ----------------------------*/
 body {
-  overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 /* ------------------------ Main Navigation Bar--------------------------- */
 .navbar-shadow {
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); 
-  transition: padding 0.5s, border-radius 0.5s;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+	transition:
+		padding 0.5s,
+		border-radius 0.5s;
 }
 
 .not-scrolling {
-  padding: 5px 50px;
-  border-radius: 50px;
-  top: 40px; 
-  /* width: 60rem; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.1); 
-  transition: padding 0.5s, border-radius 0.5s;
- 
+	padding: 5px 50px;
+	border-radius: 50px;
+	/* top: 50px; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.1);
+	transition:
+		padding 0.5s,
+		border-radius 0.5s;
 }
 
 .scrolling {
-  padding: 20px ;
-  border-radius: 0px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); 
+	padding: 20px;
+	border-radius: 0px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .pill-header {
-  transition: top 0.2s ease;
-  
+	transition: top 0.2s ease;
 }
 
 .sticky-navbar {
-  position: fixed;
-  top: 10px;
-  left: 0;
-  width: 100%;
-  z-index: 1000; 
+	position: fixed;
+	top: 10px;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
 }
 
-@media (max-width: 450px) { 
-  .not-scrolling{
-    padding: 20px ;
-    border-radius: 0px;
-    top: 0px; 
-    width: 100vw;
-
-  }
+@media (max-width: 450px) {
+	.not-scrolling {
+		padding: 20px;
+		border-radius: 0px;
+		top: 0px;
+		width: 100vw;
+	}
 }
 
 /* ---------------------------- Btn ------------------------------ */
 .btn {
-  background-color: #630f76; 
-  color: #ffffff; 
-  border: #630f76;
+	background-color: #630f76;
+	color: #ffffff;
+	border: #630f76;
 }
 
 .btn:hover {
-  background-color: #bc9ec1; /* Light purple on hover */
+	background-color: #bc9ec1; /* Light purple on hover */
 }
 
 /* ----------------------------------------------- */
 
 /* loading state site wide */
 .loader-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
 }
 
 .loader {
-  border: 8px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #d5e673;
-  animation: spin 1s infinite linear;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+	border: 8px solid rgba(0, 0, 0, 0.1);
+	border-left-color: #d5e673;
+	animation: spin 1s infinite linear;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 /* Navigation bar */
 .custom {
-  color: #d5e673;
+	color: #d5e673;
 }
 
 .content {
-  padding-bottom: 50px; /* Adjust bottom padding for the height of the navbar */
+	padding-bottom: 50px; /* Adjust bottom padding for the height of the navbar */
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
 
 /* categories section */
 .circle-btn {
-  background-color: #bc9ec1; /* Example background color */
-  color: white; /* Text color */
+	background-color: #bc9ec1; /* Example background color */
+	color: white; /* Text color */
 
-  transition: background-color 0.3s ease;
+	transition: background-color 0.3s ease;
 }
 
 .circle-btn:hover {
-  background-color: #9973a0; /* Change color on hover */
+	background-color: #9973a0; /* Change color on hover */
 }
 
 /* ----------------------------------------------- Parallax Homepage------------------------------------- */
 .parallax-container {
-  position: relative;
-  overflow-x: hidden; 
-  height: 100vh; 
+	position: relative;
+	overflow-x: hidden;
+	height: 100vh;
 }
