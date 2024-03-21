@@ -16,7 +16,7 @@ const GoogleMap = ({ location, lat, lng, travelMode }) => {
     const position = { lat: latitude, lng: longitude }
 
     return (
-        <div style={{ height: '80vh', width: "100%" }}>
+        <div style={{ height: '80vh', width: "120%", maxWidth:"1200px", margin:"auto"}}>
             <APIProvider apiKey={GoogleKey}>
                 <Map
                     center={position}

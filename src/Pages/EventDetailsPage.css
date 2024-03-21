@@ -34,8 +34,8 @@
 
 /* Map container styling for responsive design */
 .map-container {
-  width: 200%;
-  max-width: 800px;
+  width: 100%;
+  max-width: 1200px;
   height: 0;
   padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
   position: relative;
@@ -81,4 +81,26 @@
   border: 3px solid #BC94C1;
   box-sizing: border-box;
   border-radius: 8px; /* Adds rounded corners to the image */
+}
+.rounded-button {
+  padding: 5px 15px; /* Smaller padding */
+  border-radius: 20px; /* Fully rounded edges */
+  font-size: 0.8em; /* Smaller font size */
+  margin: 0 10px; /* Space between buttons */
+}
+
+/* Applying the new styles to existing buttons */
+.map-controls button {
+  /* Add your existing button styles here */
+  background-color: #4E2855;
+  border-color: #BC94C1;
+  color: #D5E673;
+  font-weight: bold; /* Makes the button text stand out */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Making sure buttons are centered within the map controls */
+.map-controls {
+  text-align: center; /* Center buttons horizontally */
+  margin-bottom: 10px; /* Space below the buttons */
 }

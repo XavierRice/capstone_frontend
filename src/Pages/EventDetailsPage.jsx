@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import './EventDetailsPage.css'
 import { useLocation } from "react-router";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
@@ -25,39 +25,39 @@ function EventDetailsPage() {
     event_photo,
     lat,
     lng,
-    is_virtual: isVirtual = false, 
+    is_virtual: isVirtual = false,
     mobilize_id: mobilizeId,
     rsvp = true, // Provide a default value in case it's missing
   } = event;
 
   const formatDate = (timestamp) => {
 
-    if (typeof timestamp === 'number'){
+    if (typeof timestamp === 'number') {
       const date = new Date(timestamp * 1000);
       return date.toLocaleDateString();
     } else {
       const cleanedupTimeStamp = timestamp.toString().slice(0, -14)
       return cleanedupTimeStamp
-    } 
+    }
 
 
   };
-  
+
   const hasRequiredKeys = ['event_location', 'lat', 'lng'].every(key => Object.keys(event).includes(key));
-  
+
   const displayMap = locationName && lat && lng;
   let imageSrc = event.logo_url || event.event_photo || defaultImage;
   const eventDate = formatDate(date);
-  
-  
+
+
 
 
   return (
-<Container fluid className="my-4">
+    <Container fluid className="my-4">
       <Row>
         {/* Image Section */}
         <Col md={6} className="mb-3">
-          <Image src={imageSrc} alt="Event" fluid className="image-border"/>
+          <Image src={imageSrc} alt="Event" fluid className="image-border" />
         </Col>
 
         {/* Details Section */}
@@ -74,13 +74,14 @@ function EventDetailsPage() {
       {displayMap && (
         <Row className="mt-3">
           <Col md={{ span: 6, offset: 6 }}>
+            <div className="map-controls">
+              <button className="rounded-button" onClick={() => setTravelMode("DRIVING")}>Driving</button>
+              <button className="rounded-button" onClick={() => setTravelMode("WALKING")}>Walking</button>
+            </div>
             <div className="map-container">
               <GoogleMap location={locationName} lat={lat} lng={lng} travelMode={travelMode} />
             </div>
-          <div className="map-controls">
-                <button onClick={() => setTravelMode("DRIVING")}>Driving</button>
-                <button onClick={() => setTravelMode("WALKING")}>Walking</button>
-            </div>
+
           </Col>
         </Row>
       )}
