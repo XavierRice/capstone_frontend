@@ -57,7 +57,7 @@ function App() {
             />
             <Route
               path="/discover/thankyou"
-              element={<StripeBuy />}
+              element={<ThankYou/>}
             />
             <Route
               path="/discover/create-event"
