@@ -113,7 +113,7 @@ function MainContent() {
 				<FilterBtn />
 			</div>
 
-			<div className=" ">
+			<div className="events-cards ">
 				<Row>
 					{mockEventData
 						.slice(startIndex, startIndex + eventsPerPage)

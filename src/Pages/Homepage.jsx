@@ -19,19 +19,17 @@ function Homepage() {
 	return (
 		<div
 			className="d-flex justify-content-center align-items-center parallax-container"
-			style={{
-				height: "100vh",
-				width: "100vw",
-			}}
+			style={
+				{
+					// height: "100vh",
+					// width: "100vw",
+				}
+			}
 		>
-			<div className="position-absolute top-50 start-50 translate-middle my-5">
-				<Button variant="" className="">
-					Start Event
-				</Button>
-			</div>
 			<Parallax
 				pages={2}
 				ref={parallaxRef}
+				className="parallax-container"
 				style={{
 					display: "flex",
 					flexDirection: "column",
@@ -41,6 +39,24 @@ function Homepage() {
 					backgroundRepeat: "no-repeat",
 				}}
 			>
+				<div
+					className="btn top-50 start-50 translate-middle my-5 btn-class"
+					style={
+						{
+							// zIndex: 1,
+						}
+					}
+				>
+					<Button
+						variant=""
+						style={{
+							color: "#ffffff",
+							cursor: "pointer",
+						}}
+					>
+						Start Event
+					</Button>
+				</div>
 				<ParallaxLayer
 					horizontal
 					sticky={{ start: 0 }}
@@ -98,69 +114,3 @@ function Homepage() {
  */
 
 export default Homepage;
-{
-	/* <div
-			className="d-flex justify-content-center align-items-center parallax-container"
-			style={{
-				height: "100vh",
-				width: "100vw",
-			}}
-		>
-			<div className="position-absolute top-50 start-50 translate-middle my-5">
-				<Button variant="" className="">
-					Start Event
-				</Button>
-			</div>
-			<Parallax
-				pages={2}
-				ref={parallaxRef}
-				style={{
-					display: "flex",
-					flexDirection: "column",
-					alignItems: "center",
-					backgroundImage: `url(${HeroImage})`,
-					backgroundSize: "100vw 90vh",
-					backgroundRepeat: "no-repeat",
-				}}
-			>
-				<ParallaxLayer horizontal sticky={{ start: 0 }} style={{}}>
-					<MainNavigationBar scrolling={scrolling} />
-				</ParallaxLayer>
-
-				<ParallaxLayer offset={0.5}
-            speed={0}
-            factor={2}  
-            scrolling={false}  >
-              <div className="d-flex justify-content-center " >
-              <Button
-          variant="primary">
-          Start Event
-        </Button>
-              </div>
-        
-        </ParallaxLayer>
-
-				<ParallaxLayer
-					offset={0.7}
-					speed={0.5}
-					factor={2}
-					style={{ backgroundColor: "white", borderRadius: "30px" }}
-					className=" d-flex justify-content-center"
-				>
-					<div>
-						<MainContent />
-					</div>
-				</ParallaxLayer>
-				<ParallaxLayer
-					offset={1}
-					speed={1}
-					factor={2}
-					className=" d-flex justify-content-center"
-				>
-					<div>
-						<TrustAndSafety />
-					</div>
-				</ParallaxLayer>
-			</Parallax>
-		</div> */
-}

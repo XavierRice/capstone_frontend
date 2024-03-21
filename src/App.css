@@ -58,13 +58,37 @@ body {
 	border: #630f76;
 }
 
-.btn:hover {
-	background-color: #bc9ec1; /* Light purple on hover */
+.btn-class {
+	background-color: #630f76;
+	color: #ffffff;
+	border: #630f76;
+	position: absolute;
+	top: 50%;
+	translate: middle;
 }
 
-/* ----------------------------------------------- */
+.btn:hover {
+	background-color: #bc9ec1;
+}
 
-/* loading state site wide */
+/* .btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active .btn-primary.active .btn-primary.active,
+.btn-primary:active,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.btn-primary.active.focus,
+.btn-primary:active.focus {
+	background-color: transparent;
+	color: inherit;
+	border-color: transparent;
+	box-shadow: none;
+	outline: none;
+} */
+
+/* ---------------------loading state site wide-------------------------- */
+
 .loader-wrapper {
 	display: flex;
 	justify-content: center;
@@ -87,10 +111,8 @@ body {
 	}
 }
 
+/* -------------------- mobile view might delete -------------*/
 /* Navigation bar */
-.custom {
-	color: #d5e673;
-}
 
 .content {
 	padding-bottom: 50px; /* Adjust bottom padding for the height of the navbar */
@@ -102,7 +124,7 @@ body {
 	width: 100%;
 }
 
-/* categories section */
+/*------------------- categories section ---------------- */
 .circle-btn {
 	background-color: #bc9ec1; /* Example background color */
 	color: white; /* Text color */
@@ -120,3 +142,5 @@ body {
 	overflow-x: hidden;
 	height: 100vh;
 }
+
+/* ----------------------------------------------------------------------------- */
