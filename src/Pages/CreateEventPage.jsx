@@ -1,21 +1,29 @@
-import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
+
+import { Container } from "react-bootstrap";
+import EventForm from "../Components/Forms/EventForm";
+import User_loginMod from "../Components/UserModals/User_loginMod"
 
 function CreateEventPage() {
-  return (
-    <Container className="py-5 d-flex justify-content-center my-5">
-      <Row className="justify-content-center">
-        <Col md={8}>
-          <h2 className="text-center text-light mb-4 display-3">Coming Soon</h2>
-          <p className="text-center text-light mb-4">
-            We're working hard to bring you a new feature!
-          </p>
 
-          <p className="text-center text-light mb-4 display">Creating events</p>
-        </Col>
-      </Row>
-    </Container>
-  );
+  const [showLogin, setShowLogin] = useState(true)
+  const handleClose = () => setShowLogin(false)
+
+  return (
+
+    <>
+      {showLogin && (
+        <User_loginMod show={showLogin} onHide={handleClose} />
+      )}
+      {!showLogin && (
+        <Container className="py-5 d-flex justify-content-center my-5">
+          <EventForm />
+        </Container>
+      )}
+    </>
+  )
 }
 
 export default CreateEventPage;

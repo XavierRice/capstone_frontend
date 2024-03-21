@@ -1,23 +1,48 @@
+/* Improving the overall layout and component spacing */
+.container-fluid {
+  padding: 20px;
+}
+
+/* Enhanced styling for the description area */
+.description-area {
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background for better readability */
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px; /* Adds some space between the image/map and the description */
+}
+
+/* Custom button styles */
 .custom-signup-btn {
-  background-color: #4E2855; 
+  background-color: #4E2855;
   border-color: #BC94C1;
-  color: #D5E673; 
+  color: #D5E673;
+  font-weight: bold; /* Makes the button text stand out */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
 .custom-signup-btn:hover {
-  background-color: #D5E673; 
-  border-color: #BC9EC1; 
+  background-color: #D5E673;
+  border-color: #BC9EC1;
+  color: #4E2855; /* Changes text color on hover for contrast */
 }
 
+/* Title and text color */
 .text-custom-color {
   color: #D5E673;
 }
 
+/* Map container styling for responsive design */
 .map-container {
-  width: 100%; 
+  width: 100%;
+  max-width: 1200px;
   height: 0;
-  padding-bottom: 56.25%; /*set for aspect ratio stuff */
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
   position: relative;
+  border: 5px solid #BC94C1; /* Adds a border to the map for consistency */
+  border-radius: 8px; /* Rounded corners */
+  margin: 20px auto;
+  overflow: hidden; /* Ensures the content fits within the borders */
 }
 
 .map-container iframe,
@@ -29,34 +54,53 @@
   width: 100%;
   height: 100%;
 }
-.text-center {
-  text-align: center; 
-}
-
-.text-white {
-  color: #fff; 
-}
 
 @media (max-width: 768px) {
-  .map-container {
-    padding-bottom: 75%; 
+  /* Improved handling for smaller screens */
+  .description-area {
+    margin-top: 15px;
   }
 }
 
+/* Centered image container improvements */
 .centered-image-container {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
-  height: 200px; 
+  height: 200px;
 }
 
 .centered-image-container img {
-  max-width: 100%; 
-  max-height: 100%; 
-  object-fit: contain; 
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
+/* Ensuring the image has a consistent border */
 .image-border {
   border: 3px solid #BC94C1;
   box-sizing: border-box;
+  border-radius: 8px; /* Adds rounded corners to the image */
+}
+.rounded-button {
+  padding: 5px 15px; /* Smaller padding */
+  border-radius: 20px; /* Fully rounded edges */
+  font-size: 0.8em; /* Smaller font size */
+  margin: 0 10px; /* Space between buttons */
+}
+
+/* Applying the new styles to existing buttons */
+.map-controls button {
+  /* Add your existing button styles here */
+  background-color: #4E2855;
+  border-color: #BC94C1;
+  color: #D5E673;
+  font-weight: bold; /* Makes the button text stand out */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Making sure buttons are centered within the map controls */
+.map-controls {
+  text-align: center; /* Center buttons horizontally */
+  margin-bottom: 10px; /* Space below the buttons */
 }
