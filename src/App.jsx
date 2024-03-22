@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import EventDetailsPage from "./Pages/EventDetailsPage";
 import News from "./Pages/News";
 import Events from "./Pages/Events";
@@ -64,13 +64,6 @@ function App() {
               path="/discover/thankyou"
               element={<ThankYou/>}
             />
-            <Route
-              path="/discover/create-event"
-              element={<CreateEventPage />}
-            />
-            <Route path="/user/signup" element={<SignUpPage />} />
-            <Route path="/user/login" element={<LoginPage />} />
-
              <Route
               path="/discover/create-event/donation"
               element={<StripeDonation />}

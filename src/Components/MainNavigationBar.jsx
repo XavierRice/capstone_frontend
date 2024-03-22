@@ -43,9 +43,9 @@ function MainNavigationBar({ scrolling = false }) {
 						className="mx-3"
 					>
 						<NavDropdown.Item href="#news">About us</NavDropdown.Item>
-						<NavDropdown.Item href="#events">News</NavDropdown.Item>
-						<NavDropdown.Item href="#events">All Events</NavDropdown.Item>
-						<NavDropdown.Item href="#donations">Donations</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/news">News</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/events">All Events</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/events/donations">Donations</NavDropdown.Item>
 						<NavDropdown.Item href="#votingtoolkit">
 							Voting Toolkit
 						</NavDropdown.Item>

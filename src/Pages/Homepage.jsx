@@ -8,6 +8,10 @@ import TrustAndSafety from "../Components/TrustAndSafety/TrustAndSafety";
 import HeroImage from "../assets/HeroImage.jpg";
 import MainNavigationBar from "../Components/MainNavigationBar";
 import useScrollPosition from "../Hooks/ScrollPositionProvider";
+import ProofHero from "../Components/SocialProof/ProofHero";
+
+
+
 
 function Homepage() {
 	// try onMouseOver for animations
@@ -100,6 +104,9 @@ function Homepage() {
 					factor={2}
 					className=" d-flex justify-content-center"
 				>
+					<div>
+						<ProofHero />
+					</div>
 					<div>
 						<TrustAndSafety />
 					</div>
