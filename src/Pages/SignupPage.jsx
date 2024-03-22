@@ -17,6 +17,8 @@ const SignUpPage = () => {
       setToken(token);
 
       console.log("User info:", user);
+      console.log("Response data:", response.data);
+
     } catch (error) {
       console.error("Sign-up error:", error);
     }
