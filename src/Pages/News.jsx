@@ -36,6 +36,8 @@ const News = () => {
     navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
   };
 
+  console.log(newsData[0])
+
   return (
     <div>
       {loading ? (

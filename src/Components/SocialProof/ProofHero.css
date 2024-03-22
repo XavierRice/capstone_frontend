@@ -1,0 +1,70 @@
+
+
+
+.container-fluid {
+  position: relative;
+  width: 100%;
+  padding: 0;
+}
+
+.row {
+  min-height: 50vh;
+  align-items: center;
+}
+
+.text-section {
+  position: relative; /* For z-index to work correctly */
+  background-color: rgba(67, 40, 85, 0.8);
+  color: white;
+  padding: 1rem;
+  z-index: 2; /* Ensures text section is above the background image */
+}
+
+.text-section  h2{
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card-image {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Image should be behind everything else */
+}
+
+.impact-button {
+  background-color: #432855;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 0.25rem;
+}
+
+/* Styling for video-player */
+.video-player {
+  position: relative;
+  /* We use padding-bottom to maintain aspect ratio of the video. */
+  padding-top: 6.25%;
+  /* 56.25% for 16:9 aspect ratio. Adjust accordingly if you have a different aspect ratio */
+  padding-bottom: 56.25%;
+  height: 0; /* Height is now zero, but padding gives it space */
+  overflow: hidden;
+  z-index: 2; /* Ensure video is above the background image */
+}
+
+/* Ensure ReactPlayer fills the video-player div correctly */
+.video-player > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .text-section, .video-player {
+    padding: 1rem;
+  }
+}

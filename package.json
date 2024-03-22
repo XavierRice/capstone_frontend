@@ -15,6 +15,8 @@
     "@flaticon/flaticon-uicons": "^3.1.0",
     "@mui/joy": "^5.0.0-beta.30",
     "@mui/material": "^5.15.12",
+    "@react-spring/parallax": "^9.7.3",
+    "@react-spring/web": "^9.7.3",
     "@stripe/connect-js": "^3.3.1",
     "@stripe/react-connect-js": "^3.3.3",
     "@stripe/react-stripe-js": "^2.5.1",
@@ -28,10 +30,15 @@
     "react-cool-onclickoutside": "^1.7.0",
     "react-dom": "^18.2.0",
     "react-google-autocomplete": "^2.7.3",
-    "react-router-dom": "^6.22.3",
+
+    "react-icons": "^5.0.1",
+
+    "react-player": "^2.15.1",
+
+    "react-router-dom": "^6.22.2",
     "react-select": "^5.8.0",
-    "use-places-autocomplete": "^4.0.1",
-    "uuid": "^9.0.1"
+    "socket.io-client": "^4.7.5",
+    "use-places-autocomplete": "^4.0.1"
   },
   "devDependencies": {
     "@types/react-dom": "^18.2.19",
@@ -40,6 +47,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "prettier": "3.2.5",
     "vite": "^5.1.0"
   }
 }

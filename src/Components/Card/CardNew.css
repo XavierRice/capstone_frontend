@@ -1,9 +1,27 @@
-.custom-pill {
-    position: absolute;
-    top: 0.5rem; /* Adjust as needed */
-    left: 0.5rem; /* Adjust as needed */
-    z-index: 1; /* Ensure it's above the image */
-    background-color: #007bff; /* Your choice of color */
-    color: white; /* Text color */
-  }
-  
+div.d-flex.justify-content-center.align-items-center.new_card {
+  width: 18rem;
+  margin: auto; /* Centers card without specifying left and right */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 4px solid #4E2855; /* Simplified border */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Simplified transition */
+}
+
+div.d-flex.justify-content-center.align-items-center .new_card:hover {
+  background-color: #BC9EC1 !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card-pill {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  color: black;
+  padding: 0.25em 0.6em;
+  font-size: 0.75em;
+  border-radius: 1rem;
+  background-color: #4E2855;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #4E2855;
+  font-weight: bold;
+  transition: all 0.3s;
+}
