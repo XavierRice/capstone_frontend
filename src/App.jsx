@@ -1,70 +1,46 @@
 /* eslint-disable no-unused-vars */
-// import {useState, useEffect} from 'react'
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import Discover from "./Pages/Discover";
-// import NavigationBar from "./Components/NavigationBar";
-// import Header from "./Components/Header/Header";
-
 import EventDetailsPage from "./Pages/EventDetailsPage";
 import News from "./Pages/News";
 import Events from "./Pages/Events";
 import "./App.css";
-
 import NewsDetailsPage from "./Pages/NewsDetailsPage";
 import CreateEventPage from "./Pages/CreateEventPage";
 import Donations from "./Pages/Donations";
-// import SignUpPage from "./Pages/SignupPage";
-// import LoginPage from "./Pages/LoginPage";
-import HeroImage from "./assets/HeroImage.jpg";
 import StripeDonation from "./Components/Stripe/StripeDonation";
-import MainNavigationBar from "./Components/MainNavigationBar";
+import MainNavigationBar from "./Components/MainNavigationBar-copy";
 import Homepage from "./Pages/Homepage";
-import useScrollPosition from "./Hooks/ScrollPositionProvider";
 
 function App() {
-	// const [usersId, setUsersId] = useState("")
-	// const [loggedIn, setLoggedIn] = useState(false)
-
 	return (
-		<div className="">
-			<Router>
-				{/* <Header /> */}
-
-				{/* <MainNavigationBar /> */}
-
-				<div>
-					<Routes>
-						<Route path="/" element={<Homepage />} />
-						<Route
-							path="/discover/news-details/:id"
-							element={<NewsDetailsPage />}
-						/>
-						<Route
-							path="/discover/events-details"
-							element={<EventDetailsPage />}
-						/>
-						<Route path="/discover/news" element={<News />} />
-						<Route path="/discover/events" element={<Events />} />
-						<Route path="/discover/donations" element={<Donations />} />
-
-						{/* { protected route w/ boolen } */}
-						<Route
-							path="/discover/create-event"
-							element={<CreateEventPage />}
-						/>
-
-						{/* <Route path="/user/signup" element={<SignUpPage />} /> */}
-						{/* <Route path="/user/login" element={<LoginPage />} /> */}
-
-						<Route
-							path="/discover/create-event/donation"
-							element={<StripeDonation />}
-						/>
-					</Routes>
-				</div>
-			</Router>
-		</div>
+		<Router>
+			<Routes>
+				<Route path="/" element={<Homepage />} />
+				<Route path="/*" element={<MainNavigationBar />} />
+			</Routes>
+			<div className="">
+				<Routes>
+					<Route
+						path="/discover/news-details/:id"
+						element={<NewsDetailsPage />}
+					/>
+					<Route
+						path="/discover/events-details"
+						element={<EventDetailsPage />}
+					/>
+					<Route path="/discover/news" element={<News />} />
+					<Route path="/discover/events" element={<Events />} />
+					<Route path="/discover/donations" element={<Donations />} />
+					<Route path="/discover/create-event" element={<CreateEventPage />} />
+					<Route
+						path="/discover/create-event/donation"
+						element={<StripeDonation />}
+					/>
+				</Routes>
+			</div>
+		</Router>
 	);
 }
 
