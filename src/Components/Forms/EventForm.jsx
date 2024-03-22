@@ -84,8 +84,9 @@ const EventForm = () => {
     setUser_Event({ ...user_event, rsvp: event.target.checked })
   }
 
-
-  console.log(user_event)
+ const handleStripeId = (event) =>{
+  setStripeId(event.target.value)
+ }
 
   const addEvent = (event) => {
     fetch(`${backend}/events`, {
@@ -118,7 +119,7 @@ const EventForm = () => {
   },[location, lat, lng, stripeId])
 
 
-
+console.log(stripeId)
 // console.log(user_event)
   // useEffect(() => {
   //   fetch(`${backend}/events/${user_id}`)
@@ -167,28 +168,29 @@ const EventForm = () => {
             className='basic-mulit-select custom-text-dark'
             classNamePrefix="select"
             components={{ Input: CreatableSelectInput }}
+            name="event_keywords"
           />
         </Form.Group>
 
         <Form.Group as={Col} controlId="event_photo">
           <Form.Label>Photo</Form.Label>
-          <Form.Control type='text'  onChange={handleTextChange}/>
+          <Form.Control type='text'  onChange={handleTextChange} name='event_photo'/>
         </Form.Group>
 
       </Row>
 
       <Form.Group className="mb-3" controlId="is_virtual">
         <Form.Label>Virtual Event</Form.Label>
-        <Form.Check type="checkbox" label="Is this event virtual?"  onChange={handleIsVirtual} checked={user_event.is_virtual}/>
+        <Form.Check type="checkbox" label="Is this event virtual?"  onChange={handleIsVirtual} checked={user_event.is_virtual}  name='is_virtual'/>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="rsvp"  onChange={handleRSVP} checked={user_event.rsvp}>
+      <Form.Group className="mb-3" controlId="rsvp"  onChange={handleRSVP} checked={user_event.rsvp} >
         <Form.Label>Yes,everyone should rsvp!</Form.Label>
-        <Form.Check type="checkbox" label="yes, guests should rsvp!" />
+        <Form.Check type="checkbox" label="yes, guests should rsvp!" name='rsvp'  />
       </Form.Group>
 
 
-      <Is_donation setStripeId={setStripeId} isDonation={isDonation} setIsDonation={setIsDonation} stripeId={stripeId}/>
+      <Is_donation setStripeId={setStripeId} isDonation={isDonation} setIsDonation={setIsDonation} stripeId={stripeId} />
 
       <Button variant="primary" type="submit" >
         Submit

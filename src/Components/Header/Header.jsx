@@ -14,7 +14,9 @@ function Header() {
     >
       <Link to="/discover" className="m-auto text-decoration-none">
         <Navbar.Brand>
-          {/* <img src={Logo} height="80" alt="Impactify Logo" /> */}
+
+          <img src="/ImpactifySSLogo.svg" height="80" alt="Impactify Logo" />
+
           <span className="custom-header m-3 ">Impactify</span>
         </Navbar.Brand>
       </Link>

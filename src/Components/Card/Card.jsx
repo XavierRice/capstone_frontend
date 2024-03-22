@@ -6,8 +6,8 @@ import { Card as BootstrapCard } from "react-bootstrap";
 const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
   return (
     <div onClick={onClick} style={{ cursor: "pointer" }}>
-      <BootstrapCard bg="dark" className="mb-3">
-        <BootstrapCard.Img src={imageSrc} alt="Card image" onLoad={onLoad} style={{height:'30vh'}} />
+      <BootstrapCard bg="dark" className="m-5">
+        <BootstrapCard.Img  variant="top" src={imageSrc} alt="Card image" onLoad={onLoad} />
         <BootstrapCard.ImgOverlay>
           <BootstrapCard.Title className="text-custom-color">
             {title}
