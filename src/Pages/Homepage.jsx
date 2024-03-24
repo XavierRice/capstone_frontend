@@ -1,15 +1,28 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Container, Button, Navbar } from "react-bootstrap";
 import MainContent from "../Components/MainContent";
 import TrustAndSafety from "../Components/TrustAndSafety/TrustAndSafety";
 import HeroImage from "../assets/HeroImage.jpg";
-import MainNavigationBar from "../Components/MainNavigationBar";
+import MainNavigationBar from "../Components/NavigationBars/HomeNavigationBar";
 import useScrollPosition from "../Hooks/ScrollPositionProvider";
+import MobileNavigation from "../Components/NavigationBars/MainNavigationBar";
 
 function Homepage() {
+	const [isResponsive, setIsResponsive] = useState(false);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsResponsive(window.innerWidth <= 991);
+		};
+		handleResize();
+		window.addEventListener("resize", handleResize);
+
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
 	// try onMouseOver for animations
 	const parallaxRef = useRef(null);
 	const scrolling = useScrollPosition({
@@ -17,15 +30,7 @@ function Homepage() {
 	});
 
 	return (
-		<div
-			className="d-flex justify-content-center align-items-center parallax-container"
-			style={
-				{
-					// height: "100vh",
-					// width: "100vw",
-				}
-			}
-		>
+		<div className="d-flex justify-content-center align-items-center parallax-container">
 			<Parallax
 				pages={2}
 				ref={parallaxRef}
@@ -39,14 +44,7 @@ function Homepage() {
 					backgroundRepeat: "no-repeat",
 				}}
 			>
-				<div
-					className="btn top-50 start-50 translate-middle my-5 btn-class"
-					style={
-						{
-							// zIndex: 1,
-						}
-					}
-				>
+				<div className="btn top-50 start-50 translate-middle my-5 btn-class">
 					<Button
 						variant=""
 						style={{
@@ -62,26 +60,16 @@ function Homepage() {
 					sticky={{ start: 0 }}
 					style={{
 						height: "unset",
-						display: "flex",
+						display: !isResponsive ? "flex" : null,
 						justifyContent: "center",
-						marginTop: scrolling ? 0 : 20,
 					}}
 				>
-					<MainNavigationBar scrolling={scrolling} />
+					{isResponsive ? (
+						<MobileNavigation scrolling={scrolling} />
+					) : (
+						<MainNavigationBar scrolling={scrolling} />
+					)}
 				</ParallaxLayer>
-
-				{/* <ParallaxLayer offset={0.5}
-            speed={0}
-            factor={2}  
-            scrolling={false}  >
-              <div className="d-flex justify-content-center " >
-              <Button
-          variant="primary">
-          Start Event
-        </Button>
-              </div>
-        
-        </ParallaxLayer> */}
 
 				<ParallaxLayer
 					offset={0.7}
@@ -108,9 +96,5 @@ function Homepage() {
 		</div>
 	);
 }
-
-/**
- *
- */
 
 export default Homepage;

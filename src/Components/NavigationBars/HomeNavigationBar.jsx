@@ -9,16 +9,17 @@ import {
 	Button,
 } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
-import useScrollPosition from "../Hooks/ScrollPositionProvider";
+import useScrollPosition from "../../Hooks/ScrollPositionProvider";
 
 // eslint-disable-next-line react/prop-types
-function MainNavigationBar() {
+function MainNavigationBar({ scrolling = false }) {
 	return (
 		<Navbar
 			bg="light"
 			expand="lg"
 			sticky="top"
-			className={` navbar-shadow scrolling`}
+			className={` navbar-shadow ${scrolling ? "scrolling" : "not-scrolling"}`}
+			style={{ width: scrolling ? "100%" : "70rem" }}
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<FaSearch className="mx-3" style={{ marginRight: "5px" }} />

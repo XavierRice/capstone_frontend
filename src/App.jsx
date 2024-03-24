@@ -10,7 +10,7 @@ import NewsDetailsPage from "./Pages/NewsDetailsPage";
 import CreateEventPage from "./Pages/CreateEventPage";
 import Donations from "./Pages/Donations";
 import StripeDonation from "./Components/Stripe/StripeDonation";
-import MainNavigationBar from "./Components/MainNavigationBar-copy";
+import MainNavigationBar from "./Components/NavigationBars/MainNavigationBar";
 import Homepage from "./Pages/Homepage";
 
 function App() {
