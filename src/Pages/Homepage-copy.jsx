@@ -1,28 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect, useRef } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Container, Button, Navbar } from "react-bootstrap";
 import MainContent from "../Components/MainContent";
 import TrustAndSafety from "../Components/TrustAndSafety/TrustAndSafety";
 import HeroImage from "../assets/HeroImage.jpg";
-import MainNavigationBar from "../Components/NavigationBars/HomeNavigationBar";
+import MainNavigationBar from "../Components/MainNavigationBar";
 import useScrollPosition from "../Hooks/ScrollPositionProvider";
-import TrustBlock from "../Components/Midsection/TrustBlock";
-import MobileNavigation from "../Components/NavigationBars/MainNavigationBar";
-import ProofHero from "../Components/SocialProof/ProofHero";
 
 function Homepage() {
-	const [isResponsive, setIsResponsive] = useState(false);
-
-	useEffect(() => {
-		const handleResize = () => {
-			setIsResponsive(window.innerWidth <= 991);
-		};
-		handleResize();
-		window.addEventListener("resize", handleResize);
-
-		return () => window.removeEventListener("resize", handleResize);
-	}, []);
-
 	// try onMouseOver for animations
 	const parallaxRef = useRef(null);
 	const scrolling = useScrollPosition({
@@ -32,7 +19,7 @@ function Homepage() {
 	return (
 		<div className="d-flex justify-content-center align-items-center parallax-container">
 			<Parallax
-				pages={3}
+				pages={2}
 				ref={parallaxRef}
 				className="parallax-container"
 				style={{
@@ -60,15 +47,12 @@ function Homepage() {
 					sticky={{ start: 0 }}
 					style={{
 						height: "unset",
-						display: !isResponsive ? "flex" : null,
+						display: "flex",
 						justifyContent: "center",
+						marginTop: scrolling ? 0 : 20,
 					}}
 				>
-					{isResponsive ? (
-						<MobileNavigation scrolling={scrolling} />
-					) : (
-						<MainNavigationBar scrolling={scrolling} />
-					)}
+					<MainNavigationBar scrolling={scrolling} />
 				</ParallaxLayer>
 
 				<ParallaxLayer
@@ -81,30 +65,16 @@ function Homepage() {
 					<MainContent />
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={1.5}
+					offset={1}
 					speed={1}
 					factor={2}
 					className=" d-flex justify-content-center"
-					style={{ backgroundColor: "white" }}
 				>
-					<TrustBlock />
-					<ProofHero />
+					<div>
+						<TrustAndSafety />
+					</div>
 				</ParallaxLayer>
 			</Parallax>
-			{isResponsive && (
-				<div className="sticky-footer">
-					<Button
-						className="btn"
-						variant=""
-						style={{
-							color: "#ffffff",
-							cursor: "pointer",
-						}}
-					>
-						Start Event
-					</Button>
-				</div>
-			)}
 		</div>
 	);
 }
