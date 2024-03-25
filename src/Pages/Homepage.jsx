@@ -8,7 +8,7 @@ import TrustAndSafety from "../Components/TrustAndSafety/TrustAndSafety";
 import HeroImage from "../assets/HeroImage.jpg";
 import MainNavigationBar from "../Components/MainNavigationBar";
 import useScrollPosition from "../Hooks/ScrollPositionProvider";
-import ProofHero from "../Components/SocialProof/ProofHero";
+import TrustBlock from "../Components/Midsection/TrustBlock";
 
 
 
@@ -105,10 +105,7 @@ function Homepage() {
 					className=" d-flex justify-content-center"
 				>
 					<div>
-						<ProofHero />
-					</div>
-					<div>
-						<TrustAndSafety />
+						<TrustBlock />
 					</div>
 				</ParallaxLayer>
 			</Parallax>

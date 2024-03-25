@@ -45,7 +45,7 @@ function MainNavigationBar({ scrolling = false }) {
 						<NavDropdown.Item href="#news">About us</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/news">News</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/events">All Events</NavDropdown.Item>
-						<NavDropdown.Item href="/discover/events/donations">Donations</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/donations">Donations</NavDropdown.Item>
 						<NavDropdown.Item href="#votingtoolkit">
 							Voting Toolkit
 						</NavDropdown.Item>

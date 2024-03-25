@@ -3,7 +3,7 @@ import axios from "axios";
 import Card from "../Components/Card/Card"; 
 import CardNew from "../Components/Card/CardNew";
 import { useNavigate } from "react-router-dom";
-
+import './Events.css'
 
 const Events = () => {
   const [loading, setLoading] = useState(true);
@@ -20,11 +20,13 @@ const Events = () => {
   useEffect(()=> {
     const fetchEvents = async () => {
       setLoading(true);
+      let fetchEventsData = [];
+      let fetchedVirtualEvents = [];
 
       try {
         const resposeBackend = await axios.get(`${backend}/events`);
-        const backendEvents = resposeBackend.data.data;
-        setEventsData(backendEvents)
+        fetchEventsData = resposeBackend.data.data;
+        setEventsData(fetchEventsData)
       }catch(error){
         console.error('Error Fetching Backend Events:', error)
       }
@@ -36,7 +38,7 @@ const Events = () => {
           },
         })
       const events = responseMoblize.data.data;
-      const filteredVirtualEvents = events
+      fetchedVirtualEvents = events
         .filter(event => event.is_virtual === true)
         .map(({ id, title, sponsor: { logo_url, created_date: sponsorCreatedDate } = {}, summary, description }) => ({
           id,
@@ -48,16 +50,24 @@ const Events = () => {
           location: false,
         }));
         setMobilizeEvents(events);
-        setVirtualEvents(filteredVirtualEvents);
+        setVirtualEvents(fetchedVirtualEvents);
     }catch(error){
-      console.error('Error fetching Mobilze events')
+      console.error('Error fetching Mobilze events', error)
     }finally{
-      setAllEvents([...virtualEvents,...eventsData])
       setLoading(false)
+
     }
   };
   fetchEvents();
 }, [])
+
+ 
+  useEffect(()=>{
+  setAllEvents([...eventsData, ...virtualEvents])
+  console.log(allEvents)
+  }, [eventsData, virtualEvents])
+
+
 
   const handleCardClick = (eventData) => {
     console.log("you clicked me", eventData)
@@ -65,42 +75,37 @@ const Events = () => {
   };
 
   
-  console.log (eventsData[0])
+  //console.log (virtualEvents)
 
   const handleImageLoad = () => {
     setLoading(false);
   };
 
-  return (
-    <div>
-      {loading ? (
-        <div className="loader-wrapper">
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <>
-        <div>
-            {eventsData.map((event, index) => (
-              <div key={event.id || index} style={{marginBottom: "20px"}}>
-              <CardNew
-              cardObj={event}
-              tag={"Event"}
-              imageLoad={handleImageLoad}
-              cardClick={() => handleCardClick(event)}
-              />
-         
+    return (
+      <div className="event-page-background"> 
+        {loading ? (
+          <div className="loader-wrapper">
+            <div className="loader"></div>
+          </div>
+        ) : (
+          <div>
+            {allEvents.map((event, index) => (
+              <div key={event.id || index} className="event-card-container"> 
+                <CardNew
+                  cardObj={event}
+                  tag={"Event"}
+                  imageLoad={handleImageLoad}
+                  cardClick={() => handleCardClick(event)}
+                />
               </div>
             ))}
           </div>
-        </>
-      )}
-    </div>
-
-  );
+        )}
+      </div>
+    );
 };
 
 export default Events;
 
 
 
-/* */
