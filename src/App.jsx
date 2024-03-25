@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import EventDetailsPage from "./Pages/EventDetailsPage";
 import News from "./Pages/News";
 import Events from "./Pages/Events";
