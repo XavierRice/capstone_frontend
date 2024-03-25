@@ -4,6 +4,9 @@ body {
 }
 
 /* ------------------------ Main Navigation Bar--------------------------- */
+.outline-none {
+	outline: none !important;
+}
 .navbar-shadow {
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 	transition:
@@ -12,9 +15,10 @@ body {
 }
 
 .not-scrolling {
-	padding: 5px 50px;
+	margin-top: 20px;
+	padding: 5px 2 0px;
 	border-radius: 50px;
-	/* top: 50px; */
+	width: 85%;
 	display: flex;
 	justify-content: center;
 	align-items: center;

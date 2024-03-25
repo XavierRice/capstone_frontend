@@ -9,19 +9,17 @@ import {
 	Button,
 } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
-import useScrollPosition from "../Hooks/ScrollPositionProvider";
+import useScrollPosition from "../../Hooks/ScrollPositionProvider";
 
 // eslint-disable-next-line react/prop-types
 function MainNavigationBar({ scrolling = false }) {
-	//  const scrolling = useScrollPosition()
-
 	return (
 		<Navbar
 			bg="light"
 			expand="lg"
 			sticky="top"
 			className={` navbar-shadow ${scrolling ? "scrolling" : "not-scrolling"}`}
-			style={{ width: scrolling ? "100%" : "85%" }}
+			style={{ width: scrolling ? "100%" : "60rem" }}
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
@@ -44,15 +42,17 @@ function MainNavigationBar({ scrolling = false }) {
 					>
 						<NavDropdown.Item href="#news">About us</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/news">News</NavDropdown.Item>
-						<NavDropdown.Item href="/discover/events">All Events</NavDropdown.Item>
-						<NavDropdown.Item href="/discover/donations">Donations</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/events">
+							All Events
+						</NavDropdown.Item>
+						<NavDropdown.Item href="#donations">Donations</NavDropdown.Item>
 						<NavDropdown.Item href="#votingtoolkit">
 							Voting Toolkit
 						</NavDropdown.Item>
 						<NavDropdown.Item href="#aboutus">About Us</NavDropdown.Item>
 					</NavDropdown>
 				</Nav>
-				<Navbar.Brand className="mx-auto display-2" href="#home">
+				<Navbar.Brand className="mx-auto display-2" href="/">
 					Impactify
 				</Navbar.Brand>
 
