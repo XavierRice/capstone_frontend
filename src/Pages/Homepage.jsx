@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
+
 import React, { useEffect, useRef, useState } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Container, Button, Navbar } from "react-bootstrap";
