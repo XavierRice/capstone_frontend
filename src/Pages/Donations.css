@@ -1,0 +1,22 @@
+.donations-container {
+  background-color: #7a5dbf; /* A shade of purple */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px; /* Optional: for rounded corners */
+  padding: 20px; /* Adjust as needed */
+}
+
+.donations-container .card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto; /* Centering the card in the column */
+  background-color: #fff; /* Card background */
+  border-radius: 8px; /* Optional: for rounded corners */
+}
+
+/* Additional styling for the buttons inside the cards, if needed */
+.stripe-buy-button {
+  display: block;
+  width: 100%; /* Makes the button expand to the full width of the card */
+  margin-top: 15px; /* Adds some space above the button */
+  text-align: center; /* Center the button text */
+  /* Add more button styling here */
+}

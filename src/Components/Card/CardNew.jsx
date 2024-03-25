@@ -4,6 +4,8 @@ import noImage from '../../assets/NoImage.jpg'
 
 
 function CardNew({cardObj, tag,  imageLoad, cardClick }) {
+
+  const [styleClick, setStyleClick] = useState(false)
  
 const reducedCard = {
   card_title: cardObj.event_title || cardObj.news_title|| "title missing",
@@ -16,9 +18,15 @@ const reducedCard = {
   // key = i
 }
 
+const handleStyleChange = () =>{
+  setStyleClick(!styleClick)
+  
+};
+
+
   return (
     <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}> {/* This div centers the card vertically */}
-      <Card className="new_card" onClick={cardClick} onLoad={imageLoad}>
+      <Card className={`new_card ${styleClick? 'card-clicked' : ''}`} onClick={cardClick} onLoad={imageLoad}>
         <span className="badge rounded-pill card-pill">{tag}</span> 
         <Card.Img variant="top" src={reducedCard.card_photo} />
         <Card.Body>

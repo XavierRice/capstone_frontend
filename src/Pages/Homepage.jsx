@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
+
 import React, { useEffect, useRef, useState } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Container, Button, Navbar } from "react-bootstrap";
@@ -8,6 +7,7 @@ import TrustAndSafety from "../Components/TrustAndSafety/TrustAndSafety";
 import HeroImage from "../assets/HeroImage.jpg";
 import MainNavigationBar from "../Components/NavigationBars/HomeNavigationBar";
 import useScrollPosition from "../Hooks/ScrollPositionProvider";
+import TrustBlock from "../Components/Midsection/TrustBlock";
 import MobileNavigation from "../Components/NavigationBars/MainNavigationBar";
 
 function Homepage() {
@@ -89,10 +89,24 @@ function Homepage() {
 					className=" d-flex justify-content-center"
 				>
 					<div>
-						<TrustAndSafety />
+						<TrustBlock />
 					</div>
 				</ParallaxLayer>
 			</Parallax>
+			{isResponsive && (
+				<div className="sticky-footer">
+					<Button
+						className="btn"
+						variant=""
+						style={{
+							color: "#ffffff",
+							cursor: "pointer",
+						}}
+					>
+						Start Event
+					</Button>
+				</div>
+			)}
 		</div>
 	);
 }
