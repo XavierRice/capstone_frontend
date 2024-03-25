@@ -1,4 +1,4 @@
-
+import React from "react";
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,12 +9,8 @@ import "./App.css";
 import NewsDetailsPage from "./Pages/NewsDetailsPage";
 import CreateEventPage from "./Pages/CreateEventPage";
 import Donations from "./Pages/Donations";
-// import SignUpPage from "./Pages/SignupPage";
-// import LoginPage from "./Pages/LoginPage";
-import HeroImage from "./assets/HeroImage.jpg";
 import StripeDonation from "./Components/Stripe/StripeDonation";
-
-import MainNavigationBar from "./Components/MainNavigationBar";
+import MainNavigationBar from "./Components/NavigationBars/MainNavigationBar";
 import Homepage from "./Pages/Homepage";
 import useScrollPosition from "./Hooks/ScrollPositionProvider";
 import StripePaymentEvent from './Components/Stripe/StripePaymentEvent';
@@ -26,16 +22,14 @@ import CardNew from './Components/Card/CardNew';
 
 
 function App() {
-	// const [usersId, setUsersId] = useState("")
-	// const [loggedIn, setLoggedIn] = useState(false)
-
 	return (
-		<div className="">
 			<Router>
-				{/* <MainNavigationBar /> */}
+				<Routes>
+				<Route path="/" element={<Homepage />} />
+				<Route path="/*" element={<MainNavigationBar />} />
+			</Routes>
 				<div>
 					<Routes>
-						<Route path="/" element={<Homepage />} />
 						<Route
 							path="/discover/news-details/:id"
 							element={<NewsDetailsPage />}
@@ -47,8 +41,6 @@ function App() {
 						<Route path="/discover/news" element={<News />} />
 						<Route path="/discover/events" element={<Events />} />
 						<Route path="/discover/donations" element={<Donations />} />
-
-						{/* { protected route w/ boolen } */}
 						<Route
 							path="/discover/create-event"
 							element={<CreateEventPage />}
@@ -78,7 +70,8 @@ function App() {
 					</Routes>
 				</div>
 			</Router>
-		</div>
+	
+
 	);
 }
 
