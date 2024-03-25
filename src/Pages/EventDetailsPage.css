@@ -14,6 +14,16 @@
 
 /* Custom button styles */
 .custom-signup-btn {
+
+	background-color: #4e2855;
+	border-color: #bc94c1;
+	color: #d5e673;
+}
+
+.custom-signup-btn:hover {
+	background-color: #d5e673;
+	border-color: #bc9ec1;
+
   background-color: #4E2855;
   border-color: #BC94C1;
   color: #D5E673;
@@ -25,15 +35,22 @@
   background-color: #D5E673;
   border-color: #BC9EC1;
   color: #4E2855; /* Changes text color on hover for contrast */
+
 }
 
 /* Title and text color */
 .text-custom-color {
-  color: #D5E673;
+	color: #d5e673;
 }
 
 /* Map container styling for responsive design */
 .map-container {
+
+	width: 100%;
+	height: 0;
+	padding-bottom: 56.25%; /*set for aspect ratio stuff */
+	position: relative;
+
   width: 100%;
   max-width: 1200px;
   height: 0;
@@ -43,17 +60,32 @@
   border-radius: 8px; /* Rounded corners */
   margin: 20px auto;
   overflow: hidden; /* Ensures the content fits within the borders */
+
 }
 
 .map-container iframe,
 .map-container object,
 .map-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
+
+.text-center {
+	text-align: center;
+}
+
+.text-white {
+	color: #fff;
+}
+
+@media (max-width: 768px) {
+	.map-container {
+		padding-bottom: 75%;
+	}
+
 
 @media (max-width: 768px) {
   /* Improved handling for smaller screens */
@@ -64,6 +96,18 @@
 
 /* Centered image container improvements */
 .centered-image-container {
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 200px;
+}
+
+.centered-image-container img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,10 +118,13 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+
 }
 
 /* Ensuring the image has a consistent border */
 .image-border {
+	border: 3px solid #bc94c1;
+	box-sizing: border-box;
   border: 3px solid #BC94C1;
   box-sizing: border-box;
   border-radius: 8px; /* Adds rounded corners to the image */

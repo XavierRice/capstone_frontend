@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import GoogleMap from "../Components/Maps/GoogleMap";
 import defaultImage from "../assets/NoImage.jpg"
-import DCTrip from "../Components/Stripe/DCTrip";
+import Event4Strip from "../Components/Stripe/Event4Stripe";
 
 function EventDetailsPage() {
   const location = useLocation();
@@ -12,7 +12,8 @@ function EventDetailsPage() {
   const [showDonationButton, setShowDonationButton] = useState(false)
 
   const { event } = location.state;
-  console.log(event)
+
+
 
   const {
     event_id,
@@ -20,13 +21,13 @@ function EventDetailsPage() {
     event_title: title,
     event_date: date,
     event_time: time,
-    event_details: description,
+    event_details,
     event_location: locationName,
     event_photo,
     lat,
     lng,
     is_virtual: isVirtual = false,
-    mobilize_id: mobilizeId,
+    stripe_id,
     rsvp = true, // Provide a default value in case it's missing
   } = event;
 
@@ -45,12 +46,15 @@ function EventDetailsPage() {
 
   const hasRequiredKeys = ['event_location', 'lat', 'lng'].every(key => Object.keys(event).includes(key));
 
+
+
   const displayMap = locationName && lat && lng;
+  
   let imageSrc = event.logo_url || event.event_photo || defaultImage;
   const eventDate = formatDate(date);
 
 
-
+  console.log(event)
 
   return (
     <Container fluid className="my-4">
@@ -61,12 +65,13 @@ function EventDetailsPage() {
         </Col>
 
         {/* Details Section */}
-        <Col md={6} className="text-center text-white">
+        <Col md={6} className="text-center text-black">
           <h1 className="text-custom-color mb-3">{title}</h1>
-          <p className="mb-2">{description}</p>
+          <p className="mb-2">{event_details}</p>
           {date && <p className="mb-4">Date: {eventDate}</p>}
-          <p className="mb-4">{isVirtual ? "This event is virtual." : "See route below."}</p>
+          <p className="mb-4">{!isVirtual ? "This event is virtual." : "See route below."}</p>
           <Button size="lg" className="rounded-pill py-2 custom-signup-btn">Sign Up Now</Button>
+          {stripe_id && (<Event4Strip stripe_id={stripe_id}/>)}
         </Col>
       </Row>
 
