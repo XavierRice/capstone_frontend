@@ -93,6 +93,20 @@ function Homepage() {
 					</div>
 				</ParallaxLayer>
 			</Parallax>
+			{isResponsive && (
+				<div className="sticky-footer">
+					<Button
+						className="btn"
+						variant=""
+						style={{
+							color: "#ffffff",
+							cursor: "pointer",
+						}}
+					>
+						Start Event
+					</Button>
+				</div>
+			)}
 		</div>
 	);
 }

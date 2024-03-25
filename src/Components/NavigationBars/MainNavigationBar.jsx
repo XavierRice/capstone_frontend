@@ -27,7 +27,10 @@ function MainNavigationBar() {
 
 	const regularNavbar = (
 		<>
-			<Navbar.Toggle aria-controls="basic-navbar-nav" />
+			<Navbar.Toggle
+				aria-controls="basic-navbar-nav"
+				className="outline-none"
+			/>
 			<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
 			<Form inline>
 				<FormControl
@@ -76,7 +79,10 @@ function MainNavigationBar() {
 
 	const mobileNavbar = (
 		<>
-			<Navbar.Toggle aria-controls="basic-navbar-nav" />
+			<Navbar.Toggle
+				aria-controls="basic-navbar-nav"
+				className="outline-none"
+			/>
 			<Navbar.Brand className="mx-auto display-2" href="/">
 				Impactify
 			</Navbar.Brand>

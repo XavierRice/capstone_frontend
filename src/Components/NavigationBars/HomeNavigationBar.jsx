@@ -19,7 +19,7 @@ function MainNavigationBar({ scrolling = false }) {
 			expand="lg"
 			sticky="top"
 			className={` navbar-shadow ${scrolling ? "scrolling" : "not-scrolling"}`}
-			style={{ width: scrolling ? "100%" : "70rem" }}
+			style={{ width: scrolling ? "100%" : "60rem" }}
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
