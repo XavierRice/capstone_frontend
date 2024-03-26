@@ -26,6 +26,7 @@ const Events = () => {
       try {
         const resposeBackend = await axios.get(`${backend}/events`);
         fetchEventsData = resposeBackend.data.data;
+        console.log(fetchEventsData)
         setEventsData(fetchEventsData)
       }catch(error){
         console.error('Error Fetching Backend Events:', error)
@@ -75,7 +76,7 @@ const Events = () => {
   };
 
   
-  //console.log (virtualEvents)
+  console.log (eventsData)
 
   const handleImageLoad = () => {
     setLoading(false);
