@@ -24,7 +24,9 @@ function MainNavigationBar({ scrolling = false }) {
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
 
-			<Form inline="true">
+			<Form
+			// inline="true"
+			>
 				<FormControl
 					type="text"
 					placeholder="Search"

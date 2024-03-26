@@ -1,0 +1,35 @@
+body {
+	background-color: #f0f0f0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
+.bento-box {
+	display: flex;
+	width: 400px;
+	height: 200px;
+}
+
+.full-size-square {
+	background-color: #ccc;
+	flex: 2;
+	border: 2px solid #000;
+	margin-right: 5px; /* Add margin for spacing */
+}
+
+.little-squares-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.little-square {
+	margin-right: 5px;
+	background-color: #ccc;
+	height: 50%;
+	border: 2px solid #000;
+	margin-bottom: 5px;
+}
