@@ -1,0 +1,26 @@
+.progress-container {
+    width: 25%;
+    margin-bottom: 10px;
+    background-color: #eee;
+    height: 10px;
+    border-radius: 5px;
+}
+.progress-bar {
+    height: 10px;
+    background-color: #D5E673;
+    border-radius: 5px;
+}
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.progress-labels span {
+    font-size: 14px;
+}
+.goal {
+    color: #333;
+}
+.current {
+    color: #333;
+}

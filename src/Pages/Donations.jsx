@@ -7,6 +7,9 @@ import CleanUpBuy from "../Components/Stripe/CleanUpBuy";
 import ClimateBuy from "../Components/Stripe/ClimateBuy";
 
 function Donations() {
+
+
+  
   return (
     <Container className="py-5 my-5 donations-container">
     <Row className="g-4 justify-content-center">

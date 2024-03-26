@@ -10,6 +10,6 @@
 
   @media (min-width: 992px) {
     .hero-section {
-      height: 60vh; /* You might want to increase the height a bit for larger screens */
+      height: 60vh;
     }
   }

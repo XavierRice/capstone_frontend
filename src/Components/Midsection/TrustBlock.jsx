@@ -7,6 +7,7 @@ const TrustBlock = () => {
     return (
         <div className='trust-container'>
             <TrustAndSafety />
+            {/* {bento box} */}
             <ProofHero />
         </div>
     );

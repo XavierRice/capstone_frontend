@@ -19,6 +19,8 @@ import ProofHero from "./Components/SocialProof/ProofHero";
 import ThankYou from "./Pages/ThankYou";
 import CardNew from "./Components/Card/CardNew";
 
+import CardSlider from "./Components/Slider/CardSlider";
+
 function App() {
 	return (
 		<Router>
@@ -40,7 +42,7 @@ function App() {
 					<Route path="/discover/events" element={<Events />} />
 					<Route path="/discover/donations" element={<Donations />} />
 					<Route path="/discover/create-event" element={<CreateEventPage />} />
-					<Route path="/discover/test" element={<ProofHero />} />
+					<Route path="/discover/test" element={<CardSlider />} />
 					<Route path="/discover/thankyou" element={<ThankYou />} />
 					<Route path="/discover/create-event" element={<CreateEventPage />} />
 					<Route
