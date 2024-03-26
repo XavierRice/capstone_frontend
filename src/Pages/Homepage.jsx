@@ -11,6 +11,7 @@ import MobileNavigation from "../Components/NavigationBars/MainNavigationBar";
 import ProofHero from "../Components/SocialProof/ProofHero";
 import DonationsLayout from "../Components/BentoBoxes/DonationsLayout";
 import CardLayout from "../Components/BentoBoxes/CardsLayout/Cards";
+import Footer from "../Components/Footer/Footer";
 
 function Homepage() {
 	const [isResponsive, setIsResponsive] = useState(false);
@@ -81,8 +82,9 @@ function Homepage() {
 					className=" d-flex justify-content-center"
 				>
 					{/* <MainContent /> */}
-					<DonationsLayout />
+					{/* <DonationsLayout /> */}
 					{/* <CardLayout /> */}
+					{/* <TrustBlock /> */}
 				</ParallaxLayer>
 				<ParallaxLayer
 					offset={2}
@@ -94,6 +96,7 @@ function Homepage() {
 					{/* <TrustBlock /> */}
 					{/* <ProofHero /> */}
 				</ParallaxLayer>
+				<Footer />
 			</Parallax>
 			{isResponsive && (
 				<div className="sticky-footer">
