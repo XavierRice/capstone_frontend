@@ -118,7 +118,7 @@ function MainContent() {
 					{mockEventData
 						.slice(startIndex, startIndex + eventsPerPage)
 						.map((event) => (
-							<Col key={event.id} xs={9} md={3} className="mb-3">
+							<Col key={event.id} xs={12} md={3} className="mb-3">
 								<Card
 									title={event.event_title}
 									imageSrc={event.event_photo}

@@ -9,6 +9,7 @@ import useScrollPosition from "../Hooks/ScrollPositionProvider";
 import TrustBlock from "../Components/Midsection/TrustBlock";
 import MobileNavigation from "../Components/NavigationBars/MainNavigationBar";
 import ProofHero from "../Components/SocialProof/ProofHero";
+import DonationsLayout from "../Components/BentoBoxes/DonationsLayout";
 
 function Homepage() {
 	const [isResponsive, setIsResponsive] = useState(false);
@@ -74,15 +75,16 @@ function Homepage() {
 				<ParallaxLayer
 					offset={0.7}
 					speed={0}
-					factor={1}
+					factor={1.8}
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					<MainContent />
+					{/* <MainContent /> */}
+					<DonationsLayout />
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={1.7}
-					speed={0.5}
+					offset={2}
+					speed={0}
 					factor={2}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
