@@ -106,10 +106,10 @@ function MainContent() {
 
 	return (
 		<Container className="m-5">
-			<div className="fs-4 my-4  fw-bold text-dark">
+			<div className="fs-4 my-4  fw-bold text-dark d-block">
 				Discover events inspired by what you care about
 			</div>
-			<div className="btn rounded-pill my-4">
+			<div className="btn rounded-pill my-4 d-block">
 				<FilterBtn />
 			</div>
 

@@ -82,7 +82,7 @@ function Homepage() {
 					className=" d-flex justify-content-center"
 				>
 					{/* <MainContent /> */}
-					{/* <DonationsLayout /> */}
+					<DonationsLayout />
 					{/* <CardLayout /> */}
 					{/* <TrustBlock /> */}
 				</ParallaxLayer>
@@ -96,7 +96,7 @@ function Homepage() {
 					{/* <TrustBlock /> */}
 					{/* <ProofHero /> */}
 				</ParallaxLayer>
-				<Footer />
+				{/* <Footer /> */}
 			</Parallax>
 			{isResponsive && (
 				<div className="sticky-footer">
