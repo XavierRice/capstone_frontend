@@ -32,7 +32,7 @@ function Homepage() {
 	return (
 		<div className="d-flex justify-content-center align-items-center parallax-container">
 			<Parallax
-				pages={3}
+				pages={2}
 				ref={parallaxRef}
 				className="parallax-container"
 				style={{
@@ -73,22 +73,22 @@ function Homepage() {
 
 				<ParallaxLayer
 					offset={0.7}
-					speed={0.5}
-					factor={2}
+					speed={0}
+					factor={1}
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
 					<MainContent />
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={1.5}
-					speed={1}
+					offset={1.7}
+					speed={0.5}
 					factor={2}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
 					<TrustBlock />
-					<ProofHero />
+					{/* <ProofHero /> */}
 				</ParallaxLayer>
 			</Parallax>
 			{isResponsive && (
