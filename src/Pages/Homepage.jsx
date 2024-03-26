@@ -10,6 +10,7 @@ import TrustBlock from "../Components/Midsection/TrustBlock";
 import MobileNavigation from "../Components/NavigationBars/MainNavigationBar";
 import ProofHero from "../Components/SocialProof/ProofHero";
 import DonationsLayout from "../Components/BentoBoxes/DonationsLayout";
+import CardLayout from "../Components/BentoBoxes/CardsLayout/Cards";
 
 function Homepage() {
 	const [isResponsive, setIsResponsive] = useState(false);
@@ -81,6 +82,7 @@ function Homepage() {
 				>
 					{/* <MainContent /> */}
 					<DonationsLayout />
+					{/* <CardLayout /> */}
 				</ParallaxLayer>
 				<ParallaxLayer
 					offset={2}
@@ -89,7 +91,7 @@ function Homepage() {
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
-					<TrustBlock />
+					{/* <TrustBlock /> */}
 					{/* <ProofHero /> */}
 				</ParallaxLayer>
 			</Parallax>
