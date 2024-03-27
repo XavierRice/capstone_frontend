@@ -4,60 +4,75 @@ import InputField from "./InputField";
 import ErrorMessage from "./ErrorMessage";
 
 const SignUpForm = ({ onSubmit }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+    password: "",
+  });
   const [error, setError] = useState("");
+
+  const handleInputChange = (e) => {
+    const { key, value } = e.target;
+    setUserData({ ...userData, [key]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const { firstName, lastName, userName, email, password } = userData;
 
     if (!firstName || !lastName || !userName || !email || !password) {
       setError("All fields are required");
       return;
     }
-    onSubmit({ firstName, lastName, userName, email, password });
+    setError("")
+    onSubmit(userData);
   };
 
   return (
     <Form onSubmit={handleSubmit} className="">
       <InputField
         label="First Name"
+        name="firstName"
         type="text"
         placeholder="Enter first name"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
+        value={userData.firstName}
+        onChange={handleInputChange}
       />
       <InputField
         label="Last Name"
+        name="lastName"
         type="text"
         placeholder="Enter last name"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
+        value={userData.lastName}
+        onChange={handleInputChange}
       />
       <InputField
         label="User Name"
         type="text"
+        name="userName"
         placeholder="Enter user name"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
+        value={userData.userName}
+        onChange={handleInputChange}
       />
       <InputField
         label="Email"
         type="email"
+        name="email"
         placeholder="Enter email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={userData.email}
+        onChange={handleInputChange}
       />
       <InputField
         label="Password"
         type="password"
+        name="password"
         placeholder="Enter password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        value={userData.password}
+        onChange={handleInputChange}
+        />
       {error && <ErrorMessage message={error} />}
       <div className="m-2 d-flex justify-content-center">
         <Button variant="primary" type="submit">
