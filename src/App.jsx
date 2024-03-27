@@ -18,6 +18,8 @@ import StripeBuy from "./Components/Stripe/StripeBuy";
 import ProofHero from "./Components/SocialProof/ProofHero";
 import ThankYou from "./Pages/ThankYou";
 import CardNew from "./Components/Card/CardNew";
+import SignUpPage from "./Pages/SignupPage";
+import LoginPage from "./Pages/LoginPage";
 
 function App() {
 	return (
@@ -39,7 +41,7 @@ function App() {
 					<Route path="/discover/news" element={<News />} />
 					<Route path="/discover/events" element={<Events />} />
 					<Route path="/discover/donations" element={<Donations />} />
-					<Route path="/discover/create-event" element={<CreateEventPage />} />
+					<Route path="/discover/users/login" element={<LoginPage/>} />
 					<Route path="/discover/test" element={<ProofHero />} />
 					<Route path="/discover/thankyou" element={<ThankYou />} />
 					<Route path="/discover/create-event" element={<CreateEventPage />} />

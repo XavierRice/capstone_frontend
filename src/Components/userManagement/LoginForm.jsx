@@ -3,10 +3,11 @@ import { Form, Button } from "react-bootstrap";
 import InputField from "./InputField";
 import ErrorMessage from "./ErrorMessage";
 
-const LoginForm = ({ onSubmit }) => {
+
+const LoginForm = ({ onSubmit, loginError }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ const LoginForm = ({ onSubmit }) => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      {error && <ErrorMessage message={error} />}
+      {loginError && <ErrorMessage message={loginError} />}
       <div className="m-3 justify-content-center d-flex">
         <Button variant="primary" type="submit">
           Login
