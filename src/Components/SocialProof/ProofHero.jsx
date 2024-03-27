@@ -2,34 +2,25 @@ import React, { useState, useRef } from "react";
 import ReactPlayer from "react-player";
 import "./ProofHero.css";
 import socialProof from "../../assets/socialProof.webp";
-import { Row, Col } from "react-bootstrap";
 import ImpactVid from "../../assets/ImpactVid.mp4";
 
 const ProofHero = () => {
 	const [showVideo, setShowVideo] = useState(false);
 	const playerRef = useRef(null);
 
-	const handleButtonClick = (event) => {
-		event.stopPropagation(); // Prevent click from bubbling up to the card-container
+	const handleButtonClick = () => {
 		setShowVideo(!showVideo);
 	};
 
-	const handleCardClick = () => {
-		if (showVideo && playerRef.current) {
-			playerRef.current.seekTo(0, "seconds"); // Rewind the video
-			playerRef.current.getInternalPlayer().pause(); // Pause the video
-			setShowVideo(false);
-		}
-	};
-
 	return (
-		<div className="container-fluid p-0" onClick={handleCardClick}>
-			<Row
-				className="g-0 align-items-center"
-				style={{ minHeight: "50vh", justifyContent: "space-between" }}
+		<div>
+			<div
+				style={{ height: "70%", width: "100%" }}
+				className="proof-container"
+				onClick={() => setShowVideo(!showVideo)}
 			>
-				<Col lg={6} md={6} className="text-section p-5 ">
-					<h2>Amplify Your Influence! With Impactify</h2>
+				<span className="m-3 " style={{ height: "50%", width: "70%" }}>
+					<h4 className="display-6">Amplify Your Influence with Impactify</h4>
 					<p>
 						2023 has unveiled a striking shift in charitable giving, with
 						figures reaching $319.04 billion—a notable decline of 6.4% from
@@ -43,25 +34,13 @@ const ProofHero = () => {
 						both hands-on volunteering and impactful micro-donations that,
 						collectively, fuel larger initiatives.
 					</p>
-					<h3>
+					<p>
 						Together, let's revitalize the culture of community involvement and
 						reignite the fire of altruism, even amidst challenging times.
-					</h3>
-					<button
-						className="btn btn-primary impact-button"
-						onClick={handleButtonClick}
-					>
-						Play
-					</button>
-				</Col>
-				<Col lg={5} md={5} className="text-end">
-					<img
-						src={socialProof}
-						alt="Social Proof"
-						className="card-image"
-						style={{ width: "100%" }}
-					/>
-					{showVideo && (
+					</p>
+				</span>
+				<span className="m-2">
+					{showVideo ? (
 						<div className="video-player">
 							<ReactPlayer
 								ref={playerRef}
@@ -72,9 +51,21 @@ const ProofHero = () => {
 								height="100%"
 							/>
 						</div>
+					) : (
+						<img
+							src={socialProof}
+							alt="Social Proof"
+							className="card-image my-5"
+							style={{ width: "100%" }}
+						/>
 					)}
-				</Col>
-			</Row>
+					<div className="d-flex justitfy-content-center">
+						<button className="btn impact-button" onClick={handleButtonClick}>
+							Play
+						</button>
+					</div>
+				</span>
+			</div>
 		</div>
 	);
 };

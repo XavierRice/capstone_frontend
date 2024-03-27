@@ -14,9 +14,9 @@ function DonationsLayout() {
 			style={{ width: "85%", height: "50%", marginTop: "40px" }}
 		>
 			<div className="fw-semibold fs-5 m-3">Featured donations</div>
-			<div class="container">
-				<div class="item top-box">
-					<div class="top-box-grid">
+			<div className="container">
+				<div className="item top-box">
+					<div className="top-box-grid">
 						{" "}
 						<div className="left-grid">
 							<img src={UkraineImg} alt="Ukraine Image" className="top-image" />
@@ -38,7 +38,7 @@ function DonationsLayout() {
 					</div>
 				</div>
 
-				<div class="item mid-right sm-bx item-small ">
+				<div className="item mid-right sm-bx item-small ">
 					<div className="top-half">
 						<img
 							src={ClimateImg}
@@ -47,7 +47,7 @@ function DonationsLayout() {
 						/>
 					</div>
 					<div className="bottom-half">
-						<div className="fw-bold fs-4 m-3 d-flex justify-content-center">
+						<div className="fw-bold title fs-4 m-3 d-flex justify-content-center">
 							{" "}
 							Support Sustainability
 						</div>
@@ -56,12 +56,12 @@ function DonationsLayout() {
 						</span>
 					</div>
 				</div>
-				<div class="item mid-left item-small ">
+				<div className="item mid-left item-small ">
 					<div className="top d-flex justify-content-center ">
 						<img src={FactsImg} alt="factsImg" className="climate-image " />
 					</div>
 					<div className="bottom d-flex justify-content-center m-2">
-						<div className="fs-4 fw-bold ">Fundraising FAQs:</div>
+						<div className="fs-4 fw-bold title">Fundraising FAQs:</div>
 					</div>
 					<div className="m-2">Why should we care and participate?</div>
 					<span className="m-3">
@@ -69,7 +69,7 @@ function DonationsLayout() {
 					</span>
 				</div>
 
-				<div class="item right item-small ">
+				<div className="item right item-small ">
 					<img src={DonateCode} alt="Donate Card" className="donate-card" />
 				</div>
 			</div>

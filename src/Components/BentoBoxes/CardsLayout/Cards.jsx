@@ -33,8 +33,8 @@ function Cards() {
 
 	return (
 		<div
-			style={{ height: "40%", width: "100%" }}
-			className="d-flex justify-content-center my-5"
+			style={{ height: "100%", width: "100%" }}
+			className="d-flex justify-content-center "
 		>
 			<div className="bento-box ">
 				<div className="full-size-square">

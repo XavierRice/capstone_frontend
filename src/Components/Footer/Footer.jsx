@@ -6,10 +6,10 @@ import "./Footer.css";
 
 function Footer() {
 	return (
-		<footer className="bg-light footer ">
+		<footer className="bg-light">
 			<div className="px-5">
 				<Row className="gy-5">
-					<Col lg={8} className="pe-xxl-10">
+					<Col lg={8} className="">
 						<Row className="gy-5">
 							<Col sm={6} lg={4}>
 								<h5 className=" footer-title-01">About</h5>

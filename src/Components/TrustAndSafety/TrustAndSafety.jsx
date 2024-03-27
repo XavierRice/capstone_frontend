@@ -8,12 +8,12 @@ function TrustAndSafety() {
 	// const scrolling = useScrollPosition();
 
 	return (
-		<div style={{}} className="my-4 ts-container">
-			<div className="trust-content align-items-center">
+		<div style={{}} className=" my-4  ts-container">
+			<div className="trust-content ">
 				<span className="title fw-bold fs-3">
 					Impactify is a trusted online fundraising for small scale events.
 				</span>
-				<span className="body  m-3 d-block fs-4">
+				<span className="body  mb-3 d-block fs-4">
 					Through robust security features and transparent policies, we're
 					dedicated to ensuring your safety while empowering you to make a
 					difference in the world.

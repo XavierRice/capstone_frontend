@@ -18,7 +18,7 @@ function MainNavigationBar({ scrolling = false }) {
 			bg="light"
 			expand="lg"
 			sticky="top"
-			className={` navbar-shadow ${scrolling ? "scrolling" : "not-scrolling"}`}
+			className={` navbar-shadow navbar-wrapper ${scrolling ? "scrolling" : "not-scrolling"}`}
 			style={{ width: scrolling ? "100%" : "60rem" }}
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -35,7 +35,7 @@ function Homepage() {
 	return (
 		<div className="d-flex justify-content-center align-items-center parallax-container">
 			<Parallax
-				pages={2}
+				pages={4.5}
 				ref={parallaxRef}
 				className="parallax-container"
 				style={{
@@ -58,9 +58,10 @@ function Homepage() {
 						Start Event
 					</Button>
 				</div>
+				{/* navigation */}
 				<ParallaxLayer
 					horizontal
-					sticky={{ start: 0 }}
+					sticky={{ start: 0, end: 4 }}
 					style={{
 						height: "unset",
 						display: !isResponsive ? "flex" : null,
@@ -77,7 +78,7 @@ function Homepage() {
 				<ParallaxLayer
 					offset={0.7}
 					speed={0}
-					factor={1.8}
+					factor={2.5}
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
@@ -87,16 +88,39 @@ function Homepage() {
 					{/* <TrustBlock /> */}
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={2}
+					offset={1.8}
 					speed={0}
-					factor={2}
+					factor={1.1}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
-					{/* <TrustBlock /> */}
+					<TrustAndSafety />
 					{/* <ProofHero /> */}
 				</ParallaxLayer>
-				{/* <Footer /> */}
+				<ParallaxLayer
+					offset={2.3}
+					speed={0}
+					factor={1}
+					className=" d-flex justify-content-center"
+					style={{ backgroundColor: "white" }}
+				>
+					<CardLayout />
+					{/* <ProofHero /> */}
+				</ParallaxLayer>
+				<ParallaxLayer
+					offset={3.2}
+					speed={0}
+					factor={1}
+					className=" d-flex justify-content-center"
+					style={{ backgroundColor: "white" }}
+				>
+					{/* <CardLayout /> */}
+					<ProofHero />
+				</ParallaxLayer>
+
+				<ParallaxLayer offset={4.2} factor={1}>
+					<Footer />
+				</ParallaxLayer>
 			</Parallax>
 			{isResponsive && (
 				<div className="sticky-footer">
