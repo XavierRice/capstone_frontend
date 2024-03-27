@@ -62,10 +62,10 @@ function MainNavigationBar({ scrolling = false }) {
 					<Nav.Link href="#howitworks" className="mx-3">
 						How It Works
 					</Nav.Link>
-					<Nav.Link href="#signin" className="mx-3">
+					<Nav.Link href="/discover/users/signup" className="mx-3">
 						Sign In
 					</Nav.Link>
-					<Button variant="" className="mx-3 btn rounded-pill start-event-btn">
+					<Button variant="" href="/discover/create-event" className="mx-3 btn rounded-pill start-event-btn">
 						Start Event
 					</Button>
 				</Nav>
