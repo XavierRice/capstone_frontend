@@ -18,13 +18,15 @@ function MainNavigationBar({ scrolling = false }) {
 			bg="light"
 			expand="lg"
 			sticky="top"
-			className={` navbar-shadow ${scrolling ? "scrolling" : "not-scrolling"}`}
+			className={` navbar-shadow navbar-wrapper ${scrolling ? "scrolling" : "not-scrolling"}`}
 			style={{ width: scrolling ? "100%" : "60rem" }}
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
 
-			<Form inline="true">
+			<Form
+			// inline="true"
+			>
 				<FormControl
 					type="text"
 					placeholder="Search"
