@@ -1,0 +1,164 @@
+/*---------------------------- Entire App ----------------------------*/
+body {
+	overflow-x: hidden;
+	font: serif;
+}
+
+/* ------------------------ Main Navigation Bar--------------------------- */
+.navbar-wrapper {
+	position: sticky;
+	inset: 0px;
+	background-size: auto;
+	background-repeat: no-repeat;
+	will-change: transform;
+	width: 100%;
+	height: unset;
+	transform: none; /* Reset the transform */
+	display: flex;
+	justify-content: center;
+}
+
+.outline-none {
+	outline: none !important;
+}
+.navbar-shadow {
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+	transition:
+		padding 0.5s,
+		border-radius 0.5s;
+}
+
+.not-scrolling {
+	margin-top: 20px;
+	padding: 5px 2 0px;
+	border-radius: 50px;
+	width: 85%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.1);
+	transition:
+		padding 0.5s,
+		border-radius 0.5s;
+}
+
+.scrolling {
+	padding: 20px;
+	border-radius: 0px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pill-header {
+	transition: top 0.2s ease;
+}
+
+.sticky-navbar {
+	position: fixed;
+	top: 10px;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+}
+
+@media (max-width: 450px) {
+	.not-scrolling {
+		padding: 20px;
+		border-radius: 0px;
+		top: 0px;
+		width: 100vw;
+	}
+}
+
+/* ---------------------------- Btn ------------------------------ */
+.btn {
+	background-color: #630f76;
+	color: #ffffff;
+	border: #630f76;
+}
+
+.btn-class {
+	background-color: #630f76;
+	color: #ffffff;
+	border: #630f76;
+	position: absolute;
+	top: 50%;
+	translate: middle;
+}
+
+.btn:hover {
+	background-color: #bc9ec1;
+}
+
+/* .btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active .btn-primary.active .btn-primary.active,
+.btn-primary:active,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.btn-primary.active.focus,
+.btn-primary:active.focus {
+	background-color: transparent;
+	color: inherit;
+	border-color: transparent;
+	box-shadow: none;
+	outline: none;
+} */
+
+/* ---------------------loading state site wide-------------------------- */
+
+.loader-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
+}
+
+.loader {
+	border: 8px solid rgba(0, 0, 0, 0.1);
+	border-left-color: #d5e673;
+	animation: spin 1s infinite linear;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* -------------------- mobile view might delete -------------*/
+/* Navigation bar */
+
+.content {
+	padding-bottom: 50px; /* Adjust bottom padding for the height of the navbar */
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+/*------------------- categories section ---------------- */
+.circle-btn {
+	background-color: #bc9ec1; /* Example background color */
+	color: white; /* Text color */
+
+	transition: background-color 0.3s ease;
+}
+
+.circle-btn:hover {
+	background-color: #9973a0; /* Change color on hover */
+}
+
+/* ----------------------------------------------- Parallax Homepage------------------------------------- */
+.parallax-container {
+	position: relative;
+	overflow-x: hidden;
+	height: 100vh;
+}
+
+/* ----------------------------------------------------------------------------- */
