@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import InputField from "./InputField";
+import InputField from "./InputField"
 import ErrorMessage from "./ErrorMessage";
 
 const SignUpForm = ({ onSubmit }) => {
@@ -14,8 +14,8 @@ const SignUpForm = ({ onSubmit }) => {
   const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
-    const { key, value } = e.target;
-    setUserData({ ...userData, [key]: value });
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
   };
 
   const handleSubmit = (e) => {
