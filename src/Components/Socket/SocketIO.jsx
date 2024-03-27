@@ -36,7 +36,7 @@ export const SocketProvider = ({ children }) => {
     });
 
     socketInstance.on('connect_error', (error) => {
-      console.error('Connection error:', error);
+      console.error('Connection error: Somethings wrong with my backend', error);
     });
 
     // Set the socket instance in state

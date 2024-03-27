@@ -2,9 +2,9 @@ import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./DonationsLayout.css";
 import UkraineImg from "../../assets/ImpactifyImgs.jpeg";
-import ClimateImg from "/Users/nicolerodriguez/Documents/Pursuit/capstone_frontend/src/assets/climate.png";
-import DonateCode from "/Users/nicolerodriguez/Documents/Pursuit/capstone_frontend/src/assets/DonateEvent1.png";
-import FactsImg from "/Users/nicolerodriguez/Documents/Pursuit/capstone_frontend/src/assets/factsImg.png";
+import ClimateImg from "../../assets/climate.png";
+import DonateCode from "../../assets/DonateEvent1.png";
+import FactsImg from "../../assets/factsImg.png";
 import { FaArrowRight } from "react-icons/fa";
 
 function DonationsLayout() {
