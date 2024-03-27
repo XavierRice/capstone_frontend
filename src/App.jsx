@@ -60,8 +60,8 @@ function App() {
               path="/discover/create-event"
               element={<CreateEventPage />}
             />
-            <Route path="/user/signup" element={<SignUpPage />} />
-            <Route path="/user/login" element={<LoginPage />} />
+            {/* <Route path="/user/signup" element={<SignUpPage />} />
+            <Route path="/user/login" element={<LoginPage />} /> */}
 
              <Route
               path="/discover/create-event/donation"

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "../Components/Card/Card";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
+import NewsApi from "../Components/NewsApi/NewsApi"; // Import NewsApi component
 
 const News = () => {
   const [loading, setLoading] = useState(true);
@@ -23,10 +24,10 @@ const News = () => {
 
       setLoading(false);
     } catch (e) {
-      console.error("Error etching data:", e);
+      console.error("Error fetching data:", e);
     }
   }
-  console.log(newsData);
+
   const handleImageLoad = () => {
     setLoading(false);
   };
@@ -35,8 +36,6 @@ const News = () => {
     const selectedNews = newsData.find((news) => news.news_id === id);
     navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
   };
-
-  console.log(newsData[0])
 
   return (
     <div>
@@ -59,7 +58,11 @@ const News = () => {
           ))}
         </div>
       )}
+      <div>
+        <NewsApi /> {/* Insert NewsApi component here */}
+      </div>
     </div>
   );
 };
+
 export default News;
