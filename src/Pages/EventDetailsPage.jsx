@@ -121,7 +121,7 @@ function EventDetailsPage() {
 			<div className="display-6 d-flex justify-content-center">{title}</div>
 			<div className="d-flex justify-content-center my-3">
 				<span className="fw-bold mx-2">keyword |</span>
-				<span className="fw-bold">Hosted by name of event creator</span>
+				<span className="fw-bold">Hosted by -name of event creator-</span>
 			</div>
 			<Row
 				className="mx-3 d-flex justify-content-center"
@@ -179,6 +179,10 @@ function EventDetailsPage() {
 					</Row>
 				</Col>
 				<Col sm={11} md={4} className="">
+					{/* <Row className="attend-event p-2 m-1 bg-light ">
+						This is the designated donation box only renders if its a donation
+						event ! boolean
+					</Row> */}
 					<div className="attend-event bg-light">
 						<div className="fw-bold fs-5 d-flex justify-content-center mt-5 mb-3 d-block ">
 							REGISTER TO ATTEND THIS EVENT

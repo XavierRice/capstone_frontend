@@ -50,7 +50,6 @@ function App() {
 					/>
 				</Routes>
 			</div>
-			<Routes>{/* <Route path="/*" element={<Footer />} /> */}</Routes>
 		</Router>
 	);
 }

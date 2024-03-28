@@ -42,7 +42,7 @@ const NewsDetails = () => {
 						/>
 
 						{paragraphs.map((paragraph, index) => (
-							<p key={index} className=" m-4">
+							<p key={index} className=" mx-5 my-3">
 								{paragraph}
 							</p>
 						))}
