@@ -15,7 +15,9 @@ const Events = () => {
 	const [clickedEvents, setClickedEvents] = useState([]);
 	const [allEvents, setAllEvents] = useState([]);
 	const navigate = useNavigate();
+  
 	const backend = import.meta.env.VITE_BACKEND_URL;
+  
 	useEffect(() => {
 		const fetchEvents = async () => {
 			setLoading(true);
@@ -70,13 +72,13 @@ const Events = () => {
 	}, []);
 	useEffect(() => {
 		setAllEvents([...eventsData, ...virtualEvents]);
-		// console.log(allEvents);
+
 	}, [eventsData, virtualEvents]);
 	const handleCardClick = (eventData) => {
 		console.log("you clicked me", eventData);
 		navigate("/discover/events-details", { state: { event: eventData } });
 	};
-	//console.log (virtualEvents)
+
 	const handleImageLoad = () => {
 		setLoading(false);
 	};

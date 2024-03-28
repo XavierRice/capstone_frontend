@@ -7,13 +7,14 @@ import User_loginMod from "../Components/UserModals/User_loginMod"
 import { AuthData } from "../Provider/AuthProv";
 
 function CreateEventPage() {
+
+  const [showLogin, setShowLogin] = useState(false)
   const { isAuthenticated } = useContext(AuthData);
-  const [showLogin, setShowLogin] = useState(!isAuthenticated)
   const { user } = useContext(AuthData)
+
   const handleClose = () => setShowLogin(false)
 
   return (
-
     <>
       {showLogin && (
         <User_loginMod show={showLogin} onHide={handleClose} />

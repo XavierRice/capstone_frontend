@@ -2,16 +2,26 @@
 import React from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 
-function FilterBtn() {
-	return (
-		<DropdownButton id="" title="filter by">
-			<Dropdown.Item href="#">Nearby</Dropdown.Item>
-			<Dropdown.Item href="#">Online</Dropdown.Item>
-			<Dropdown.Item href="#">All Events</Dropdown.Item>
-			<Dropdown.Item href="#">News</Dropdown.Item>
-			<Dropdown.Item href="#">Donations</Dropdown.Item>
-		</DropdownButton>
-	);
+function FilterBtn({ userSelectedState }) {
+  return (
+    <DropdownButton id="" title="filter by">
+      <Dropdown.Item href="#" onClick={() => userSelectedState("Nearby")}>
+        Nearby
+      </Dropdown.Item>
+      <Dropdown.Item href="#" onClick={() => userSelectedState("Online")}>
+        Online
+      </Dropdown.Item>
+      <Dropdown.Item href="#" onClick={() => userSelectedState("All Events")}>
+        All Events
+      </Dropdown.Item>
+      <Dropdown.Item href="#" onClick={() => userSelectedState("News")}>
+        News
+      </Dropdown.Item>
+      <Dropdown.Item href="#" onClick={() => userSelectedState("Donations")}>
+        Donations
+      </Dropdown.Item>
+    </DropdownButton>
+  );
 }
 
 export default FilterBtn;
