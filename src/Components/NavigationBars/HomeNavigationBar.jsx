@@ -10,7 +10,6 @@ import {
 import { FaSearch } from "react-icons/fa";
 import useScrollPosition from "../../Hooks/ScrollPositionProvider";
 import { Link } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 function MainNavigationBar({ scrolling = false }) {
 	return (
