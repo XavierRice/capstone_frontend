@@ -117,18 +117,18 @@ function EventDetailsPage() {
 		// 		</Row>
 		// 	)}
 		// </Container>
-		<Container fluid className="m-3 event-details-container">
+		<Container fluid className="my-3 event-details-container">
 			<div className="display-6 d-flex justify-content-center">{title}</div>
 			<div className="d-flex justify-content-center my-3">
-				<span className="fw-bold mx-2">Type of event</span>
-				<span className="fw-bold">Hosted by Name of Creator</span>
+				<span className="fw-bold mx-2">keyword |</span>
+				<span className="fw-bold">Hosted by name of event creator</span>
 			</div>
 			<Row
 				className="mx-3 d-flex justify-content-center"
 				style={{ height: "100vh" }}
 			>
 				<Col sm={11} md={6}>
-					<Row style={{ height: "30%" }}>
+					<Row style={{ height: "30%", marginBottom: "5%" }}>
 						<img src={imageSrc} alt="Event" className="image" />
 					</Row>
 					<Row style={{ height: "10%" }} className="">
@@ -145,7 +145,9 @@ function EventDetailsPage() {
 								<CiLocationOn className=" " />
 								<span className="fw-bold fs-5 ">Location</span>
 								<span className="fw-bold fs-6 d-block">{locationName}</span>
-								{/* <a> Map</a> this will link to the map below */}
+								<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
+									Map
+								</div>
 							</div>
 						</Col>
 					</Row>
@@ -165,7 +167,7 @@ function EventDetailsPage() {
 						</div>
 					</Row>
 					<hr className="my-4" />
-					<Row className="map-row">
+					<Row className="map-row mb-5">
 						<div className="">
 							<GoogleMap
 								location={locationName}
@@ -177,9 +179,9 @@ function EventDetailsPage() {
 					</Row>
 				</Col>
 				<Col sm={11} md={4} className="">
-					<div className="attend-event">
+					<div className="attend-event bg-light">
 						<div className="fw-bold fs-5 d-flex justify-content-center mt-5 mb-3 d-block ">
-							REGISTER TO THIS EVENT
+							REGISTER TO ATTEND THIS EVENT
 						</div>
 						<div className="forms p-3">
 							<Form>
