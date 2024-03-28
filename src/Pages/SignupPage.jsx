@@ -1,27 +1,32 @@
-import React from "react";
-// import { useContext } from "react";
-// import { AuthData } from "../Provider/AuthProv";
+import React, { useContext } from "react";
+import { useNavigate, useLocation } from 'react-router-dom';
+import { AuthData } from "../Provider/AuthProv";
 import { Container, Row, Col, Card } from "react-bootstrap";
-// import SignUpForm from "../Components/userManagement/SignUpForm";
+import SignUpForm from "../Components/userManagement/SignUpForm";
 
 const SignUpPage = () => {
-  // const { API, setUser, setToken } = useContext(AuthData);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // const handleSignUp = async (userData) => {
-  //   try {
-  //     const response = await API.post("/users/register", userData);
-  //     console.log("Sign-up response:", response.data);
+  const { API, setUser, setToken } = useContext(AuthData);
 
-  //     const { user, token } = response.data;
+  const handleSignUp = async (userData) => {
+    try {
+      const response = await API.post("/users/register", userData);
+      console.log("Sign-up response:", response.data);
+      const { user, token } = response.data;
+      setUser(user);
+      setToken(token);
+      // Storing token in da localStorage
+      localStorage.setItem('token', token);
+      
+      const from = location.state?.from || '/'
+      navigate(from)
+    } catch (error) {
+      console.error("Sign-up error:", error);
+    }
+  };
 
-  //     setUser(user);
-  //     setToken(token);
-
-  //     console.log("User info:", user);
-  //   } catch (error) {
-  //     console.error("Sign-up error:", error);
-  //   }
-  // };
 
   return (
     <Container className="">
@@ -29,7 +34,7 @@ const SignUpPage = () => {
         <Row className="">
           <Col className="">
             <h2>Sign Up</h2>
-            {/* <SignUpForm onSubmit={handleSignUp} /> */}
+            <SignUpForm onSubmit={handleSignUp} />
           </Col>
         </Row>
       </Card>

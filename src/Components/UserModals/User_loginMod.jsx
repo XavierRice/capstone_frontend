@@ -8,11 +8,14 @@ import './User_loginCss.css'
 function User_loginMod({show, onHide}) {
   const navigate = useNavigate()
 
-  const handleRedirect = (event) => {
-    navigate('/discover')
+  const handleSignUp = (event) => {
+    navigate('/discover/users/signup', { state: { from: location.pathname } } )
   };
-  const handleLoginSignup = (event) => {
-    navigate('/login')
+  const handleLogin = (event) => {
+    navigate('/discover/users/login', { state: { from: location.pathname } })
+  }
+  const handleGoBack = (event) => {
+    navigate('/')
   }
 
   return (
@@ -33,8 +36,9 @@ function User_loginMod({show, onHide}) {
         <h4>I am Ready to Make an Impact!</h4>
       </Modal.Body>
       <Modal.Footer className='justify-content-center'>
-      <Button variant="secondary" onClick={handleLoginSignup}>Signup/login</Button>
-          <Button variant="primary" onClick={handleRedirect}>go back</Button>
+      <Button variant="secondary" onClick={handleLogin}>Login</Button>
+          <Button variant="primary" onClick={handleSignUp}>Join!</Button>
+          <Button variant="primary" onClick={handleGoBack}>Back</Button>
       </Modal.Footer>
     </Modal>
   );
