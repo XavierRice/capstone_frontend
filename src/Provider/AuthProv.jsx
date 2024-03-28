@@ -8,8 +8,9 @@ export function useAuthDataProvider() {
 }
 
 function AuthProv({ children }) {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState(null);
+
   const API = axios.create({
     baseURL: "http://localhost:4000",
     headers: {
@@ -18,7 +19,7 @@ function AuthProv({ children }) {
     },
   });
 
-  const isAuthenticated = user && token;
+  const isAuthenticated = !!user && !!token;
 
   return (
     <AuthData.Provider
