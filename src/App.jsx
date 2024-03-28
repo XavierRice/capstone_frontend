@@ -18,12 +18,14 @@ import StripeBuy from "./Components/Stripe/StripeBuy";
 import ProofHero from "./Components/SocialProof/ProofHero";
 import ThankYou from "./Pages/ThankYou";
 import CardNew from "./Components/Card/CardNew";
+import SearchResultPage from "./Pages/SearchResultPage";
 
 function App() {
 	return (
 		<Router>
 			<Routes>
 				<Route path="/" element={<Homepage />} />
+				
 				<Route path="/*" element={<MainNavigationBar />} />
 			</Routes>
 			<div>
@@ -36,6 +38,7 @@ function App() {
 						path="/discover/events-details"
 						element={<EventDetailsPage />}
 					/>
+					<Route path="/search-results" element={<SearchResultPage />} />
 					<Route path="/discover/news" element={<News />} />
 					<Route path="/discover/events" element={<Events />} />
 					<Route path="/discover/donations" element={<Donations />} />
