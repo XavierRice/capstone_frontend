@@ -6,25 +6,30 @@ const NewsApi = () => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [keywords, setKeywords] = useState(['ukraine', 'palestine', 'global warming', 'global issues', 'donations']); // Default keywords
 
   useEffect(() => {
-    const fetchNewsArticles = async () => {
-      try {
+    fetchNewsArticles();
+  }, [keywords]); 
+
+  const fetchNewsArticles = async () => {
+    try {
+      let allArticles = [];
+      for (const keyword of keywords) {
         const response = await fetch(`https://newsapi.org/v2/everything?q=politics&apiKey=${import.meta.env.VITE_APP_NEWSAPI_KEY}`);
         if (!response.ok) {
-          throw new Error('Failed to fetch news articles');
+          throw new Error(`Failed to fetch news articles for keyword: ${keyword}`);
         }
         const data = await response.json();
-        setNewsArticles(data.articles);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
+        allArticles = allArticles.concat(data.articles);
       }
-    };
-
-    fetchNewsArticles();
-  }, []);
+      setNewsArticles(allArticles);
+      setLoading(false);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
