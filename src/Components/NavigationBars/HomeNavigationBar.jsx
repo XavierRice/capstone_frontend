@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
 	Navbar,
@@ -10,8 +9,8 @@ import {
 } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 import useScrollPosition from "../../Hooks/ScrollPositionProvider";
+import { Link } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 function MainNavigationBar({ scrolling = false }) {
 	return (
 		<Navbar
@@ -22,18 +21,13 @@ function MainNavigationBar({ scrolling = false }) {
 			style={{ width: scrolling ? "100%" : "60rem" }}
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
-			<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
 
-			<Form
-			// inline="true"
-			>
-				<FormControl
-					type="text"
-					placeholder="Search"
-					className="mr-sm-2 "
-					style={{ width: "110px" }}
-				/>
-			</Form>
+			<Link to="/search">
+				<div className="mx-3">
+					<FaSearch className="" style={{ marginRight: "2px" }} />
+					Search
+				</div>
+			</Link>
 
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">

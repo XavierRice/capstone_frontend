@@ -48,6 +48,10 @@ function App() {
 						path="/discover/create-event/donation"
 						element={<StripeDonation />}
 					/>
+					{/* <Route
+						path="/search"
+						element={< Search/>}
+					/> */}
 				</Routes>
 			</div>
 		</Router>
