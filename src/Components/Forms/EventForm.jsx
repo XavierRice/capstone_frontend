@@ -135,7 +135,7 @@ console.log(stripeId)
   return (
     <Form className='custom-text' onSubmit={handleSubmit}>
       <Row className="mb-3">
-      <h3>Welcome, {user.name}! Please fill out the form to create your event.</h3>
+      <h3>Welcome, {user}! Please fill out the form to create your event.</h3>
         <Form.Group className='mb-3' controlId="event_title">
           <Form.Label >Event Title</Form.Label>
          

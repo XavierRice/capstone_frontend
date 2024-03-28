@@ -8,14 +8,14 @@ const News = () => {
 	const [loading, setLoading] = useState(true);
 	const [newsData, setNewsData] = useState([]);
 	const navigate = useNavigate();
-
+	const backend = import.meta.env.VITE_BACKEND_URL
 	useEffect(() => {
 		fetchData();
 	}, []);
 
 	async function fetchData() {
 		try {
-			const response = await fetch("http://localhost:4000/news");
+			const response = await fetch(`${backend}/news`);
 			if (!response.ok) {
 				throw new Error("Failed to fetch data:");
 			}
