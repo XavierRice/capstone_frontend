@@ -1,16 +1,12 @@
-.bento-box {
+/* 
+
 	display: flex;
-	/* justify-content: center; */
+
 	width: 80%;
 	height: 80%;
 }
 
-.full-size-square {
-	background-color: #ccc;
-	flex: 2;
-	border-radius: 20px;
-	margin: 25px; /* Add margin for spacing */
-}
+
 
 .little-squares-container {
 	margin-top: 2%;
@@ -39,8 +35,25 @@
 	flex: 1;
 	background-size: cover;
 	background-position: center;
-}
+} */
 /* 
 .card-content {
 	padding: 20px;
 } */
+
+.little-square {
+	border-radius: 20px;
+	margin-right: 25px;
+	background-color: #ccc;
+	height: 30vh;
+
+	margin-bottom: 25px;
+}
+
+.full-size-square {
+	background-color: #ccc;
+	flex: 2;
+	border-radius: 20px;
+	margin: 25px;
+	height: 65vh;
+}

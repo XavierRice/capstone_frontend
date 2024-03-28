@@ -1,6 +1,7 @@
 import React from "react";
 import "./Cards.css";
 import CardComponent from "../../Card/Card";
+import { Col, Container, Row } from "react-bootstrap";
 
 function Cards() {
 	const donationCards = [
@@ -32,34 +33,32 @@ function Cards() {
 	];
 
 	return (
-		<div
-			style={{ height: "100%", width: "100%" }}
-			className="d-flex justify-content-center "
-		>
-			<div className="bento-box ">
-				<div className="full-size-square">
-					{/* <CardComponent
-						title={donationCards[0].title}
-						imageSrc={donationCards[0].imageSrc}
-						text={donationCards[0].text}
-					/> */}
-				</div>
-				<div className="little-squares-container">
-					<div className="little-square">
-						{/* <CardComponent
-							title={donationCards[1].title}
-							imageSrc={donationCards[1].imageSrc}
-							text={donationCards[1].text}
-						/> */}
-					</div>
-					<div className="little-square"></div>
-				</div>
-				<div className="little-squares-container">
-					<div className="little-square"></div>
-					<div className="little-square"></div>
-				</div>
-			</div>
-		</div>
+		<Container fluid style={{}}>
+			<Row
+				className="justify-content-center align-items-center mt-3"
+				style={{}}
+			>
+				<Col xs={10} md={5} lg={4} className="">
+					<div className="full-size-square">card</div>
+				</Col>
+				<Col xs={10} md={2} lg={2}>
+					<Row>
+						<div className="little-square mx-"> card</div>
+					</Row>
+					<Row>
+						<div className="little-square"> card</div>
+					</Row>
+				</Col>
+				<Col xs={10} md={2} lg={2} className="mx-3">
+					<Row>
+						<div className="little-square"> card</div>
+					</Row>
+					<Row>
+						<div className="little-square"> card</div>
+					</Row>
+				</Col>
+			</Row>
+		</Container>
 	);
 }
 

@@ -87,7 +87,6 @@ function Footer() {
 									Subscribe
 								</button>
 							</form>
-							{/* <p className="fs-sm ">I agree to receive newsletters</p> */}
 						</div>
 					</Col>
 					<p className="m-0 ">

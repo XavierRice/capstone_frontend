@@ -78,47 +78,41 @@ function Homepage() {
 				<ParallaxLayer
 					offset={0.7}
 					speed={0}
-					factor={2.5}
+					factor={2}
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					{/* <MainContent /> */}
 					<DonationsLayout />
-					{/* <CardLayout /> */}
-					{/* <TrustBlock /> */}
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={1.8}
+					offset={1.7}
 					speed={0}
-					factor={1.1}
+					factor={1.2}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
 					<TrustAndSafety />
-					{/* <ProofHero /> */}
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={2.3}
+					offset={2.1}
 					speed={0}
 					factor={1}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
 					<CardLayout />
-					{/* <ProofHero /> */}
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={3.2}
+					offset={3}
 					speed={0}
-					factor={1}
+					factor={1.4}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
-					{/* <CardLayout /> */}
 					<ProofHero />
 				</ParallaxLayer>
 
-				<ParallaxLayer offset={4.2} factor={1}>
+				<ParallaxLayer offset={4.28} factor={1}>
 					<Footer />
 				</ParallaxLayer>
 			</Parallax>
