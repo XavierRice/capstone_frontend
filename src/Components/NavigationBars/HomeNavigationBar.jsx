@@ -18,13 +18,15 @@ function MainNavigationBar({ scrolling = false }) {
 			bg="light"
 			expand="lg"
 			sticky="top"
-			className={` navbar-shadow ${scrolling ? "scrolling" : "not-scrolling"}`}
+			className={` navbar-shadow navbar-wrapper ${scrolling ? "scrolling" : "not-scrolling"}`}
 			style={{ width: scrolling ? "100%" : "60rem" }}
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
 
-			<Form inline="true">
+			<Form
+			// inline="true"
+			>
 				<FormControl
 					type="text"
 					placeholder="Search"
@@ -60,10 +62,10 @@ function MainNavigationBar({ scrolling = false }) {
 					<Nav.Link href="#howitworks" className="mx-3">
 						How It Works
 					</Nav.Link>
-					<Nav.Link href="#signin" className="mx-3">
+					<Nav.Link href="/discover/users/signup" className="mx-3">
 						Sign In
 					</Nav.Link>
-					<Button variant="" className="mx-3 btn rounded-pill start-event-btn">
+					<Button variant="" href="/discover/create-event" className="mx-3 btn rounded-pill start-event-btn">
 						Start Event
 					</Button>
 				</Nav>

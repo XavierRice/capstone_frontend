@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import EventDetailsPage from "./Pages/EventDetailsPage";
 import News from "./Pages/News";
 import Events from "./Pages/Events";
@@ -18,6 +18,9 @@ import StripeBuy from "./Components/Stripe/StripeBuy";
 import ProofHero from "./Components/SocialProof/ProofHero";
 import ThankYou from "./Pages/ThankYou";
 import CardNew from "./Components/Card/CardNew";
+import Footer from "./Components/Footer/Footer";
+import SignUpPage from "./Pages/SignupPage";
+import LoginPage from "./Pages/LoginPage";
 
 function App() {
 	return (
@@ -39,8 +42,8 @@ function App() {
 					<Route path="/discover/news" element={<News />} />
 					<Route path="/discover/events" element={<Events />} />
 					<Route path="/discover/donations" element={<Donations />} />
-					<Route path="/discover/create-event" element={<CreateEventPage />} />
-					<Route path="/discover/test" element={<ProofHero />} />
+					<Route path="/discover/users/login" element={<LoginPage/>} />
+					<Route path="/discover/users/signup" element={<SignUpPage />} />
 					<Route path="/discover/thankyou" element={<ThankYou />} />
 					<Route path="/discover/create-event" element={<CreateEventPage />} />
 					<Route
