@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import Card from '../Card/Card'; // Import the Card component
+import './NewsApi.css'; // Import CSS for styling
 
 const NewsApi = () => {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -36,13 +37,18 @@ const NewsApi = () => {
   return (
     <div>
       <h1>Latest News</h1>
-      <ul>
+      <div className="news-container">
         {newsArticles.map(article => (
-          <li key={article.url}>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">{article.title}</a>
-          </li>
+          <Card
+            key={article.url}
+            title={article.title}
+            imageSrc={article.urlToImage}
+            text={article.description}
+            updatedAt={article.publishedAt}
+            onClick={() => window.open(article.url, '_blank')} // Open the article link in a new tab
+          />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

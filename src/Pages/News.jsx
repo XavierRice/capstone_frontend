@@ -59,7 +59,7 @@ const News = () => {
         </div>
       )}
       <div>
-        <NewsApi /> {/* Insert NewsApi component here */}
+        <NewsApi /> 
       </div>
     </div>
   );
