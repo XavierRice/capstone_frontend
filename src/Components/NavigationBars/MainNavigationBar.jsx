@@ -66,7 +66,7 @@ function MainNavigationBar() {
 					<Nav.Link href="#signin" className="mx-3">
 						Sign In
 					</Nav.Link>
-					<Link To="/discover/create-event">
+					<Link to="/discover/create-event">
 						<Button
 							variant=""
 							className="mx-3 btn rounded-pill start-event-btn"
