@@ -31,14 +31,6 @@ const News = () => {
 	}
 	console.log(newsData);
   
-	const handleImageLoad = () => {
-
-      setLoading(false);
-    } catch (e) {
-      console.error("Error fetching data:", e);
-    }
-  }
-
   const handleImageLoad = () => {
     setLoading(false);
   };
@@ -71,13 +63,12 @@ const News = () => {
 							/>
 						</Col>
 					))}
+					<Col><NewsApi/></Col>
 				</Row>
-      <div>
-        <NewsApi /> 
-      </div>
+
 			)}
 		</div>
 	);
-};
+					}
 
 export default News;

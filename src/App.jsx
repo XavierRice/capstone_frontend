@@ -23,7 +23,7 @@ import Footer from "./Components/Footer/Footer";
 import SignUpPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 import SearchResultPage from "./Pages/Search/SearchPage";
-
+import NewsApi from "./Components/NewsApi/NewsApi";
 function App() {
 	return (
 		<Router>
@@ -50,6 +50,8 @@ function App() {
 					<Route path="/discover/users/signup" element={<SignUpPage />} />
 					<Route path="/discover/thankyou" element={<ThankYou />} />
 					<Route path="/discover/create-event" element={<CreateEventPage />} />
+					<Route path="/discover/test"element={<NewsApi/>
+				}/>
 					<Route
 						path="/discover/create-event/donation"
 						element={<StripeDonation />}
