@@ -28,7 +28,7 @@ const Events = () => {
 				fetchEventsData = resposeBackend.data.data;
 				console.log(resposeBackend)
 				setEventsData(fetchEventsData);
-				console.log(responseBackend);
+				
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			}

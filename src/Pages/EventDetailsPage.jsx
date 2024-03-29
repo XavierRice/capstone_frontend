@@ -91,20 +91,20 @@ function EventDetailsPage() {
 		// 	{displayMap && (
 		// 		<Row className="mt-3">
 		// 			<Col md={{ span: 6, offset: 6 }}>
-		// 				<div className="map-controls">
-		// 					<button
-		// 						className="rounded-button"
-		// 						onClick={() => setTravelMode("DRIVING")}
-		// 					>
-		// 						Driving
-		// 					</button>
-		// 					<button
-		// 						className="rounded-button"
-		// 						onClick={() => setTravelMode("WALKING")}
-		// 					>
-		// 						Walking
-		// 					</button>
-		// 				</div>
+						// <div className="map-controls">
+						// 	<button
+						// 		className="rounded-button"
+						// 		onClick={() => setTravelMode("DRIVING")}
+						// 	>
+						// 		Driving
+						// 	</button>
+						// 	<button
+						// 		className="rounded-button"
+						// 		onClick={() => setTravelMode("WALKING")}
+						// 	>
+						// 		Walking
+						// 	</button>
+						// </div>
 		// 				<div className="map-container">
 		// 					<GoogleMap
 		// 						location={locationName}
@@ -168,6 +168,20 @@ function EventDetailsPage() {
 					</Row>
 					<hr className="my-4" />
 					<Row className="map-row mb-5">
+					<div className="map-controls">
+							<button
+								className="rounded-button"
+								onClick={() => setTravelMode("DRIVING")}
+							>
+								Driving
+							</button>
+							<button
+								className="rounded-button"
+								onClick={() => setTravelMode("WALKING")}
+							>
+								Walking
+							</button>
+						</div>
 						<div className="">
 							<GoogleMap
 								location={locationName}
