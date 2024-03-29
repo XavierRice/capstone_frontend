@@ -18,11 +18,11 @@ import StripeBuy from "./Components/Stripe/StripeBuy";
 import ProofHero from "./Components/SocialProof/ProofHero";
 import ThankYou from "./Pages/ThankYou/ThankYou";
 import CardNew from "./Components/Card/CardNew";
-// import SearchResultPage from "./Pages/Search/SearchResultPage";
+import SearchResultPage from "./Pages/SearchResultPage";
 import Footer from "./Components/Footer/Footer";
 import SignUpPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
-import SearchResultPage from "./Pages/Search/SearchPage";
+import SearchPage from "./Pages/Search/SearchPage";
 
 function App() {
 	return (
@@ -54,7 +54,7 @@ function App() {
 						path="/discover/create-event/donation"
 						element={<StripeDonation />}
 					/>
-					<Route path="/search" element={<SearchResultPage />} />
+					<Route path="/search" element={<SearchPage />} />
 				</Routes>
 			</div>
 		</Router>

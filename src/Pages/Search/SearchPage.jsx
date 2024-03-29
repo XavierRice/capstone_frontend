@@ -3,7 +3,7 @@ import SearchBar from "../../Components/SearchBar";
 import SearchResultPage from "../SearchResultPage";
 
 function SearchPage() {
-	return <div>{/* <SearchResultPage /> */}</div>;
+	return <div>{ <SearchBar /> }</div>;
 }
 
 export default SearchPage;
