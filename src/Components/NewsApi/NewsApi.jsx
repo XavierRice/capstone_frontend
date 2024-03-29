@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../Card/Card'; // Import the Card component
 import './NewsApi.css'; // Import CSS for styling
+import { Container, Row, Col } from 'react-bootstrap'; // Import Container, Row, and Col from react-bootstrap
 
 const NewsApi = () => {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -16,7 +17,7 @@ const NewsApi = () => {
     try {
       let allArticles = [];
       for (const keyword of keywords) {
-        const response = await fetch(`https://newsapi.org/v2/everything?q=politics&apiKey=${import.meta.env.VITE_APP_NEWSAPI_KEY}`);
+        const response = await fetch(`https://newsapi.org/v2/everything?q=everything&apiKey=${import.meta.env.VITE_APP_NEWSAPI_KEY}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch news articles for keyword: ${keyword}`);
         }
@@ -40,21 +41,21 @@ const NewsApi = () => {
   }
 
   return (
-    <div>
-      <h1>Latest News</h1>
-      <div className="news-container">
+    <Container>
+      <Row xs={1} sm={2} md={3} lg={4} xl={4} xxl={4} className="g-4">
         {newsArticles.map(article => (
-          <Card
-            key={article.url}
-            title={article.title}
-            imageSrc={article.urlToImage}
-            text={article.description}
-            updatedAt={article.publishedAt}
-            onClick={() => window.open(article.url, '_blank')} // Open the article link in a new tab
-          />
+          <Col key={article.url}>
+            <Card
+              title={article.title}
+              imageSrc={article.urlToImage}
+              text={article.description}
+              updatedAt={article.publishedAt}
+              onClick={() => window.open(article.url, '_blank')} // Open the article link in a new tab
+            />
+          </Col>
         ))}
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 };
 
