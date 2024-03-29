@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,  useEffect } from "react";
 import "./EventDetailsPage.css";
 import { useLocation } from "react-router";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import StripeBuy from "../Components/Stripe/StripeBuy";
 import GoogleMap from "../Components/Maps/GoogleMap";
 import defaultImage from "../assets/NoImage.jpg";
 import Event4Strip from "../Components/Stripe/Event4Stripe";
@@ -20,7 +21,7 @@ function EventDetailsPage() {
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	const [showDonationButton, setShowDonationButton] = useState(false);
 	const [checked, setChecked] = useState(false);
-
+	const [buyButtonId, setBuyButtonId] = useState(null)
 	const handleCheckboxChange = () => {
 		setChecked(!checked);
 	};
@@ -43,6 +44,12 @@ function EventDetailsPage() {
 		rsvp = true, // Provide a default value in case it's missing
 	} = event;
 
+	useEffect(() => {
+		
+		setBuyButtonId(stripe_id.toString())
+		console.log(buyButtonId)
+	})
+
 	const formatDate = (timestamp) => {
 		if (typeof timestamp === "number") {
 			const date = new Date(timestamp * 1000);
@@ -58,6 +65,7 @@ function EventDetailsPage() {
 	);
 
 	const displayMap = locationName && lat && lng;
+
 
 	let imageSrc = event.logo_url || event.event_photo || defaultImage;
 	const eventDate = formatDate(date);
@@ -91,20 +99,20 @@ function EventDetailsPage() {
 		// 	{displayMap && (
 		// 		<Row className="mt-3">
 		// 			<Col md={{ span: 6, offset: 6 }}>
-		// 				<div className="map-controls">
-		// 					<button
-		// 						className="rounded-button"
-		// 						onClick={() => setTravelMode("DRIVING")}
-		// 					>
-		// 						Driving
-		// 					</button>
-		// 					<button
-		// 						className="rounded-button"
-		// 						onClick={() => setTravelMode("WALKING")}
-		// 					>
-		// 						Walking
-		// 					</button>
-		// 				</div>
+						// <div className="map-controls">
+						// 	<button
+						// 		className="rounded-button"
+						// 		onClick={() => setTravelMode("DRIVING")}
+						// 	>
+						// 		Driving
+						// 	</button>
+						// 	<button
+						// 		className="rounded-button"
+						// 		onClick={() => setTravelMode("WALKING")}
+						// 	>
+						// 		Walking
+						// 	</button>
+						// </div>
 		// 				<div className="map-container">
 		// 					<GoogleMap
 		// 						location={locationName}
@@ -168,6 +176,20 @@ function EventDetailsPage() {
 					</Row>
 					<hr className="my-4" />
 					<Row className="map-row mb-5">
+					<div className="map-controls">
+							<button
+								className="rounded-button"
+								onClick={() => setTravelMode("DRIVING")}
+							>
+								Driving
+							</button>
+							<button
+								className="rounded-button"
+								onClick={() => setTravelMode("WALKING")}
+							>
+								Walking
+							</button>
+						</div>
 						<div className="">
 							<GoogleMap
 								location={locationName}
@@ -179,10 +201,11 @@ function EventDetailsPage() {
 					</Row>
 				</Col>
 				<Col sm={11} md={4} className="">
-					{/* <Row className="attend-event p-2 m-1 bg-light ">
-						This is the designated donation box only renders if its a donation
-						event ! boolean
-					</Row> */}
+					<Row className="attend-event p-2 m-1 custom-bg justify-content-center">
+						<div className="adjust-right">
+						<StripeBuy buyButtonId={buyButtonId} />
+						</div>
+					</Row>
 					<div className="attend-event bg-light">
 						<div className="fw-bold fs-5 d-flex justify-content-center mt-5 mb-3 d-block ">
 							REGISTER TO ATTEND THIS EVENT

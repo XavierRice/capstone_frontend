@@ -16,7 +16,7 @@ import useScrollPosition from "./Hooks/ScrollPositionProvider";
 import StripePaymentEvent from "./Components/Stripe/StripePaymentEvent";
 import StripeBuy from "./Components/Stripe/StripeBuy";
 import ProofHero from "./Components/SocialProof/ProofHero";
-import ThankYou from "./Pages/ThankYou";
+import ThankYou from "./Pages/ThankYou/ThankYou";
 import CardNew from "./Components/Card/CardNew";
 // import SearchResultPage from "./Pages/Search/SearchResultPage";
 import Footer from "./Components/Footer/Footer";

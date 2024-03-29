@@ -10,9 +10,11 @@ function CreateEventPage() {
 
   const { isAuthenticated } = useContext(AuthData);
   const [showLogin, setShowLogin] = useState(!isAuthenticated)
-  const { user } = useContext(AuthData)
+  const { user, token } = useContext(AuthData)
 
   const handleClose = () => setShowLogin(false)
+  console.log(user, token)
+
 
   return (
     <>
