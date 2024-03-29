@@ -106,10 +106,10 @@ function MainContent() {
 
 	return (
 		<Container className="m-5">
-			<div className="fs-4 my-4  fw-bold text-dark">
+			<div className="fs-4 my-4  fw-bold text-dark d-block">
 				Discover events inspired by what you care about
 			</div>
-			<div className="btn rounded-pill my-4">
+			<div className="btn rounded-pill my-4 d-block">
 				<FilterBtn />
 			</div>
 
@@ -118,7 +118,7 @@ function MainContent() {
 					{mockEventData
 						.slice(startIndex, startIndex + eventsPerPage)
 						.map((event) => (
-							<Col key={event.id} xs={9} md={3} className="mb-3">
+							<Col key={event.id} xs={12} md={3} className="mb-3">
 								<Card
 									title={event.event_title}
 									imageSrc={event.event_photo}
@@ -148,3 +148,5 @@ function MainContent() {
 }
 
 export default MainContent;
+
+

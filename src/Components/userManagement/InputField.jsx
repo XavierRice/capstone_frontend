@@ -1,13 +1,14 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 
-const inputField = ({ label, type, placeholder, value, onChange }) => {
+const InputField = ({ label, type, placeholder, value, name, onChange }) => {
   return (
     <Form.Group>
       <Form.Label>{label}</Form.Label>
       <Form.Control
         type={type}
         placeholder={placeholder}
+        name={name}
         value={value}
         onChange={onChange}
       />
@@ -15,4 +16,4 @@ const inputField = ({ label, type, placeholder, value, onChange }) => {
   );
 };
 
-export default inputField;
+export default InputField;

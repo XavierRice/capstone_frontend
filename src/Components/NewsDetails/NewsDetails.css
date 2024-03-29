@@ -1,0 +1,23 @@
+.related-events {
+	height: 100%;
+	width: 100%;
+	border-left: solid rgba(128, 128, 128, 0.145) 1px;
+}
+
+.news-details-container {
+	padding-right: 5%;
+	padding-left: 5%;
+}
+
+.box {
+	height: 30%;
+	width: 80%;
+	margin: 20px;
+	background-color: rgba(131, 103, 131, 0.375);
+	border-radius: 15px;
+}
+
+.icons {
+	display: flex;
+	justify-content: end;
+}

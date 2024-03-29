@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line no-unused-vars
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Container, Button, Navbar } from "react-bootstrap";
 import MainContent from "../Components/MainContent";
@@ -8,10 +6,19 @@ import TrustAndSafety from "../Components/TrustAndSafety/TrustAndSafety";
 import HeroImage from "../assets/HeroImage.jpg";
 import MainNavigationBar from "../Components/NavigationBars/HomeNavigationBar";
 import useScrollPosition from "../Hooks/ScrollPositionProvider";
+import TrustBlock from "../Components/Midsection/TrustBlock";
 import MobileNavigation from "../Components/NavigationBars/MainNavigationBar";
+import ProofHero from "../Components/SocialProof/ProofHero";
+import DonationsLayout from "../Components/BentoBoxes/DonationsLayout";
+import CardLayout from "../Components/BentoBoxes/CardsLayout/Cards";
+import Footer from "../Components/Footer/Footer";
+import { AuthData } from '../Provider/AuthProv'
 
 function Homepage() {
+	const { user } = useContext(AuthData)
 	const [isResponsive, setIsResponsive] = useState(false);
+
+	console.log(user)
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -32,7 +39,7 @@ function Homepage() {
 	return (
 		<div className="d-flex justify-content-center align-items-center parallax-container">
 			<Parallax
-				pages={2}
+				pages={4.5}
 				ref={parallaxRef}
 				className="parallax-container"
 				style={{
@@ -55,9 +62,10 @@ function Homepage() {
 						Start Event
 					</Button>
 				</div>
+				{/* navigation */}
 				<ParallaxLayer
 					horizontal
-					sticky={{ start: 0 }}
+					sticky={{ start: 0, end: 4 }}
 					style={{
 						height: "unset",
 						display: !isResponsive ? "flex" : null,
@@ -73,26 +81,59 @@ function Homepage() {
 
 				<ParallaxLayer
 					offset={0.7}
-					speed={0.5}
+					speed={0}
 					factor={2}
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					{/* <div> */}
-					<MainContent />
-					{/* </div> */}
+					<DonationsLayout />
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={1}
-					speed={1}
-					factor={2}
+					offset={1.7}
+					speed={0}
+					factor={1.2}
 					className=" d-flex justify-content-center"
+					style={{ backgroundColor: "white" }}
 				>
-					<div>
-						<TrustAndSafety />
-					</div>
+					<TrustAndSafety />
+				</ParallaxLayer>
+				<ParallaxLayer
+					offset={2.1}
+					speed={0}
+					factor={1}
+					className=" d-flex justify-content-center"
+					style={{ backgroundColor: "white" }}
+				>
+					<CardLayout />
+				</ParallaxLayer>
+				<ParallaxLayer
+					offset={3}
+					speed={0}
+					factor={1.4}
+					className=" d-flex justify-content-center"
+					style={{ backgroundColor: "white" }}
+				>
+					<ProofHero />
+				</ParallaxLayer>
+
+				<ParallaxLayer offset={4.28} factor={1}>
+					<Footer />
 				</ParallaxLayer>
 			</Parallax>
+			{isResponsive && (
+				<div className="sticky-footer">
+					<Button
+						className="btn"
+						variant=""
+						style={{
+							color: "#ffffff",
+							cursor: "pointer",
+						}}
+					>
+						Start Event
+					</Button>
+				</div>
+			)}
 		</div>
 	);
 }

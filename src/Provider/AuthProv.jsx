@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState } from "react";
+import React, { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const AuthData = createContext();
@@ -8,17 +8,36 @@ export function useAuthDataProvider() {
 }
 
 function AuthProv({ children }) {
-  const [token, setToken] = useState(null);
-  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  
+  const [user, setUser] = useState(() => {
+    const savedUser = localStorage.getItem('user')
+    return savedUser ? JSON.parse(savedUser) : null
+  });
+
+
   const API = axios.create({
     baseURL: "http://localhost:4000",
     headers: {
       "Content-Type": "application/json",
-      Authorization: token ? `Bearer ${token}` : "",
+      // Authorization: token ? `Bearer ${token}` : "",
     },
   });
 
-  const isAuthenticated = user && token;
+  useEffect(() => {
+    //always has the most recent token
+    API.defaults.headers.common['Authorization'] = token ? `Bearer ${token}` : ""
+  }, [token])
+
+  useEffect(() => {
+    if(user) {
+      localStorage.setItem('user', JSON.stringify(user));
+    } else {
+      localStorage.removeItem('user')
+    }
+  }, [user])
+
+  const isAuthenticated = !!user && !!token;
 
   return (
     <AuthData.Provider

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
 	Navbar,
@@ -10,28 +9,25 @@ import {
 } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 import useScrollPosition from "../../Hooks/ScrollPositionProvider";
+import { Link } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 function MainNavigationBar({ scrolling = false }) {
 	return (
 		<Navbar
 			bg="light"
 			expand="lg"
 			sticky="top"
-			className={` navbar-shadow ${scrolling ? "scrolling" : "not-scrolling"}`}
-			style={{ width: scrolling ? "100%" : "70rem" }}
+			className={` navbar-shadow navbar-wrapper ${scrolling ? "scrolling" : "not-scrolling"}`}
+			style={{ width: scrolling ? "100%" : "60rem" }}
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
-			<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
 
-			<Form inline="true">
-				<FormControl
-					type="text"
-					placeholder="Search"
-					className="mr-sm-2 "
-					style={{ width: "110px" }}
-				/>
-			</Form>
+			<Link to="/search">
+				<div className="mx-3">
+					<FaSearch className="" style={{ marginRight: "2px" }} />
+					Search
+				</div>
+			</Link>
 
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
@@ -45,7 +41,7 @@ function MainNavigationBar({ scrolling = false }) {
 						<NavDropdown.Item href="/discover/events">
 							All Events
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#donations">Donations</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/donations">Donations</NavDropdown.Item>
 						<NavDropdown.Item href="#votingtoolkit">
 							Voting Toolkit
 						</NavDropdown.Item>
@@ -60,10 +56,14 @@ function MainNavigationBar({ scrolling = false }) {
 					<Nav.Link href="#howitworks" className="mx-3">
 						How It Works
 					</Nav.Link>
-					<Nav.Link href="#signin" className="mx-3">
+					<Nav.Link href="/discover/users/signup" className="mx-3">
 						Sign In
 					</Nav.Link>
-					<Button variant="" className="mx-3 btn rounded-pill start-event-btn">
+					<Button
+						variant=""
+						href="/discover/create-event"
+						className="mx-3 btn rounded-pill start-event-btn"
+					>
 						Start Event
 					</Button>
 				</Nav>

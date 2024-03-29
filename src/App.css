@@ -1,9 +1,26 @@
 /*---------------------------- Entire App ----------------------------*/
 body {
 	overflow-x: hidden;
+	font: serif;
 }
 
 /* ------------------------ Main Navigation Bar--------------------------- */
+.navbar-wrapper {
+	position: sticky;
+	inset: 0px;
+	background-size: auto;
+	background-repeat: no-repeat;
+	will-change: transform;
+	width: 100%;
+	height: unset;
+	transform: none; /* Reset the transform */
+	display: flex;
+	justify-content: center;
+}
+
+.outline-none {
+	outline: none !important;
+}
 .navbar-shadow {
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
 	transition:

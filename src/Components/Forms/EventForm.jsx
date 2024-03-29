@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { AuthData } from '../../Provider/AuthProv';
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Select, { createFilter, components } from "react-select"
 import AutoComplete from '../GeoLocation/AutoComplete';
@@ -13,6 +14,7 @@ import "./EventForm.css"
 const backend = import.meta.env.VITE_BACKEND_URL
 
 const EventForm = () => {
+  const { user } = useContext(AuthData)
   let { user_id } = useParams();
   const naviagte = useNavigate();
 
@@ -41,6 +43,7 @@ const EventForm = () => {
     is_donation: isDonation,
     stripe_id: "",
   });
+console.log(user)
 
   const keywordOptions = [
 
@@ -132,6 +135,7 @@ console.log(stripeId)
   return (
     <Form className='custom-text' onSubmit={handleSubmit}>
       <Row className="mb-3">
+      {/* <h3>Welcome, {user}! Please fill out the form to create your event.</h3> */}
         <Form.Group className='mb-3' controlId="event_title">
           <Form.Label >Event Title</Form.Label>
          
