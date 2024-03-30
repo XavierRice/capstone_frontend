@@ -111,7 +111,7 @@ function Homepage() {
 				<ParallaxLayer
 					offset={2.5}
 					speed={0}
-					factor={1}
+					factor={0.5}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
