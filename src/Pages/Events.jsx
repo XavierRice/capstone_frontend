@@ -25,10 +25,11 @@ const Events = () => {
 			let fetchEventsData = [];
 			let fetchedVirtualEvents = [];
 			try {
-				const resposeBackend = await axios.get(`http://localhost:4000/events`);
+				const resposeBackend = await axios.get(`${backend}/events`);
 				fetchEventsData = resposeBackend.data.data;
+				console.log(resposeBackend)
 				setEventsData(fetchEventsData);
-				console.log(responseBackend);
+				
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			}

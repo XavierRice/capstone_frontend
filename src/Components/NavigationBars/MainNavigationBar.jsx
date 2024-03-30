@@ -49,7 +49,7 @@ function MainNavigationBar() {
 						<NavDropdown.Item href="/discover/events">
 							All Events
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#donations">Donations</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/donations">Donations</NavDropdown.Item>
 						<NavDropdown.Item href="#votingtoolkit">
 							Voting Toolkit
 						</NavDropdown.Item>
@@ -66,7 +66,7 @@ function MainNavigationBar() {
 					<Nav.Link href="#signin" className="mx-3">
 						Sign In
 					</Nav.Link>
-					<Link To="/discover/create-event">
+					<Link to="/discover/create-event">
 						<Button
 							variant=""
 							className="mx-3 btn rounded-pill start-event-btn"

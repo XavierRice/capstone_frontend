@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./DonationsLayout.css";
 import UkraineImg from "../../assets/ImpactifyImgs.jpeg";
@@ -8,12 +9,22 @@ import FactsImg from "../../assets/factsImg.png";
 import { FaArrowRight } from "react-icons/fa";
 
 function DonationsLayout() {
+	const navigate = useNavigate();
+
+	const handleDonationNavigate = () => {
+		navigate("/discover/donations");
+	};
+
+	const handleFundraiseNavigate = () => {
+		navigate("/discover/facts");
+	};
+
 	return (
 		<Container
 			fluid
 			style={{ width: "85%", height: "100%", marginTop: "40px" }}
 		>
-			<div className="fw-semibold fs-5 m-3">Featured</div>
+			{/* <div className="fw-semibold fs-5 m-3">Featured</div> */}
 			<Row xs={1} md={12} lg={8} className="g-4" style={{ width: "100vw" }}>
 				<Col>
 					<div className="item ">
@@ -34,7 +45,7 @@ function DonationsLayout() {
 									families.
 								</div>
 								<div className="my-3">
-									<span className="my-4 ">
+									<span className="my-4 " onClick={handleDonationNavigate}>
 										Donate now <FaArrowRight />
 									</span>
 								</div>
@@ -72,7 +83,7 @@ function DonationsLayout() {
 							<div className="fs-4 fw-bold title">Fundraising FAQs:</div>
 						</div>
 						<div className="m-2">Why should we care and participate?</div>
-						<span className="m-3 ">
+						<span className="m-3 " onClick={handleFundraiseNavigate}>
 							Learn more <FaArrowRight />
 						</span>
 					</div>
