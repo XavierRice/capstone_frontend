@@ -8,11 +8,13 @@ import { AuthData } from "../Provider/AuthProv";
 
 function CreateEventPage() {
 
-  const [showLogin, setShowLogin] = useState(false)
   const { isAuthenticated } = useContext(AuthData);
-  const { user } = useContext(AuthData)
+  const [showLogin, setShowLogin] = useState(!isAuthenticated)
+  const { user, token } = useContext(AuthData)
 
   const handleClose = () => setShowLogin(false)
+  console.log(user, token)
+
 
   return (
     <>

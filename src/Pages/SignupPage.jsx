@@ -9,10 +9,10 @@ const SignUpPage = () => {
   const location = useLocation();
 
   const { API, setUser, setToken } = useContext(AuthData);
-
+  const backend = import.meta.env.VITE_BACKEND_URL
   const handleSignUp = async (userData) => {
     try {
-      const response = await API.post("/users/register", userData);
+      const response = await API.post(`${backend}/users/register`, userData);
       console.log("Sign-up response:", response.data);
       const { user, token } = response.data;
       setUser(user);

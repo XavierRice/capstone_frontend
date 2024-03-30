@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Container, Button, Navbar } from "react-bootstrap";
 import MainContent from "../Components/MainContent";
@@ -14,9 +14,14 @@ import CardLayout from "../Components/BentoBoxes/CardsLayout/Cards";
 import Footer from "../Components/Footer/Footer";
 import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
+import { AuthData } from '../Provider/AuthProv'
+
 
 function Homepage() {
+	const { user } = useContext(AuthData)
 	const [isResponsive, setIsResponsive] = useState(false);
+
+	console.log(user)
 
 	useEffect(() => {
 		const handleResize = () => {
