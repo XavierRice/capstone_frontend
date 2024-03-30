@@ -94,29 +94,27 @@ function Homepage() {
 					factor={1}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
-				>
-					<InfoBlock />
-				</ParallaxLayer>
+				></ParallaxLayer>
 				<ParallaxLayer
 					offset={2.2}
 					speed={0}
-					factor={1}
+					factor={2}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
-					<CardLayout />
+					{/* <CardLayout /> */}
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={3}
+					offset={3.5}
 					speed={0}
-					factor={1.4}
+					factor={0.5}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
-					<ProofHero />
+					<InfoBlock />
 				</ParallaxLayer>
 
-				<ParallaxLayer offset={4.28} factor={1}>
+				<ParallaxLayer offset={4.1} factor={1}>
 					<Footer />
 				</ParallaxLayer>
 			</Parallax>
