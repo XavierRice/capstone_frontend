@@ -25,6 +25,7 @@
     "@vis.gl/react-google-maps": "^0.7.1",
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
+    "newsapi": "^2.4.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",
     "react-cool-onclickoutside": "^1.7.0",

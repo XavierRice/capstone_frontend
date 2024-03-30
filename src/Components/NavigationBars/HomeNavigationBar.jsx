@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
 	Navbar,
@@ -12,7 +11,6 @@ import { FaSearch } from "react-icons/fa";
 import useScrollPosition from "../../Hooks/ScrollPositionProvider";
 import { Link } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 function MainNavigationBar({ scrolling = false }) {
 	return (
 		<Navbar
@@ -24,21 +22,11 @@ function MainNavigationBar({ scrolling = false }) {
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-			<Link to="#">
-				<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
-			</Link>
-			<Link>
-				<Form
-					to="#"
-					// inline="true"
-				>
-					<FormControl
-						type="text"
-						placeholder="Search"
-						className="mr-sm-2 "
-						style={{ width: "110px" }}
-					/>
-				</Form>
+			<Link to="/search">
+				<div className="mx-3">
+					<FaSearch className="" style={{ marginRight: "2px" }} />
+					Search
+				</div>
 			</Link>
 
 			<Navbar.Collapse id="basic-navbar-nav">
@@ -53,7 +41,7 @@ function MainNavigationBar({ scrolling = false }) {
 						<NavDropdown.Item href="/discover/events">
 							All Events
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#donations">Donations</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/donations">Donations</NavDropdown.Item>
 						<NavDropdown.Item href="#votingtoolkit">
 							Voting Toolkit
 						</NavDropdown.Item>

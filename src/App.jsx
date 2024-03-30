@@ -16,20 +16,20 @@ import useScrollPosition from "./Hooks/ScrollPositionProvider";
 import StripePaymentEvent from "./Components/Stripe/StripePaymentEvent";
 import StripeBuy from "./Components/Stripe/StripeBuy";
 import ProofHero from "./Components/SocialProof/ProofHero";
-import ThankYou from "./Pages/ThankYou";
+import ThankYou from "./Pages/ThankYou/ThankYou";
 import CardNew from "./Components/Card/CardNew";
-import SearchResultPage from "./Pages/SearchResultPage";
+// import SearchResultPage from "./Pages/Search/SearchResultPage";
 import Footer from "./Components/Footer/Footer";
 import SignUpPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
-
-
+import SearchResultPage from "./Pages/Search/SearchPage";
+import NewsApi from "./Components/NewsApi/NewsApi";
 function App() {
 	return (
 		<Router>
 			<Routes>
 				<Route path="/" element={<Homepage />} />
-				
+
 				<Route path="/*" element={<MainNavigationBar />} />
 			</Routes>
 			<div>
@@ -46,18 +46,31 @@ function App() {
 					<Route path="/discover/news" element={<News />} />
 					<Route path="/discover/events" element={<Events />} />
 					<Route path="/discover/donations" element={<Donations />} />
-					<Route path="/discover/users/login" element={<LoginPage/>} />
+					<Route path="/discover/users/login" element={<LoginPage />} />
 					<Route path="/discover/users/signup" element={<SignUpPage />} />
 					<Route path="/discover/thankyou" element={<ThankYou />} />
 					<Route path="/discover/create-event" element={<CreateEventPage />} />
+					<Route path="/discover/test"element={<NewsApi/>
+				}/>
 					<Route
 						path="/discover/create-event/donation"
 						element={<StripeDonation />}
 					/>
+					<Route path="/search" element={<SearchResultPage />} />
 				</Routes>
 			</div>
 		</Router>
 	);
+
+
+
+
+
+
+
+
+
+
 }
 
 export default App;

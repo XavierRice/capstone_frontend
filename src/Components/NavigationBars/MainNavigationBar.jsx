@@ -11,7 +11,7 @@ import {
 	NavLink,
 } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 function MainNavigationBar() {
 	const [isResponsive, setIsResponsive] = useState(false);
 
@@ -31,15 +31,12 @@ function MainNavigationBar() {
 				aria-controls="basic-navbar-nav"
 				className="outline-none"
 			/>
-			<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
-			<Form inline>
-				<FormControl
-					type="text"
-					placeholder="Search"
-					className="mr-sm-2"
-					style={{ width: "110px" }}
-				/>
-			</Form>
+			<Link to="/">
+				<div className="mx-3">
+					<FaSearch className="" style={{ marginRight: "2px" }} />
+					Search
+				</div>
+			</Link>
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
 					<NavDropdown
@@ -52,7 +49,7 @@ function MainNavigationBar() {
 						<NavDropdown.Item href="/discover/events">
 							All Events
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#donations">Donations</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/donations">Donations</NavDropdown.Item>
 						<NavDropdown.Item href="#votingtoolkit">
 							Voting Toolkit
 						</NavDropdown.Item>
@@ -69,9 +66,14 @@ function MainNavigationBar() {
 					<Nav.Link href="#signin" className="mx-3">
 						Sign In
 					</Nav.Link>
-					<Button variant="" className="mx-3 btn rounded-pill start-event-btn">
-						Start Event
-					</Button>
+					<Link to="/discover/create-event">
+						<Button
+							variant=""
+							className="mx-3 btn rounded-pill start-event-btn"
+						>
+							Start Event
+						</Button>
+					</Link>
 				</Nav>
 			</Navbar.Collapse>
 		</>
@@ -86,9 +88,12 @@ function MainNavigationBar() {
 			<Navbar.Brand className="mx-auto display-2" href="/">
 				Impactify
 			</Navbar.Brand>
-			<NavLink href="#search">
-				<FaSearch className="mx-3" style={{ marginRight: "5px" }} />
-			</NavLink>
+			<Link to="/">
+				<div className="mx-3">
+					<FaSearch className="" style={{ marginRight: "2px" }} />
+					Search
+				</div>
+			</Link>
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Row className="w-100">
 					<Col md={6}>

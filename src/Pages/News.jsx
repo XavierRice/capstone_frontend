@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import Card from "../Components/Card/Card";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
+import NewsApi from "../Components/NewsApi/NewsApi"; // Import NewsApi component
 import { Col, Row } from "react-bootstrap";
+
 
 const News = () => {
 	const [loading, setLoading] = useState(true);
@@ -28,9 +30,10 @@ const News = () => {
 		}
 	}
 	console.log(newsData);
-	const handleImageLoad = () => {
-		setLoading(false);
-	};
+  
+  const handleImageLoad = () => {
+    setLoading(false);
+  };
 
 	const handleCardClick = (id) => {
 		const selectedNews = newsData.find((news) => news.news_id === id);
@@ -38,6 +41,7 @@ const News = () => {
 	};
 
 	console.log(newsData[0]);
+
 
 	return (
 		<div>
@@ -59,9 +63,12 @@ const News = () => {
 							/>
 						</Col>
 					))}
+					<Col><NewsApi/></Col>
 				</Row>
+
 			)}
 		</div>
 	);
-};
+					}
+
 export default News;
