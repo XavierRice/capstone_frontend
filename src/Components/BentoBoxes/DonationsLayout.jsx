@@ -9,23 +9,22 @@ import FactsImg from "../../assets/factsImg.png";
 import { FaArrowRight } from "react-icons/fa";
 
 function DonationsLayout() {
-const navigate = useNavigate()
+	const navigate = useNavigate();
 
-const handleDonationNavigate=()=>{
-	navigate("/discover/donations");
-};
+	const handleDonationNavigate = () => {
+		navigate("/discover/donations");
+	};
 
-const handleFundraiseNavigate = () => {
-	navigate('/discover/facts')
-}
- 
+	const handleFundraiseNavigate = () => {
+		navigate("/discover/facts");
+	};
 
 	return (
 		<Container
 			fluid
 			style={{ width: "85%", height: "100%", marginTop: "40px" }}
 		>
-			<div className="fw-semibold fs-5 m-3">Featured</div>
+			{/* <div className="fw-semibold fs-5 m-3">Featured</div> */}
 			<Row xs={1} md={12} lg={8} className="g-4" style={{ width: "100vw" }}>
 				<Col>
 					<div className="item ">
@@ -45,7 +44,7 @@ const handleFundraiseNavigate = () => {
 									You can donate to fundraisers on this page to help fleeing
 									families.
 								</div>
-								<div className="my-3" >
+								<div className="my-3">
 									<span className="my-4 " onClick={handleDonationNavigate}>
 										Donate now <FaArrowRight />
 									</span>

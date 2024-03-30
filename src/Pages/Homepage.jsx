@@ -14,14 +14,14 @@ import CardLayout from "../Components/BentoBoxes/CardsLayout/Cards";
 import Footer from "../Components/Footer/Footer";
 import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
-import { AuthData } from '../Provider/AuthProv'
-
+import factsImg from "../assets/facts1.jpg";
+import { AuthData } from "../Provider/AuthProv";
 
 function Homepage() {
-	const { user } = useContext(AuthData)
+	const { user } = useContext(AuthData);
 	const [isResponsive, setIsResponsive] = useState(false);
 
-	console.log(user)
+	console.log(user);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -85,16 +85,31 @@ function Homepage() {
 				<ParallaxLayer
 					offset={0.7}
 					speed={0}
-					factor={2}
+					factor={1.1}
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					{/* <DonationsLayout /> */}
-
 					<AllEventsBlock />
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={1.7}
+					offset={1.6}
+					speed={0}
+					factor={1}
+					className=" d-flex justify-content-center"
+					style={{ backgroundImage: `white` }}
+				>
+					<div
+						style={{
+							height: "92%",
+							width: "100%",
+							backgroundImage: `url(${factsImg})`,
+						}}
+					>
+						hello
+					</div>
+				</ParallaxLayer>
+				<ParallaxLayer
+					offset={2.5}
 					speed={0}
 					factor={1}
 					className=" d-flex justify-content-center"
@@ -103,25 +118,16 @@ function Homepage() {
 					<InfoBlock />
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={2.2}
-					speed={0}
-					factor={1}
-					className=" d-flex justify-content-center"
-					style={{ backgroundColor: "white" }}
-				>
-					<CardLayout />
-				</ParallaxLayer>
-				<ParallaxLayer
 					offset={3}
 					speed={0}
 					factor={1.4}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
-					<ProofHero />
+					<DonationsLayout />
 				</ParallaxLayer>
 
-				<ParallaxLayer offset={4.28} factor={1}>
+				<ParallaxLayer offset={4.1} factor={1}>
 					<Footer />
 				</ParallaxLayer>
 			</Parallax>
