@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Select from "react-select";
 import './NewsApi.css'; 
 import { Container, Row, Col, Form } from 'react-bootstrap';
+import NewsApiBento from './NewsApiBento';
 
 const NewsApi = () => {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -27,7 +28,7 @@ const NewsApi = () => {
   }, [selectedKeyword]); 
 
   const handleKeywords = (selectedOption) => {
-    setSelectedKeyword(selectedOption); // Store the whole option object
+    setSelectedKeyword(selectedOption);
   };
 
   const fetchNewsArticles = async (keyword) => {
@@ -40,11 +41,10 @@ const NewsApi = () => {
         }
         const data = await response.json();
         
-        setNewsArticles(data);
+        setNewsArticles(data.articles);
       } catch (error) {
       setError(error.message);
     }finally{
-
       setLoading(false);
     }
   };
@@ -72,7 +72,7 @@ console.log(newsArticles)
           />
         </Form.Group>
       </Row>
-      {/* News display component here */}
+      {/* <NewsApi newsArr={newsArticles}/> */}
     </Container>
   );
 };
