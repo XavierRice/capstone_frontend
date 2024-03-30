@@ -185,3 +185,14 @@ body {
 }
 
 /* ----------------------------------------------------------------------------- */
+.header-and-link {
+	font-size: 24px;
+	text-decoration-line: underline red;
+}
+.header-and-link:hover {
+	text-decoration: underline;
+}
+
+.hover-underline:hover .header-and-link {
+	text-decoration: underline;
+}
