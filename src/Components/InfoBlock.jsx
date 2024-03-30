@@ -1,0 +1,89 @@
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { GiWorld } from "react-icons/gi";
+import { BiDonateHeart } from "react-icons/bi";
+import { MdOutlineEventAvailable } from "react-icons/md";
+import { FaPersonCircleCheck } from "react-icons/fa6";
+import { IoNewspaper } from "react-icons/io5";
+
+import { FaPeopleGroup } from "react-icons/fa6";
+import { IoLocationOutline, IoCalendarOutline } from "react-icons/io5";
+
+function InfoBlock() {
+	return (
+		<div className="py-3 bg-light">
+			<Row className="d-flex justify-content-center">
+				<div
+					className="p-5 fw-bold fs-2 d-flex justify-content-center"
+					style={{ color: "#630f76" }}
+				>
+					ALL THE TOOLS YOU NEED TO GROW A COMMUNITY & GET INVOLVED
+				</div>
+			</Row>
+
+			<Row className="d-flex justify-content-center pb-3">
+				<Col sm={9} xs={10} className="text-center">
+					<div className="categories-container d-flex justify-content-center">
+						<div className="category-item mx-3">
+							<Link to="/news" className="d-block text-decoration-none">
+								<IoNewspaper style={{ fontSize: "34px", color: "#9973a0" }} />
+								<div className="header-and-link hover-underline">News</div>
+								<div>Read about the latest events happening in every area</div>
+							</Link>
+						</div>
+						<div className="category-item mx-3">
+							<Link
+								to="/create-events"
+								className="d-block text-decoration-none"
+							>
+								<MdOutlineEventAvailable
+									style={{ fontSize: "34px", color: "#9973a0" }}
+								/>
+								<div className="header-and-link">Create</div>
+								<div>
+									Attract those with the same interest as you and stand for what
+									you believe in (meet up / do the task)
+								</div>
+							</Link>
+						</div>
+						<div className="category-item mx-3">
+							<Link
+								to="/attend-events"
+								className="d-block text-decoration-none"
+							>
+								<FaPersonCircleCheck
+									style={{ fontSize: "34px", color: "#9973a0" }}
+								/>
+								<div className="header-and-link">Attend</div>
+								<div>Care about a cause but don't</div>
+							</Link>
+						</div>
+						<div className="category-item mx-3">
+							<Link to="/donate" className="d-block text-decoration-none">
+								<BiDonateHeart style={{ fontSize: "34px", color: "#9973a0" }} />
+								<div className="header-and-link">Donate</div>
+								<div>Reach a helping hand for causes you resonate with</div>
+							</Link>
+						</div>
+						<div className="category-item mx-3">
+							<Link
+								to="/build-community"
+								className="d-block text-decoration-none"
+							>
+								<FaPeopleGroup style={{ fontSize: "34px", color: "#9973a0" }} />
+								<div className="header-and-link">Find</div>
+								<div>
+									Find like-minded individuals by searching for topics you care
+									about
+								</div>
+							</Link>
+						</div>
+					</div>
+				</Col>
+			</Row>
+		</div>
+	);
+}
+
+export default InfoBlock;

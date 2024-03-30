@@ -1,99 +1,57 @@
-/* eslint-disable no-unused-vars */
-
 import React, { useState } from "react";
-import Carousel from "./Carousel/Carousel";
 import Card from "./Card/Card";
-import { Container, Col, Row, Button } from "react-bootstrap";
-import FilterBtn from "./FilterBtn";
+import { Col, Row, Button } from "react-bootstrap";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import CategoriesSection from "./CategoriesSection/CategoriesSection";
 
 function MainContent() {
-	const mockEventData = [
+	// Mock data for testing
+	const mockEvents = [
 		{
 			id: 1,
-			event_title: "Conference on Technology",
-			event_photo: "https://picsum.photos/id/1015/200/300",
-			event_details:
-				"Join us for an exciting conference on the latest technology trends.",
+			event_title: "Event 1",
+			event_photo: "https://source.unsplash.com/400x300/?event",
+			event_details: "Details 1",
 		},
 		{
 			id: 2,
-			event_title: "Art Exhibition",
-			event_photo: "https://picsum.photos/id/1016/200/300",
-			event_details: "Experience the beauty of art in our upcoming exhibition.",
+			event_title: "Event 2",
+			event_photo: "https://source.unsplash.com/400x300/?conference",
+			event_details: "Details 2",
 		},
 		{
 			id: 3,
-			event_title: "Music Concert",
-			event_photo: "https://picsum.photos/id/1018/200/300",
-			event_details:
-				"Get ready for an electrifying music concert with top artists.",
+			event_title: "Event 3",
+			event_photo: "https://source.unsplash.com/400x300/?workshop",
+			event_details: "Details 3",
 		},
 		{
 			id: 4,
-			event_title: "Food Festival",
-			event_photo: "https://picsum.photos/id/1019/200/300",
-			event_details:
-				"Satisfy your taste buds with delicious cuisines at our food festival.",
+			event_title: "Event 4",
+			event_photo: "https://source.unsplash.com/400x300/?seminar",
+			event_details: "Details 4",
 		},
 		{
-			id: 5,
-			event_title: "Fitness Workshop",
-			event_photo: "https://picsum.photos/id/1021/200/300",
-			event_details:
-				"Join us to learn and practice various fitness techniques.",
+			id: 2,
+			event_title: "Event 2",
+			event_photo: "https://source.unsplash.com/400x300/?conference",
+			event_details: "Details 2",
 		},
 		{
-			id: 6,
-			event_title: "Book Launch",
-			event_photo: "https://picsum.photos/id/1023/200/300",
-			event_details:
-				"Discover new books and meet the authors at our book launch event.",
+			id: 3,
+			event_title: "Event 3",
+			event_photo: "https://source.unsplash.com/400x300/?workshop",
+			event_details: "Details 3",
 		},
 		{
-			id: 7,
-			event_title: "Conference on Technology",
-			event_photo: "https://picsum.photos/id/1015/200/300",
-			event_details:
-				"Join us for an exciting conference on the latest technology trends.",
-		},
-		{
-			id: 8,
-			event_title: "Art Exhibition",
-			event_photo: "https://picsum.photos/id/1016/200/300",
-			event_details: "Experience the beauty of art in our upcoming exhibition.",
-		},
-		{
-			id: 9,
-			event_title: "Music Concert",
-			event_photo: "https://picsum.photos/id/1018/200/300",
-			event_details:
-				"Get ready for an electrifying music concert with top artists.",
-		},
-		{
-			id: 10,
-			event_title: "Food Festival",
-			event_photo: "https://picsum.photos/id/1019/200/300",
-			event_details:
-				"Satisfy your taste buds with delicious cuisines at our food festival.",
-		},
-		{
-			id: 11,
-			event_title: "Fitness Workshop",
-			event_photo: "https://picsum.photos/id/1021/200/300",
-			event_details:
-				"Join us to learn and practice various fitness techniques.",
-		},
-		{
-			id: 12,
-			event_title: "Book Launch",
-			event_photo: "https://picsum.photos/id/1023/200/300",
-			event_details:
-				"Discover new books and meet the authors at our book launch event.",
+			id: 4,
+			event_title: "Event 4",
+			event_photo: "https://source.unsplash.com/400x300/?seminar",
+			event_details: "Details 4",
 		},
 	];
 
 	const [startIndex, setStartIndex] = useState(0);
-
 	const eventsPerPage = 4;
 
 	const handleNext = () => {
@@ -105,48 +63,48 @@ function MainContent() {
 	};
 
 	return (
-		<Container className="m-5">
-			<div className="fs-4 my-4  fw-bold text-dark d-block">
-				Discover events inspired by what you care about
-			</div>
-			<div className="btn rounded-pill my-4 d-block">
-				<FilterBtn />
-			</div>
+		<div className="mt-5">
+			<div className="m-4">
+				<div className="position-relative d-block">
+					<div className="d-flex justify-content-between align-items-center m-3">
+						<div className="fw-bold fs-4">Most popular events</div>
+						<div>
+							<Button
+								onClick={handlePrev}
+								disabled={startIndex === 0}
+								className="mx-1"
+								style={{ borderRadius: "60px" }}
+							>
+								<IoIosArrowBack />
+							</Button>
+							<Button
+								onClick={handleNext}
+								disabled={startIndex + eventsPerPage >= mockEvents.length}
+								className="mx-1"
+								style={{ borderRadius: "80px" }}
+							>
+								<IoIosArrowForward />
+							</Button>
+						</div>
+					</div>
 
-			<div className="events-cards ">
-				<Row>
-					{mockEventData
-						.slice(startIndex, startIndex + eventsPerPage)
-						.map((event) => (
-							<Col key={event.id} xs={12} md={3} className="mb-3">
-								<Card
-									title={event.event_title}
-									imageSrc={event.event_photo}
-									text={event.event_details}
-								/>
-							</Col>
-						))}
-				</Row>
-				<div className="d-flex justify-content-center ">
-					<Button
-						onClick={handlePrev}
-						disabled={startIndex === 0}
-						className="me-2"
-					>
-						Prev
-					</Button>
-					<Button
-						onClick={handleNext}
-						disabled={startIndex + eventsPerPage >= mockEventData.length}
-					>
-						Next
-					</Button>
+					<Row style={{ paddingRight: "0px", paddingLeft: "0px" }}>
+						{mockEvents
+							.slice(startIndex, startIndex + eventsPerPage)
+							.map((event) => (
+								<Col key={event.id} xs={12} md={3} lg={3} className="">
+									<Card
+										title={event.event_title}
+										imageSrc={event.event_photo}
+										text={event.event_details}
+									/>
+								</Col>
+							))}
+					</Row>
 				</div>
 			</div>
-		</Container>
+		</div>
 	);
 }
 
 export default MainContent;
-
-

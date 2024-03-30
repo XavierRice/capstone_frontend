@@ -12,6 +12,8 @@ import ProofHero from "../Components/SocialProof/ProofHero";
 import DonationsLayout from "../Components/BentoBoxes/DonationsLayout";
 import CardLayout from "../Components/BentoBoxes/CardsLayout/Cards";
 import Footer from "../Components/Footer/Footer";
+import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
+import InfoBlock from "../Components/InfoBlock";
 
 function Homepage() {
 	const [isResponsive, setIsResponsive] = useState(false);
@@ -82,19 +84,21 @@ function Homepage() {
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					<DonationsLayout />
+					{/* <DonationsLayout /> */}
+
+					<AllEventsBlock />
 				</ParallaxLayer>
 				<ParallaxLayer
 					offset={1.7}
 					speed={0}
-					factor={1.2}
+					factor={1}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
-					<TrustAndSafety />
+					<InfoBlock />
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={2.1}
+					offset={2.2}
 					speed={0}
 					factor={1}
 					className=" d-flex justify-content-center"
