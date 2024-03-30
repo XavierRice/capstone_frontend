@@ -1,11 +1,11 @@
 import React, {useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import axios from "axios";
 import Donation1 from "../Components/Stripe/Donation1";
 import UkraineBuy from "../Components/Stripe/UkraineBuy";
 import CleanUpBuy from "../Components/Stripe/CleanUpBuy";
 import ClimateBuy from "../Components/Stripe/ClimateBuy";
-
+import './Donations.css'
 
 function Donations() {
 
@@ -27,25 +27,59 @@ function Donations() {
     }
     fetchData()
     }, [])
- 
+    
   return (
-    <Container className="py-5 my-5 donations-container">
-    <Row className="g-4 justify-content-center">
-      <Col xs={12} >
+    <Container fluid className="donations-container">
+    <Row className="justify-content-center">
+      <Col xs={12} md={8} lg={6}>
 
-        <Donation1 />
-      </Col>
-      <Col xs={12}>
-        {/* Replace with <CardTwo /> or similar */}
-        <UkraineBuy />
-      </Col>
-      <Col xs={12} >
-        {/* Replace with <CardThree /> or similar */}
-        {/* <CleanUpBuy /> */}
-      </Col>
-      <Col xs={12}>
-        {/* Replace with <CardFour /> or similar */}
-        <ClimateBuy />
+        <Card className="grey-card">
+          <Row>
+            <Col sm={6} className="my-auto">
+              <div>
+              <Donation1 />
+              </div>
+            </Col>
+            <Col sm={6}>
+              {/*  Donation information */}
+              {/* progress bar*/}
+              <p>User Information</p>
+            </Col>
+          </Row>
+        </Card>
+        
+        <Card className="grey-card">
+          <Row>
+            <Col sm={6} className="my-auto">
+              <div>
+              <ClimateBuy />
+              </div>
+            </Col>
+            <Col sm={6}>
+              {/*  Donation information */}
+              {/* progress bar*/}
+              <p>User Information</p>
+            </Col>
+          </Row>
+        </Card>
+
+        <Card className="grey-card">
+          <Row>
+            <Col sm={6} className="my-auto">
+              <div>
+
+              <UkraineBuy />
+              </div>
+            </Col>
+            <Col sm={6} className="donation_information">
+                {/*  Donation information */}
+              {/* progress bar*/}
+              <p>User Information</p>
+            </Col>
+          </Row>
+        </Card>
+
+       
       </Col>
     </Row>
   </Container>
