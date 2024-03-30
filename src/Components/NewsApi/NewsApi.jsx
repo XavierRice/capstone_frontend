@@ -1,33 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import Card from '../Card/Card'; // Import the Card component
-import './NewsApi.css'; // Import CSS for styling
-import { Container, Row, Col } from 'react-bootstrap'; // Import Container, Row, and Col from react-bootstrap
+import Select from "react-select";
+import './NewsApi.css'; 
+import { Container, Row, Col, Form } from 'react-bootstrap';
+import NewsApiBento from './NewsApiBento';
 
 const NewsApi = () => {
   const [newsArticles, setNewsArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [keywords, setKeywords] = useState(['ukraine', 'palestine', 'global warming', 'global issues', 'donations']); // Default keywords
+  const [selectedKeyword, setSelectedKeyword] = useState(null); 
+  const NewsApiKey = import.meta.env.VITE_APP_NEWSAPI_KEY;
+
+ 
+  const keywordOptions = [
+    { value: 'equality', label: 'equality' },
+    { value: 'politics', label: 'politics' },
+    { value: 'global issues', label: 'global issues' },
+    { value: 'lgbt rights', label: 'lgbt rights' },
+    { value: 'global warming', label: 'global warming' }, 
+    { value: 'ukraine', label: 'ukraine' }, 
+  ];
 
   useEffect(() => {
-    fetchNewsArticles();
-  }, [keywords]); 
+    if (selectedKeyword) { 
+      fetchNewsArticles(selectedKeyword.value);
+    }
+  }, [selectedKeyword]); 
 
-  const fetchNewsArticles = async () => {
+  const handleKeywords = (selectedOption) => {
+    setSelectedKeyword(selectedOption);
+  };
+
+  const fetchNewsArticles = async (keyword) => {
+    setLoading(true);
+    setError(null);
     try {
-      let allArticles = [];
-      for (const keyword of keywords) {
-        const response = await fetch(`https://newsapi.org/v2/everything?q=everything&apiKey=${import.meta.env.VITE_APP_NEWSAPI_KEY}`);
+        const response = await fetch(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=${NewsApiKey}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch news articles for keyword: ${keyword}`);
         }
         const data = await response.json();
-        allArticles = allArticles.concat(data.articles);
-      }
-      setNewsArticles(allArticles);
-      setLoading(false);
-    } catch (error) {
+        
+        setNewsArticles(data.articles);
+      } catch (error) {
       setError(error.message);
+    }finally{
       setLoading(false);
     }
   };
@@ -39,22 +56,23 @@ const NewsApi = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-
+console.log(newsArticles)
+  
   return (
     <Container>
-      <Row xs={1} sm={2} md={3} lg={4} xl={4} xxl={4} className="g-4">
-        {newsArticles.map(article => (
-          <Col key={article.url}>
-            <Card
-              title={article.title}
-              imageSrc={article.urlToImage}
-              text={article.description}
-              updatedAt={article.publishedAt}
-              onClick={() => window.open(article.url, '_blank')} // Open the article link in a new tab
-            />
-          </Col>
-        ))}
+      <Row className="mb-3">
+        <Form.Group as={Col} controlId="event_keyword">
+          <Form.Label>Keywords</Form.Label>
+          <Select
+            onChange={handleKeywords}
+            options={keywordOptions}
+            className='basic-select custom-text-dark'
+            classNamePrefix="select"
+            name="event_keywords"
+          />
+        </Form.Group>
       </Row>
+      {/* <NewsApi newsArr={newsArticles}/> */}
     </Container>
   );
 };
