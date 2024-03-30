@@ -42,6 +42,9 @@
 		color 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
+.span_color1 {
+ color: #bc94c1;
+}
 .custom-signup-btn:hover {
 	background-color: #d5e673;
 	border-color: #bc9ec1;
