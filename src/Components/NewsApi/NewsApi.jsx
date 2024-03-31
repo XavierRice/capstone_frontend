@@ -3,12 +3,16 @@ import Select from "react-select";
 import './NewsApi.css'; 
 import { Container, Row, Col, Form } from 'react-bootstrap';
 import NewsApiBento from './NewsApiBento';
+import NewsCar from './NewsCar';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 
 const NewsApi = () => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedKeyword, setSelectedKeyword] = useState(null); 
+  const [selectedKeyword, setSelectedKeyword] = useState('lbgt'); 
   const NewsApiKey = import.meta.env.VITE_APP_NEWSAPI_KEY;
 
  
@@ -72,7 +76,9 @@ console.log(newsArticles)
           />
         </Form.Group>
       </Row>
-      {/* <NewsApi newsArr={newsArticles}/> */}
+      <Row>
+        <NewsCar newsArticles={newsArticles}/>
+      </Row>
     </Container>
   );
 };

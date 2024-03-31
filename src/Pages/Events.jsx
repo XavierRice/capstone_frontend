@@ -75,6 +75,7 @@ const Events = () => {
 	useEffect(() => {
 		setAllEvents([...eventsData, ...virtualEvents]);
 	}, [eventsData, virtualEvents]);
+	
 	const handleCardClick = (eventData) => {
 		console.log("you clicked me", eventData);
 		navigate("/discover/events-details", { state: { event: eventData } });
