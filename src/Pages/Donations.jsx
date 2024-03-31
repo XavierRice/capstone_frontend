@@ -5,6 +5,10 @@ import Donation1 from "../Components/Stripe/Donation1";
 import UkraineBuy from "../Components/Stripe/UkraineBuy";
 import CleanUpBuy from "../Components/Stripe/CleanUpBuy";
 import ClimateBuy from "../Components/Stripe/ClimateBuy";
+import climateUser from '../assets/climateUser.jpg'
+import guyUser from '../assets/guyUser.jpg'
+import ukraineUser from '../assets/ukraineUser.jpg'
+
 import './Donations.css'
 
 function Donations() {
@@ -27,6 +31,10 @@ function Donations() {
     }
     fetchData()
     }, [])
+
+    const donate1 = donationsData[0]?.donation_description
+    const donate2 = donationsData[1]?.donation_description
+    const donate3 = donationsData[2]?.donation_description
     
   return (
     <Container fluid className="donations-container">
@@ -37,28 +45,18 @@ function Donations() {
           <Row>
             <Col sm={6} className="my-auto">
               <div>
-              <Donation1 />
+                <Donation1 />
               </div>
             </Col>
             <Col sm={6}>
-              {/*  Donation information */}
-              {/* progress bar*/}
-              <p>User Information</p>
-            </Col>
-          </Row>
-        </Card>
-        
-        <Card className="grey-card">
-          <Row>
-            <Col sm={6} className="my-auto">
-              <div>
-              <ClimateBuy />
+              <div className="donation-info" style={{ boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)" }}>
+                <p>User Information</p>
+                <div className="d-flex flex-wrap">
+                  <img src={climateUser} alt="userpic" className="img-fluid p-2" style={{ width: "130px", height: "auto" }} />
+                </div>
+                <p>{donate1}</p>
+                {/* progress bar */}
               </div>
-            </Col>
-            <Col sm={6}>
-              {/*  Donation information */}
-              {/* progress bar*/}
-              <p>User Information</p>
             </Col>
           </Row>
         </Card>
@@ -67,19 +65,42 @@ function Donations() {
           <Row>
             <Col sm={6} className="my-auto">
               <div>
-
-              <UkraineBuy />
+                <ClimateBuy />
               </div>
             </Col>
-            <Col sm={6} className="donation_information">
-                {/*  Donation information */}
-              {/* progress bar*/}
-              <p>User Information</p>
+            <Col sm={6}>
+              <div className="donation-info" style={{ boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)" }}>
+                <p>User Information</p>
+                <div className="d-flex flex-wrap">
+                  <img src={guyUser} alt="userpic" className="img-fluid p-2" style={{ width: "130px", height: "auto" }} />
+                </div>
+                <p>{donate2}</p>
+                {/* progress bar */}
+              </div>
             </Col>
           </Row>
         </Card>
 
-       
+        <Card className="grey-card">
+          <Row>
+            <Col sm={6} className="my-auto">
+              <div>
+                <UkraineBuy />
+              </div>
+            </Col>
+            <Col sm={6}>
+              <div className="donation-info" style={{ boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)" }}>
+                <p>User Information</p>
+                <div className="d-flex flex-wrap">
+                  <img src={ukraineUser} alt="userpic" className="img-fluid p-2" style={{ width: "130px", height: "auto" }} />
+                </div>
+                <p>{donate3}</p>
+                {/* progress bar */}
+              </div>
+            </Col>
+          </Row>
+        </Card>
+
       </Col>
     </Row>
   </Container>

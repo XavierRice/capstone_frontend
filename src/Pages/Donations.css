@@ -3,19 +3,48 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 3rem; /* Padding around the container for some spacing */
-}
+  padding: 3rem;
 
+}
 
 .grey-card {
   background-color: #ccc;
-  margin: auto;
-  border-radius: 0.25rem;
-  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+  margin: 1rem auto 1rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
-  align-items: center; /* Keep items vertically centered */
-  justify-content: flex-start; /* Align items to the left */
-  width: 85%;
-  padding: 1rem; /* Add padding inside the card */
-  gap: 3rem; /* Adds space between child elements */
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  max-width: 1200px;
+  padding: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.donation-info {
+  background-color: var(--donation-info-bg-color, #BC9EC1);
+  padding: 1rem;
+  padding-top: 1rem;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  max-width: calc(90% - 2rem);
+}
+
+@media (max-width: 768px) {
+
+  /* Adjustments for mobile view */
+  .grey-card {
+    flex-direction: column;
+    /* Stack the children on smaller screens */
+  }
+
+  .donation-info {
+    max-width: 100%;
+    /* Allow the .donation-info to take the full width on smaller screens */
+    margin-bottom: 1rem;
+    /* Add some space below the div */
+  }
 }
