@@ -10,6 +10,8 @@ import {
 import { FaSearch } from "react-icons/fa";
 import useScrollPosition from "../../Hooks/ScrollPositionProvider";
 import { Link } from "react-router-dom";
+import hand from '../../assets/hand.png'
+import Logo from "../Logo";
 
 function MainNavigationBar({ scrolling = false }) {
 	return (
@@ -49,7 +51,7 @@ function MainNavigationBar({ scrolling = false }) {
 					</NavDropdown>
 				</Nav>
 				<Navbar.Brand className="mx-auto display-2" href="/">
-					Impactify
+					<Logo/>
 				</Navbar.Brand>
 
 				<Nav className="ml-auto">
