@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function SearchResultPage() {
 	const location = useLocation();
-	const { eventsData, newsData } = location.state;
+	const { eventsData, newsData, newsAPIResponse } = location.state;
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
 
@@ -19,9 +19,17 @@ function SearchResultPage() {
 		navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
 	};
 
+    const handleArticleClick = (article, i) => {
+        navigate(`/discover/news-details/${i}`, {state: {article}})
+    }
+
 	const handleImageLoad = () => {
 		setLoading(false);
 	};
+console.log(eventsData, newsData, newsAPIResponse)
+
+const selectedArticles = newsAPIResponse?.slice(0, 10)
+console.log(selectedArticles)
 
 	return (
 		<div>
@@ -50,6 +58,20 @@ function SearchResultPage() {
 						text={news.text}
 						onLoad={handleImageLoad}
 						onClick={() => handleNewsCardClick(news.news_id)}
+					/>
+				))}
+			</ul>
+
+            <ul>
+				{selectedArticles.map((article, i) => (
+					<Card
+						key={`${i}-${article.author}`}
+						id={`${i}`}
+						title={article.title}
+						imageSrc={article.urlToImage}
+						text={article.description}
+						onLoad={handleImageLoad}
+						onClick={() => handleArticleClick(article, i)}
 					/>
 				))}
 			</ul>

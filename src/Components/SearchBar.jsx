@@ -7,6 +7,7 @@ function SearchBar({ onSearch }) {
   const [searchInput, setSearchInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const newsAPIKey = import.meta.env.VITE_APP_NEWSAPI_KEY
   const navigate = useNavigate();
 
   const [userLocation, setUserLocation] = useState(null);
@@ -49,10 +50,16 @@ function SearchBar({ onSearch }) {
       );
       console.log("News response:", newsResponse.data);
 
+	  const newsAPIResponse = await axios.get(
+		`https://newsapi.org/v2/everything?q=${searchInput}&apiKey=${newsAPIKey}`
+	  );
+	  console.log("NewsAPI response:", newsAPIResponse.data.articles )
+
       navigate(`/search-results?keyword=${searchInput}`, {
         state: {
           eventsData: eventsResponse.data.data,
           newsData: newsResponse.data.data,
+		  newsAPIResponse: newsAPIResponse.data.articles,
         },
       });
     } catch (error) {
