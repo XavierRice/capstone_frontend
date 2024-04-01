@@ -71,12 +71,11 @@ console.log(selectedArticles)
 					</Col>
 				))}
 
-		
 
             <ul>
 				{selectedArticles.map((article, i) => (
+                    <Col key={`${i}-${article.author}`} lg={3} md={3} sm={8}>
 					<Card
-						key={`${i}-${article.author}`}
 						id={`${i}`}
 						title={article.title}
 						imageSrc={article.urlToImage}
@@ -84,6 +83,7 @@ console.log(selectedArticles)
 						onLoad={handleImageLoad}
 						onClick={() => handleArticleClick(article, i)}
 					/>
+                    </Col>
 				))}
 			</ul>
 
