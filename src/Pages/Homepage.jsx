@@ -15,6 +15,7 @@ import Footer from "../Components/Footer/Footer";
 import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
 import factsImg from "../assets/facts1.jpg";
+import tag1 from '../assets/Tag1.jpg'
 import { AuthData } from "../Provider/AuthProv";
 import { useAdaptiveTriggers } from "./AdaptiveConfig";
 
@@ -109,7 +110,10 @@ function Homepage({backendEvents}) {
 						style={{
 							height: "92%",
 							width: "100%",
-							backgroundImage: `url(${factsImg})`,
+							backgroundImage: `url(${tag1})`,
+							backgroundSize: '90%',
+							backgroundRepeat: 'no-repeat',
+							backgroundPosition: 'center',
 						}}
 					></div>
 				</ParallaxLayer>
