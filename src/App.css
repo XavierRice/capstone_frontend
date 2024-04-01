@@ -132,31 +132,39 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 50vh;
+	height: 100vh;
+	width: 100vw;
 }
 
 .loader {
-	/* Remove the border properties */
-	width: 50px;
-	height: 50px;
+	width: 150px;
+	height: 150px;
 	background: url("/Users/nicolerodriguez/Documents/Pursuit/capstone_frontend/src/assets/Impactify_Logo.gif")
 		center center no-repeat;
 	background-size: cover;
-	animation: spin 1s infinite linear;
-	border-radius: 50%;
+
+	animation: repeat 3s infinite;
 }
 
-@keyframes spin {
+@keyframes repeat {
+	0% {
+		background-position: 0 0;
+	} /* Start position of the GIF */
+	100% {
+		background-position: 0 0;
+	} /* End position of the GIF */
+}
+/* @keyframes spin {
 	to {
 		transform: rotate(360deg);
 	}
-}
+} */
 
 /* -------------------- mobile view might delete -------------*/
 /* Navigation bar */
 
 .content {
-	padding-bottom: 50px; /* Adjust bottom padding for the height of the navbar */
+	padding-bottom: 50px;
 }
 
 .footer {
@@ -167,14 +175,14 @@ body {
 
 /*------------------- categories section ---------------- */
 .circle-btn {
-	background-color: #bc9ec1; /* Example background color */
-	color: white; /* Text color */
+	background-color: #bc9ec1;
+	color: white;
 
 	transition: background-color 0.3s ease;
 }
 
 .circle-btn:hover {
-	background-color: #9973a0; /* Change color on hover */
+	background-color: #9973a0;
 }
 
 /* ----------------------------------------------- Parallax Homepage------------------------------------- */

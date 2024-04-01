@@ -4,93 +4,99 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function SearchBar({ onSearch }) {
-  const [searchInput, setSearchInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+	const [searchInput, setSearchInput] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(null);
+	const navigate = useNavigate();
 
-  const [userLocation, setUserLocation] = useState(null);
+	const [userLocation, setUserLocation] = useState(null);
 
-  //getting users location
-  useEffect(() => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ lat: latitude, lng: longitude });
-        },
-        (error) => {
-          console.error("Error obtaining user location", error);
-        }
-      );
-    } else {
-      console.log("Geolocation is not working.");
-    }
-  }, []);
+	//getting users location
+	useEffect(() => {
+		if ("geolocation" in navigator) {
+			navigator.geolocation.getCurrentPosition(
+				(position) => {
+					const { latitude, longitude } = position.coords;
+					setUserLocation({ lat: latitude, lng: longitude });
+				},
+				(error) => {
+					console.error("Error obtaining user location", error);
+				}
+			);
+		} else {
+			console.log("Geolocation is not working.");
+		}
+	}, []);
 
-  const handleChange = (e) => {
-    setSearchInput(e.target.value);
-  };
+	const handleChange = (e) => {
+		setSearchInput(e.target.value);
+	};
 
-  const handleSearch = async () => {
-    setLoading(true);
-    setError(null);
+	const handleSearch = async () => {
+		setLoading(true);
+		setError(null);
 
-    console.log("Searching for:", searchInput);
+		console.log("Searching for:", searchInput);
 
-    try {
-      const eventsResponse = await axios.get(
-        `http://localhost:4000/events/search?keyword=${searchInput}`
-      );
-      console.log("Events response:", eventsResponse.data);
+		try {
+			const eventsResponse = await axios.get(
+				`http://localhost:4000/events/search?keyword=${searchInput}`
+			);
+			console.log("Events response:", eventsResponse.data);
 
-      const newsResponse = await axios.get(
-        `http://localhost:4000/news/search?keyword=${searchInput}`
-      );
-      console.log("News response:", newsResponse.data);
+			const newsResponse = await axios.get(
+				`http://localhost:4000/news/search?keyword=${searchInput}`
+			);
+			console.log("News response:", newsResponse.data);
 
-      navigate(`/search-results?keyword=${searchInput}`, {
-        state: {
-          eventsData: eventsResponse.data.data,
-          newsData: newsResponse.data.data,
-        },
-      });
-    } catch (error) {
-      console.error("An error occurred while fetching search results:", error);
-      setError("An error occurred while fetching search results.");
-    }
+			navigate(`/search-results?keyword=${searchInput}`, {
+				state: {
+					eventsData: eventsResponse.data.data,
+					newsData: newsResponse.data.data,
+				},
+			});
+		} catch (error) {
+			console.error("An error occurred while fetching search results:", error);
+			setError("An error occurred while fetching search results.");
+		}
 
-    setLoading(false);
-  };
+		setLoading(false);
+	};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleSearch();
-  };
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		handleSearch();
+	};
 
-  return (
-    <div>
-      <Form onSubmit={handleSubmit}>
-        <InputGroup className="mb-3 container">
-          <Col xs={8} md={9} lg={10}> 
-            <FormControl
-              placeholder="Search"
-              aria-label="Search"
-              onChange={handleChange}
-              value={searchInput}
-            />
-          </Col>
-          <Col xs={4} md={3} lg={2}> 
-            <Button variant="outline-secondary" type="submit" disabled={loading}>
-              {loading ? "Searching..." : "Search"}
-            </Button>
-          </Col>
-        </InputGroup>
-      </Form>
+	return (
+		<div className="m-5 d-flex justify-content-center">
+			<Form onSubmit={handleSubmit}>
+				<InputGroup className=" ">
+					<Col xs={8} md={9} lg={10}>
+						<FormControl
+							placeholder="Search"
+							aria-label="Search"
+							onChange={handleChange}
+							value={searchInput}
+							style={{ width: "80vw" }}
+						/>
+					</Col>
+					<Col xs={4} md={3} lg={2}>
+						<Button
+							variant="outline-secondary"
+							type="submit"
+							disabled={loading}
+							style={{ width: "10vw", borderRadius: "10px", height: "1005" }}
+						>
+							{loading ? "Searching..." : "Search"}
+						</Button>
+					</Col>
+				</InputGroup>
+			</Form>
 
-      {error && <div>{error}</div>}
-    </div>
-  );
+			{error && <div>{error}</div>}
+		</div>
+	);
 }
 
 export default SearchBar;

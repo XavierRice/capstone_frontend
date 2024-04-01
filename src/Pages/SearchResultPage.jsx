@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import Card from "../Components/Card/Card";
 import CardNew from "../Components/Card/CardNew";
 import { useNavigate } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
+import SearchBar from "../Components/SearchBar";
 
 function SearchResultPage() {
 	const location = useLocation();
@@ -24,35 +26,43 @@ function SearchResultPage() {
 	};
 
 	return (
-		<div>
-			<h1>Search Results</h1>
-			<h2>Events</h2>
-			<ul>
+		<div className="">
+			<div>
+				<SearchBar />
+			</div>
+
+			<Row className="m-3">
+				<h4>Events</h4>
 				{eventsData.map((event, index) => (
-					<div key={event.id || index} className="event-card-container">
-						<CardNew
-							cardObj={event}
-							tag={"Event"}
-							imageLoad={handleImageLoad}
-							cardClick={() => handleEventCardClick(event)}
-						/>
-					</div>
+					<Col key={event.id || index} lg={3} md={3} sm={8}>
+						<div className="event-card-container">
+							<CardNew
+								cardObj={event}
+								tag={"Event"}
+								imageLoad={handleImageLoad}
+								cardClick={() => handleEventCardClick(event)}
+							/>
+						</div>
+					</Col>
 				))}
-			</ul>
-			<h2>News</h2>
-			<ul>
+			</Row>
+
+			<Row className="m-3">
+				<h4>News</h4>
 				{newsData.map((news) => (
-					<Card
-						key={news.news_id}
-						id={news.news_id}
-						title={news.news_title}
-						imageSrc={news.news_image}
-						text={news.text}
-						onLoad={handleImageLoad}
-						onClick={() => handleNewsCardClick(news.news_id)}
-					/>
+					<Col key={news.news_id} lg={3} md={3} sm={8}>
+						<Card
+							id={news.news_id}
+							title={news.news_title}
+							imageSrc={news.news_image}
+							tag={"News"}
+							text={news.text}
+							onLoad={handleImageLoad}
+							onClick={() => handleNewsCardClick(news.news_id)}
+						/>
+					</Col>
 				))}
-			</ul>
+			</Row>
 		</div>
 	);
 }

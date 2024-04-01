@@ -8,6 +8,7 @@ import { IoLocationOutline, IoCalendarOutline } from "react-icons/io5";
 import "./Categories.css";
 
 function CategoriesSection({ onSelectCategory }) {
+	const [selectedCategory, setSelectedCategory] = useState(null);
 	const handleClick = (category) => {
 		onSelectCategory(category);
 	};
@@ -21,51 +22,86 @@ function CategoriesSection({ onSelectCategory }) {
 				<Col sm={10} xs={7} className="text-center">
 					<div className="categories-container d-flex justify-content-center">
 						<Row>
-							<div className=" mx-3">
+							<div
+								className={`mx-3 categories-container ${
+									selectedCategory === "Local" ? "selected" : ""
+								}`}
+								onClick={() => handleClick("Local")}
+							>
 								<IoLocationOutline
 									style={{ fontSize: "44px", color: "#630f76" }}
 								/>
-								<div>Local</div>
+								<div className="fs-6 fw-semibold">Local</div>
 							</div>
 						</Row>
 						<Row>
-							<div className=" mx-3">
+							<div
+								className={`mx-3 ${
+									selectedCategory === "Coming Up" ? "selected" : ""
+								}`}
+								onClick={() => handleClick("Coming Up")}
+							>
 								<IoCalendarOutline
 									style={{ fontSize: "44px", color: "#630f76" }}
 								/>
-								<div>Coming Up</div>
+								<div className="fs-6 fw-semibold">Coming up</div>
 							</div>
 						</Row>
 						<Row>
-							<div className=" mx-3">
+							<div
+								className={`mx-3 ${
+									selectedCategory === "Global Issues" ? "selected" : ""
+								}`}
+								onClick={() => handleClick("Global Issues")}
+							>
 								<GiWorld style={{ fontSize: "44px", color: "#630f76" }} />
-								<div>Global Issues</div>
+								<div className="fs-6 fw-semibold">Global</div>
 							</div>
 						</Row>
 						<Row>
-							<div className=" mx-3">
+							<div
+								className={`mx-3 ${
+									selectedCategory === "Politics" ? "selected" : ""
+								}`}
+								onClick={() => handleClick("Politics")}
+							>
 								<MdOutlinePolicy
 									style={{ fontSize: "44px", color: "#630f76" }}
 								/>
-								<div>Politics</div>
+								<div className="fs-6 fw-semibold">Politics</div>
 							</div>
 						</Row>
 						<Row>
-							<div className=" mx-3">
+							<div
+								className={`mx-3 ${
+									selectedCategory === "Community" ? "selected" : ""
+								}`}
+								onClick={() => handleClick("Community")}
+							>
 								<FaPeopleGroup style={{ fontSize: "44px", color: "#630f76" }} />
-								<div>Community</div>
+								<div className="fs-6 fw-semibold">Community</div>
 							</div>
 						</Row>
 						<Row>
-							<div className=" mx-3">
+							<div
+								className={`mx-3 ${
+									selectedCategory === "Donation" ? "selected" : ""
+								}`}
+								onClick={() => handleClick("Donation")}
+							>
 								<BiDonateHeart style={{ fontSize: "44px", color: "#630f76" }} />
-								<div>Donation</div>
+								<div className="fs-6 fw-semibold">Donation</div>
 							</div>
 						</Row>
 						<Row>
-							<div className=" mx-3">
+							<div
+								className={`mx-3 ${
+									selectedCategory === "All" ? "selected" : ""
+								}`}
+								onClick={() => handleClick("All")}
+							>
 								<MdAllInbox style={{ fontSize: "44px", color: "#630f76" }} />
-								<div>All</div>
+								<div className="fs-6 fw-semibold">All</div>
 							</div>
 						</Row>
 					</div>

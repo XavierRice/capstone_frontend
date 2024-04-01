@@ -24,7 +24,7 @@ function MainNavigationBar({ scrolling = false }) {
 
 			<Link to="/search">
 				<div className="mx-3">
-					<FaSearch className="" style={{ marginRight: "2px" }} />
+					<FaSearch className="" style={{ marginRight: "4px" }} />
 					Search
 				</div>
 			</Link>
@@ -32,20 +32,20 @@ function MainNavigationBar({ scrolling = false }) {
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
 					<NavDropdown
-						title="For Individuals"
+						title="Get Involved"
 						id="basic-nav-dropdown"
 						className="mx-3"
 					>
-						<NavDropdown.Item href="#news">About us</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/news">News</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/events">
 							All Events
 						</NavDropdown.Item>
-						<NavDropdown.Item href="/discover/donations">Donations</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/donations">
+							Donations
+						</NavDropdown.Item>
 						<NavDropdown.Item href="#votingtoolkit">
 							Voting Toolkit
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#aboutus">About Us</NavDropdown.Item>
 					</NavDropdown>
 				</Nav>
 				<Navbar.Brand className="mx-auto display-2" href="/">
@@ -53,9 +53,18 @@ function MainNavigationBar({ scrolling = false }) {
 				</Navbar.Brand>
 
 				<Nav className="ml-auto">
-					<Nav.Link href="#howitworks" className="mx-3">
-						How It Works
-					</Nav.Link>
+					<NavDropdown
+						title="About us"
+						id="basic-nav-dropdown"
+						className="mx-3"
+					>
+						<NavDropdown.Item href="#howitworks" className="mx-3">
+							How It Works
+						</NavDropdown.Item>
+						<NavDropdown.Item href="#howitworks" className="mx-3">
+							About us
+						</NavDropdown.Item>
+					</NavDropdown>
 					<Nav.Link href="/discover/users/signup" className="mx-3">
 						Sign In
 					</Nav.Link>

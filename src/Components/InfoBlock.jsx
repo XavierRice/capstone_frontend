@@ -26,7 +26,10 @@ function InfoBlock() {
 				<Col sm={9} xs={10} className="text-center">
 					<div className="categories-container d-flex justify-content-center">
 						<div className="category-item mx-3">
-							<Link to="/news" className="d-block text-decoration-none">
+							<Link
+								to="/discover/news"
+								className="d-block text-decoration-none"
+							>
 								<IoNewspaper style={{ fontSize: "34px", color: "#9973a0" }} />
 								<div className="header-and-link hover-underline">News</div>
 								<div>Read about the latest events happening in every area</div>
@@ -34,7 +37,7 @@ function InfoBlock() {
 						</div>
 						<div className="category-item mx-3">
 							<Link
-								to="/create-events"
+								to="/discover/create-event"
 								className="d-block text-decoration-none"
 							>
 								<MdOutlineEventAvailable
@@ -49,7 +52,7 @@ function InfoBlock() {
 						</div>
 						<div className="category-item mx-3">
 							<Link
-								to="/attend-events"
+								to="/discover/events"
 								className="d-block text-decoration-none"
 							>
 								<FaPersonCircleCheck
@@ -60,17 +63,17 @@ function InfoBlock() {
 							</Link>
 						</div>
 						<div className="category-item mx-3">
-							<Link to="/donate" className="d-block text-decoration-none">
+							<Link
+								to="/discover/donate"
+								className="d-block text-decoration-none"
+							>
 								<BiDonateHeart style={{ fontSize: "34px", color: "#9973a0" }} />
 								<div className="header-and-link">Donate</div>
 								<div>Reach a helping hand for causes you resonate with</div>
 							</Link>
 						</div>
 						<div className="category-item mx-3">
-							<Link
-								to="/build-community"
-								className="d-block text-decoration-none"
-							>
+							<Link to="/search" className="d-block text-decoration-none">
 								<FaPeopleGroup style={{ fontSize: "34px", color: "#9973a0" }} />
 								<div className="header-and-link">Find</div>
 								<div>

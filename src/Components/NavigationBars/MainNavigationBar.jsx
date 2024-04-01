@@ -33,23 +33,24 @@ function MainNavigationBar() {
 			/>
 			<Link to="/">
 				<div className="mx-3">
-					<FaSearch className="" style={{ marginRight: "2px" }} />
+					<FaSearch className="" style={{ marginRight: "4px" }} />
 					Search
 				</div>
 			</Link>
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
 					<NavDropdown
-						title="For Individuals"
+						title="Get Involved"
 						id="basic-nav-dropdown"
 						className="mx-3"
 					>
-						<NavDropdown.Item href="#news">About us</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/news">News</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/events">
 							All Events
 						</NavDropdown.Item>
-						<NavDropdown.Item href="/discover/donations">Donations</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/donations">
+							Donations
+						</NavDropdown.Item>
 						<NavDropdown.Item href="#votingtoolkit">
 							Voting Toolkit
 						</NavDropdown.Item>
@@ -60,9 +61,18 @@ function MainNavigationBar() {
 					Impactify
 				</Navbar.Brand>
 				<Nav className="ml-auto">
-					<Nav.Link href="#howitworks" className="mx-3">
-						How It Works
-					</Nav.Link>
+					<NavDropdown
+						title="About us"
+						id="basic-nav-dropdown"
+						className="mx-3"
+					>
+						<NavDropdown.Item href="#howitworks" className="mx-3">
+							How It Works
+						</NavDropdown.Item>
+						<NavDropdown.Item href="#howitworks" className="mx-3">
+							About us
+						</NavDropdown.Item>
+					</NavDropdown>
 					<Nav.Link href="#signin" className="mx-3">
 						Sign In
 					</Nav.Link>
@@ -103,10 +113,6 @@ function MainNavigationBar() {
 							</Nav.Link>
 							<Nav.Link href="#signin" className="mx-3">
 								Sign In
-							</Nav.Link>
-
-							<Nav.Link className="mx-3 " href="#news">
-								About us
 							</Nav.Link>
 						</Nav>
 					</Col>

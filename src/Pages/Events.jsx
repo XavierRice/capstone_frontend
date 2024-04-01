@@ -14,10 +14,11 @@ const Events = () => {
 	const [mobilizeEvents, setMobilizeEvents] = useState([]);
 	const [virtualEvents, setVirtualEvents] = useState([]);
 	const [clickedEvents, setClickedEvents] = useState([]);
+	const [selectedCategory, setSelectedCategory] = useState(null);
 	const [allEvents, setAllEvents] = useState([]);
 	const navigate = useNavigate();
 
-	const backend = import.meta.env.VITE_BACKEND_URL;
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 
 	useEffect(() => {
 		const fetchEvents = async () => {
@@ -27,9 +28,8 @@ const Events = () => {
 			try {
 				const resposeBackend = await axios.get(`${backend}/events`);
 				fetchEventsData = resposeBackend.data.data;
-				console.log(resposeBackend)
+				console.log(resposeBackend);
 				setEventsData(fetchEventsData);
-				
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			}
@@ -72,9 +72,11 @@ const Events = () => {
 		};
 		fetchEvents();
 	}, []);
+
 	useEffect(() => {
 		setAllEvents([...eventsData, ...virtualEvents]);
 	}, [eventsData, virtualEvents]);
+
 	const handleCardClick = (eventData) => {
 		console.log("you clicked me", eventData);
 		navigate("/discover/events-details", { state: { event: eventData } });
@@ -83,6 +85,13 @@ const Events = () => {
 	const handleImageLoad = () => {
 		setLoading(false);
 	};
+
+	const filteredEvents = selectedCategory
+		? allEvents.filter((event) =>
+				event.event_keywords.includes(selectedCategory)
+			)
+		: allEvents;
+
 	return (
 		<div className="">
 			{loading ? (
@@ -92,7 +101,7 @@ const Events = () => {
 			) : (
 				<Col>
 					<Row className="my-4 pb-4">
-						<CategoriesSection />
+						<CategoriesSection onSelectCategory={setSelectedCategory} />
 					</Row>
 					<Row className="d-flex justify-content-center">
 						{allEvents.map((event, index) => (
