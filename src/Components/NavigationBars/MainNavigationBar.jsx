@@ -12,6 +12,10 @@ import {
 } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Logo from "../Logo";
+
+
+
 function MainNavigationBar() {
 	const [isResponsive, setIsResponsive] = useState(false);
 
@@ -58,7 +62,7 @@ function MainNavigationBar() {
 					</NavDropdown>
 				</Nav>
 				<Navbar.Brand className="mx-auto display-2" href="/">
-					Impactify
+					<Logo/>
 				</Navbar.Brand>
 				<Nav className="ml-auto">
 					<NavDropdown
@@ -96,7 +100,7 @@ function MainNavigationBar() {
 				className="outline-none"
 			/>
 			<Navbar.Brand className="mx-auto display-2" href="/">
-				Impactify
+				<Logo/>
 			</Navbar.Brand>
 			<Link to="/">
 				<div className="mx-3">
