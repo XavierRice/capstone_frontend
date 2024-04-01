@@ -8,13 +8,13 @@ const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
 		<div onClick={onClick} style={{ cursor: "pointer" }}>
 			<div className="card border-0  bg-light border-none ">
 				<img
-					className="card-img-top p-2"
+					className=" p-2"
 					src={imageSrc}
 					alt="Card image"
 					onLoad={onLoad}
-					style={{ borderRadius: "15px", height: "25vh" }}
+					style={{ borderRadius: "15px" }}
 				/>
-				<div className="card-body">
+				<div className="card-body bg-light">
 					<h5 className="card-title ">{title}</h5>
 					<p className="card-text">{text}</p>
 					{/* <p className="card-text">

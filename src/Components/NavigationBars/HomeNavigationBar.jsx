@@ -10,7 +10,7 @@ import {
 import { FaSearch } from "react-icons/fa";
 import useScrollPosition from "../../Hooks/ScrollPositionProvider";
 import { Link } from "react-router-dom";
-import hand from '../../assets/hand.png'
+import hand from "../../assets/hand.png";
 import Logo from "../Logo";
 
 function MainNavigationBar({ scrolling = false }) {
@@ -50,8 +50,12 @@ function MainNavigationBar({ scrolling = false }) {
 						</NavDropdown.Item>
 					</NavDropdown>
 				</Nav>
-				<Navbar.Brand className="mx-auto display-2" href="/">
-					<Logo/>
+				<Navbar.Brand
+					className="mx-auto"
+					style={{ paddingTop: "0", paddingBottom: "0" }}
+					href="/"
+				>
+					<Logo />
 				</Navbar.Brand>
 
 				<Nav className="ml-auto">
