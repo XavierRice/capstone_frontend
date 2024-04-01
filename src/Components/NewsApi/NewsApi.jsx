@@ -77,7 +77,7 @@ console.log(newsArticles)
         </Form.Group>
       </Row>
       <Row>
-        <NewsCar newsArticles={newsArticles}/>
+        <NewsCar newsArticles={newsArticles}/>å
       </Row>
     </Container>
   );

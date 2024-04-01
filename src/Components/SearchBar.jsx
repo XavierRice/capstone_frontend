@@ -4,10 +4,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function SearchBar({ onSearch }) {
-	const [searchInput, setSearchInput] = useState("");
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(null);
-	const navigate = useNavigate();
+
+  const [searchInput, setSearchInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const newsAPIKey = import.meta.env.VITE_APP_NEWSAPI_KEY
+  const navigate = useNavigate();
+
 
 	const [userLocation, setUserLocation] = useState(null);
 
@@ -49,16 +52,24 @@ function SearchBar({ onSearch }) {
 			);
 			console.log("News response:", newsResponse.data);
 
-			navigate(`/search-results?keyword=${searchInput}`, {
-				state: {
-					eventsData: eventsResponse.data.data,
-					newsData: newsResponse.data.data,
-				},
-			});
-		} catch (error) {
-			console.error("An error occurred while fetching search results:", error);
-			setError("An error occurred while fetching search results.");
-		}
+
+	  const newsAPIResponse = await axios.get(
+		`https://newsapi.org/v2/everything?q=${searchInput}&apiKey=${newsAPIKey}`
+	  );
+	  console.log("NewsAPI response:", newsAPIResponse.data.articles )
+
+      navigate(`/search-results?keyword=${searchInput}`, {
+        state: {
+          eventsData: eventsResponse.data.data,
+          newsData: newsResponse.data.data,
+		  newsAPIResponse: newsAPIResponse.data.articles,
+        },
+      });
+    } catch (error) {
+      console.error("An error occurred while fetching search results:", error);
+      setError("An error occurred while fetching search results.");
+    }
+
 
 		setLoading(false);
 	};
