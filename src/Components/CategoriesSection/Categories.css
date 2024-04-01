@@ -10,3 +10,12 @@
 .categories-container {
 	/* grid goes here  */
 }
+
+.categories-container > div:hover {
+	color: #9f78a6;
+	text-decoration: underline;
+}
+
+.categories-container > div.selected {
+	color: #b79dbc;
+}

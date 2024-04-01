@@ -16,12 +16,19 @@ import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
 import factsImg from "../assets/facts1.jpg";
 import { AuthData } from "../Provider/AuthProv";
+import { useAdaptiveTriggers } from "./AdaptiveConfig";
 
 function Homepage() {
 	const { user } = useContext(AuthData);
 	const [isResponsive, setIsResponsive] = useState(false);
+	const adaptiveWidth = useAdaptiveTriggers({
+		onSmallEnter: () =>
+			console.log("its small, apply small parallax props now"),
+		onExtraSmallEnter: () =>
+			console.log("its extra small, apply extra small parallax props now"),
+	});
 
-	console.log(user);
+	console.log(adaptiveWidth);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -96,7 +103,7 @@ function Homepage() {
 					speed={0}
 					factor={1}
 					className=" d-flex justify-content-center"
-					style={{ backgroundImage: `white` }}
+					style={{ background: `white` }}
 				>
 					<div
 						style={{
@@ -104,12 +111,10 @@ function Homepage() {
 							width: "100%",
 							backgroundImage: `url(${factsImg})`,
 						}}
-					>
-						hello
-					</div>
+					></div>
 				</ParallaxLayer>
 				<ParallaxLayer
-					offset={2.5}
+					offset={2.55}
 					speed={0}
 					factor={0.5}
 					className=" d-flex justify-content-center"
