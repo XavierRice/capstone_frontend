@@ -31,7 +31,6 @@ import SearchPage from "./Pages/Search/SearchPage";
 //NEWIMPORTS
 import FundraiseFacts from "./Pages/Fundraise/FundraiseFacts";
 
-
 function App() {
 	return (
 		<Router>
@@ -58,8 +57,8 @@ function App() {
 					<Route path="/discover/users/signup" element={<SignUpPage />} />
 					<Route path="/discover/thankyou" element={<ThankYou />} />
 					<Route path="/discover/create-event" element={<CreateEventPage />} />
-					<Route path="/discover/test"element={<NewsApi/>}/>
-					<Route path="/discover/facts"element={<FundraiseFacts/>}/>
+					<Route path="/discover/test" element={<NewsApi />} />
+					<Route path="/discover/facts" element={<FundraiseFacts />} />
 					<Route
 						path="/discover/create-event/donation"
 						element={<StripeDonation />}
@@ -69,16 +68,6 @@ function App() {
 			</div>
 		</Router>
 	);
-
-
-
-
-
-
-
-
-
-
 }
 
 export default App;
