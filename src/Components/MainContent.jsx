@@ -3,9 +3,12 @@ import Card from "./Card/Card";
 import { Col, Row, Button } from "react-bootstrap";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
+import { useNavigate } from "react-router";
 
-function MainContent() {
-	// Mock data for testing
+function MainContent({backendEvents}) {
+const navigate = useNavigate()
+console.log(`This is maincontent: ${backendEvents}`)
+
 	const mockEvents = [
 		{
 			id: 1,
@@ -62,6 +65,11 @@ function MainContent() {
 		setStartIndex((prevIndex) => Math.max(prevIndex - eventsPerPage, 0));
 	};
 
+	const handleContentClick = (event) => {
+		console.log("you clicked me", event);
+		navigate("/discover/events-details", { state: { event: event } });
+	};
+
 	return (
 		<div className="mt-5">
 			<div className="m-4">
@@ -89,14 +97,15 @@ function MainContent() {
 					</div>
 
 					<Row style={{ paddingRight: "0px", paddingLeft: "0px" }}>
-						{mockEvents
+						{backendEvents
 							.slice(startIndex, startIndex + eventsPerPage)
 							.map((event) => (
-								<Col key={event.id} xs={3} md={3} lg={3} className="">
+								<Col key={event.event_id + "main"} xs={3} md={3} lg={3} className="">
 									<Card
 										title={event.event_title}
 										imageSrc={event.event_photo}
 										text={event.event_details}
+										onClick={()=>handleContentClick(event)}
 									/>
 								</Col>
 							))}
