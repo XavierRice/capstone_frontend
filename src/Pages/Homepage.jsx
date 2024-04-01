@@ -18,7 +18,7 @@ import factsImg from "../assets/facts1.jpg";
 import { AuthData } from "../Provider/AuthProv";
 import { useAdaptiveTriggers } from "./AdaptiveConfig";
 
-function Homepage() {
+function Homepage({backendEvents}) {
 	const { user } = useContext(AuthData);
 	const [isResponsive, setIsResponsive] = useState(false);
 	const adaptiveWidth = useAdaptiveTriggers({
@@ -96,7 +96,7 @@ function Homepage() {
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					<AllEventsBlock />
+					<AllEventsBlock backendEvents={backendEvents} />
 				</ParallaxLayer>
 				<ParallaxLayer
 					offset={1.6}

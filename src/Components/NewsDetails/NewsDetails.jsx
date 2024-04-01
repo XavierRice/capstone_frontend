@@ -90,7 +90,7 @@ const NewsDetails = () => {
 							Related Events
 						</div>
 
-						{relatedEvents.slice(0, 3).map((event, index) => (
+						{relatedEvents?.slice(0, 3).map((event, index) => (
 							<div key={index} className="box mx-4" onClick={()=>{handleReleatedClick(event)}}>
 								<img src={event.event_photo} alt={`Event ${index + 1}`} className="releated-event-image"/>
 								<div className="releated-image-text">{event.event_title}</div>
