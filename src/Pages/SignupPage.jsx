@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AuthData } from "../Provider/AuthProv";
 import { Container, Row, Col, Card, Image } from "react-bootstrap";
@@ -11,6 +11,7 @@ const SignUpPage = () => {
 
 	const { API, setUser, setToken } = useContext(AuthData);
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+
 	const handleSignUp = async (userData) => {
 		try {
 			const response = await API.post(`${backend}/users/register`, userData);
