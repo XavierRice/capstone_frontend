@@ -122,7 +122,7 @@ const EventForm = () => {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        // naviagte('/discover/create-event/donation')
+        naviagte('/discover/events')
       });
   };
 
@@ -142,6 +142,7 @@ const EventForm = () => {
   }, [location, lat, lng, stripeId]);
 
   console.log(stripeId);
+  
   // console.log(user_event)
   // useEffect(() => {
   //   fetch(`${backend}/events/${user_id}`)
@@ -264,7 +265,6 @@ const EventForm = () => {
       </Button>
     </Form>
   );
-
-
+  }
 
 export default EventForm;

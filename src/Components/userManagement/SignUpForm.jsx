@@ -22,7 +22,7 @@ const SignUpForm = ({ onSubmit }) => {
     }
     setError("");
     onSubmit(userData);
-  };
+  
 
   return (
     <Form onSubmit={handleSubmit} className="">
@@ -74,6 +74,6 @@ const SignUpForm = ({ onSubmit }) => {
       </div>
     </Form>
   );
-};
+  }
 
 export default SignUpForm;
