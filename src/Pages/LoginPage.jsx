@@ -11,7 +11,7 @@ const LoginPage = () => {
 	const navigate = useNavigate();
 	const location = useLocation(null);
 
-	const backend = import.meta.env.VITE_BACKEND_URL;
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const { API, setUser, setToken } = useContext(AuthData);
 	const [loginError, setLoginError] = useState("");
 

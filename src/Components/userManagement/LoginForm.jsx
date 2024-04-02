@@ -19,20 +19,24 @@ const LoginForm = ({ onSubmit, loginError }) => {
 				<Form onSubmit={handleSubmit} className="login-form">
 					<div className="d-flex">
 						<div className="flex-grow-1 mx-2">
-							<Form.Group controlId="firstName">
-								<Form.Control
+							<Form.Group controlId="Username">
+								<InputField
 									type="text"
-									placeholder="first name"
-									name="firstName"
+									placeholder="Username"
+									name="Username"
+									value={username}
+									onChange={(e) => setUsername(e.target.value)}
 								/>
 							</Form.Group>
 						</div>
 						<div className="flex-grow-1 mx-2">
-							<Form.Group controlId="lastName">
-								<Form.Control
+							<Form.Group controlId="password">
+								<InputField
 									type="text"
-									placeholder="last name"
-									name="lastName"
+									placeholder="Password"
+									name="Password"
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
 								/>
 							</Form.Group>
 						</div>

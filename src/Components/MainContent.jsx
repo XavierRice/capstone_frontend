@@ -5,9 +5,9 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import { useNavigate } from "react-router";
 
-function MainContent({backendEvents}) {
-const navigate = useNavigate()
-console.log(`This is maincontent: ${backendEvents}`)
+function MainContent({ backendEvents }) {
+	const navigate = useNavigate();
+	console.log(`This is maincontent: ${backendEvents}`);
 
 	const mockEvents = [
 		{
@@ -98,14 +98,20 @@ console.log(`This is maincontent: ${backendEvents}`)
 
 					<Row style={{ paddingRight: "0px", paddingLeft: "0px" }}>
 						{backendEvents
-							.slice(startIndex, startIndex + eventsPerPage)
+							?.slice(startIndex, startIndex + eventsPerPage)
 							.map((event) => (
-								<Col key={event.event_id + "main"} xs={3} md={3} lg={3} className="">
+								<Col
+									key={event.event_id + "main"}
+									xs={3}
+									md={3}
+									lg={3}
+									className=""
+								>
 									<Card
 										title={event.event_title}
 										imageSrc={event.event_photo}
 										text={event.event_details}
-										onClick={()=>handleContentClick(event)}
+										onClick={() => handleContentClick(event)}
 									/>
 								</Col>
 							))}

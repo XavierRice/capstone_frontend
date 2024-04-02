@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { InputGroup, FormControl, Button, Form, Col } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import SearchResultPage from "../Pages/SearchResultPage";
 
 function SearchBar({ onSearch }) {
-	const backend = import.meta.env.VITE_BACKEND_URL
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [searchInput, setSearchInput] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
-	const newsAPIKey = import.meta.env.VITE_APP_NEWSAPI_KEY;
+	const newsAPIKey =
+		import.meta.env.VITE_APP_NEWSAPI_KEY || "34f016ffbcd9498fa866ebfdcfd61e73";
 	const navigate = useNavigate();
 
 	const [userLocation, setUserLocation] = useState(null);
@@ -101,6 +103,7 @@ function SearchBar({ onSearch }) {
 					</Col>
 				</InputGroup>
 			</Form>
+
 			{error && (
 				<div className="text-danger d-flex justify-content-center my-5 fs-5 ">
 					{error}
