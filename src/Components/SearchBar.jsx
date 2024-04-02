@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function SearchBar({ onSearch }) {
+	const backend = import.meta.env.VITE_BACKEND_URL
 	const [searchInput, setSearchInput] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -41,12 +42,12 @@ function SearchBar({ onSearch }) {
 
 		try {
 			const eventsResponse = await axios.get(
-				`http://localhost:4000/events/search?keyword=${searchInput}`
+				`${backend}/events/search?keyword=${searchInput}`
 			);
 			console.log("Events response:", eventsResponse.data);
 
 			const newsResponse = await axios.get(
-				`http://localhost:4000/news/search?keyword=${searchInput}`
+				`${backend}/news/search?keyword=${searchInput}`
 			);
 			console.log("News response:", newsResponse.data);
 

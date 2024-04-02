@@ -28,7 +28,7 @@ function SearchResultPage() {
 	const handleImageLoad = () => {
 		setLoading(false);
 	};
-console.log(eventsData, newsData, newsAPIResponse)
+//console.log(eventsData, newsData, newsAPIResponse)
 
 const selectedArticles = newsAPIResponse?.slice(0, 10)
 console.log(selectedArticles)

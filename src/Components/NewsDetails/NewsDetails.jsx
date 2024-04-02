@@ -114,6 +114,7 @@ const NewsDetails = () => {
 
 								<div className="releated-image-text">{event.event_title}</div>
 							</div>
+							</div>
 						))}
 					</div>
 				</Col>
