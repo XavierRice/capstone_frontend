@@ -1,6 +1,6 @@
 import React, { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router";
+
 
 export const AuthData = createContext();
 
@@ -9,7 +9,7 @@ export function useAuthDataProvider() {
 }
 
 function AuthProv({ children }) {
-  const navigate = useNavigate()
+
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem('user')
@@ -50,7 +50,7 @@ function AuthProv({ children }) {
 
   return (
     <AuthData.Provider
-      value={{ API, user, setUser, token, setToken, isAuthenticated }}
+      value={{ API, user, setUser, token, setToken, isAuthenticated, logout }}
     >
       {children}
     </AuthData.Provider>
