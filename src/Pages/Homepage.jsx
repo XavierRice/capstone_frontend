@@ -117,7 +117,7 @@ function Homepage({backendEvents}) {
 							height: "100%",
 							width: "100%",
 							backgroundImage: `url(${tag1})`,
-							backgroundSize: '90%',
+							backgroundSize: '100%',
 							backgroundRepeat: 'no-repeat',
 							backgroundPosition: 'center',
 						}}
