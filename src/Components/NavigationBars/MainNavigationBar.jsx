@@ -71,14 +71,14 @@ function MainNavigationBar() {
 						id="basic-nav-dropdown"
 						className="mx-3"
 					>
-						<NavDropdown.Item href="#howitworks" className="mx-3">
+						<NavDropdown.Item href="#howitworks" className="">
 							How It Works
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#howitworks" className="mx-3">
+						<NavDropdown.Item href="#howitworks" className="">
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
-					<Nav.Link href="#signin" className="mx-3">
+					<Nav.Link href="/discover/users/login" className="mx-3">
 						Sign In
 					</Nav.Link>
 					<Link to="/discover/create-event">
@@ -120,7 +120,7 @@ function MainNavigationBar() {
 							<Nav.Link href="#howitworks" className="mx-3 mt-3">
 								How It Works
 							</Nav.Link>
-							<Nav.Link href="#signin" className="mx-3">
+							<Nav.Link href="/discover/users/login" className="mx-3">
 								Sign In
 							</Nav.Link>
 						</Nav>

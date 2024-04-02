@@ -76,7 +76,7 @@ function SearchBar({ onSearch }) {
 	};
 
 	return (
-		<div className="m-5 d-flex flex-column justify-content-center">
+		<div className="m-5 d-flex flex-column justify-content-center ">
 			<Form onSubmit={handleSubmit} className="">
 				<InputGroup className=" ">
 					<Col xs={8} md={9} lg={10}>
@@ -101,7 +101,7 @@ function SearchBar({ onSearch }) {
 				</InputGroup>
 			</Form>
 			{error && (
-				<div className="text-danger d-flex justify-content-center my-5">
+				<div className="text-danger d-flex justify-content-center my-5 fs-5 ">
 					{error}
 				</div>
 			)}

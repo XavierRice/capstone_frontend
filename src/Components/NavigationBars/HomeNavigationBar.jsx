@@ -1,25 +1,37 @@
-import React, { useState, useEffect } from "react";
-import {
-	Navbar,
-	Nav,
-	NavDropdown,
-	Form,
-	FormControl,
-	Button,
-} from "react-bootstrap";
+import React, { useState } from "react";
+import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
-import useScrollPosition from "../../Hooks/ScrollPositionProvider";
 import { Link } from "react-router-dom";
-import hand from "../../assets/hand.png";
 import Logo from "../Logo";
 
 function MainNavigationBar({ scrolling = false }) {
+	const [getInvolvedExpanded, setGetInvolvedExpanded] = useState(false);
+	const [aboutUsExpanded, setAboutUsExpanded] = useState(false);
+
+	const handleGetInvolvedMouseEnter = () => {
+		setGetInvolvedExpanded(true);
+	};
+
+	const handleGetInvolvedMouseLeave = () => {
+		setGetInvolvedExpanded(false);
+	};
+
+	const handleAboutUsMouseEnter = () => {
+		setAboutUsExpanded(true);
+	};
+
+	const handleAboutUsMouseLeave = () => {
+		setAboutUsExpanded(false);
+	};
+
 	return (
 		<Navbar
 			bg="light"
 			expand="lg"
 			sticky="top"
-			className={` navbar-shadow navbar-wrapper ${scrolling ? "scrolling" : "not-scrolling"}`}
+			className={`navbar-shadow navbar-wrapper ${
+				scrolling ? "scrolling" : "not-scrolling"
+			}`}
 			style={{ width: scrolling ? "100%" : "60rem" }}
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -35,8 +47,11 @@ function MainNavigationBar({ scrolling = false }) {
 				<Nav className="mr-auto">
 					<NavDropdown
 						title="Get Involved"
-						id="basic-nav-dropdown"
+						id="get-involved-dropdown"
 						className="mx-3"
+						show={getInvolvedExpanded}
+						onMouseEnter={handleGetInvolvedMouseEnter}
+						onMouseLeave={handleGetInvolvedMouseLeave}
 					>
 						<NavDropdown.Item href="/discover/news">News</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/events">
@@ -61,17 +76,20 @@ function MainNavigationBar({ scrolling = false }) {
 				<Nav className="ml-auto">
 					<NavDropdown
 						title="About us"
-						id="basic-nav-dropdown"
+						id="about-us-dropdown"
 						className="mx-3"
+						show={aboutUsExpanded}
+						onMouseEnter={handleAboutUsMouseEnter}
+						onMouseLeave={handleAboutUsMouseLeave}
 					>
-						<NavDropdown.Item href="#howitworks" className="mx-3">
+						<NavDropdown.Item href="#howitworks" className="">
 							How It Works
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#howitworks" className="mx-3">
+						<NavDropdown.Item href="#howitworks" className="">
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
-					<Nav.Link href="/discover/users/signup" className="mx-3">
+					<Nav.Link href="/discover/users/login" className="mx-3">
 						Sign In
 					</Nav.Link>
 					<Button

@@ -14,28 +14,40 @@ const LoginForm = ({ onSubmit, loginError }) => {
 	};
 
 	return (
-		<div className="login-page">
-			<div className="login-form-container">
+		<div className="">
+			<div className="">
 				<Form onSubmit={handleSubmit} className="login-form">
-					<InputField
-						label="Username"
-						type="text"
-						placeholder="Enter username"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-					/>
-					<InputField
-						label="Password"
-						type="password"
-						placeholder="Enter password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
+					<div className="d-flex">
+						<div className="flex-grow-1 mx-2">
+							<Form.Group controlId="firstName">
+								<Form.Control
+									type="text"
+									placeholder="first name"
+									name="firstName"
+								/>
+							</Form.Group>
+						</div>
+						<div className="flex-grow-1 mx-2">
+							<Form.Group controlId="lastName">
+								<Form.Control
+									type="text"
+									placeholder="last name"
+									name="lastName"
+								/>
+							</Form.Group>
+						</div>
+					</div>
 					{loginError && <ErrorMessage message={loginError} />}
 					<div className="m-3 justify-content-center d-flex">
 						<Button variant="primary" type="submit">
 							Login
 						</Button>
+					</div>
+					<div className="mt-4">
+						Don't have an account?{" "}
+						<a href="/discover/users/signup" style={{ color: "#630F76" }}>
+							Register
+						</a>
 					</div>
 				</Form>
 			</div>
