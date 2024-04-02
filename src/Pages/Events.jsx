@@ -101,12 +101,12 @@ const Events = () => {
 			) : (
 				<Col>
 					<Row className="my-4 pb-4">
-						<CategoriesSection onSelectCategory={setSelectedCategory} />
+						<CategoriesSection />
 					</Row>
 					<Row className="d-flex justify-content-center">
 						{allEvents.map((event, index) => (
 							<Col key={event.id || index} sm={6} md={3}>
-								<div className="event-card-container">
+								<div className="p-3">
 									<CardNew
 										cardObj={event}
 										tag={"Event"}

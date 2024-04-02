@@ -21,17 +21,17 @@ function SearchResultPage() {
 		navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
 	};
 
-    const handleArticleClick = (article, i) => {
-        navigate(`/discover/news-details/${i}`, {state: {article}})
-    }
+	const handleArticleClick = (article, i) => {
+		navigate(`/discover/news-details/${i}`, { state: { article } });
+	};
 
 	const handleImageLoad = () => {
 		setLoading(false);
 	};
-console.log(eventsData, newsData, newsAPIResponse)
+	//console.log(eventsData, newsData, newsAPIResponse)
 
-const selectedArticles = newsAPIResponse?.slice(0, 10)
-console.log(selectedArticles)
+	const selectedArticles = newsAPIResponse?.slice(0, 10);
+	console.log(selectedArticles);
 
 	return (
 		<div className="">
@@ -41,7 +41,7 @@ console.log(selectedArticles)
 
 			<Row className="m-3">
 				<h4>Events</h4>
-				{eventsData.map((event, index) => (
+				{eventsData?.map((event, index) => (
 					<Col key={event.id || index} lg={3} md={3} sm={8}>
 						<div className="event-card-container">
 							<CardNew
@@ -57,7 +57,7 @@ console.log(selectedArticles)
 
 			<Row className="m-3">
 				<h4>News</h4>
-				{newsData.map((news) => (
+				{newsData?.map((news) => (
 					<Col key={news.news_id} lg={3} md={3} sm={8}>
 						<Card
 							id={news.news_id}
@@ -71,25 +71,21 @@ console.log(selectedArticles)
 					</Col>
 				))}
 
-                    
-
-            <ul>
-				{selectedArticles.map((article, i) => (
-                    <Col key={`${i}-${article.author}`} lg={3} md={3} sm={8}>
-					<Card
-						id={`${i}`}
-						title={article.title}
-						imageSrc={article.urlToImage}
-						text={article.description}
-						onLoad={handleImageLoad}
-						onClick={() => handleArticleClick(article, i)}
-					/>
-                    </Col>
-				))}
-			</ul>
-
+				<ul>
+					{selectedArticles.map((article, i) => (
+						<Col key={`${i}-${article.author}`} lg={3} md={3} sm={8}>
+							<Card
+								id={`${i}`}
+								title={article.title}
+								imageSrc={article.urlToImage}
+								text={article.description}
+								onLoad={handleImageLoad}
+								onClick={() => handleArticleClick(article, i)}
+							/>
+						</Col>
+					))}
+				</ul>
 			</Row>
-
 		</div>
 	);
 }

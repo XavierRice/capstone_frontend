@@ -139,8 +139,7 @@ body {
 .loader {
 	width: 150px;
 	height: 150px;
-	background: url("/Users/nicolerodriguez/Documents/Pursuit/capstone_frontend/src/assets/Impactify_Logo.gif")
-		center center no-repeat;
+	background: url("/assets/Impactify_Logo.gif") center center;
 	background-size: cover;
 
 	animation: repeat 3s infinite;
@@ -174,7 +173,7 @@ body {
 }
 
 /*------------------- categories section ---------------- */
-.circle-btn {
+/* .circle-btn {
 	background-color: #bc9ec1;
 	color: white;
 
@@ -183,7 +182,7 @@ body {
 
 .circle-btn:hover {
 	background-color: #9973a0;
-}
+} */
 
 /* ----------------------------------------------- Parallax Homepage------------------------------------- */
 .parallax-container {
@@ -192,7 +191,7 @@ body {
 	height: 100vh;
 }
 
-/* ----------------------------------------------------------------------------- */
+/* -------------------------------- categories with links all the way down--------------------------------------------- */
 .header-and-link {
 	font-size: 24px;
 	text-decoration-line: underline red;

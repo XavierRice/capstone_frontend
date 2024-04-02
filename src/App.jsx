@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -32,10 +33,28 @@ import SearchPage from "./Pages/Search/SearchPage";
 import FundraiseFacts from "./Pages/Fundraise/FundraiseFacts";
 
 function App() {
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+	const [backendEvents, setBackendEvents] = useState([]);
+
+	useEffect(() => {
+		const fetchEvents = async () => {
+			try {
+				const response = await axios.get(`${backend}/events`);
+				let events = response.data.data;
+				console.log(events);
+				setBackendEvents(events);
+			} catch (error) {
+				console.error("Error Fetching Backend Events:", error);
+			}
+		};
+		fetchEvents();
+	}, []);
+
+	console.log("these are the backend events" + backendEvents);
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" element={<Homepage />} />
+				<Route path="/" element={<Homepage backendEvents={backendEvents} />} />
 
 				<Route path="/*" element={<MainNavigationBar />} />
 			</Routes>

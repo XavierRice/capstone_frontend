@@ -14,8 +14,6 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
 
-
-
 function MainNavigationBar() {
 	const [isResponsive, setIsResponsive] = useState(false);
 
@@ -58,11 +56,14 @@ function MainNavigationBar() {
 						<NavDropdown.Item href="#votingtoolkit">
 							Voting Toolkit
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#aboutus">About Us</NavDropdown.Item>
 					</NavDropdown>
 				</Nav>
-				<Navbar.Brand className="mx-auto display-2" href="/">
-					<Logo/>
+				<Navbar.Brand
+					className="mx-auto display-2"
+					style={{ paddingTop: "0", paddingBottom: "0" }}
+					href="/"
+				>
+					<Logo />
 				</Navbar.Brand>
 				<Nav className="ml-auto">
 					<NavDropdown
@@ -70,14 +71,14 @@ function MainNavigationBar() {
 						id="basic-nav-dropdown"
 						className="mx-3"
 					>
-						<NavDropdown.Item href="#howitworks" className="mx-3">
+						<NavDropdown.Item href="#howitworks" className="">
 							How It Works
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#howitworks" className="mx-3">
+						<NavDropdown.Item href="#howitworks" className="">
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
-					<Nav.Link href="#signin" className="mx-3">
+					<Nav.Link href="/discover/users/login" className="mx-3">
 						Sign In
 					</Nav.Link>
 					<Link to="/discover/create-event">
@@ -99,8 +100,12 @@ function MainNavigationBar() {
 				aria-controls="basic-navbar-nav"
 				className="outline-none"
 			/>
-			<Navbar.Brand className="mx-auto display-2" href="/">
-				<Logo/>
+			<Navbar.Brand
+				className="mx-auto display-2"
+				style={{ paddingTop: "0", paddingBottom: "0" }}
+				href="/"
+			>
+				<Logo />
 			</Navbar.Brand>
 			<Link to="/">
 				<div className="mx-3">
@@ -115,7 +120,7 @@ function MainNavigationBar() {
 							<Nav.Link href="#howitworks" className="mx-3 mt-3">
 								How It Works
 							</Nav.Link>
-							<Nav.Link href="#signin" className="mx-3">
+							<Nav.Link href="/discover/users/login" className="mx-3">
 								Sign In
 							</Nav.Link>
 						</Nav>

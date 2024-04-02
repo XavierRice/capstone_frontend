@@ -10,6 +10,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "./EventForm.css";
 
+
 const backend = import.meta.env.VITE_BACKEND_URL;
 
 const EventForm = () => {
@@ -263,6 +264,7 @@ const EventForm = () => {
       </Button>
     </Form>
   );
-};
+
+
 
 export default EventForm;
