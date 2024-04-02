@@ -32,32 +32,29 @@ import SearchPage from "./Pages/Search/SearchPage";
 //NEWIMPORTS
 import FundraiseFacts from "./Pages/Fundraise/FundraiseFacts";
 
-
-
-
 function App() {
-const backend = import.meta.env.VITE_BACKEND_URL
-	const [ backendEvents, setBackendEvents] = useState([])
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+	const [backendEvents, setBackendEvents] = useState([]);
 
-	useEffect(()=> {
+	useEffect(() => {
 		const fetchEvents = async () => {
 			try {
 				const response = await axios.get(`${backend}/events`);
-				 let events = response.data.data;
+				let events = response.data.data;
 				console.log(events);
 				setBackendEvents(events);
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			}
-		}
-		fetchEvents()
-	}, [])
+		};
+		fetchEvents();
+	}, []);
 
-	console.log( 'these are the backend events' + backendEvents)
+	console.log("these are the backend events" + backendEvents);
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" element={<Homepage backendEvents={backendEvents}/>} />
+				<Route path="/" element={<Homepage backendEvents={backendEvents} />} />
 
 				<Route path="/*" element={<MainNavigationBar />} />
 			</Routes>

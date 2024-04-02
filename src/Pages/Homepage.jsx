@@ -17,7 +17,7 @@ import InfoBlock from "../Components/InfoBlock";
 import factsImg from "../assets/facts1.jpg";
 import tag1 from '../assets/Tag1.jpg'
 import { AuthData } from "../Provider/AuthProv";
-import { useAdaptiveTriggers } from "./AdaptiveConfig";
+import { useAdaptiveTriggers } from "../Hooks/AdaptiveConfig";
 
 function Homepage({backendEvents}) {
 	const { user } = useContext(AuthData);
@@ -27,6 +27,12 @@ function Homepage({backendEvents}) {
 			console.log("its small, apply small parallax props now"),
 		onExtraSmallEnter: () =>
 			console.log("its extra small, apply extra small parallax props now"),
+		onMediumEnter: () =>
+			console.log("its medium, apply medium parallax props now"),
+		onLargeEnter: () =>
+			console.log("its large, apply large parallax props now"),
+		onExtraLargeEnter: () =>
+			console.log("its extra large, apply extra large parallax props now"),
 	});
 
 	console.log(adaptiveWidth);
@@ -108,7 +114,7 @@ function Homepage({backendEvents}) {
 				>
 					<div
 						style={{
-							height: "92%",
+							height: "100%",
 							width: "100%",
 							backgroundImage: `url(${tag1})`,
 							backgroundSize: '100%',

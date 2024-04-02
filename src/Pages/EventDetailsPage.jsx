@@ -1,4 +1,4 @@
-import React, { useState,  useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./EventDetailsPage.css";
 import { useLocation } from "react-router";
@@ -17,17 +17,15 @@ import {
 } from "react-icons/ci";
 import { IoMegaphoneSharp } from "react-icons/io5";
 
-
 function EventDetailsPage() {
 	const location = useLocation();
-	const backend = import.meta.env.VITE_BACKEND_URL
+	const backend = import.meta.env.VITE_BACKEND_URL;
 
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	const [showDonationButton, setShowDonationButton] = useState(false);
-	const [fetchedUser, setFetchedUser] = useState(null)
+	const [fetchedUser, setFetchedUser] = useState(null);
 	const [checked, setChecked] = useState(false);
-	const [buyButtonId, setBuyButtonId] = useState(null)
-
+	const [buyButtonId, setBuyButtonId] = useState(null);
 
 	const handleCheckboxChange = () => {
 		setChecked(!checked);
@@ -36,27 +34,25 @@ function EventDetailsPage() {
 	const { event } = location.state;
 	const eventUserId = event?.user_id;
 
-	console.log(eventUserId)
+	console.log(eventUserId);
 
-  
-	useEffect(()=>{
+	useEffect(() => {
 		const fetchUser = async () => {
 			try {
 				const response = await axios.get(`${backend}/users/${eventUserId}`);
 				let user = response.data;
-				console.log(user)
-				setFetchedUser(user)
+				console.log(user);
+				setFetchedUser(user);
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			}
-		}
-      fetchUser()
-	}, [ backend, eventUserId])
+		};
+		fetchUser();
+	}, [backend, eventUserId]);
 
-	useEffect(()=>{
-		console.log(fetchedUser)
-		
-	}, [fetchedUser])
+	useEffect(() => {
+		console.log(fetchedUser);
+	}, [fetchedUser]);
 
 	const {
 		event_id,
@@ -75,11 +71,10 @@ function EventDetailsPage() {
 	} = event;
 
 	useEffect(() => {
-		if(stripe_id){
-
-			setBuyButtonId(stripe_id.toString())
+		if (stripe_id) {
+			setBuyButtonId(stripe_id.toString());
 		}
-	}, [stripe_id])
+	}, [stripe_id]);
 
 	const formatDate = (timestamp) => {
 		if (typeof timestamp === "number") {
@@ -97,12 +92,11 @@ function EventDetailsPage() {
 
 	const displayMap = locationName && lat && lng;
 
-
 	let imageSrc = event.logo_url || event.event_photo || defaultImage;
 	const eventDate = formatDate(date);
-	const firstName = fetchedUser?.first_name
-	
-	let eventKeyword = event.event_keywords[0]
+	const firstName = fetchedUser?.first_name;
+
+	let eventKeyword = event.event_keywords[0];
 
 	return (
 		<Container fluid className="my-3 event-details-container">
@@ -110,7 +104,9 @@ function EventDetailsPage() {
 			<div className="d-flex justify-content-center my-3">
 				<span className="fw-bold mx-2 span_color1">{eventKeyword}</span>
 				<span className="fw-bold ">Hosted by:</span>
-				<span className="fw-bold mx-2 span_color1"><h5>{firstName}</h5></span>
+				<span className="fw-bold mx-2 span_color1">
+					<h5>{firstName}</h5>
+				</span>
 			</div>
 			<Row
 				className="mx-3 d-flex justify-content-center"
@@ -157,7 +153,7 @@ function EventDetailsPage() {
 					</Row>
 					<hr className="my-4" />
 					<Row className="map-row mb-5">
-					<div className="map-controls">
+						<div className="map-controls">
 							<button
 								className="rounded-button"
 								onClick={() => setTravelMode("DRIVING")}
@@ -183,11 +179,13 @@ function EventDetailsPage() {
 				</Col>
 				<Col sm={11} md={4} className="">
 					<Row className="attend-event p-2 m-1 custom-bg justify-content-center">
-						{stripe_id != null ? <div className="adjust-right">
-						<StripeBuy buyButtonId={buyButtonId} />
-						</div>
-						:
-						<></>}
+						{stripe_id != null ? (
+							<div className="adjust-right">
+								<StripeBuy buyButtonId={buyButtonId} />
+							</div>
+						) : (
+							<></>
+						)}
 					</Row>
 					<div className="attend-event bg-light">
 						<div className="fw-bold fs-5 d-flex justify-content-center mt-5 mb-3 d-block ">

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { InputGroup, FormControl, Button, Form, Col } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import SearchResultPage from "../Pages/SearchResultPage";
 
 function SearchBar({ onSearch }) {
-	const backend = import.meta.env.VITE_BACKEND_URL
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [searchInput, setSearchInput] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
@@ -77,7 +78,7 @@ function SearchBar({ onSearch }) {
 	};
 
 	return (
-		<div className="m-5 d-flex flex-column justify-content-center">
+		<div className="m-5 d-flex flex-column justify-content-center ">
 			<Form onSubmit={handleSubmit} className="">
 				<InputGroup className=" ">
 					<Col xs={8} md={9} lg={10}>
@@ -101,8 +102,9 @@ function SearchBar({ onSearch }) {
 					</Col>
 				</InputGroup>
 			</Form>
+
 			{error && (
-				<div className="text-danger d-flex justify-content-center my-5">
+				<div className="text-danger d-flex justify-content-center my-5 fs-5 ">
 					{error}
 				</div>
 			)}

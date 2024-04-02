@@ -21,17 +21,17 @@ function SearchResultPage() {
 		navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
 	};
 
-    const handleArticleClick = (article, i) => {
-        navigate(`/discover/news-details/${i}`, {state: {article}})
-    }
+	const handleArticleClick = (article, i) => {
+		navigate(`/discover/news-details/${i}`, { state: { article } });
+	};
 
 	const handleImageLoad = () => {
 		setLoading(false);
 	};
-//console.log(eventsData, newsData, newsAPIResponse)
+	//console.log(eventsData, newsData, newsAPIResponse)
 
-const selectedArticles = newsAPIResponse?.slice(0, 10)
-console.log(selectedArticles)
+	const selectedArticles = newsAPIResponse?.slice(0, 10);
+	console.log(selectedArticles);
 
 	return (
 		<div className="">
@@ -71,24 +71,21 @@ console.log(selectedArticles)
 					</Col>
 				))}
 
-
-            <ul>
-				{selectedArticles.map((article, i) => (
-                    <Col key={`${i}-${article.author}`} lg={3} md={3} sm={8}>
-					<Card
-						id={`${i}`}
-						title={article.title}
-						imageSrc={article.urlToImage}
-						text={article.description}
-						onLoad={handleImageLoad}
-						onClick={() => handleArticleClick(article, i)}
-					/>
-                    </Col>
-				))}
-			</ul>
-
+				<ul>
+					{selectedArticles.map((article, i) => (
+						<Col key={`${i}-${article.author}`} lg={3} md={3} sm={8}>
+							<Card
+								id={`${i}`}
+								title={article.title}
+								imageSrc={article.urlToImage}
+								text={article.description}
+								onLoad={handleImageLoad}
+								onClick={() => handleArticleClick(article, i)}
+							/>
+						</Col>
+					))}
+				</ul>
 			</Row>
-
 		</div>
 	);
 }

@@ -11,7 +11,7 @@ import { Col, Row } from "react-bootstrap";
 import "./NewsDetails.css";
 
 const NewsDetails = () => {
-	const backend = import.meta.env.VITE_BACKEND_URL;
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [relatedEvents, setReleatedEvents] = useState([]);
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -109,11 +109,21 @@ const NewsDetails = () => {
 									className="releated-event-image"
 								/>
 
-							<div key={index} className="box mx-4" onClick={()=>{handleReleatedClick(event)}}>
-								<img src={event.event_photo} alt={`Event ${index + 1}`} className="releated-event-image"/>
+								<div
+									key={index}
+									className="box mx-4"
+									onClick={() => {
+										handleReleatedClick(event);
+									}}
+								>
+									<img
+										src={event.event_photo}
+										alt={`Event ${index + 1}`}
+										className="releated-event-image"
+									/>
 
-								<div className="releated-image-text">{event.event_title}</div>
-							</div>
+									<div className="releated-image-text">{event.event_title}</div>
+								</div>
 							</div>
 						))}
 					</div>

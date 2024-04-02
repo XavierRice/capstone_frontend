@@ -20,13 +20,10 @@ function DonationsLayout() {
 	};
 
 	return (
-		<Container
-			fluid
-			style={{ width: "85%", height: "100%", marginTop: "40px" }}
-		>
-			<div className="fw-semibold  d-flex justify-content-center fs-2 m-4">
+		<Container fluid style={{ width: "85%", height: "80%", marginTop: "0px" }}>
+			{/* <div className="fw-semibold  d-flex justify-content-center fs-2 my-2 mx-4">
 				Make a positive impact in your preferred way
-			</div>
+			</div> */}
 			<Row xs={1} md={12} lg={8} className="g-4" style={{ width: "100vw" }}>
 				<Col>
 					<div className="item ">
