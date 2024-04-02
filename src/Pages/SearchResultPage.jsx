@@ -41,7 +41,7 @@ console.log(selectedArticles)
 
 			<Row className="m-3">
 				<h4>Events</h4>
-				{eventsData.map((event, index) => (
+				{eventsData?.map((event, index) => (
 					<Col key={event.id || index} lg={3} md={3} sm={8}>
 						<div className="event-card-container">
 							<CardNew
@@ -57,7 +57,7 @@ console.log(selectedArticles)
 
 			<Row className="m-3">
 				<h4>News</h4>
-				{newsData.map((news) => (
+				{newsData?.map((news) => (
 					<Col key={news.news_id} lg={3} md={3} sm={8}>
 						<Card
 							id={news.news_id}
@@ -71,7 +71,6 @@ console.log(selectedArticles)
 					</Col>
 				))}
 
-                    
 
             <ul>
 				{selectedArticles.map((article, i) => (

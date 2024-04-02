@@ -108,6 +108,10 @@ const NewsDetails = () => {
 									alt={`Event ${index + 1}`}
 									className="releated-event-image"
 								/>
+
+							<div key={index} className="box mx-4" onClick={()=>{handleReleatedClick(event)}}>
+								<img src={event.event_photo} alt={`Event ${index + 1}`} className="releated-event-image"/>
+
 								<div className="releated-image-text">{event.event_title}</div>
 							</div>
 						))}

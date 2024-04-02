@@ -15,10 +15,11 @@ import Footer from "../Components/Footer/Footer";
 import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
 import factsImg from "../assets/facts1.jpg";
+import tag1 from '../assets/Tag1.jpg'
 import { AuthData } from "../Provider/AuthProv";
 import { useAdaptiveTriggers } from "../Hooks/AdaptiveConfig";
 
-function Homepage() {
+function Homepage({backendEvents}) {
 	const { user } = useContext(AuthData);
 	const [isResponsive, setIsResponsive] = useState(false);
 	const adaptiveWidth = useAdaptiveTriggers({
@@ -102,7 +103,7 @@ function Homepage() {
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					<AllEventsBlock />
+					<AllEventsBlock backendEvents={backendEvents} />
 				</ParallaxLayer>
 				<ParallaxLayer
 					offset={1.6}
@@ -115,7 +116,10 @@ function Homepage() {
 						style={{
 							height: "100%",
 							width: "100%",
-							backgroundImage: `url(${factsImg})`,
+							backgroundImage: `url(${tag1})`,
+							backgroundSize: '90%',
+							backgroundRepeat: 'no-repeat',
+							backgroundPosition: 'center',
 						}}
 					></div>
 				</ParallaxLayer>
