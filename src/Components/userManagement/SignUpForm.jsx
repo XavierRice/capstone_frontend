@@ -13,7 +13,17 @@ const SignUpForm = ({ onSubmit }) => {
     password_hash: "",
   });
   const [error, setError] = useState("");
+  
+  const handleInputChange = (event) => {
+    const { name, value } = event.target
+    setUserData((prev) => ({
+        ...prev,
+        [name]: value
+    }))
+  }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
     const { first_name, last_name, user_name, email, password_hash } = userData;
 
     if (!first_name || !last_name || !user_name || !email || !password_hash) {
@@ -21,8 +31,8 @@ const SignUpForm = ({ onSubmit }) => {
       return;
     }
     setError("");
-    onSubmit(userData);
-  
+    onSubmit(userData)
+  }
 
   return (
     <Form onSubmit={handleSubmit} className="">
