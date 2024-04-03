@@ -70,7 +70,7 @@ function Homepage({ backendEvents }) {
 					backgroundRepeat: "no-repeat",
 				}}
 			>
-				<div className="btn top-50 start-50 translate-middle my-5 btn-class">
+				<div className="btn top-50 start-50 translate-middle my-5 btn-class position-abosolute ">
 					<Button
 						variant=""
 						style={{
