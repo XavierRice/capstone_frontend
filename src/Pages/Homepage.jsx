@@ -16,6 +16,7 @@ import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
 import factsImg from "../assets/facts1.jpg";
 import tag1 from "../assets/Tag1.jpg";
+import Midsection from '../assets/Midsection.svg'
 import { AuthData } from "../Provider/AuthProv";
 import { useAdaptiveTriggers } from "../Hooks/AdaptiveConfig";
 
@@ -120,7 +121,9 @@ function Homepage({ backendEvents }) {
 						style={{
 							height: "92%",
 							width: "100%",
-							backgroundImage: `url(${factsImg})`,
+							backgroundRepeat: 'no-repeat',
+							backgroundSize: '100%',
+							backgroundImage: `url(${Midsection})`,
 						}}
 					></div>
 				</ParallaxLayer>
