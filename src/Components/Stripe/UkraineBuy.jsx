@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UkraineBuy = () => {
-
+  //comments
     const stripePublishKey= import.meta.env.VITE_STRIPE_PUBLISHABLE
     const ukraineButton = import.meta.env.VITE_UKRAINE_EVENT
     
