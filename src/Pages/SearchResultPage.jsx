@@ -34,7 +34,7 @@ function SearchResultPage() {
 	console.log(selectedArticles);
 
 	return (
-		<div className="">
+		<div className="" style={{ paddingRight: "5%", paddingLeft: "5%" }}>
 			<div>
 				<SearchBar />
 			</div>
@@ -71,20 +71,24 @@ function SearchResultPage() {
 					</Col>
 				))}
 
-				<ul>
-					{selectedArticles.map((article, i) => (
-						<Col key={`${i}-${article.author}`} lg={3} md={3} sm={8}>
-							<Card
-								id={`${i}`}
-								title={article.title}
-								imageSrc={article.urlToImage}
-								text={article.description}
-								onLoad={handleImageLoad}
-								onClick={() => handleArticleClick(article, i)}
-							/>
-						</Col>
-					))}
-				</ul>
+				{selectedArticles.map((article, i) => (
+					<Col
+						key={`${i}-${article.author}`}
+						lg={3}
+						md={3}
+						sm={8}
+						className="mb-3"
+					>
+						<Card
+							id={`${i}`}
+							title={article.title}
+							imageSrc={article.urlToImage}
+							text={article.description}
+							onLoad={handleImageLoad}
+							onClick={() => handleArticleClick(article, i)}
+						/>
+					</Col>
+				))}
 			</Row>
 		</div>
 	);

@@ -23,9 +23,9 @@ function CardNew({ cardObj, tag, imageLoad, cardClick }) {
 
 	return (
 		<div onClick={cardClick} style={{ cursor: "pointer" }} className="card">
-			<div className={` border-0${styleClick ? "card-clicked" : ""}`}>
+			<div className={` ${styleClick ? "card-clicked" : ""}`}>
 				<img
-					className="card-img-top p-2"
+					className="card-img-top p-2 bg-light"
 					src={reducedCard.card_photo}
 					alt="Card image"
 					onLoad={imageLoad}

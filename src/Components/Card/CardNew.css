@@ -49,3 +49,8 @@ div.d-flex.justify-content-center.align-items-center .new_card:hover {
 	background-color: #e0d1f2;
 	box-shadow: #4e2855;
 }
+
+.card {
+	--bs-card-border-width: 0 !important
+;
+}

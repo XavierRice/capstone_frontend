@@ -188,7 +188,7 @@ function EventDetailsPage() {
 						)}
 					</Row>
 					<div className="attend-event bg-light">
-						<div className="fw-bold fs-5 d-flex justify-content-center mt-5 mb-3 d-block ">
+						<div className="fw-bold fs-5 d-flex justify-content-center mt-5 mb-3 d-block mx-5">
 							REGISTER TO ATTEND THIS EVENT
 						</div>
 						<div className="forms p-3">
