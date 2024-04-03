@@ -46,10 +46,10 @@ function Donations() {
 				<Col xs={12} md={6} lg={4}>
 					<Card
 						className="card"
-						style={{ borderRadius: "15px", marginBottom: "33px" }}
+						style={{ borderRadius: "15px", marginBottom: "33px", alignItems: "center" }}
 					>
 						<Donation1 />
-						<div className="donation-info ">
+						<div className="donation-info mt-4">
 							<p className="fw-semibold mt-2 d-flex justify-content-center ">
 								Beatrice Li
 							</p>
