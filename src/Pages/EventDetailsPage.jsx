@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import "./EventDetailsPage.css";
 import { useLocation } from "react-router";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
 import StripeBuy from "../Components/Stripe/StripeBuy";
 import GoogleMap from "../Components/Maps/GoogleMap";
 import defaultImage from "../assets/NoImage.jpg";
@@ -18,14 +19,42 @@ import {
 import { IoMegaphoneSharp } from "react-icons/io5";
 
 function EventDetailsPage() {
+	const navigate = useNavigate()
 	const location = useLocation();
 	const backend = import.meta.env.VITE_BACKEND_URL;
 
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	const [showDonationButton, setShowDonationButton] = useState(false);
+	const [showThankYouModal, setShowThankYouModal] = useState(false)
 	const [fetchedUser, setFetchedUser] = useState(null);
 	const [checked, setChecked] = useState(false);
 	const [buyButtonId, setBuyButtonId] = useState(null);
+	const [registeredGuest, setRegisteredGuest] = useState({
+		firstname: '',
+		lastname: '',
+		email: '',
+		mobile: '',
+	})
+
+	console.log(registeredGuest)
+
+	const handleTextChange = (event) => {
+		const { name, value } = event.target
+		setRegisteredGuest({ ...registeredGuest, [name]: value });
+	};
+
+	const handleEventRegister = () => {
+		console.log("you've registered")
+		setShowThankYouModal(true)
+	
+	}
+
+	const handleCloseOut = () => {
+		setTimeout(() => {
+			setShowThankYouModal(false); // Close the modal
+			navigate('/') // Redirect to another page
+		}, 1000);
+	}
 
 	const handleCheckboxChange = () => {
 		setChecked(!checked);
@@ -192,7 +221,7 @@ function EventDetailsPage() {
 							REGISTER TO ATTEND THIS EVENT
 						</div>
 						<div className="forms p-3">
-							<Form>
+							<Form >
 								<div className="d-flex">
 									<div className="flex-grow-1 mx-2">
 										<Form.Group controlId="firstName">
@@ -200,6 +229,7 @@ function EventDetailsPage() {
 												type="text"
 												placeholder="first name"
 												name="firstName"
+												onChange={handleTextChange}
 											/>
 										</Form.Group>
 									</div>
@@ -209,6 +239,7 @@ function EventDetailsPage() {
 												type="text"
 												placeholder="last name"
 												name="lastName"
+												onChange={handleTextChange}
 											/>
 										</Form.Group>
 									</div>
@@ -216,7 +247,7 @@ function EventDetailsPage() {
 
 								<Form.Group controlId="email">
 									<Form.Label></Form.Label>
-									<Form.Control type="email" placeholder="email" name="email" />
+									<Form.Control type="email" placeholder="email" name="email" onChange={handleTextChange} />
 								</Form.Group>
 
 								<Form.Group controlId="mobile">
@@ -225,11 +256,12 @@ function EventDetailsPage() {
 										type="tel"
 										placeholder="mobile number"
 										name="mobile"
+										onClick={() => handleTextChange(event)}
 									/>
 								</Form.Group>
 							</Form>
 							<div className="d-flex justify-content-center">
-								<button className="btn fluid btn-register my-4">
+								<button className="btn fluid btn-register my-4" onClick={handleEventRegister}>
 									Register
 								</button>
 							</div>
@@ -251,6 +283,17 @@ function EventDetailsPage() {
 									/>
 								</Form.Group>
 							</div>
+							<Modal show={showThankYouModal} onHide={() => setShowThankYouModal(false)}>
+								<Modal.Header closeButton>
+									<Modal.Title>Thank You!</Modal.Title>
+								</Modal.Header>
+								<Modal.Body>Thank you for registering!</Modal.Body>
+								<Modal.Footer>
+									<Button variant="secondary" onClick={handleCloseOut}>
+										Close
+									</Button>
+								</Modal.Footer>
+							</Modal>
 						</div>
 					</div>
 					<Row>
