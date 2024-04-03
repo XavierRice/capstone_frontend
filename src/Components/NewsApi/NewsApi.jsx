@@ -66,7 +66,7 @@ const NewsApi = () => {
 	console.log(newsArticles);
 
 	return (
-		<Container>
+		<div>
 			<Row className="mb-3">
 				<Form.Group as={Col} controlId="event_keyword">
 					<Form.Label>Keywords</Form.Label>
@@ -82,7 +82,7 @@ const NewsApi = () => {
 			<Row>
 				<NewsCar newsArticles={newsArticles} />å
 			</Row>
-		</Container>
+		</div>
 	);
 };
 
