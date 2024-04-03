@@ -16,9 +16,11 @@ import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
 import factsImg from "../assets/facts1.jpg";
 import tag1 from "../assets/Tag1.jpg";
+import Voice from '../assets/Voice.svg'
 import Midsection from '../assets/Midsection.svg'
 import { AuthData } from "../Provider/AuthProv";
 import { useAdaptiveTriggers } from "../Hooks/AdaptiveConfig";
+import './Homepage.css'
 
 function Homepage({ backendEvents }) {
 	const { user } = useContext(AuthData);
@@ -71,13 +73,16 @@ function Homepage({ backendEvents }) {
 					backgroundRepeat: "no-repeat",
 				}}
 			>
-				<div className="btn top-50 start-50 translate-middle my-5 btn-class position-abosolute ">
+				<div className="btn top-50 start-50 translate-middle my-5 btn-class position-abosolut go-button" style={{zIndex: "10 !important"}}>
 					<Button
 						variant=""
 						style={{
 							color: "#ffffff",
 							cursor: "pointer",
-							position: "relative",
+							position: "absolute",
+							top: '55%',
+							left: '50%',
+							transform: "translate(-50%, -50%)",
 							zIndex: 10,
 						}}
 					>
@@ -123,7 +128,7 @@ function Homepage({ backendEvents }) {
 							width: "100%",
 							backgroundRepeat: 'no-repeat',
 							backgroundSize: '100%',
-							backgroundImage: `url(${Midsection})`,
+							backgroundImage: `url(${Voice})`,
 						}}
 					></div>
 				</ParallaxLayer>
