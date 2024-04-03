@@ -12,8 +12,9 @@ const NewsApi = () => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 	const [selectedKeyword, setSelectedKeyword] = useState("lbgt");
-	const NewsApiKey = import.meta.env.VITE_APP_NEWSAPI_KEY;
-	//a commnt
+	const NewsApiKey =
+		import.meta.env.VITE_APP_NEWSAPI_KEY || "34f016ffbcd9498fa866ebfdcfd61e73";
+	//delete key before pushing
 
 	const keywordOptions = [
 		{ value: "equality", label: "equality" },

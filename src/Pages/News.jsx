@@ -28,8 +28,6 @@ const News = () => {
 		} catch (e) {
 			console.error("Error etching data:", e);
 		}
-
-		
 	}
 	console.log(newsData);
 
@@ -65,9 +63,9 @@ const News = () => {
 						</Col>
 					))}
 
-					<Col><NewsApi/></Col>
-					<Col></Col>
-
+					<Col>
+						<NewsApi />
+					</Col>
 				</Row>
 			)}
 		</div>
