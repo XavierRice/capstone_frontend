@@ -96,7 +96,7 @@ function MainNavigationBar({ scrolling = false }) {
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
-					{!token === true ? (
+					{!token ? (
 						<Nav.Link href="/discover/users/login" className="mx-3">
 							 <button onClick={handleLogout} style={{ backgroundColor: '#BC9EC1', borderColor:'#4E2855', color:'black', borderRadius: '20px'}}>Logout</button>
 						</Nav.Link>
