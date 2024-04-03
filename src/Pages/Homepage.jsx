@@ -21,7 +21,7 @@ import { useAdaptiveTriggers } from "../Hooks/AdaptiveConfig";
 
 function Homepage({ backendEvents }) {
 	const { user } = useContext(AuthData);
-
+	console.log( "Homepage events:",backendEvents)
 	const [isResponsive, setIsResponsive] = useState(false);
 
 	const adaptiveWidth = useAdaptiveTriggers({
@@ -37,7 +37,7 @@ function Homepage({ backendEvents }) {
 			console.log("its extra large, apply extra large parallax props now"),
 	});
 
-	console.log(adaptiveWidth);
+	//console.log(adaptiveWidth);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -107,7 +107,7 @@ function Homepage({ backendEvents }) {
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					<AllEventsBlock />
+					<AllEventsBlock backendEvents={backendEvents} />
 				</ParallaxLayer>
 				<ParallaxLayer
 					offset={1.6}
