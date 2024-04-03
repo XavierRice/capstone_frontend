@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import Card from "../Components/Card/Card";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
+import NewsApi from "../Components/NewsApi/NewsApi"; // Import NewsApi component
 import { Col, Row } from "react-bootstrap";
 
 const News = () => {
 	const [loading, setLoading] = useState(true);
 	const [newsData, setNewsData] = useState([]);
 	const navigate = useNavigate();
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 
 	useEffect(() => {
 		fetchData();
@@ -15,7 +17,7 @@ const News = () => {
 
 	async function fetchData() {
 		try {
-			const response = await fetch("http://localhost:4000/news");
+			const response = await fetch(`${backend}/news`);
 			if (!response.ok) {
 				throw new Error("Failed to fetch data:");
 			}
@@ -28,6 +30,7 @@ const News = () => {
 		}
 	}
 	console.log(newsData);
+
 	const handleImageLoad = () => {
 		setLoading(false);
 	};
@@ -40,7 +43,7 @@ const News = () => {
 	console.log(newsData[0]);
 
 	return (
-		<div>
+		<div className="mt-5 p-3">
 			{loading ? (
 				<div className="loader-wrapper">
 					<div className="loader"></div>
@@ -59,9 +62,14 @@ const News = () => {
 							/>
 						</Col>
 					))}
+
+					<Col>
+						<NewsApi />
+					</Col>
 				</Row>
 			)}
 		</div>
 	);
 };
+
 export default News;

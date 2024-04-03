@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,17 +17,46 @@ import useScrollPosition from "./Hooks/ScrollPositionProvider";
 import StripePaymentEvent from "./Components/Stripe/StripePaymentEvent";
 import StripeBuy from "./Components/Stripe/StripeBuy";
 import ProofHero from "./Components/SocialProof/ProofHero";
-import ThankYou from "./Pages/ThankYou";
+import ThankYou from "./Pages/ThankYou/ThankYou";
 import CardNew from "./Components/Card/CardNew";
+import SearchResultPage from "./Pages/SearchResultPage";
 import Footer from "./Components/Footer/Footer";
 import SignUpPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 
+//import SearchResultPage from "./Pages/Search/SearchPage";
+import NewsApi from "./Components/NewsApi/NewsApi";
+
+import SearchPage from "./Pages/Search/SearchPage";
+
+//NEWIMPORTS
+import FundraiseFacts from "./Pages/Fundraise/FundraiseFacts";
+
 function App() {
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+	const [backendEvents, setBackendEvents] = useState([]);
+
+
+	useEffect(() => {
+		const fetchEvents = async () => {
+			try {
+				const response = await axios.get(`${backend}/events`);
+				let events = response.data.data;
+				setBackendEvents(events);
+			} catch (error) {
+				console.error("Error Fetching Backend Events:", error);
+			}
+		};
+		fetchEvents();
+	}, []);
+
+	console.log("these are the backend events" + backendEvents);
+	// console.log(backendEvents)
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" element={<Homepage />} />
+				<Route path="/" element={<Homepage backendEvents={backendEvents} />} />
+
 				<Route path="/*" element={<MainNavigationBar />} />
 			</Routes>
 			<div>
@@ -39,17 +69,21 @@ function App() {
 						path="/discover/events-details"
 						element={<EventDetailsPage />}
 					/>
+					<Route path="/search-results" element={<SearchResultPage />} />
 					<Route path="/discover/news" element={<News />} />
 					<Route path="/discover/events" element={<Events />} />
 					<Route path="/discover/donations" element={<Donations />} />
-					<Route path="/discover/users/login" element={<LoginPage/>} />
+					<Route path="/discover/users/login" element={<LoginPage />} />
 					<Route path="/discover/users/signup" element={<SignUpPage />} />
 					<Route path="/discover/thankyou" element={<ThankYou />} />
 					<Route path="/discover/create-event" element={<CreateEventPage />} />
+					<Route path="/discover/test" element={<NewsApi />} />
+					<Route path="/discover/facts" element={<FundraiseFacts />} />
 					<Route
 						path="/discover/create-event/donation"
 						element={<StripeDonation />}
 					/>
+					<Route path="/search" element={<SearchPage />} />
 				</Routes>
 			</div>
 		</Router>

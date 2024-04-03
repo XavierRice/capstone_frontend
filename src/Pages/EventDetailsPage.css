@@ -23,7 +23,12 @@
 	border-color: #bc94c1;
 	color: #d5e673;
 }
-
+.custom-bg {
+    background-color: #4e2855; /* Replace #skyblue with your desired color */
+}
+.adjust-right {
+    margin-left: 150px; /* Adjust this value as needed */
+}
 .custom-signup-btn:hover {
 	background-color: #d5e673;
 	border-color: #bc9ec1;
@@ -37,6 +42,9 @@
 		color 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
+.span_color1 {
+ color: #bc94c1;
+}
 .custom-signup-btn:hover {
 	background-color: #d5e673;
 	border-color: #bc9ec1;

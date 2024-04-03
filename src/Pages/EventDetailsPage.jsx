@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
 import "./EventDetailsPage.css";
 import { useLocation } from "react-router";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
+import StripeBuy from "../Components/Stripe/StripeBuy";
 import GoogleMap from "../Components/Maps/GoogleMap";
 import defaultImage from "../assets/NoImage.jpg";
 import Event4Strip from "../Components/Stripe/Event4Stripe";
@@ -16,16 +19,69 @@ import {
 import { IoMegaphoneSharp } from "react-icons/io5";
 
 function EventDetailsPage() {
+	const navigate = useNavigate()
 	const location = useLocation();
+	const backend = import.meta.env.VITE_BACKEND_URL;
+
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	const [showDonationButton, setShowDonationButton] = useState(false);
+	const [showThankYouModal, setShowThankYouModal] = useState(false)
+	const [fetchedUser, setFetchedUser] = useState(null);
 	const [checked, setChecked] = useState(false);
+	const [buyButtonId, setBuyButtonId] = useState(null);
+	const [registeredGuest, setRegisteredGuest] = useState({
+		firstname: '',
+		lastname: '',
+		email: '',
+		mobile: '',
+	})
+
+	console.log(registeredGuest)
+
+	const handleTextChange = (event) => {
+		const { name, value } = event.target
+		setRegisteredGuest({ ...registeredGuest, [name]: value });
+	};
+
+	const handleEventRegister = () => {
+		console.log("you've registered")
+		setShowThankYouModal(true)
+	
+	}
+
+	const handleCloseOut = () => {
+		setTimeout(() => {
+			setShowThankYouModal(false); // Close the modal
+			navigate('/') // Redirect to another page
+		}, 1000);
+	}
 
 	const handleCheckboxChange = () => {
 		setChecked(!checked);
 	};
 
 	const { event } = location.state;
+	const eventUserId = event?.user_id;
+
+	console.log(eventUserId);
+
+	useEffect(() => {
+		const fetchUser = async () => {
+			try {
+				const response = await axios.get(`${backend}/users/${eventUserId}`);
+				let user = response.data;
+				console.log(user);
+				setFetchedUser(user);
+			} catch (error) {
+				console.error("Error Fetching Backend Events:", error);
+			}
+		};
+		fetchUser();
+	}, [backend, eventUserId]);
+
+	useEffect(() => {
+		console.log(fetchedUser);
+	}, [fetchedUser]);
 
 	const {
 		event_id,
@@ -42,6 +98,12 @@ function EventDetailsPage() {
 		stripe_id,
 		rsvp = true, // Provide a default value in case it's missing
 	} = event;
+
+	useEffect(() => {
+		if (stripe_id) {
+			setBuyButtonId(stripe_id.toString());
+		}
+	}, [stripe_id]);
 
 	const formatDate = (timestamp) => {
 		if (typeof timestamp === "number") {
@@ -61,67 +123,19 @@ function EventDetailsPage() {
 
 	let imageSrc = event.logo_url || event.event_photo || defaultImage;
 	const eventDate = formatDate(date);
+	const firstName = fetchedUser?.first_name;
 
-	console.log(event);
+	let eventKeyword = event.event_keywords[0];
 
 	return (
-		// <Container fluid className="my-4">
-		// 	<Row>
-		// 		{/* Image Section */}
-		// 		<Col md={6} className="mb-3">
-		// 			<Image src={imageSrc} alt="Event" fluid className="image-border" />
-		// 		</Col>
-
-		// 		{/* Details Section */}
-		// 		<Col md={6} className="text-center text-black">
-		// 			<h1 className="text-custom-color mb-3">{title}</h1>
-		// 			<p className="mb-2">{event_details}</p>
-		// 			{date && <p className="mb-4">Date: {eventDate}</p>}
-		// 			<p className="mb-4">
-		// 				{!isVirtual ? "This event is virtual." : "See route below."}
-		// 			</p>
-		// 			<Button size="lg" className="rounded-pill py-2 custom-signup-btn">
-		// 				Sign Up Now
-		// 			</Button>
-		// 			{stripe_id && <Event4Strip stripe_id={stripe_id} />}
-		// 		</Col>
-		// 	</Row>
-
-		// 	{/* Optionally Display Map */}
-		// 	{displayMap && (
-		// 		<Row className="mt-3">
-		// 			<Col md={{ span: 6, offset: 6 }}>
-		// 				<div className="map-controls">
-		// 					<button
-		// 						className="rounded-button"
-		// 						onClick={() => setTravelMode("DRIVING")}
-		// 					>
-		// 						Driving
-		// 					</button>
-		// 					<button
-		// 						className="rounded-button"
-		// 						onClick={() => setTravelMode("WALKING")}
-		// 					>
-		// 						Walking
-		// 					</button>
-		// 				</div>
-		// 				<div className="map-container">
-		// 					<GoogleMap
-		// 						location={locationName}
-		// 						lat={lat}
-		// 						lng={lng}
-		// 						travelMode={travelMode}
-		// 					/>
-		// 				</div>
-		// 			</Col>
-		// 		</Row>
-		// 	)}
-		// </Container>
 		<Container fluid className="my-3 event-details-container">
 			<div className="display-6 d-flex justify-content-center">{title}</div>
 			<div className="d-flex justify-content-center my-3">
-				<span className="fw-bold mx-2">keyword |</span>
-				<span className="fw-bold">Hosted by -name of event creator-</span>
+				<span className="fw-bold mx-2 span_color1">{eventKeyword}</span>
+				<span className="fw-bold ">Hosted by:</span>
+				<span className="fw-bold mx-2 span_color1">
+					<h5>{firstName}</h5>
+				</span>
 			</div>
 			<Row
 				className="mx-3 d-flex justify-content-center"
@@ -168,6 +182,20 @@ function EventDetailsPage() {
 					</Row>
 					<hr className="my-4" />
 					<Row className="map-row mb-5">
+						<div className="map-controls">
+							<button
+								className="rounded-button"
+								onClick={() => setTravelMode("DRIVING")}
+							>
+								Driving
+							</button>
+							<button
+								className="rounded-button"
+								onClick={() => setTravelMode("WALKING")}
+							>
+								Walking
+							</button>
+						</div>
 						<div className="">
 							<GoogleMap
 								location={locationName}
@@ -179,16 +207,21 @@ function EventDetailsPage() {
 					</Row>
 				</Col>
 				<Col sm={11} md={4} className="">
-					{/* <Row className="attend-event p-2 m-1 bg-light ">
-						This is the designated donation box only renders if its a donation
-						event ! boolean
-					</Row> */}
+					<Row className="attend-event p-2 m-1 custom-bg justify-content-center">
+						{stripe_id != null ? (
+							<div className="adjust-right">
+								<StripeBuy buyButtonId={buyButtonId} />
+							</div>
+						) : (
+							<></>
+						)}
+					</Row>
 					<div className="attend-event bg-light">
-						<div className="fw-bold fs-5 d-flex justify-content-center mt-5 mb-3 d-block ">
+						<div className="fw-bold fs-5 d-flex justify-content-center mt-5 mb-3 d-block mx-5">
 							REGISTER TO ATTEND THIS EVENT
 						</div>
 						<div className="forms p-3">
-							<Form>
+							<Form >
 								<div className="d-flex">
 									<div className="flex-grow-1 mx-2">
 										<Form.Group controlId="firstName">
@@ -196,6 +229,7 @@ function EventDetailsPage() {
 												type="text"
 												placeholder="first name"
 												name="firstName"
+												onChange={handleTextChange}
 											/>
 										</Form.Group>
 									</div>
@@ -205,6 +239,7 @@ function EventDetailsPage() {
 												type="text"
 												placeholder="last name"
 												name="lastName"
+												onChange={handleTextChange}
 											/>
 										</Form.Group>
 									</div>
@@ -212,7 +247,7 @@ function EventDetailsPage() {
 
 								<Form.Group controlId="email">
 									<Form.Label></Form.Label>
-									<Form.Control type="email" placeholder="email" name="email" />
+									<Form.Control type="email" placeholder="email" name="email" onChange={handleTextChange} />
 								</Form.Group>
 
 								<Form.Group controlId="mobile">
@@ -221,11 +256,12 @@ function EventDetailsPage() {
 										type="tel"
 										placeholder="mobile number"
 										name="mobile"
+										onClick={() => handleTextChange(event)}
 									/>
 								</Form.Group>
 							</Form>
 							<div className="d-flex justify-content-center">
-								<button className="btn fluid btn-register my-4">
+								<button className="btn fluid btn-register my-4" onClick={handleEventRegister}>
 									Register
 								</button>
 							</div>
@@ -247,6 +283,17 @@ function EventDetailsPage() {
 									/>
 								</Form.Group>
 							</div>
+							<Modal show={showThankYouModal} onHide={() => setShowThankYouModal(false)}>
+								<Modal.Header closeButton>
+									<Modal.Title>Thank You!</Modal.Title>
+								</Modal.Header>
+								<Modal.Body>Thank you for registering!</Modal.Body>
+								<Modal.Footer>
+									<Button variant="secondary" onClick={handleCloseOut}>
+										Close
+									</Button>
+								</Modal.Footer>
+							</Modal>
 						</div>
 					</div>
 					<Row>

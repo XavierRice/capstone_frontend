@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router';
 
-function Is_donation({ isDonation, setIsDonation, setStripeId, stripeId}) {
+function Is_donation({ isDonation, setIsDonation, handleStripeId, stripeId}) {
     const navigate = useNavigate()
     const [show, setShow] = useState(false);
     
@@ -27,10 +27,10 @@ function Is_donation({ isDonation, setIsDonation, setStripeId, stripeId}) {
         setShow(event.target.checked)
     }
 
-    const handleStripeId = (event) => {
-        setStripeId(event.target.value)
+    // const handleStripeId = (event) => {
+    //     setStripeId(event.target.value)
        
-    }
+    // }
 
     return (
         <>
@@ -42,7 +42,7 @@ function Is_donation({ isDonation, setIsDonation, setStripeId, stripeId}) {
                     label="yes, im am seeking donations."
                     onChange={handleChange}
                     name='is_donation'
-                    id="is_donation" />
+                     />
             </Form.Group>
 
             <Modal show={show} onHide={handleClose}>
@@ -58,7 +58,15 @@ function Is_donation({ isDonation, setIsDonation, setStripeId, stripeId}) {
                                 placeholder="Enter your Strip_Id"
                                 autoFocus
                                 onChange={handleStripeId}
-                                id='stripe_id'
+                                
+                            />
+                            <Form.Label>Amount</Form.Label>
+                            <Form.Control
+                                type="number"
+                                placeholder="Amount your seeking"
+                                autoFocus
+                                onChange={handleStripeId}
+                                
                             />
                         </Form.Group>
                     </Form>
