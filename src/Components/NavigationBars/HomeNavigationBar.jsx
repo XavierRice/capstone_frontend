@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import { useAuthDataProvider } from "../../Provider/AuthProv";
 function MainNavigationBar({ scrolling = false }) {
-	const isAuthenticated = useAuthDataProvider();
-	const { logout } = useAuthDataProvider();
+	const {token, logout} = useAuthDataProvider();
+	
 
 	const [getInvolvedExpanded, setGetInvolvedExpanded] = useState(false);
 	const [aboutUsExpanded, setAboutUsExpanded] = useState(false);
 
 	const handleLogout = () => {
-		console.log('youve logged out' + isAuthenticated)
+		console.log('youve logged out' + token)
 		logout(); // Call the logout function
 	  };
 
@@ -96,7 +96,7 @@ function MainNavigationBar({ scrolling = false }) {
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
-					{isAuthenticated === true ? (
+					{!token === true ? (
 						<Nav.Link href="/discover/users/login" className="mx-3">
 							 <button onClick={handleLogout} style={{ backgroundColor: '#BC9EC1', borderColor:'#4E2855', color:'black', borderRadius: '20px'}}>Logout</button>
 						</Nav.Link>

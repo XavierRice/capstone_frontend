@@ -45,7 +45,7 @@ function AuthProv({ children }) {
     setUser(null);
     localStorage.removeItem('token'); 
     localStorage.removeItem('user'); 
-    navigate('/discover/users/login');
+   
   };
 
   return (
