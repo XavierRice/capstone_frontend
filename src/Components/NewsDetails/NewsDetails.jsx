@@ -42,7 +42,7 @@ const NewsDetails = () => {
 
 	// console.log(article)
 	const paragraphs = news?.news_content.split(/\n\n/);
-	const articleText = article?.description;
+	const articleText = article?.content;
 	// console.log(articleText)
 	return (
 		<div className="d-flex m-5 news-details-container" style={{}}>

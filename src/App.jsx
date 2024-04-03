@@ -50,7 +50,7 @@ function App() {
 		fetchEvents();
 	}, []);
 
-	// console.log("these are the backend events" + backendEvents);
+	console.log("these are the backend events" + backendEvents);
 	return (
 		<Router>
 			<Routes>

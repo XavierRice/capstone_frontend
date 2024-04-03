@@ -74,6 +74,8 @@ function Homepage({backendEvents}) {
 						style={{
 							color: "#ffffff",
 							cursor: "pointer",
+							position: "relative",
+							zIndex: 10,
 						}}
 					>
 						Start Event
