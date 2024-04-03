@@ -19,7 +19,7 @@
 .hand-icon {
 	/* flex-shrink: 1; */
 	/* height: 100%; */
-	/* width: auto; */
+	width: auto;
 	/* position: absolute; */
 	margin: 0 !important;
 	top: 0;
@@ -37,11 +37,13 @@
 	/* align-items: center; */
 	/* justify-content: flex-start; */
 	/* padding: 21px 0 20.1px; */
+	padding-left: 10%;
+	padding-right: 10%;
 	box-sizing: border-box;
 	position: relative;
 	letter-spacing: normal;
 	text-align: left;
-	font-size: 24px;
-	color: var(--color-darkslateblue);
-	font-family: var(--font-anton);
+	font-size: 34px;
+	/* color: var(--color-darkslateblue); */
+	font-family: serif;
 }

@@ -15,13 +15,15 @@ import Footer from "../Components/Footer/Footer";
 import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
 import factsImg from "../assets/facts1.jpg";
-import tag1 from '../assets/Tag1.jpg'
+import tag1 from "../assets/Tag1.jpg";
 import { AuthData } from "../Provider/AuthProv";
 import { useAdaptiveTriggers } from "../Hooks/AdaptiveConfig";
 
-function Homepage({backendEvents}) {
+function Homepage({ backendEvents }) {
 	const { user } = useContext(AuthData);
+
 	const [isResponsive, setIsResponsive] = useState(false);
+
 	const adaptiveWidth = useAdaptiveTriggers({
 		onSmallEnter: () =>
 			console.log("its small, apply small parallax props now"),
@@ -68,7 +70,7 @@ function Homepage({backendEvents}) {
 					backgroundRepeat: "no-repeat",
 				}}
 			>
-				<div className="btn top-50 start-50 translate-middle my-5 btn-class">
+				<div className="btn top-50 start-50 translate-middle my-5 btn-class position-abosolute ">
 					<Button
 						variant=""
 						style={{
@@ -105,7 +107,7 @@ function Homepage({backendEvents}) {
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					<AllEventsBlock backendEvents={backendEvents} />
+					<AllEventsBlock />
 				</ParallaxLayer>
 				<ParallaxLayer
 					offset={1.6}
@@ -116,12 +118,9 @@ function Homepage({backendEvents}) {
 				>
 					<div
 						style={{
-							height: "100%",
+							height: "92%",
 							width: "100%",
-							backgroundImage: `url(${tag1})`,
-							backgroundSize: '100%',
-							backgroundRepeat: 'no-repeat',
-							backgroundPosition: 'center',
+							backgroundImage: `url(${factsImg})`,
 						}}
 					></div>
 				</ParallaxLayer>

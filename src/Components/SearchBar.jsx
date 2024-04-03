@@ -11,6 +11,7 @@ function SearchBar({ onSearch }) {
 	const [error, setError] = useState(null);
 	const newsAPIKey = import.meta.env.VITE_APP_NEWSAPI_KEY;
 	const navigate = useNavigate();
+	//no api keys shared
 
 	const [userLocation, setUserLocation] = useState(null);
 

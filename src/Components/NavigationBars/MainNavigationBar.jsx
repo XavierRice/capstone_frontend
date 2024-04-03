@@ -135,12 +135,14 @@ function MainNavigationBar() {
 						</Nav>
 					</Col>
 				</Row>
-				<Button
-					variant=""
-					className="w-100 m-3 btn rounded-pill start-event-btn"
-				>
-					Start Event
-				</Button>
+				<Link to="discover/create-event">
+					<Button
+						variant=""
+						className="w-100 m-3 btn rounded-pill start-event-btn"
+					>
+						Start Event
+					</Button>
+				</Link>
 			</Navbar.Collapse>
 		</>
 	);

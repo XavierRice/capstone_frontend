@@ -51,13 +51,13 @@ const NewsDetails = () => {
 					{news?.news_title || article.title}
 				</h4>
 				<div className="icons">
-					<Link to="#">
+					<Link to="#" style={{ color: "purple" }}>
 						<FaFacebookF className="m-2" />
 					</Link>
-					<Link to="#">
+					<Link to="#" style={{ color: "purple" }}>
 						<FaTwitter className="m-2" />
 					</Link>
-					<Link to="#">
+					<Link to="#" style={{ color: "purple" }}>
 						<MdEmail className="m-2" />
 					</Link>
 				</div>
@@ -86,19 +86,18 @@ const NewsDetails = () => {
 						) : (
 							<p>{articleText}</p>
 						)}
-						{/* <RelatedEvents /> */}
 					</div>
 				</Col>
 				<Col md={2} sm={10} lg={3}>
-					<div className="related-events">
-						<div className="d-flex justify-content-center fw-semibold fs-4">
+					<div className="">
+						<div className="d-flex justify-content-center fw-semibold fs-4 mb-4">
 							Related Events
 						</div>
 
 						{relatedEvents?.slice(0, 3).map((event, index) => (
 							<div
 								key={index}
-								className="box mx-4"
+								className="box mx-4 card mb-3"
 								onClick={() => {
 									handleReleatedClick(event);
 								}}
@@ -106,23 +105,20 @@ const NewsDetails = () => {
 								<img
 									src={event.event_photo}
 									alt={`Event ${index + 1}`}
-									className="releated-event-image"
+									className="releated-event-image p-3"
+									style={{
+										borderRadius: "10%",
+									}}
 								/>
 
 								<div
 									key={index}
-									className="box mx-4"
+									className="mx-4 bottom"
 									onClick={() => {
 										handleReleatedClick(event);
 									}}
 								>
-									<img
-										src={event.event_photo}
-										alt={`Event ${index + 1}`}
-										className="releated-event-image"
-									/>
-
-									<div className="releated-image-text">{event.event_title}</div>
+									<div className="pb-3 event-title">{event.event_title}</div>
 								</div>
 							</div>
 						))}
