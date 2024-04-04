@@ -8,6 +8,7 @@ import { Col, Row } from "react-bootstrap";
 const News = () => {
 	const [loading, setLoading] = useState(true);
 	const [newsData, setNewsData] = useState([]);
+	const [newsApiData, setNewsApiData] = useState([]);
 	const navigate = useNavigate();
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 
@@ -40,8 +41,14 @@ const News = () => {
 		navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
 	};
 
-	console.log(newsData[0]);
-
+	// console.log(newsData[0]);
+	const handleNewsApiLoad = (status) => {
+		if (status === "loading") {
+			setLoading(true); // Set loading state to true when News API component is loading
+		} else {
+			setLoading(false); // Set loading state to false when News API component finishes loading
+		}
+	};
 	return (
 		<div className="mt-5 p-3">
 			{loading ? (
@@ -50,6 +57,7 @@ const News = () => {
 				</div>
 			) : (
 				<Row className="d-flex justify-content-center">
+					<div className=" mx-3 fs-4 m-2">Trending Topics</div>
 					{newsData.map((news) => (
 						<Col key={news.news_id} sm={6} md={3}>
 							<Card
@@ -64,7 +72,7 @@ const News = () => {
 					))}
 
 					<Col>
-						<NewsApi />
+						<NewsApi onLoad={handleNewsApiLoad} />
 					</Col>
 				</Row>
 			)}

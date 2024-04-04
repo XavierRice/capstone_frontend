@@ -31,7 +31,3 @@
 .card-body {
 	background-color: #fff; /* Default background color */
 }
-
-.card-body:hover {
-	background-color: #bc9ec1; /* Slightly change color on hover */
-}

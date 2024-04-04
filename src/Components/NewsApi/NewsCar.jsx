@@ -72,16 +72,19 @@ const NewsCar = ({ newsArticles }) => {
 		<Slider {...settings}>
 			{newsArticles.map((article, i) => (
 				<div
+					className="bg-light"
 					key={`${i}-${article.source?.id}`}
 					onClick={() => handleArticleClick(article, i)}
 				>
-					<Card>
+					<Card className="border-0">
 						<Card.Img
+							className="bg-light"
 							variant="top"
+							style={{ padding: "5%" }}
 							src={article.urlToImage || NoImage}
 							alt={article.title}
 						/>
-						<Card.Body>
+						<Card.Body className="bg-light">
 							<Card.Title>{article.title}</Card.Title>
 							<Card.Text>{article.description}</Card.Text>
 							{/* <Card.Text>{article.content}</Card.Text> */}
