@@ -16,12 +16,15 @@ import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
 import factsImg from "../assets/facts1.jpg";
 import tag1 from "../assets/Tag1.jpg";
+import Voice from '../assets/Voice.svg'
+import Midsection from '../assets/Midsection.svg'
 import { AuthData } from "../Provider/AuthProv";
 import { useAdaptiveTriggers } from "../Hooks/AdaptiveConfig";
+import './Homepage.css'
 
 function Homepage({ backendEvents }) {
 	const { user } = useContext(AuthData);
-
+	console.log( "Homepage events:",backendEvents)
 	const [isResponsive, setIsResponsive] = useState(false);
 
 	const adaptiveWidth = useAdaptiveTriggers({
@@ -37,7 +40,7 @@ function Homepage({ backendEvents }) {
 			console.log("its extra large, apply extra large parallax props now"),
 	});
 
-	console.log(adaptiveWidth);
+	//console.log(adaptiveWidth);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -70,12 +73,17 @@ function Homepage({ backendEvents }) {
 					backgroundRepeat: "no-repeat",
 				}}
 			>
-				<div className="btn top-50 start-50 translate-middle my-5 btn-class position-abosolute ">
+				<div className="btn top-50 start-50 translate-middle my-5 btn-class position-abosolut go-button" style={{zIndex: "10 !important"}}>
 					<Button
 						variant=""
 						style={{
 							color: "#ffffff",
 							cursor: "pointer",
+							position: "absolute",
+							top: '55%',
+							left: '50%',
+							transform: "translate(-50%, -50%)",
+							zIndex: 10,
 						}}
 					>
 						Start Event
@@ -105,7 +113,7 @@ function Homepage({ backendEvents }) {
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					<AllEventsBlock />
+					<AllEventsBlock backendEvents={backendEvents} />
 				</ParallaxLayer>
 				<ParallaxLayer
 					offset={1.6}
@@ -118,7 +126,9 @@ function Homepage({ backendEvents }) {
 						style={{
 							height: "92%",
 							width: "100%",
-							backgroundImage: `url(${factsImg})`,
+							backgroundRepeat: 'no-repeat',
+							backgroundSize: '100%',
+							backgroundImage: `url(${Voice})`,
 						}}
 					></div>
 				</ParallaxLayer>
@@ -138,7 +148,7 @@ function Homepage({ backendEvents }) {
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
-					<DonationsLayout />
+					<DonationsLayout backendEvents={backendEvents} />
 				</ParallaxLayer>
 
 				<ParallaxLayer offset={4.1} factor={1}>

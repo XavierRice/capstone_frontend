@@ -8,11 +8,15 @@ import DonateCode from "../../assets/DonateEvent1.png";
 import FactsImg from "../../assets/factsImg.png";
 import { FaArrowRight } from "react-icons/fa";
 
-function DonationsLayout() {
-	const navigate = useNavigate();
 
+
+
+function DonationsLayout({backendEvents}) {
+	const navigate = useNavigate();
+	console.log("donationeevents",backendEvents)
+	const ukraineEvent = backendEvents[7]
 	const handleDonationNavigate = () => {
-		navigate("/discover/donations");
+		navigate("/discover/events-details", { state: { event: ukraineEvent } });
 	};
 
 	const handleFundraiseNavigate = () => {

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 
 function MainContent({ backendEvents }) {
 	const navigate = useNavigate();
-	console.log(`This is maincontent: ${backendEvents}`);
+	console.log(`This is maincontent:`, backendEvents);
 
 	const mockEvents = [
 		{

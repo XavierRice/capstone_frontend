@@ -36,13 +36,13 @@ const NewsDetails = () => {
 	console.log(relatedEvents);
 
 	const handleReleatedClick = (event) => {
-		console.log("you clicked me", event);
+		
 		navigate("/discover/events-details", { state: { event: event } });
 	};
 
 	// console.log(article)
 	const paragraphs = news?.news_content.split(/\n\n/);
-	const articleText = article?.description;
+	const articleText = article?.content.repeat(16);
 	// console.log(articleText)
 	return (
 		<div className="d-flex m-5 news-details-container" style={{}}>

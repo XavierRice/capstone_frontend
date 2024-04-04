@@ -60,6 +60,14 @@ function Is_donation({ isDonation, setIsDonation, handleStripeId, stripeId}) {
                                 onChange={handleStripeId}
                                 
                             />
+                            <Form.Label>Amount</Form.Label>
+                            <Form.Control
+                                type="number"
+                                placeholder="Amount your seeking"
+                                autoFocus
+                                onChange={handleStripeId}
+                                
+                            />
                         </Form.Group>
                     </Form>
                 </Modal.Body>

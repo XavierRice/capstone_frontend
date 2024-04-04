@@ -68,10 +68,13 @@ const NewsApi = ({ onLoad }) => {
 	console.log(newsArticles);
 
 	return (
-		<Container>
-			<Row className="">
-				<Form.Group as={Col} controlId="event_keyword mx-3 ">
-					<Form.Label className=" my-2 fs-4 ">Filter by Category</Form.Label>
+
+
+		<div>
+			<Row className="mb-3 ">
+				<Form.Group as={Col} controlId="event_keyword mx-3">
+					<Form.Label className=" my-2 fs-4 ">Keywords</Form.Label>
+
 					<Select
 						onChange={handleKeywords}
 						options={keywordOptions}
@@ -84,7 +87,7 @@ const NewsApi = ({ onLoad }) => {
 			<Row>
 				<NewsCar newsArticles={newsArticles} />
 			</Row>
-		</Container>
+		</div>
 	);
 };
 
