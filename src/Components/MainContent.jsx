@@ -26,7 +26,7 @@ function MainContent({ backendEvents }) {
 	};
 
 	return (
-		<div className="mt-5">
+		<div className="mt-5" style={{width: '100vw'}}>
 			<div className="m-4">
 				<div className="position-relative d-block">
 					<div className="d-flex justify-content-between align-items-center m-3">
