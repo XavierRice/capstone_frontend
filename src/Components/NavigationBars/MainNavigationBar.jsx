@@ -33,7 +33,7 @@ function MainNavigationBar() {
 				aria-controls="basic-navbar-nav"
 				className="outline-none"
 			/>
-			<Link to="/">
+			<Link to="/search">
 				<div className="mx-3">
 					<FaSearch className="" style={{ marginRight: "4px" }} />
 					Search
@@ -107,7 +107,7 @@ function MainNavigationBar() {
 			>
 				<Logo />
 			</Navbar.Brand>
-			<Link to="/">
+			<Link to="/search">
 				<div className="mx-3">
 					<FaSearch className="" style={{ marginRight: "2px" }} />
 					Search

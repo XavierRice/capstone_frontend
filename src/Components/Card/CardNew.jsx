@@ -22,7 +22,11 @@ function CardNew({ cardObj, tag, imageLoad, cardClick }) {
 	};
 
 	return (
-		<div onClick={cardClick} style={{ cursor: "pointer" }} className="card">
+		<div
+			onClick={cardClick}
+			style={{ cursor: "pointer" }}
+			className="card border-0"
+		>
 			<div className={` ${styleClick ? "card-clicked" : ""}`}>
 				<img
 					className="card-img-top p-2 bg-light"

@@ -14,6 +14,7 @@ import "./Donations.css";
 function Donations() {
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [donationsData, setDonationsData] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -24,10 +25,25 @@ function Donations() {
 				setDonationsData(donations);
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
+			} finally {
+				setTimeout(() => {
+					setLoading(false);
+				}, 6000);
 			}
 		};
 		fetchData();
 	}, []);
+
+	if (loading) {
+		return (
+			<Container
+				fluid
+				className="donations-container d-flex justify-content-center align-items-center"
+			>
+				<Spinner animation="border" variant="primary" />
+			</Container>
+		);
+	}
 
 	const donate1 = donationsData[0]?.donation_description;
 	const donate2 = donationsData[1]?.donation_description;
@@ -46,7 +62,11 @@ function Donations() {
 				<Col xs={12} md={6} lg={4}>
 					<Card
 						className="card"
-						style={{ borderRadius: "15px", marginBottom: "33px", alignItems: "center" }}
+						style={{
+							borderRadius: "15px",
+							marginBottom: "33px",
+							alignItems: "center",
+						}}
 					>
 						<Donation1 />
 						<div className="donation-info mt-4">

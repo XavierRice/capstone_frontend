@@ -108,6 +108,7 @@ const Events = () => {
 							<Col key={event.id || index} sm={6} md={3}>
 								<div className="p-3">
 									<CardNew
+										className="border-0"
 										cardObj={event}
 										tag={"Event"}
 										cardClick={() => handleCardClick(event)}
