@@ -40,14 +40,13 @@
 	transition: color 0.3s;
 }
 
-.icon:hover,
-.label:hover {
-	color: blue; /* Change color on hover */
-	cursor: pointer;
-}
-
 .selected-column {
 	background-color: #6c03842e;
 	color: #fff;
 	border-radius: 20px;
+}
+
+.icons:hover {
+	cursor: pointer;
+	background-color: #6c0384;
 }
