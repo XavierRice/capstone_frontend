@@ -155,7 +155,7 @@ function Homepage({ backendEvents }) {
 					<Footer />
 				</ParallaxLayer>
 			</Parallax>
-			{isResponsive && (
+			{/* {isResponsive && (
 				<div className="sticky-footer">
 					<Button
 						className="btn"
@@ -168,7 +168,7 @@ function Homepage({ backendEvents }) {
 						Start Event
 					</Button>
 				</div>
-			)}
+			)} */}
 		</div>
 	);
 }

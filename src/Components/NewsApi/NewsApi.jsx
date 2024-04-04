@@ -7,12 +7,13 @@ import NewsCar from "./NewsCar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const NewsApi = () => {
+const NewsApi = ({ onLoad }) => {
 	const [newsArticles, setNewsArticles] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
 	const [selectedKeyword, setSelectedKeyword] = useState("lbgt");
-	const NewsApiKey = import.meta.env.VITE_APP_NEWSAPI_KEY;
+	const NewsApiKey =
+		import.meta.env.VITE_APP_NEWSAPI_KEY || "34f016ffbcd9498fa866ebfdcfd61e73";
 	//delete key before pushing
 
 	const keywordOptions = [
@@ -35,7 +36,8 @@ const NewsApi = () => {
 	};
 
 	const fetchNewsArticles = async (keyword) => {
-		setLoading(true);
+		onLoad("loading");
+		// setLoading(true);
 		setError(null);
 		try {
 			const response = await fetch(
@@ -52,7 +54,7 @@ const NewsApi = () => {
 		} catch (error) {
 			setError(error.message);
 		} finally {
-			setLoading(false);
+			onLoad("finished");
 		}
 	};
 
@@ -66,21 +68,24 @@ const NewsApi = () => {
 	console.log(newsArticles);
 
 	return (
+
+
 		<div>
-			<Row className="mb-3">
-				<Form.Group as={Col} controlId="event_keyword">
-					<Form.Label>Keywords</Form.Label>
+			<Row className="mb-3 ">
+				<Form.Group as={Col} controlId="event_keyword mx-3">
+					<Form.Label className=" my-2 fs-4 ">Keywords</Form.Label>
+
 					<Select
 						onChange={handleKeywords}
 						options={keywordOptions}
-						className="basic-select custom-text-dark"
+						className="py-4"
 						classNamePrefix="select"
 						name="event_keywords"
 					/>
 				</Form.Group>
 			</Row>
 			<Row>
-				<NewsCar newsArticles={newsArticles} />å
+				<NewsCar newsArticles={newsArticles} />
 			</Row>
 		</div>
 	);
