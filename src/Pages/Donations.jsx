@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Spinner } from "react-bootstrap";
+import Progressbar from "../Components/Stripe/ProgressBar/Progressbar";
 import axios from "axios";
 import Donation1 from "../Components/Stripe/Donation1";
 import UkraineBuy from "../Components/Stripe/UkraineBuy";
@@ -44,10 +45,15 @@ function Donations() {
 			</Container>
 		);
 	}
-
+console.log(donationsData)
 	const donate1 = donationsData[0]?.donation_description;
+	const donate1Amount = donationsData[0]?.donation_amount;
 	const donate2 = donationsData[1]?.donation_description;
+	const donate2Amount = donationsData[1]?.donation_amount;
 	const donate3 = donationsData[2]?.donation_description;
+	const donate3Amount = donationsData[2]?.donation_amount;
+
+    
 
 	return (
 		<Container fluid className="donations-container">
@@ -85,7 +91,7 @@ function Donations() {
 								<p>{donate1}</p>
 							</div>
 							<div className="d-flex justify-content-center ">
-								{/* progress bar */}here
+							<div className=" d-flex justify-content-center"><Progressbar donateAmount={donate1Amount}/></div>
 							</div>
 						</div>
 					</Card>
@@ -113,7 +119,7 @@ function Donations() {
 							</div>
 							<div className=" d-flex justify-content-center">
 								{" "}
-								----progress bar here----
+								<div className=" d-flex justify-content-center"><Progressbar donateAmount={donate2Amount}/></div>
 							</div>
 						</div>
 					</Card>
@@ -137,7 +143,7 @@ function Donations() {
 								/>
 							</div>
 							<p className="m-4">{donate3}</p>
-							<div className=" d-flex justify-content-center">here</div>
+							<div className=" d-flex justify-content-center"><Progressbar donateAmount={donate3Amount}/></div>
 						</div>
 					</Card>
 				</Col>
