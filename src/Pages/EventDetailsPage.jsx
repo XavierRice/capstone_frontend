@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { useAuthDataProvider } from "../Provider/AuthProv";
 import axios from "axios";
 import "./EventDetailsPage.css";
 import { useLocation } from "react-router";
@@ -22,7 +23,7 @@ function EventDetailsPage() {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const backend = import.meta.env.VITE_BACKEND_URL;
-
+	const { user } = useAuthDataProvider();
 	const [loading, setLoading] = useState(true);
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	const [showDonationButton, setShowDonationButton] = useState(false);
@@ -31,17 +32,30 @@ function EventDetailsPage() {
 	const [checked, setChecked] = useState(false);
 	const [buyButtonId, setBuyButtonId] = useState(null);
 	const [registeredGuest, setRegisteredGuest] = useState({
-		firstname: "",
+		firstname: "",  //forst
 		lastname: "",
 		email: "",
 		mobile: "",
 	});
 
-	console.log(registeredGuest);
+ console.log(user)
+
+	useEffect(()=>{
+if(user && user.first_name && user.last_name && user.email)
+setRegisteredGuest({
+	firstname: user.first_name, 
+	lastname: user.last_name,
+	email: user.email,
+	mobile: "",
+});
+	})
 
 	const handleTextChange = (event) => {
 		const { name, value } = event.target;
-		setRegisteredGuest({ ...registeredGuest, [name]: value });
+		setRegisteredGuest(prev => ({
+			...prev,
+			[name]: value 
+		}));
 	};
 
 	const handleEventRegister = () => {
@@ -241,6 +255,7 @@ function EventDetailsPage() {
 														type="text"
 														placeholder="first name"
 														name="firstName"
+														value={registeredGuest.firstname}
 														onChange={handleTextChange}
 													/>
 												</Form.Group>
@@ -251,6 +266,7 @@ function EventDetailsPage() {
 														type="text"
 														placeholder="last name"
 														name="lastName"
+														value={registeredGuest.lastname}
 														onChange={handleTextChange}
 													/>
 												</Form.Group>
@@ -264,6 +280,7 @@ function EventDetailsPage() {
 												placeholder="email"
 												name="email"
 												onChange={handleTextChange}
+												value={registeredGuest.email}
 											/>
 										</Form.Group>
 
@@ -273,6 +290,7 @@ function EventDetailsPage() {
 												type="tel"
 												placeholder="mobile number"
 												name="mobile"
+												value={registeredGuest.mobile}
 												onClick={() => handleTextChange(event)}
 											/>
 										</Form.Group>
