@@ -5,6 +5,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
+
 const AutoComplete = ({ setLocation, setLat, setLng, lat, lng }) => {
 
   const {
@@ -69,7 +70,7 @@ const AutoComplete = ({ setLocation, setLat, setLng, lat, lng }) => {
       type='text'
       value={value}
       onChange={handleInput}
-      placeholder="Where is your event" 
+      placeholder="Location" 
       disabled={!ready}
       />
       {status === "OK" && <ul>{renderSuggestions()}</ul>}

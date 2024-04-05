@@ -5,16 +5,15 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import { useAuthDataProvider } from "../../Provider/AuthProv";
 function MainNavigationBar({ scrolling = false }) {
-	const {token, logout} = useAuthDataProvider();
-	
+	const { token, logout } = useAuthDataProvider();
 
 	const [getInvolvedExpanded, setGetInvolvedExpanded] = useState(false);
 	const [aboutUsExpanded, setAboutUsExpanded] = useState(false);
 
 	const handleLogout = () => {
-		console.log('youve logged out' + token)
+		console.log("youve logged out" + token);
 		logout(); // Call the logout function
-	  };
+	};
 
 	const handleGetInvolvedMouseEnter = () => {
 		setGetInvolvedExpanded(true);
@@ -37,8 +36,9 @@ function MainNavigationBar({ scrolling = false }) {
 			bg="light"
 			expand="lg"
 			sticky="top"
-			className={`navbar-shadow navbar-wrapper ${scrolling ? "scrolling" : "not-scrolling"
-				}`}
+			className={`navbar-shadow navbar-wrapper ${
+				scrolling ? "scrolling" : "not-scrolling"
+			}`}
 			style={{ width: scrolling ? "100%" : "60rem" }}
 		>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -96,14 +96,15 @@ function MainNavigationBar({ scrolling = false }) {
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
-					{!token === true ? (
+					{/* {!token ? (
 						<Nav.Link href="/discover/users/login" className="mx-3">
 							 <button onClick={handleLogout} style={{ backgroundColor: '#BC9EC1', borderColor:'#4E2855', color:'black', borderRadius: '20px'}}>Logout</button>
 						</Nav.Link>
-					) : (<Nav.Link href="/discover/users/login" className="mx-3" >
+					) : ( */}
+					<Nav.Link href="/discover/users/login" className="mx-3">
 						Sign In
-					</Nav.Link>)
-					}
+					</Nav.Link>
+					{/* ) } */}
 					<Button
 						variant=""
 						href="/discover/create-event"

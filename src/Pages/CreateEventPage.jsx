@@ -19,7 +19,7 @@ function CreateEventPage() {
 			{!showLogin && (
 				<div
 					className=" d-flex justify-content-center my-5"
-					style={{ paddingRight: "7%" }}
+					style={{ paddingRight: "5%", paddingLeft: "5%" }}
 				>
 					<Row>
 						<div
@@ -28,14 +28,14 @@ function CreateEventPage() {
 						>
 							Create an event and grow your community
 						</div>
-						<Col sm={10} md={6} lg={6}>
+						<Col sm={10} md={5} lg={5}>
 							<img
 								src={createImg}
 								alt="Create Image"
 								style={{ height: "70%", width: "100%" }}
 							/>
 						</Col>
-						<Col sm={10} md={6} lg={6}>
+						<Col sm={10} md={7} lg={7}>
 							<EventForm user={user} />
 						</Col>
 					</Row>

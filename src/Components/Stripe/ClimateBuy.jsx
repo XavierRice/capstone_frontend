@@ -5,10 +5,13 @@ const ClimateBuy = () => {
 	const climateBuyButton = import.meta.env.VITE_CLIMATE_EVENT;
 
 	return (
-		<stripe-buy-button
-			buy-button-id={climateBuyButton}
-			publishable-key={stripePublishKey}
-		></stripe-buy-button>
+		<div className="mt-4 mx-5">
+			<stripe-buy-button
+				buy-button-id={climateBuyButton}
+				publishable-key={stripePublishKey}
+				
+			></stripe-buy-button>
+		</div>
 	);
 };
 

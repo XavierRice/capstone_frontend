@@ -16,15 +16,15 @@ import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
 import factsImg from "../assets/facts1.jpg";
 import tag1 from "../assets/Tag1.jpg";
-import Voice from '../assets/Voice.svg'
-import Midsection from '../assets/Midsection.svg'
+import Voice from "../assets/Voice.svg";
+import Midsection from "../assets/Midsection.svg";
 import { AuthData } from "../Provider/AuthProv";
 import { useAdaptiveTriggers } from "../Hooks/AdaptiveConfig";
-import './Homepage.css'
+import "./Homepage.css";
 
 function Homepage({ backendEvents }) {
 	const { user } = useContext(AuthData);
-	console.log( "Homepage events:",backendEvents)
+	console.log("Homepage events:", backendEvents);
 	const [isResponsive, setIsResponsive] = useState(false);
 
 	const adaptiveWidth = useAdaptiveTriggers({
@@ -73,21 +73,24 @@ function Homepage({ backendEvents }) {
 					backgroundRepeat: "no-repeat",
 				}}
 			>
-				<div className="btn top-50 start-50 translate-middle my-5 btn-class position-abosolut go-button" style={{zIndex: "10 !important"}}>
-					<Button
+				<div
+					className="btn top-50 start-50 translate-middle my-5 btn-class position-abosolu"
+					// style={{ zIndex: "10 !important" }}
+				>
+					{/* <Button
 						variant=""
 						style={{
 							color: "#ffffff",
 							cursor: "pointer",
 							position: "absolute",
-							top: '55%',
-							left: '50%',
+							top: "55%",
+							left: "50%",
 							transform: "translate(-50%, -50%)",
 							zIndex: 10,
 						}}
 					>
 						Start Event
-					</Button>
+					</Button> */}
 				</div>
 				{/* navigation */}
 				<ParallaxLayer
@@ -126,8 +129,8 @@ function Homepage({ backendEvents }) {
 						style={{
 							height: "92%",
 							width: "100%",
-							backgroundRepeat: 'no-repeat',
-							backgroundSize: '100%',
+							backgroundRepeat: "no-repeat",
+							backgroundSize: "100%",
 							backgroundImage: `url(${Voice})`,
 						}}
 					></div>
@@ -155,7 +158,7 @@ function Homepage({ backendEvents }) {
 					<Footer />
 				</ParallaxLayer>
 			</Parallax>
-			{isResponsive && (
+			{/* {isResponsive && (
 				<div className="sticky-footer">
 					<Button
 						className="btn"
@@ -168,7 +171,7 @@ function Homepage({ backendEvents }) {
 						Start Event
 					</Button>
 				</div>
-			)}
+			)} */}
 		</div>
 	);
 }
