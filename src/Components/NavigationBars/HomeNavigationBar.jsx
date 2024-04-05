@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import { useAuthDataProvider } from "../../Provider/AuthProv";
 function MainNavigationBar({ scrolling = false }) {
-	const { token, logout } = useAuthDataProvider();
+	const { user, logout } = useAuthDataProvider();
 
 	const [getInvolvedExpanded, setGetInvolvedExpanded] = useState(false);
 	const [aboutUsExpanded, setAboutUsExpanded] = useState(false);
@@ -96,15 +96,15 @@ function MainNavigationBar({ scrolling = false }) {
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
-					{/* {!token ? (
+					 {user ? (
 						<Nav.Link href="/discover/users/login" className="mx-3">
 							 <button onClick={handleLogout} style={{ backgroundColor: '#BC9EC1', borderColor:'#4E2855', color:'black', borderRadius: '20px'}}>Logout</button>
 						</Nav.Link>
-					) : ( */}
+					) : (
 					<Nav.Link href="/discover/users/login" className="mx-3">
 						Sign In
 					</Nav.Link>
-					{/* ) } */}
+					 ) }
 					<Button
 						variant=""
 						href="/discover/create-event"
