@@ -45,15 +45,13 @@ function Donations() {
 			</Container>
 		);
 	}
-console.log(donationsData)
+	console.log(donationsData);
 	const donate1 = donationsData[0]?.donation_description;
 	const donate1Amount = donationsData[0]?.donation_amount;
 	const donate2 = donationsData[1]?.donation_description;
 	const donate2Amount = donationsData[1]?.donation_amount;
 	const donate3 = donationsData[2]?.donation_description;
 	const donate3Amount = donationsData[2]?.donation_amount;
-
-    
 
 	return (
 		<Container fluid className="donations-container">
@@ -91,7 +89,9 @@ console.log(donationsData)
 								<p>{donate1}</p>
 							</div>
 							<div className="d-flex justify-content-center ">
-							<div className=" d-flex justify-content-center"><Progressbar donateAmount={donate1Amount}/></div>
+								<div className=" d-flex justify-content-center">
+									<Progressbar donateAmount={donate1Amount} />
+								</div>
 							</div>
 						</div>
 					</Card>
@@ -99,7 +99,11 @@ console.log(donationsData)
 				<Col xs={12} md={6} lg={4}>
 					<Card
 						className="card"
-						style={{ borderRadius: "15px", marginBottom: "33px" }}
+						style={{
+							borderRadius: "15px",
+							marginBottom: "33px",
+							alignItems: "center",
+						}}
 					>
 						<ClimateBuy />
 						<div className="donation-info">
@@ -118,8 +122,7 @@ console.log(donationsData)
 								<p>{donate2}</p>
 							</div>
 							<div className=" d-flex justify-content-center">
-								{" "}
-								<div className=" d-flex justify-content-center"><Progressbar donateAmount={donate2Amount}/></div>
+								<Progressbar donateAmount={donate2Amount} />
 							</div>
 						</div>
 					</Card>
@@ -127,7 +130,11 @@ console.log(donationsData)
 				<Col xs={12} md={6} lg={4}>
 					<Card
 						className="card"
-						style={{ borderRadius: "15px", marginBottom: "33px" }}
+						style={{
+							borderRadius: "15px",
+							marginBottom: "33px",
+							alignItems: "center",
+						}}
 					>
 						<UkraineBuy />
 						<div className="donation-info">
@@ -143,7 +150,9 @@ console.log(donationsData)
 								/>
 							</div>
 							<p className="m-4">{donate3}</p>
-							<div className=" d-flex justify-content-center"><Progressbar donateAmount={donate3Amount}/></div>
+							<div className=" d-flex justify-content-center">
+								<Progressbar donateAmount={donate3Amount} />
+							</div>
 						</div>
 					</Card>
 				</Col>
