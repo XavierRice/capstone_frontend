@@ -11,7 +11,7 @@ const CivicInfo = () => {
     const [pollingData, setPollingData] = useState(null);
     const googleApiKey = import.meta.env.VITE_X_GOOGLE_API_KEY;
 
-    // usePlacesAutocomplete hook for address autocomplete
+
     const {
         ready,
         value,
@@ -22,12 +22,11 @@ const CivicInfo = () => {
         debounce: 300,
     });
 
-    // Ref for the autocomplete dropdown to use with useOnclickOutside
+  
     const ref = useOnclickOutside(() => {
         clearSuggestions();
     });
 
-    // useEffect hook to geolocate the user and fetch their address
     useEffect(() => {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(async (position) => {
@@ -36,7 +35,7 @@ const CivicInfo = () => {
                     const results = await getGeocode({ location: { lat: latitude, lng: longitude } });
                     const address = results[0].formatted_address;
                     setUsersLocation(address);
-                    setValue(address, false); // Sets the autocomplete input with the fetched address
+                    setValue(address, false); 
                 } catch (error) {
                     console.error("Error converting geolocation to address:", error);
                 }
@@ -48,18 +47,17 @@ const CivicInfo = () => {
         }
     }, [setValue]);
 
-    // useEffect hook for fetching civic and polling data based on the user's location
+  
     useEffect(() => {
         const fetchData = async () => {
             if (usersLocation) {
                 try {
-                    // Fetch civic data
+                 
                     const civicUrl = `https://www.googleapis.com/civicinfo/v2/representatives?key=${googleApiKey}&address=${encodeURIComponent(usersLocation)}`;
                     const civicResponse = await axios.get(civicUrl);
                     setCivicData(civicResponse || [])
                     setCivicOfficials(civicResponse.data.officials || []);
 
-                    // Fetch polling data
                     const pollingUrl = `https://www.googleapis.com/civicinfo/v2/voterinfo?address=${encodeURIComponent(usersLocation)}&key=${googleApiKey}`;
                     const pollingResponse = await axios.get(pollingUrl);
                     console.log(pollingResponse)
@@ -72,7 +70,7 @@ const CivicInfo = () => {
         fetchData();
     }, [usersLocation, googleApiKey]);
 
-    // Handlers for the autocomplete input
+   
     const handleInput = (e) => {
         setValue(e.target.value);
     };
@@ -91,7 +89,6 @@ const CivicInfo = () => {
             });
     };
 
-    // Render autocomplete suggestions
     const renderSuggestions = () => data.map((suggestion) => {
         const {
             place_id,
