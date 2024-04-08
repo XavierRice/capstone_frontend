@@ -68,12 +68,12 @@ const NewsApi = ({ onLoad }) => {
 	console.log(newsArticles);
 
 	return (
-
-
 		<div>
 			<Row className="mb-3 ">
 				<Form.Group as={Col} controlId="event_keyword mx-3">
-					<Form.Label className=" my-2 fs-4 ">Keywords</Form.Label>
+					<Form.Label className=" mt-4 fs-4 d-flex justify-content-center">
+						Filter by Category
+					</Form.Label>
 
 					<Select
 						onChange={handleKeywords}

@@ -37,6 +37,14 @@
 /* ------------------------------------------------------------------------------------------------------------------- */
 .proof-container {
 	background-color: #70428f31;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+}
+
+.bg-text {
+	background-color: #60397924;
+	padding: 5%;
+	border-radius: 15px;
+}
+
+.text {
+	padding: 5%;
 }

@@ -57,7 +57,9 @@ const News = () => {
 				</div>
 			) : (
 				<Row className="d-flex justify-content-center">
-					<div className=" mx-3 fs-4 m-2">Trending Topics</div>
+					<div className=" mx-3 fs-4 m-3 d-flex justify-content-center">
+						Trending Topics
+					</div>
 					{newsData.map((news) => (
 						<Col key={news.news_id} sm={6} md={3}>
 							<Card

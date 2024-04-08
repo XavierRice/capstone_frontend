@@ -16,7 +16,7 @@ import Homepage from "./Pages/Homepage";
 import useScrollPosition from "./Hooks/ScrollPositionProvider";
 import StripePaymentEvent from "./Components/Stripe/StripePaymentEvent";
 import StripeBuy from "./Components/Stripe/StripeBuy";
-import ProofHero from "./Components/SocialProof/ProofHero";
+import ProofHero from "./Components/SocialProof/ProofHero-copy";
 import ThankYou from "./Pages/ThankYou/ThankYou";
 import CardNew from "./Components/Card/CardNew";
 import SearchResultPage from "./Pages/SearchResultPage";
@@ -37,7 +37,6 @@ function App() {
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [backendEvents, setBackendEvents] = useState([]);
 
-
 	useEffect(() => {
 		const fetchEvents = async () => {
 			try {
@@ -57,7 +56,6 @@ function App() {
 		<Router>
 			<Routes>
 				<Route path="/" element={<Homepage backendEvents={backendEvents} />} />
-
 				<Route path="/*" element={<MainNavigationBar />} />
 			</Routes>
 			<div>
@@ -85,6 +83,7 @@ function App() {
 						element={<StripeDonation />}
 					/>
 					<Route path="/search" element={<SearchPage />} />
+					<Route path="/howitworks" element={<ProofHero />} />
 				</Routes>
 			</div>
 		</Router>
