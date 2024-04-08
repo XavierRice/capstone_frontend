@@ -6,6 +6,7 @@ import { BiDonateHeart } from "react-icons/bi";
 import { MdOutlineEventAvailable } from "react-icons/md";
 import { FaPersonCircleCheck } from "react-icons/fa6";
 import { IoNewspaper } from "react-icons/io5";
+import { BsFillSearchHeartFill } from "react-icons/bs";
 
 import { FaPeopleGroup } from "react-icons/fa6";
 import { IoLocationOutline, IoCalendarOutline } from "react-icons/io5";
@@ -32,7 +33,9 @@ function InfoBlock() {
 							>
 								<IoNewspaper style={{ fontSize: "34px", color: "#9973a0" }} />
 								<div className="header-and-link hover-underline">News</div>
-								<div>Read about the latest events happening in every area</div>
+								<div>
+									Read about the latest events happening around the world
+								</div>
 							</Link>
 						</div>
 						<div className="category-item mx-3">
@@ -45,8 +48,8 @@ function InfoBlock() {
 								/>
 								<div className="header-and-link">Create</div>
 								<div>
-									Attract those with the same interest as you and stand for what
-									you believe in (meet up / do the task)
+									Attract those with the same interest as you and start your own
+									community
 								</div>
 							</Link>
 						</div>
@@ -59,7 +62,7 @@ function InfoBlock() {
 									style={{ fontSize: "34px", color: "#9973a0" }}
 								/>
 								<div className="header-and-link">Attend</div>
-								<div>Care about a cause but don't</div>
+								<div>Meet like-minded individuals and stand for a cause</div>
 							</Link>
 						</div>
 						<div className="category-item mx-3">
@@ -69,17 +72,16 @@ function InfoBlock() {
 							>
 								<BiDonateHeart style={{ fontSize: "34px", color: "#9973a0" }} />
 								<div className="header-and-link">Donate</div>
-								<div>Reach a helping hand for causes you resonate with</div>
+								<div>Help causes you resonate with</div>
 							</Link>
 						</div>
 						<div className="category-item mx-3">
 							<Link to="/search" className="d-block text-decoration-none">
-								<FaPeopleGroup style={{ fontSize: "34px", color: "#9973a0" }} />
+								<BsFillSearchHeartFill
+									style={{ fontSize: "34px", color: "#9973a0" }}
+								/>
 								<div className="header-and-link">Find</div>
-								<div>
-									Find like-minded individuals by searching for topics you care
-									about
-								</div>
+								<div>Search for information or ways to get active</div>
 							</Link>
 						</div>
 					</div>

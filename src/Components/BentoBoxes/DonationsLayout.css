@@ -50,14 +50,16 @@
 /* small box grid  */
 
 .climate-image {
-	max-width: 80%;
-	max-height: 80%;
+	max-width: 70%;
+	max-height: 70%;
+	margin: 8%;
 }
 
 .mid-left .top {
-	background: #6c63ff;
-	/* max-height: 60%; */
-	border-radius: 15px;
+	background: rgba(107, 96, 109, 0.449);
+	max-height: 69%;
+	border-radius: 15px 15px 0px 0px;
+	padding-bottom: 5%;
 }
 
 /* buttons css below */
@@ -76,9 +78,25 @@ span {
 	color: #72547dbb;
 	background-color: #bc9ec1;
 	transition: all 0.3s;
-	padding: 8px 16px;
 	border-radius: 20px;
 	border: none;
 	color: #fff;
 	background-color: #72547dbb;
+}
+
+.donate-btn {
+	margin-left: 5%;
+	margin-right: 5%;
+	display: flex;
+	justify-content: center;
+	padding: 8px 16px;
+}
+
+/* .bottom-part-card {
+	margin: 2%;
+} */
+
+.top-half {
+	display: center;
+	justify-content: center;
 }
