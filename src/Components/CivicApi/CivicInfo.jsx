@@ -22,7 +22,7 @@ const CivicInfo = () => {
         debounce: 300,
     });
 
-  
+
     const ref = useOnclickOutside(() => {
         clearSuggestions();
     });
@@ -35,7 +35,7 @@ const CivicInfo = () => {
                     const results = await getGeocode({ location: { lat: latitude, lng: longitude } });
                     const address = results[0].formatted_address;
                     setUsersLocation(address);
-                    setValue(address, false); 
+                    setValue(address, false);
                 } catch (error) {
                     console.error("Error converting geolocation to address:", error);
                 }
@@ -47,12 +47,12 @@ const CivicInfo = () => {
         }
     }, [setValue]);
 
-  
+
     useEffect(() => {
         const fetchData = async () => {
             if (usersLocation) {
                 try {
-                 
+
                     const civicUrl = `https://www.googleapis.com/civicinfo/v2/representatives?key=${googleApiKey}&address=${encodeURIComponent(usersLocation)}`;
                     const civicResponse = await axios.get(civicUrl);
                     setCivicData(civicResponse || [])
@@ -61,7 +61,7 @@ const CivicInfo = () => {
                     const pollingUrl = `https://www.googleapis.com/civicinfo/v2/voterinfo?address=${encodeURIComponent(usersLocation)}&key=${googleApiKey}`;
                     const pollingResponse = await axios.get(pollingUrl);
                     console.log(pollingResponse)
-                    setPollingData(pollingResponse.data || null);
+                    setPollingData(pollingResponse || null);
                 } catch (error) {
                     console.error('Error fetching data:', error);
                 }
@@ -70,7 +70,7 @@ const CivicInfo = () => {
         fetchData();
     }, [usersLocation, googleApiKey]);
 
-   
+
     const handleInput = (e) => {
         setValue(e.target.value);
     };
@@ -115,6 +115,7 @@ const CivicInfo = () => {
                 />
                 {status === "OK" && <ul>{renderSuggestions()}</ul>}
             </Form.Group>
+
             <div>
                 {civicOfficials.map((official, index) => (
                     <div key={index}>

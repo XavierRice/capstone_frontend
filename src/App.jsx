@@ -24,6 +24,7 @@ import Footer from "./Components/Footer/Footer";
 import SignUpPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 import CivicInfo from "./Components/CivicApi/CivicInfo";
+import VoterModal from "./Components/CivicApi/VoterModal";
 
 //import SearchResultPage from "./Pages/Search/SearchPage";
 import NewsApi from "./Components/NewsApi/NewsApi";
@@ -74,9 +75,10 @@ function App() {
 					<Route path="/discover/donations" element={<Donations />} />
 					<Route path="/discover/users/login" element={<LoginPage />} />
 					<Route path="/discover/users/signup" element={<SignUpPage />} />
+					<Route path="/discover/voting" element={< VoterModal />} />
 					<Route path="/discover/thankyou" element={<ThankYou />} />
 					<Route path="/discover/create-event" element={<CreateEventPage />} />
-					<Route path="/discover/test" element={<CivicInfo />} />
+					<Route path="/discover/test" element={<VoterModal />} />
 					<Route path="/discover/facts" element={<FundraiseFacts />} />
 					<Route
 						path="/discover/create-event/donation"
