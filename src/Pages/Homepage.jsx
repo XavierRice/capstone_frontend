@@ -16,7 +16,7 @@ import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
 import InfoBlock from "../Components/InfoBlock";
 import factsImg from "../assets/facts1.jpg";
 import tag1 from "../assets/Tag1.jpg";
-import Voice from "../assets/newImg.svg";
+import Voice from "../assets/newimg.svg";
 import Midsection from "../assets/Midsection.svg";
 import { AuthData } from "../Provider/AuthProv";
 import { useAdaptiveTriggers } from "../Hooks/AdaptiveConfig";
