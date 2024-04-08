@@ -1,89 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
-import usePlacesAutocomplete, {
-    getGeocode,
-    getLatLng,
-} from "use-places-autocomplete";
+import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 
 const CivicInfo = () => {
+    const [civicData, setCivicData] = useState(null);
+    const [usersLocation, setUsersLocation] = useState("");
+    const [civicOfficials, setCivicOfficials] = useState([]);
+    const [pollingData, setPollingData] = useState(null);
+    const googleApiKey = import.meta.env.VITE_X_GOOGLE_API_KEY;
 
-    const [userAddress, setUserAddress] = useState({});
-    const [usersLocation, setUsersLocation] = useState(null);
-    const [lat, setLat] = useState(null);
-    const [lng, setLng] = useState(null);
-    const [civicData, setCivicData] = useState(null)
-    const [civicOfficials, setCivicOfficials] = useState(null)
-    const [civicOffices, setCivicOffices] = useState(null)
-    const googlekey = import.meta.env.VITE_X_GOOGLE_API_KEY
-    const url = `https://www.googleapis.com/civicinfo/v2/representatives?key=${googlekey}&address=${userAddress}`;
-
-
-
-    useEffect(() => {
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const { latitude, longitude } = position.coords;
-                    setLat(latitude);
-                    setLng(longitude)
-                    getGeocode({ location: { lat: latitude, lng: longitude } })
-                        .then((results) => {
-                            const address = results[0].formatted_address;
-                            setUsersLocation(address);
-                            setValue(address); // Update autocomplete input with the geolocated address
-                            setUserAddress(address)
-                        })
-                        .catch((error) => {
-                            console.error("Error converting geolocation to address:", error);
-                        });
-                },
-                (error) => {
-                    console.error("Error obtaining user location", error);
-                }
-            );
-        } else {
-            console.log("Geolocation is not supported by this browser.");
-        }
-    }, []);
-
-
-    useEffect(() => {
-        const url = `https://www.googleapis.com/civicinfo/v2/representatives?key=${googlekey}&address=${encodeURIComponent(usersLocation)}`;
-        if (usersLocation) {
-            axios.get(url)
-                .then(response => {
-                    console.log('the api data:', response);
-                    const data = response.data
-                    setCivicData(data)
-                    setCivicOfficials(data.officials)
-                    setCivicOffices(data.offices)
-
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
-    }, [usersLocation])
 
     const {
         ready,
         value,
-        suggestions: { status, data },
         setValue,
+        suggestions: { status, data },
         clearSuggestions,
     } = usePlacesAutocomplete({
-        requestOptions: {
-            /* Define search scope here */
-        },
         debounce: 300,
     });
 
+  
     const ref = useOnclickOutside(() => {
         clearSuggestions();
     });
 
+    useEffect(() => {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                const { latitude, longitude } = position.coords;
+                try {
+                    const results = await getGeocode({ location: { lat: latitude, lng: longitude } });
+                    const address = results[0].formatted_address;
+                    setUsersLocation(address);
+                    setValue(address, false); 
+                } catch (error) {
+                    console.error("Error converting geolocation to address:", error);
+                }
+            }, (error) => {
+                console.error("Error obtaining user location", error);
+            });
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }, [setValue]);
+
+  
+    useEffect(() => {
+        const fetchData = async () => {
+            if (usersLocation) {
+                try {
+                 
+                    const civicUrl = `https://www.googleapis.com/civicinfo/v2/representatives?key=${googleApiKey}&address=${encodeURIComponent(usersLocation)}`;
+                    const civicResponse = await axios.get(civicUrl);
+                    setCivicData(civicResponse || [])
+                    setCivicOfficials(civicResponse.data.officials || []);
+
+                    const pollingUrl = `https://www.googleapis.com/civicinfo/v2/voterinfo?address=${encodeURIComponent(usersLocation)}&key=${googleApiKey}`;
+                    const pollingResponse = await axios.get(pollingUrl);
+                    console.log(pollingResponse)
+                    setPollingData(pollingResponse.data || null);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            }
+        };
+        fetchData();
+    }, [usersLocation, googleApiKey]);
+
+   
     const handleInput = (e) => {
         setValue(e.target.value);
     };
@@ -91,33 +78,29 @@ const CivicInfo = () => {
     const handleSelect = ({ description }) => () => {
         setValue(description, false);
         clearSuggestions();
-
         getGeocode({ address: description })
             .then((results) => {
                 const { lat, lng } = getLatLng(results[0]);
-                setLat(lat);
-                setLng(lng);
-                setUsersLocation(description);
                 console.log("📍 Coordinates: ", { lat, lng });
+                setUsersLocation(description);
+            })
+            .catch(error => {
+                console.error("Error getting geocode:", error);
             });
     };
 
-    console.log(`The lat: ${lat}, the lng: ${lng}, and location :${value}`);
+    const renderSuggestions = () => data.map((suggestion) => {
+        const {
+            place_id,
+            structured_formatting: { main_text, secondary_text },
+        } = suggestion;
 
-    const renderSuggestions = () =>
-        data.map((suggestion) => {
-            const {
-                place_id,
-                structured_formatting: { main_text, secondary_text },
-            } = suggestion;
-
-            return (
-                <li className="dropdown-item-hover" style={{ color: "#D5E673" }} key={place_id} onClick={handleSelect(suggestion)} >
-                    <strong>{main_text}</strong> <small>{secondary_text}</small>
-                </li>
-            );
-        });
-
+        return (
+            <li key={place_id} onClick={handleSelect(suggestion)} style={{ cursor: 'pointer', listStyleType: 'none' }}>
+                <strong>{main_text}</strong> <small>{secondary_text}</small>
+            </li>
+        );
+    });
 
     return (
         <div>
@@ -127,15 +110,19 @@ const CivicInfo = () => {
                     type="text"
                     value={value}
                     onChange={handleInput}
-                    placeholder="What's your address?"
                     disabled={!ready}
+                    placeholder="What's your address?"
                 />
                 {status === "OK" && <ul>{renderSuggestions()}</ul>}
             </Form.Group>
             <div>
-                {civicOffices && civicOfficials.map((official, index) => (
+                {civicOfficials.map((official, index) => (
                     <div key={index}>
-                        {/* <h4>{}</h4>  */}
+                        <div>Party: {official.party}</div>
+                        <div>Name: {official.name}</div>
+                        <div>Email: {official.email ? official.email : 'N/A'}</div>
+                        <div>Channel ID: {official.channels && official.channels.length > 0 ? official.channels[0].id : 'N/A'}</div>
+                        <p>FOR MORE INFO: <a href={official.url ? official.url : '#'}>{official.url ? official.url : 'Unavailable'}</a></p>
                     </div>
                 ))}
             </div>
