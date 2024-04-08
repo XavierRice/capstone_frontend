@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { GiWorld } from "react-icons/gi";
 import { BiDonateHeart } from "react-icons/bi";
@@ -8,10 +9,39 @@ import { IoLocationOutline, IoCalendarOutline } from "react-icons/io5";
 import "./Categories.css";
 
 function CategoriesSection({ onSelectCategory }) {
+	const navigate = useNavigate()
 	const [selectedCategory, setSelectedCategory] = useState(null);
 	const handleClick = (category) => {
 		onSelectCategory(category);
 	};
+
+	switch (category) {
+		case 'Local':
+		  navigate('/discover/events');
+		  break;
+		case 'Coming Up':
+		  navigate('/');
+		  break;
+		case 'Global Issues':
+		  navigate('/discover/news');
+		  break;
+		case 'Politics':
+		  navigate('/');
+		  break;
+		case 'Community':
+		  navigate('/discover/events');
+		  break;
+		case 'Donation':
+		  navigate('/discover/donations');
+		  break;
+		case 'All':
+		  navigate('/');
+		  break;
+		default:
+		  console.log('Unknown category:', category);
+	  }
+	
+
 	return (
 		<div className="">
 			<Row className=" d-flex justify-content-center">
