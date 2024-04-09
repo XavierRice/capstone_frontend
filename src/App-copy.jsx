@@ -55,56 +55,41 @@ function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route
-					path="/"
-					element={
-						<>
-							<Homepage backendEvents={backendEvents} />
-						</>
-					}
-				/>
-				<Route
-					path="/*"
-					element={
-						<>
-							<MainNavigationBar />
-							<Content />
-							<Footer className="footer" />
-						</>
-					}
-				/>
-			</Routes>
-		</Router>
-	);
-}
+				<Route path="/" element={<Homepage backendEvents={backendEvents} />} />
 
-function Content() {
-	return (
-		<div>
-			<Routes>
-				<Route
-					path="/discover/news-details/:id"
-					element={<NewsDetailsPage />}
-				/>
-				<Route path="/discover/events-details" element={<EventDetailsPage />} />
-				<Route path="/search-results" element={<SearchResultPage />} />
-				<Route path="/discover/news" element={<News />} />
-				<Route path="/discover/events" element={<Events />} />
-				<Route path="/discover/donations" element={<Donations />} />
-				<Route path="/discover/users/login" element={<LoginPage />} />
-				<Route path="/discover/users/signup" element={<SignUpPage />} />
-				<Route path="/discover/thankyou" element={<ThankYou />} />
-				<Route path="/discover/create-event" element={<CreateEventPage />} />
-				<Route path="/discover/test" element={<CivicInfo />} />
-				<Route path="/discover/facts" element={<FundraiseFacts />} />
-				<Route
-					path="/discover/create-event/donation"
-					element={<StripeDonation />}
-				/>
-				<Route path="/search" element={<SearchPage />} />
-				<Route path="/howitworks" element={<ProofHero />} />
+				<Route path="/*" element={<MainNavigationBar />} />
 			</Routes>
-		</div>
+			<div>
+				<Routes>
+					<Route
+						path="/discover/news-details/:id"
+						element={<NewsDetailsPage />}
+					/>
+					<Route
+						path="/discover/events-details"
+						element={<EventDetailsPage />}
+					/>
+					<Route path="/search-results" element={<SearchResultPage />} />
+					<Route path="/discover/news" element={<News />} />
+					<Route path="/discover/events" element={<Events />} />
+					<Route path="/discover/donations" element={<Donations />} />
+					<Route path="/discover/users/login" element={<LoginPage />} />
+					<Route path="/discover/users/signup" element={<SignUpPage />} />
+					<Route path="/discover/voting" element={<VoterModal />} />
+					<Route path="/discover/thankyou" element={<ThankYou />} />
+					<Route path="/discover/create-event" element={<CreateEventPage />} />
+					<Route path="/discover/test" element={<VoterModal />} />
+					<Route path="/discover/facts" element={<FundraiseFacts />} />
+					<Route
+						path="/discover/create-event/donation"
+						element={<StripeDonation />}
+					/>
+
+					<Route path="/search" element={<SearchPage />} />
+					<Route path="/howitworks" element={<ProofHero />} />
+				</Routes>
+			</div>
+		</Router>
 	);
 }
 

@@ -73,11 +73,8 @@ function Homepage({ backendEvents }) {
 					backgroundRepeat: "no-repeat",
 				}}
 			>
-				<div
-					className="btn top-50 start-50 translate-middle my-5 btn-class position-abosolu"
-					// style={{ zIndex: "10 !important" }}
-				>
-					{/* <Button
+				<ParallaxLayer offset={0.5}>
+					<Button
 						variant=""
 						style={{
 							color: "#ffffff",
@@ -90,8 +87,9 @@ function Homepage({ backendEvents }) {
 						}}
 					>
 						Start Event
-					</Button> */}
-				</div>
+					</Button>
+				</ParallaxLayer>
+
 				{/* navigation */}
 				<ParallaxLayer
 					horizontal

@@ -90,8 +90,6 @@ function MainNavigationBar() {
 							<div
 								onClick={handleLogout}
 								style={{
-									// backgroundColor: "#BC9EC1",
-									// borderColor: "#4E2855",
 									color: "#630f76",
 									borderRadius: "15px",
 								}}

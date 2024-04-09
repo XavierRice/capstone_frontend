@@ -42,8 +42,8 @@ function KeywordsIcons() {
 			className="bg-light"
 		>
 			<div
-				className="d-flex justify-content-center my-3 fs-4 pt-3"
-				style={{ fontFamily: "serif" }}
+				className="d-flex justify-content-center my-4 fs-3 pt-3"
+				style={{ fontFamily: "sans-serif" }}
 			>
 				Select type of event
 			</div>
@@ -65,15 +65,24 @@ function KeywordsIcons() {
 						className={"p-2 text-center " + getColumnClass("Advocacy")}
 						onClick={() => handleCategoryClick("Advocacy")}
 					>
-						<IoMegaphone className="display-5 mb-2" />
-						<div>Advocacy</div>
+						<div>
+							<IoMegaphone className="display-4 mb-2" />
+							<div>Advocacy</div>
+						</div>
 					</Col>
 					<Col
 						className={"p-2 text-center " + getColumnClass("Political")}
 						onClick={() => handleCategoryClick("Political")}
 					>
-						<VscLaw className="display-5 mb-2" />
+						<VscLaw className="display-4 mb-2" />
 						<div>Political</div>
+					</Col>
+					<Col
+						className={"p-2 text-center " + getColumnClass("Civil rights")}
+						onClick={() => handleCategoryClick("Civil rights")}
+					>
+						<RiGovernmentFill style={{ fontSize: "44px" }} className="m-2" />
+						<div>Civil rights</div>
 					</Col>
 					<Col
 						className={"p-2 text-center " + getColumnClass("Racial Justice")}
@@ -85,13 +94,6 @@ function KeywordsIcons() {
 						/>
 						<div>Racial Justice</div>
 					</Col>
-					<Col
-						className={"p-2 text-center " + getColumnClass("Civil rights")}
-						onClick={() => handleCategoryClick("Civil rights")}
-					>
-						<RiGovernmentFill style={{ fontSize: "44px" }} className="m-2" />
-						<div>Civil rights</div>
-					</Col>
 				</Row>
 				<Row style={{ height: "16vh" }}>
 					<Col
@@ -101,21 +103,7 @@ function KeywordsIcons() {
 						<FaEnvira style={{ fontSize: "44px" }} className="m-2" />
 						<div>Environment</div>
 					</Col>
-					<Col
-						className={"p-2 text-center " + getColumnClass("Human rights")}
-						onClick={() => handleCategoryClick("Human rights")}
-					>
-						<FaHandsHoldingChild
-							style={{
-								fontSize: "44px",
-								marginLeft: "9px",
-								display: "flex",
-								justifyContent: "center",
-							}}
-							className="m-2"
-						/>
-						<div>Human rights</div>
-					</Col>
+
 					<Col
 						className={"p-2 text-center " + getColumnClass("Equality")}
 						onClick={() => handleCategoryClick("Equality")}
@@ -124,11 +112,19 @@ function KeywordsIcons() {
 						<div>Equality</div>
 					</Col>
 					<Col
-						className={"p-2 text-center " + getColumnClass("Social Justice")}
-						onClick={() => handleCategoryClick("Social Justice")}
+						className={"p-2 text-center  " + getColumnClass("Human rights")}
+						onClick={() => handleCategoryClick("Human rights")}
+						style={{
+							textAlign: "center",
+						}}
 					>
-						<MdSocialDistance style={{ fontSize: "44px" }} className="m-2" />
-						<div>Social Justice</div>
+						<FaHandsHoldingChild
+							style={{
+								fontSize: "44px",
+							}}
+							className="m-2 "
+						/>
+						<div>Human rights</div>
 					</Col>
 					<Col
 						className={"p-2 text-center " + getColumnClass("Community")}
@@ -136,6 +132,13 @@ function KeywordsIcons() {
 					>
 						<RiCommunityLine style={{ fontSize: "44px" }} className="m-2" />
 						<div>Community</div>
+					</Col>
+					<Col
+						className={"p-2 text-center " + getColumnClass("Social Justice")}
+						onClick={() => handleCategoryClick("Social Justice")}
+					>
+						<MdSocialDistance style={{ fontSize: "44px" }} className="m-2" />
+						<div>Social Justice</div>
 					</Col>
 				</Row>
 			</Col>

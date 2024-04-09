@@ -32,7 +32,7 @@ function InfoBlock() {
 									to="/discover/news"
 									className="d-block text-decoration-none"
 								>
-									<IoNewspaper style={{ fontSize: "4vh", color: "#9973a0" }} />
+									<IoNewspaper style={{ fontSize: "5vh", color: "#9973a0" }} />
 									<div className="header-and-link hover-underline">News</div>
 									<div>
 										Read about the latest events happening around the world
@@ -45,7 +45,7 @@ function InfoBlock() {
 									className="d-block text-decoration-none"
 								>
 									<MdOutlineEventAvailable
-										style={{ fontSize: "4vh", color: "#9973a0" }}
+										style={{ fontSize: "5vh", color: "#9973a0" }}
 									/>
 									<div className="header-and-link">Create</div>
 									<div>
@@ -60,7 +60,7 @@ function InfoBlock() {
 									className="d-block text-decoration-none"
 								>
 									<FaPersonCircleCheck
-										style={{ fontSize: "4vh", color: "#9973a0" }}
+										style={{ fontSize: "5vh", color: "#9973a0" }}
 									/>
 									<div className="header-and-link">Attend</div>
 									<div>Meet like-minded individuals and stand for a cause</div>
@@ -72,7 +72,7 @@ function InfoBlock() {
 									className="d-block text-decoration-none"
 								>
 									<BiDonateHeart
-										style={{ fontSize: "4vh", color: "#9973a0" }}
+										style={{ fontSize: "5vh", color: "#9973a0" }}
 									/>
 									<div className="header-and-link">Donate</div>
 									<div>Help causes you resonate with</div>
@@ -81,7 +81,7 @@ function InfoBlock() {
 							<div className="category-item mx-3">
 								<Link to="/search" className="d-block text-decoration-none">
 									<BsFillSearchHeartFill
-										style={{ fontSize: "4vh", color: "#9973a0" }}
+										style={{ fontSize: "5vh", color: "#9973a0" }}
 									/>
 									<div className="header-and-link">Find</div>
 									<div>Search for information or ways to get active</div>
@@ -92,7 +92,7 @@ function InfoBlock() {
 									to="/discover/voting"
 									className="d-block text-decoration-none"
 								>
-									<GiVote style={{ fontSize: "4vh", color: "#9973a0" }} />
+									<GiVote style={{ fontSize: "5vh", color: "#9973a0" }} />
 									<div className="header-and-link">Vote</div>
 									<div>Everything you need for this upcoming voting season</div>
 								</Link>
