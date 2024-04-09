@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import '../CivicApi/VoterWidget/VotingJs.js'
+import 'https://votinginfotool.org/js/compiled/app.js'
 import '../CivicApi/VoterWidget/VotingCss.css'
 
 const VoterTools = () => {
