@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { GiWorld } from "react-icons/gi";
 import { BiDonateHeart } from "react-icons/bi";
@@ -53,17 +53,18 @@ function CategoriesSection({ onSelectCategory }) {
 				<Col sm={10} xs={7} className="text-center">
 					<div className="categories-container d-flex justify-content-center">
 						<Row>
-							<div
+							<Link
+							to={'discover/events'}
 								className={`mx-3 categories-container ${
 									selectedCategory === "Local" ? "selected" : ""
 								}`}
-								onClick={() => handleClick("Local")}
+								
 							>
 								<IoLocationOutline
 									style={{ fontSize: "44px", color: "#630f76" }}
 								/>
 								<div className="fs-6 fw-semibold">Local</div>
-							</div>
+							</Link>
 						</Row>
 						<Row>
 							<div
@@ -79,7 +80,8 @@ function CategoriesSection({ onSelectCategory }) {
 							</div>
 						</Row>
 						<Row>
-							<div
+							<Link
+							to={'discover/news'}
 								className={`mx-3 ${
 									selectedCategory === "Global Issues" ? "selected" : ""
 								}`}
@@ -87,7 +89,7 @@ function CategoriesSection({ onSelectCategory }) {
 							>
 								<GiWorld style={{ fontSize: "44px", color: "#630f76" }} />
 								<div className="fs-6 fw-semibold">Global</div>
-							</div>
+							</Link>
 						</Row>
 						<Row>
 							<div
@@ -114,7 +116,8 @@ function CategoriesSection({ onSelectCategory }) {
 							</div>
 						</Row>
 						<Row>
-							<div
+							<Link
+							to={'discover/donations'}
 								className={`mx-3 ${
 									selectedCategory === "Donation" ? "selected" : ""
 								}`}
@@ -122,7 +125,7 @@ function CategoriesSection({ onSelectCategory }) {
 							>
 								<BiDonateHeart style={{ fontSize: "44px", color: "#630f76" }} />
 								<div className="fs-6 fw-semibold">Donation</div>
-							</div>
+							</Link>
 						</Row>
 						<Row>
 							<div
