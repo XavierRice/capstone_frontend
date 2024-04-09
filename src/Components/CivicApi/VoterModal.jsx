@@ -41,11 +41,11 @@ const VoterModal = () => {
 					</p>
 				</Modal.Body>
 				<Modal.Footer className="d-flex justify-content-center ">
-					<Button variant="secondary mx-2" onClick={handleYes}>
-						I am registered
-					</Button>
 					<Button variant="secondary mx-2 " onClick={handleNo}>
 						Register me
+					</Button>
+					<Button variant="secondary mx-2" onClick={handleYes}>
+						I am registered
 					</Button>
 				</Modal.Footer>
 			</Modal>

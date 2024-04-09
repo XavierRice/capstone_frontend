@@ -7,6 +7,7 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 import "./CivicInfo.css";
+import VoterModal from "./VoterModal";
 
 const CivicInfo = () => {
 	const [civicData, setCivicData] = useState(null);
