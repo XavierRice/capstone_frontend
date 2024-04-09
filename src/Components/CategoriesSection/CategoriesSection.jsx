@@ -13,34 +13,35 @@ function CategoriesSection({ onSelectCategory }) {
 	const [selectedCategory, setSelectedCategory] = useState(null);
 	const handleClick = (category) => {
 		onSelectCategory(category);
+		
+		switch (category) {
+			case 'Local':
+			  navigate('/discover/events');
+			  break;
+			case 'Coming Up':
+			  navigate('/');
+			  break;
+			case 'Global Issues':
+			  navigate('/discover/news');
+			  break;
+			case 'Politics':
+			  navigate('/');
+			  break;
+			case 'Community':
+			  navigate('/discover/events');
+			  break;
+			case 'Donation':
+			  navigate('/discover/donations');
+			  break;
+			case 'All':
+			  navigate('/');
+			  break;
+			default:
+			  console.log('Unknown category:', category);
+		  }
+		
 	};
 
-	switch (category) {
-		case 'Local':
-		  navigate('/discover/events');
-		  break;
-		case 'Coming Up':
-		  navigate('/');
-		  break;
-		case 'Global Issues':
-		  navigate('/discover/news');
-		  break;
-		case 'Politics':
-		  navigate('/');
-		  break;
-		case 'Community':
-		  navigate('/discover/events');
-		  break;
-		case 'Donation':
-		  navigate('/discover/donations');
-		  break;
-		case 'All':
-		  navigate('/');
-		  break;
-		default:
-		  console.log('Unknown category:', category);
-	  }
-	
 
 	return (
 		<div className="">
