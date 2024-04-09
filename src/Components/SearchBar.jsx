@@ -3,18 +3,15 @@ import { InputGroup, FormControl, Button, Form, Col } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import SearchResultPage from "../Pages/SearchResultPage";
-const backend = import.meta.env.VITE_BACKEND_URL 
-const newsAPIKey = import.meta.env.VITE_APP_NEWSAPI_KEY;
 
-function SearchBar({onSearch}) {
+function SearchBar({ onSearch }) {
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [searchInput, setSearchInput] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
+	const newsAPIKey = import.meta.env.VITE_APP_NEWSAPI_KEY;
 	const navigate = useNavigate();
-
-	const [fetchedEvents, SetFetchedEvents] = useState()
-	const [fetchedNews, SetFetchedNews] = useState()
-	const [fetchedNewsApi, SetFetchedNewsApi] = useState()
+	//no api keys shared
 
 	const [userLocation, setUserLocation] = useState(null);
 
@@ -45,54 +42,34 @@ function SearchBar({onSearch}) {
 
 		console.log("Searching for:", searchInput);
 
-
 		try {
 			const eventsResponse = await axios.get(
 				`${backend}/events/search?keyword=${searchInput}`
 			);
 			console.log("Events response:", eventsResponse.data);
-			SetFetchedEvents(eventsResponse.data);
-		} catch (error) {
-			console.error("An error occurred while fetching events:", error);
-			setError("An error occurred while fetching events.");
-			setLoading(false);
-			return; // Prevent further execution in case of error
-		}
-	
-		try {
+
 			const newsResponse = await axios.get(
 				`${backend}/news/search?keyword=${searchInput}`
 			);
 			console.log("News response:", newsResponse.data);
-			SetFetchedNews(newsResponse.data);
-		} catch (error) {
-			console.error("An error occurred while fetching news:", error);
-			setError("An error occurred while fetching news.");
-			setLoading(false);
-			return; // Prevent further execution in case of error
-		}
-	
-		try {
+
 			const newsAPIResponse = await axios.get(
 				`https://newsapi.org/v2/everything?q=${searchInput}&apiKey=${newsAPIKey}`
 			);
 			console.log("NewsAPI response:", newsAPIResponse.data.articles);
-			SetFetchedNewsApi(newsAPIResponse);
+
+			navigate(`/search-results?keyword=${searchInput}`, {
+				state: {
+					eventsData: eventsResponse.data.data,
+					newsData: newsResponse.data.data,
+					newsAPIResponse: newsAPIResponse.data.articles,
+				},
+			});
 		} catch (error) {
-			console.error("An error occurred while fetching news from NewsAPI:", error);
-			setError("An error occurred while fetching news from NewsAPI.");
-			setLoading(false);
-			return; // Prevent further execution in case of error
+			console.error("An error occurred while fetching search results:", error);
+			setError("An error occurred while fetching search results.");
 		}
-	
-		navigate(`/search-results?keyword=${searchInput}`, {
-			state: {
-				eventsData: fetchedEvents?.data,
-				newsData: fetchedNews?.data,
-				newsAPIResponse: fetchedNewsApi?.articles,
-			},
-		});
-	
+
 		setLoading(false);
 	};
 
