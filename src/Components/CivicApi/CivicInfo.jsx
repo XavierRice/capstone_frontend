@@ -61,7 +61,7 @@ const CivicInfo = () => {
                     const pollingUrl = `https://www.googleapis.com/civicinfo/v2/voterinfo?address=${encodeURIComponent(usersLocation)}&key=${googleApiKey}`;
                     const pollingResponse = await axios.get(pollingUrl);
                     console.log(pollingResponse)
-                    setPollingData(pollingResponse || null);
+                    setPollingData(pollingResponse || []);
                 } catch (error) {
                     console.error('Error fetching data:', error);
                 }
