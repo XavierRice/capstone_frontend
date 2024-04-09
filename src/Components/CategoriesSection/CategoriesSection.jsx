@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
+import { useNavigate, Link} from "react-router-dom";
+
 import { Container, Row, Col } from "react-bootstrap";
 import { GiWorld } from "react-icons/gi";
 import { BiDonateHeart } from "react-icons/bi";
@@ -59,11 +60,19 @@ function CategoriesSection({ onSelectCategory }) {
 					<div className="categories-container d-flex justify-content-center">
 						<Row>
 							<Link
+
+							to={'discover/events'}
+								className={`mx-3 categories-container ${
+									selectedCategory === "Local" ? "selected" : ""
+								}`}
+								
+
 							to={'discover/events'} key={"Popular-1"}
 								className={`mx-3 categories-container ${
 									selectedCategory === "Local" ? "selected" : ""
 								}`}
 								// onClick={() =>testClick("This")}
+
 							>
 								<IoLocationOutline
 									style={{ fontSize: "44px", color: "#630f76" }}
@@ -89,6 +98,7 @@ function CategoriesSection({ onSelectCategory }) {
 							<Link
 							to={ 'discover/news'}
 							key={"Popular-3"}
+
 								className={`mx-3 ${
 									selectedCategory === "Global Issues" ? "selected" : ""
 								}`}
