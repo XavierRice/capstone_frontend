@@ -105,7 +105,7 @@ const Events = () => {
 					</Row>
 					<Row className="d-flex justify-content-center">
 						{allEvents.map((event, index) => (
-							<Col key={event.id || index} sm={6} md={3}>
+							<Col key={`${event.id}-events`|| index} sm={6} md={3}>
 								<div className="p-3">
 									<CardNew
 										className="border-0"

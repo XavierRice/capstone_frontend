@@ -76,7 +76,7 @@ function App() {
 					<Route path="/discover/donations" element={<Donations />} />
 					<Route path="/discover/users/login" element={<LoginPage />} />
 					<Route path="/discover/users/signup" element={<SignUpPage />} />
-					<Route path="/discover/voting" element={< VoterModal />} />
+					<Route path="/discover/voting" element={<VoterModal />} />
 					<Route path="/discover/thankyou" element={<ThankYou />} />
 					<Route path="/discover/create-event" element={<CreateEventPage />} />
 					<Route path="/discover/test" element={<VoterModal />} />
@@ -85,7 +85,9 @@ function App() {
 						path="/discover/create-event/donation"
 						element={<StripeDonation />}
 					/>
+
 					<Route path="/search" element={<SearchPage />} />
+					<Route path="/howitworks" element={<ProofHero />} />
 				</Routes>
 			</div>
 		</Router>

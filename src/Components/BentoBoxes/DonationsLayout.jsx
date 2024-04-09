@@ -9,6 +9,7 @@ import FactsImg from "../../assets/newfacts.svg";
 import { FaArrowRight } from "react-icons/fa";
 import ProofHero from "../SocialProof/ProofHero";
 import Play from "../../assets/play.svg";
+import nowar from "../../assets/nowar.svg";
 
 function DonationsLayout({ backendEvents }) {
 	const navigate = useNavigate();
@@ -36,23 +37,25 @@ function DonationsLayout({ backendEvents }) {
 						<div className="top-box-grid">
 							<div className="left-grid">
 								<img
-									src={UkraineImg}
+									src={ClimateImg}
 									alt="Ukraine Image"
 									className="top-image"
 								/>
 							</div>
 							<div className="right-grid my-4">
-								<div className="title fs-3 fw-bold">
-									Crisis in Ukraine: How to help
-								</div>
-								<div className="body my-2 fs-4">
-									You can donate to fundraisers on this page to help fleeing
-									families.
+								<div className="title fs-3 fw-bold">Voting Information</div>
+								<div className="body my-2 ">
+									At Impactify, we champion voting as a key tool for change.
+									Whether you need to register to vote or already registered and
+									seeking to connect with local officials, we've got the
+									resources to help you make an impact.
 								</div>
 								<div className="my-3">
 									<span
 										className="my-4 donate-btn"
-										onClick={handleDonationNavigate}
+										onClick={() => {
+											navigate("/discover/test");
+										}}
 									>
 										Learn more <FaArrowRight className="mx-3" />
 									</span>
@@ -69,24 +72,24 @@ function DonationsLayout({ backendEvents }) {
 							className="top-half"
 							style={{ display: "flex", justifyContent: "center" }}
 						>
-							<img
-								src={ClimateImg}
-								alt="Climate Image"
-								className="climate-image"
-							/>
+							<img src={nowar} alt="Climate Image" className="climate-image" />
 						</div>
 						<div className="bottom-half">
-							<div className="fw-bold title fs-4 d-flex justify-content-center">
-								Voting Information
+							<div className="fw-bold title fs-4  d-flex justify-content-center  mx-2 p-1">
+								Crisis in Ukraine
+							</div>
+							<div className="mx-4">
+								You can donate to fundraisers on this page to help fleeing
+								families.
 							</div>
 
 							<span
 								className="donate-btn "
 								onClick={() => {
-									navigate("/discover/donations");
+									handleDonationNavigate;
 								}}
 							>
-								Learn more <FaArrowRight className="mx-2" />
+								Donate now <FaArrowRight className="mx-2" />
 							</span>
 						</div>
 					</div>
@@ -120,7 +123,10 @@ function DonationsLayout({ backendEvents }) {
 						</div>
 						<div className="bottom-half ">
 							<div className="fw-bold title fs-4 d-flex justify-content-center">
-								How it works
+								How Impactify works
+							</div>
+							<div className=" d-flex justify-content-center">
+								Watch a video to learn more
 							</div>
 
 							<span
