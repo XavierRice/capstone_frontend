@@ -24,7 +24,7 @@ function EventDetailsPage() {
 	const location = useLocation();
 	const { user } = useContext(AuthData);
 	const backend = import.meta.env.VITE_BACKEND_URL;
-	
+
 	const [loading, setLoading] = useState(true);
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	const [showDonationButton, setShowDonationButton] = useState(false);
@@ -39,19 +39,16 @@ function EventDetailsPage() {
 		mobile: "",
 	});
 
-
-	useEffect(()=>{
-	if(fetchedUser){
-		
-		setRegisteredGuest({
-			name: fetchedUser.first_name || '',
-			lastname: fetchedUser.last_name || '',
-			email: fetchedUser.email || '',
-			mobile: '',
-
-		})
-	}
-	}, [user])
+	useEffect(() => {
+		if (fetchedUser) {
+			setRegisteredGuest({
+				name: fetchedUser.first_name || "",
+				lastname: fetchedUser.last_name || "",
+				email: fetchedUser.email || "",
+				mobile: "",
+			});
+		}
+	}, [user]);
 
 	const handleTextChange = (event) => {
 		const { name, value } = event.target;
@@ -233,9 +230,12 @@ function EventDetailsPage() {
 							</Row>
 						</Col>
 						<Col sm={11} md={4} className="">
-							<Row className="attend-event p-2 m-1 custom-bg justify-content-center">
+							<Row
+								className="attend-event p-2 m-1 custom-bg justify-content-center"
+								style={{ borderRadius: "15px" }}
+							>
 								{stripe_id != null ? (
-									<div className="adjust-right">
+									<div className="m-1">
 										<StripeBuy buyButtonId={buyButtonId} />
 									</div>
 								) : (
@@ -243,7 +243,7 @@ function EventDetailsPage() {
 								)}
 							</Row>
 							<div className="attend-event bg-light">
-								<div className="fw-bold fs-5 d-flex justify-content-center mt-5 mb-3 d-block mx-5">
+								<div className="fw-bold fs-5 d-flex justify-content-center mt-2 mb-3 d-block mx-5 p-3">
 									REGISTER TO ATTEND THIS EVENT
 								</div>
 								<div className="forms p-3">
