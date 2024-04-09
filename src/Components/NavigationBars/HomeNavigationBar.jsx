@@ -97,18 +97,18 @@ function MainNavigationBar({ scrolling = false }) {
 						</NavDropdown.Item>
 					</NavDropdown>
 					{user ? (
-						<Nav.Link href="/discover/users/login" className="mx-3">
-							<button
+						<Nav.Link href="/discover/users/login" className="">
+							<div
 								onClick={handleLogout}
 								style={{
-									backgroundColor: "#BC9EC1",
-									borderColor: "#4E2855",
-									color: "black",
-									borderRadius: "20px",
+									// backgroundColor: "#BC9EC1",
+									// borderColor: "#4E2855",
+									color: "#630f76",
+									borderRadius: "15px",
 								}}
 							>
-								Logout
-							</button>
+								Sign out
+							</div>
 						</Nav.Link>
 					) : (
 						<Nav.Link href="/discover/users/login" className="mx-3">
@@ -118,7 +118,7 @@ function MainNavigationBar({ scrolling = false }) {
 					<Button
 						variant=""
 						href="/discover/create-event"
-						className="mx-3 btn rounded-pill start-event-btn"
+						className="mx-3  rounded-pill start-event-btn"
 					>
 						Start Event
 					</Button>
