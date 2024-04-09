@@ -177,7 +177,7 @@ body {
 
 /* -------------------------------- categories with links all the way down--------------------------------------------- */
 .header-and-link {
-	font-size: 24px;
+	font-size: 2.5vh;
 	text-decoration-line: underline red;
 }
 .header-and-link:hover {

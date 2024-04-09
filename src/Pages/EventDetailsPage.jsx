@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import React, { useState, useEffect, useContext } from "react";
+import { useAsyncError, useNavigate } from "react-router";
 import axios from "axios";
 import "./EventDetailsPage.css";
 import { useLocation } from "react-router";
@@ -17,10 +17,12 @@ import {
 	CiTwitter,
 } from "react-icons/ci";
 import { IoMegaphoneSharp } from "react-icons/io5";
+import { AuthData } from "../Provider/AuthProv";
 
 function EventDetailsPage() {
 	const navigate = useNavigate();
 	const location = useLocation();
+	const { user } = useContext(AuthData);
 	const backend = import.meta.env.VITE_BACKEND_URL;
 
 	const [loading, setLoading] = useState(true);
@@ -37,7 +39,16 @@ function EventDetailsPage() {
 		mobile: "",
 	});
 
-	console.log(registeredGuest);
+	useEffect(() => {
+		if (fetchedUser) {
+			setRegisteredGuest({
+				name: fetchedUser.first_name || "",
+				lastname: fetchedUser.last_name || "",
+				email: fetchedUser.email || "",
+				mobile: "",
+			});
+		}
+	}, [user]);
 
 	const handleTextChange = (event) => {
 		const { name, value } = event.target;
@@ -219,9 +230,12 @@ function EventDetailsPage() {
 							</Row>
 						</Col>
 						<Col sm={11} md={4} className="">
-							<Row className="attend-event p-2 m-1 custom-bg justify-content-center">
+							<Row
+								className="attend-event p-2 m-1 custom-bg justify-content-center"
+								style={{ borderRadius: "15px" }}
+							>
 								{stripe_id != null ? (
-									<div className="adjust-right">
+									<div className="m-1">
 										<StripeBuy buyButtonId={buyButtonId} />
 									</div>
 								) : (
@@ -229,7 +243,7 @@ function EventDetailsPage() {
 								)}
 							</Row>
 							<div className="attend-event bg-light">
-								<div className="fw-bold fs-5 d-flex justify-content-center mt-5 mb-3 d-block mx-5">
+								<div className="fw-bold fs-5 d-flex justify-content-center mt-2 mb-3 d-block mx-5 p-3">
 									REGISTER TO ATTEND THIS EVENT
 								</div>
 								<div className="forms p-3">
@@ -240,6 +254,7 @@ function EventDetailsPage() {
 													<Form.Control
 														type="text"
 														placeholder="first name"
+														value={registeredGuest.firstname}
 														name="firstName"
 														onChange={handleTextChange}
 													/>
@@ -250,6 +265,7 @@ function EventDetailsPage() {
 													<Form.Control
 														type="text"
 														placeholder="last name"
+														value={registeredGuest.lastname}
 														name="lastName"
 														onChange={handleTextChange}
 													/>
@@ -262,6 +278,7 @@ function EventDetailsPage() {
 											<Form.Control
 												type="email"
 												placeholder="email"
+												value={registeredGuest.email}
 												name="email"
 												onChange={handleTextChange}
 											/>
@@ -272,6 +289,7 @@ function EventDetailsPage() {
 											<Form.Control
 												type="tel"
 												placeholder="mobile number"
+												value={registeredGuest.mobile}
 												name="mobile"
 												onClick={() => handleTextChange(event)}
 											/>
