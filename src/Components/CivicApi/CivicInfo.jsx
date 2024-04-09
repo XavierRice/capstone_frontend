@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Form from 'react-bootstrap/Form';
-import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Form from "react-bootstrap/Form";
+import usePlacesAutocomplete, {
+	getGeocode,
+	getLatLng,
+} from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
+import "./CivicInfo.css";
+import VoterModal from "./VoterModal";
 
 const CivicInfo = () => {
+
     const [civicData, setCivicData] = useState(null);
     const [usersLocation, setUsersLocation] = useState("");
     const [civicOfficials, setCivicOfficials] = useState([]);
@@ -102,33 +108,54 @@ const CivicInfo = () => {
         );
     });
 
-    return (
-        <div>
-            <Form.Group className="mb-3" controlId="event_location" ref={ref}>
-                <Form.Label>Address</Form.Label>
-                <Form.Control
-                    type="text"
-                    value={value}
-                    onChange={handleInput}
-                    disabled={!ready}
-                    placeholder="What's your address?"
-                />
-                {status === "OK" && <ul>{renderSuggestions()}</ul>}
-            </Form.Group>
+	return (
+		<div>
+			<Form.Group
+				className="mb-3 d-flex justify-content-center"
+				controlId="event_location"
+				ref={ref}
+			>
+				<div className="">
+					<Form.Label className="m-4 display-6 d-flex justify-content-center">
+						Find all the representatives around you
+					</Form.Label>
+					<Form.Control
+						type="text"
+						value={value}
+						className="search-bar"
+						onChange={handleInput}
+						disabled={!ready}
+						placeholder="What's your address?"
+					/>
+					{status === "OK" && <ul>{renderSuggestions()}</ul>}
+				</div>
+			</Form.Group>
 
-            <div>
-                {civicOfficials.map((official, index) => (
-                    <div key={index}>
-                        <div>Party: {official.party}</div>
-                        <div>Name: {official.name}</div>
-                        <div>Email: {official.email ? official.email : 'N/A'}</div>
-                        <div>Channel ID: {official.channels && official.channels.length > 0 ? official.channels[0].id : 'N/A'}</div>
-                        <p>FOR MORE INFO: <a href={official.url ? official.url : '#'}>{official.url ? official.url : 'Unavailable'}</a></p>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+			<div>
+				{/* card */}
+				{civicOfficials.map((official, index) => (
+					<div key={index}>
+						<div>Party: {official.party}</div>
+						<div>Name: {official.name}</div>
+						<div>Email: {official.email ? official.email : "N/A"}</div>
+						<div>
+							Channel ID:{" "}
+							{official.channels && official.channels.length > 0
+								? official.channels[0].id
+								: "N/A"}
+						</div>
+						<p>
+							FOR MORE INFO:{" "}
+							<a href={official.url ? official.url : "#"}>
+								{official.url ? official.url : "Unavailable"}
+							</a>
+						</p>
+					</div>
+				))}
+			</div>
+		</div>
+	);
+
 };
 
 export default CivicInfo;

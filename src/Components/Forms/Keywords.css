@@ -11,11 +11,11 @@
 	justify-content: center;
 }
 
-.title {
+/* .title {
 	font-size: 1.8vw;
 	margin-bottom: 20px;
 	font-family: serif;
-}
+} */
 
 .icons-row {
 	margin-top: 10px;
@@ -44,6 +44,7 @@
 	background-color: #6c03842e;
 	color: #fff;
 	border-radius: 20px;
+	height: 90%;
 }
 
 .icons:hover {

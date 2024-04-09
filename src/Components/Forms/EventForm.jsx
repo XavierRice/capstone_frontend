@@ -150,43 +150,50 @@ const EventForm = () => {
 	// })
 
 	return (
-		<Form className="custom-text" onSubmit={handleSubmit}>
+		<Form className="" onSubmit={handleSubmit}>
 			<div>
 				<KeywordsIcons />
 			</div>
-			<Row className="mb-3">
-				{/* <h3>Welcome, {user}! Please fill out the form to create your event.</h3> */}
-				<Form.Group className="mb-3" controlId="event_title">
-					<Form.Label>Event Title</Form.Label>
 
+			<Row className="">
+				{/* <h3>Welcome, {user}! Please fill out the form to create your event.</h3> */}
+
+				<Form.Group as={Col} controlId="event_title" className="fs-5 mb-3">
+					<Form.Label className="d-flex justify-content-center">
+						Event Title
+					</Form.Label>
 					<Form.Control
-						type="text"
-						placeholder="enter Title"
+						type="title"
+						placeholder="Enter title"
+						onChange={handleTextChange}
+					/>
+				</Form.Group>
+			</Row>
+
+			<Row>
+				<Form.Group as={Col} controlId="event_date" className="fs-5 mb-3">
+					<Form.Label className="d-flex justify-content-center">
+						Event Date
+					</Form.Label>
+					<Form.Control
+						type="date"
+						placeholder="12/12/2024"
 						onChange={handleTextChange}
 					/>
 				</Form.Group>
 
-				<Row>
-					<Form.Group as={Col} controlId="event_date">
-						<Form.Label>Event Date</Form.Label>
-						<Form.Control
-							type="date"
-							placeholder="12/12/2024"
-							onChange={handleTextChange}
-						/>
-					</Form.Group>
+				<Form.Group as={Col} controlId="event_time" className="fs-5 mb-3 mx-3">
+					<Form.Label className="d-flex justify-content-center">
+						Start Time
+					</Form.Label>
 
-					<Form.Group as={Col} controlId="event_time">
-						<Form.Label>Start Time</Form.Label>
-
-						<Form.Control
-							type="time"
-							placeholder="???"
-							value={user_event.event_time}
-							onChange={handleTextChange}
-						/>
-					</Form.Group>
-				</Row>
+					<Form.Control
+						type="time"
+						placeholder="???"
+						value={user_event.event_time}
+						onChange={handleTextChange}
+					/>
+				</Form.Group>
 			</Row>
 
 			<AutoComplete
@@ -197,8 +204,10 @@ const EventForm = () => {
 				lng={lng}
 			/>
 
-			<Form.Group className="mb-3" controlId="event_details">
-				<Form.Label>Description</Form.Label>
+			<Form.Group className="fs-5 mb-3" controlId="event_details">
+				<Form.Label className="d-flex justify-content-center">
+					Description
+				</Form.Label>
 				<Form.Control
 					as="textarea"
 					placeholder="Description"
@@ -206,9 +215,11 @@ const EventForm = () => {
 				/>
 			</Form.Group>
 
-			<Row className="mb-3">
+			<Row className="fs-5 mb-3">
 				<Form.Group as={Col} controlId="event_keyword">
-					<Form.Label>Keywords</Form.Label>
+					<Form.Label className="d-flex justify-content-center">
+						Keywords
+					</Form.Label>
 					<Select
 						isMulti
 						onChange={handleKeywords}
@@ -220,19 +231,24 @@ const EventForm = () => {
 					/>
 				</Form.Group>
 
-				<Form.Group as={Col} controlId="event_photo">
-					<Form.Label>Photo</Form.Label>
+				<Form.Group as={Col} controlId="event_photo" className="fs-5 mb-3 mx-2">
+					<Form.Label className="d-flex justify-content-center">
+						Photo
+					</Form.Label>
 					<Form.Control
 						type="text"
 						onChange={handleTextChange}
 						name="event_photo"
+						placeholder="insert image url"
 					/>
 				</Form.Group>
 			</Row>
 
 			<Row className="mt-4">
 				<Form.Group as={Col} className="mb-3" controlId="is_virtual">
-					<Form.Label>Virtual Event</Form.Label>
+					<Form.Label className="d-flex justify-content-center">
+						Virtual Event
+					</Form.Label>
 					<Form.Check
 						type="checkbox"
 						label="Is this event virtual?"

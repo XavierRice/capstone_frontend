@@ -177,7 +177,7 @@ body {
 
 /* -------------------------------- categories with links all the way down--------------------------------------------- */
 .header-and-link {
-	font-size: 2.5vh;
+	font-size: 3.3vh;
 	text-decoration-line: underline red;
 }
 .header-and-link:hover {
@@ -186,4 +186,15 @@ body {
 
 .hover-underline:hover .header-and-link {
 	text-decoration: underline;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+	background-color: rgba(
+		128,
+		128,
+		128,
+		0.089
+	) !important; /* Apply your desired background color */
+	color: #630f76 !important; /* Apply your desired text color */
 }

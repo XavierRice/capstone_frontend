@@ -13,9 +13,16 @@ import {
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
+import { useAuthDataProvider } from "../../Provider/AuthProv";
 
 function MainNavigationBar() {
+	const { user, logout } = useAuthDataProvider();
 	const [isResponsive, setIsResponsive] = useState(false);
+
+	const handleLogout = () => {
+		console.log("youve logged out" + token);
+		logout(); // Call the logout function
+	};
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -78,9 +85,23 @@ function MainNavigationBar() {
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
-					<Nav.Link href="/discover/users/login" className="mx-3">
-						Sign In
-					</Nav.Link>
+					{user ? (
+						<Nav.Link href="/discover/users/login" className="">
+							<div
+								onClick={handleLogout}
+								style={{
+									color: "#630f76",
+									borderRadius: "15px",
+								}}
+							>
+								Sign out
+							</div>
+						</Nav.Link>
+					) : (
+						<Nav.Link href="/discover/users/login" className="mx-3">
+							Sign In
+						</Nav.Link>
+					)}
 					<Link to="/discover/create-event">
 						<Button
 							variant=""
