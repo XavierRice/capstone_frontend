@@ -22,21 +22,7 @@
     async
     src="https://maps.googleapis.com/maps/api/js?key=%VITE_X_GOOGLE_API_KEY%&libraries=places&callback=YOUR_CALLBACK_NAME"
   ></script>
-  <script src="https://votinginfotool.org/js/compiled/app.js"></script>
-  <script>
-    var config = {
-      "logo": {"type":"default"},
-      "official-only": true
-    };
-    var loadVIT = function () {
-      if (typeof vit !== 'undefined'){
-        vit.core.init("_vit", config);
-      } else {
-        setTimeout(loadVIT, 500);
-      };
-    };
-    loadVIT();
-  </script>
+  
 
   </body>
 </html>
