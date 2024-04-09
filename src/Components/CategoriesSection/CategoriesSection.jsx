@@ -13,41 +13,43 @@ import "./Categories.css";
 function CategoriesSection({ onSelectCategory }) {
 	const navigate = useNavigate();
 	const [selectedCategory, setSelectedCategory] = useState(null);
-	const navigateCategories = (category) => {
-        console.log('Category pressed:', category);
-        switch (category) {
-            case 'Local':
-				console.log("you clicked me")
-                return navigate('/discover/events');
-            case 'Coming Up':
-                return navigate('/');
-            case 'Global Issues':
-                return navigate('/discover/news');
-            case 'Politics':
-                return navigate('/');
-            case 'Community':
-                return navigate('/discover/events');
-            case 'Donation':
-                return navigate('/discover/donations');
-            case 'All':
-                return navigate('/');
-            default:
-                console.log('Unknown category:', category);
+
+	// const navigateCategories = (category) => {
+    //     console.log('Category pressed:', category);
+    //     switch (category) {
+    //         case 'Local':
+	// 			console.log("you clicked me")
+    //             return navigate('/discover/events');
+    //         case 'Coming Up':
+    //             return navigate('/');
+    //         case 'Global Issues':
+    //             return navigate('/discover/news');
+    //         case 'Politics':
+    //             return navigate('/');
+    //         case 'Community':
+    //             return navigate('/discover/events');
+    //         case 'Donation':
+    //             return navigate('/discover/donations');
+    //         case 'All':
+    //             return navigate('/');
+    //         default:
+    //             console.log('Unknown category:', category);
                 
-        }
-    };
+    //     }
+    // };
+	
 	const handleClick = (category) => {
 		console.log('HERE I AM')
 		onSelectCategory(category);
-
-	};
-
 		navigateCategories(category)
+
 	};
+
+
 
 	const testClick = (category) => {
 		console.log("ME" + category)
-
+	}
 
 	return (
 		<div className="">
@@ -60,12 +62,6 @@ function CategoriesSection({ onSelectCategory }) {
 					<div className="categories-container d-flex justify-content-center">
 						<Row>
 							<Link
-
-							to={'discover/events'}
-								className={`mx-3 categories-container ${
-									selectedCategory === "Local" ? "selected" : ""
-								}`}
-								
 
 							to={'discover/events'} key={"Popular-1"}
 								className={`mx-3 categories-container ${
@@ -153,7 +149,7 @@ function CategoriesSection({ onSelectCategory }) {
 								className={`mx-3 ${
 									selectedCategory === "All" ? "selected" : ""
 								}`}
-								onClick={() => handleClick("All")}
+								// onClick={() => handleClick("All")}
 							>
 								<MdAllInbox style={{ fontSize: "44px", color: "#630f76" }} />
 								<div className="fs-6 fw-semibold">All</div>
