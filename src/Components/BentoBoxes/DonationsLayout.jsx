@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./DonationsLayout.css";
 import UkraineImg from "../../assets/nowar1.jpg";
-import ClimateImg from "../../assets/money.svg";
+import ClimateImg from "../../assets/vote.svg";
 import DonateCode from "../../assets/DonateEvent1.png";
 import FactsImg from "../../assets/newfacts.svg";
 import { FaArrowRight } from "react-icons/fa";
@@ -30,7 +30,7 @@ function DonationsLayout({ backendEvents }) {
 			{/* <div className="fw-semibold  d-flex justify-content-center fs-2 my-2 mx-4">
 				Make a positive impact in your preferred way
 			</div> */}
-			<Row xs={1} md={12} lg={8} className="g-4" style={{ width: "100vw" }}>
+			<Row xs={1} md={12} lg={8} className="" style={{ width: "100vw" }}>
 				<Col>
 					<div className="item ">
 						<div className="top-box-grid">
@@ -77,7 +77,7 @@ function DonationsLayout({ backendEvents }) {
 						</div>
 						<div className="bottom-half">
 							<div className="fw-bold title fs-4 d-flex justify-content-center">
-								Support our Donees
+								Voting Information
 							</div>
 
 							<span
@@ -86,7 +86,7 @@ function DonationsLayout({ backendEvents }) {
 									navigate("/discover/donations");
 								}}
 							>
-								Donate now <FaArrowRight className="mx-2" />
+								Learn more <FaArrowRight className="mx-2" />
 							</span>
 						</div>
 					</div>

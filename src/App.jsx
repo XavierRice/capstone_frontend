@@ -56,6 +56,7 @@ function App() {
 		<Router>
 			<Routes>
 				<Route path="/" element={<Homepage backendEvents={backendEvents} />} />
+
 				<Route path="/*" element={<MainNavigationBar />} />
 			</Routes>
 			<div>
@@ -83,7 +84,6 @@ function App() {
 						element={<StripeDonation />}
 					/>
 					<Route path="/search" element={<SearchPage />} />
-					<Route path="/howitworks" element={<ProofHero />} />
 				</Routes>
 			</div>
 		</Router>

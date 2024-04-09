@@ -53,7 +53,7 @@ function MainNavigationBar() {
 						<NavDropdown.Item href="/discover/donations">
 							Donations
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#votingtoolkit">
+						<NavDropdown.Item href="/discover/voting">
 							Voting Toolkit
 						</NavDropdown.Item>
 					</NavDropdown>
@@ -71,10 +71,10 @@ function MainNavigationBar() {
 						id="basic-nav-dropdown"
 						className="mx-3"
 					>
-						<NavDropdown.Item href="#howitworks" className="">
+						<NavDropdown.Item href="/howitworks" className="">
 							How It Works
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#howitworks" className="">
+						<NavDropdown.Item href="/aboutus" className="">
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
@@ -117,7 +117,7 @@ function MainNavigationBar() {
 				<Row className="w-100">
 					<Col md={6}>
 						<Nav className="ml-auto">
-							<Nav.Link href="#howitworks" className="mx-3 mt-3">
+							<Nav.Link href="/howitworks" className="mx-3 mt-3">
 								How It Works
 							</Nav.Link>
 							<Nav.Link href="/discover/users/login" className="mx-3">
@@ -131,7 +131,7 @@ function MainNavigationBar() {
 							<Nav.Link href="/discover/events">All Events</Nav.Link>
 
 							<Nav.Link href="#donations">Donations</Nav.Link>
-							<Nav.Link href="#votingtoolkit">Voting Toolkit</Nav.Link>
+							<Nav.Link href="/discover/voting">Voting Toolkit</Nav.Link>
 						</Nav>
 					</Col>
 				</Row>

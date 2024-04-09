@@ -67,7 +67,7 @@ function MainNavigationBar({ scrolling = false }) {
 						<NavDropdown.Item href="/discover/donations">
 							Donations
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#votingtoolkit">
+						<NavDropdown.Item href="/discover/voting">
 							Voting Toolkit
 						</NavDropdown.Item>
 					</NavDropdown>
@@ -89,22 +89,32 @@ function MainNavigationBar({ scrolling = false }) {
 						onMouseEnter={handleAboutUsMouseEnter}
 						onMouseLeave={handleAboutUsMouseLeave}
 					>
-						<NavDropdown.Item href="#howitworks" className="">
+						<NavDropdown.Item href="/howitworks" className="">
 							How It Works
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#howitworks" className="">
+						<NavDropdown.Item href="/aboutus" className="">
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
-					 {user ? (
+					{user ? (
 						<Nav.Link href="/discover/users/login" className="mx-3">
-							 <button onClick={handleLogout} style={{ backgroundColor: '#BC9EC1', borderColor:'#4E2855', color:'black', borderRadius: '20px'}}>Logout</button>
+							<button
+								onClick={handleLogout}
+								style={{
+									backgroundColor: "#BC9EC1",
+									borderColor: "#4E2855",
+									color: "black",
+									borderRadius: "20px",
+								}}
+							>
+								Logout
+							</button>
 						</Nav.Link>
 					) : (
-					<Nav.Link href="/discover/users/login" className="mx-3">
-						Sign In
-					</Nav.Link>
-					 ) }
+						<Nav.Link href="/discover/users/login" className="mx-3">
+							Sign In
+						</Nav.Link>
+					)}
 					<Button
 						variant=""
 						href="/discover/create-event"
