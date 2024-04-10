@@ -3,7 +3,7 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import { Container, Button, Navbar } from "react-bootstrap";
 import MainContent from "../Components/MainContent";
 import TrustAndSafety from "../Components/TrustAndSafety/TrustAndSafety";
-import HeroImage from "../assets/HeroImage.jpg";
+import HeroImage from "../assets/hero2.webp";
 import MainNavigationBar from "../Components/NavigationBars/HomeNavigationBar";
 import useScrollPosition from "../Hooks/ScrollPositionProvider";
 import TrustBlock from "../Components/Midsection/TrustBlock";
@@ -69,11 +69,11 @@ function Homepage({ backendEvents }) {
 					flexDirection: "column",
 					alignItems: "center",
 					backgroundImage: `url(${HeroImage})`,
-					backgroundSize: "100vw 90vh",
+					backgroundSize: "100vw 80vh",
 					backgroundRepeat: "no-repeat",
 				}}
 			>
-				<ParallaxLayer offset={0.5}>
+				<div>
 					<Button
 						variant=""
 						style={{
@@ -88,7 +88,7 @@ function Homepage({ backendEvents }) {
 					>
 						Start Event
 					</Button>
-				</ParallaxLayer>
+				</div>
 
 				{/* navigation */}
 				<ParallaxLayer
@@ -111,8 +111,11 @@ function Homepage({ backendEvents }) {
 					offset={0.7}
 					speed={0}
 					factor={1.1}
-					style={{ backgroundColor: "white", borderRadius: "30px" }}
-					className=" d-flex justify-content-center"
+					style={{
+						backgroundColor: "white",
+						borderRadius: "30px",
+					}}
+					className=" d-flex justify-content-center "
 				>
 					<AllEventsBlock backendEvents={backendEvents} />
 				</ParallaxLayer>
