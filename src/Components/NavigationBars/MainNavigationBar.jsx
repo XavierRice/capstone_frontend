@@ -19,11 +19,12 @@ function MainNavigationBar() {
 	const { user, logout } = useAuthDataProvider();
 	const [isResponsive, setIsResponsive] = useState(false);
 
-	const handleLogout = () => {
+	const handleLogout = async () => {
 		console.log("youve logged out" + token);
-		logout(); // Call the logout function
+		await logout();
 	};
-
+	
+	console.log(user)
 	useEffect(() => {
 		const handleResize = () => {
 			setIsResponsive(window.innerWidth <= 991);
@@ -88,7 +89,7 @@ function MainNavigationBar() {
 					{user ? (
 						<Nav.Link href="/discover/users/login" className="">
 							<div
-								onClick={handleLogout}
+								onClick={()=>handleLogout()}
 								style={{
 									color: "#630f76",
 									borderRadius: "15px",

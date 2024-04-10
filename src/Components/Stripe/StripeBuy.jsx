@@ -1,17 +1,19 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
 
-const StripeBuy = ({buyButtonId}) => {
+const StripeBuy = ({ buyButtonId }) => {
 
-const stripePublishKey= import.meta.env.VITE_STRIPE_PUBLISHABLE
+  const stripePublishKey = import.meta.env.VITE_STRIPE_PUBLISHABLE
 
-    return (
-        <stripe-buy-button
-          buy-button-id={buyButtonId}
-          publishable-key={stripePublishKey}
-        >
-        </stripe-buy-button>
-      );
+  return (
+    <div style={{justifyContent:'center', marginLeft: '20%'}}>
+      <stripe-buy-button
+        buy-button-id={buyButtonId}
+        publishable-key={stripePublishKey}
+      >
+      </stripe-buy-button>
+    </div>
+  );
 };
 
 export default StripeBuy;
