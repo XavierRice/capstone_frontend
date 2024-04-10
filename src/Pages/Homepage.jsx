@@ -74,7 +74,7 @@ function Homepage({ backendEvents }) {
 				}}
 			>
 				<div>
-					<Button
+					<div
 						variant=""
 						style={{
 							color: "#ffffff",
@@ -86,8 +86,8 @@ function Homepage({ backendEvents }) {
 							// zIndex: 10,
 						}}
 					>
-						Start Event
-					</Button>
+						{/* Start Event */}
+					</div>
 				</div>
 
 				{/* navigation */}
