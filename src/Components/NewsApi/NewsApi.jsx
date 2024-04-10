@@ -55,10 +55,10 @@ const NewsApi = ({ onLoad }) => {
 
     return (
         <div>
-            <Container>
+            <Container className=" mx-auto align-items-center  justify-content-center" >
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="event_keyword mx-3">
-                        <Form.Label className="mt-4 fs-4 d-flex justify-content-center">
+                        <Form.Label className="mt-4 fs-4 d-flex justify-content-center ml-4">
                             Filter by Category
                         </Form.Label>
                         <Select
