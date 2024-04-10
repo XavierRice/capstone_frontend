@@ -37,7 +37,7 @@ import FundraiseFacts from "./Pages/Fundraise/FundraiseFacts";
 function App() {
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [backendEvents, setBackendEvents] = useState([]);
-
+	const [backendNews, setBackendNews] = useState([])
 	useEffect(() => {
 		const fetchEvents = async () => {
 			try {
@@ -47,9 +47,17 @@ function App() {
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			}
+
+			try {
+				const response = await axios.get(`${backend}/news`);
+				let events = response.data.data;
+				setBackendNews(events);
+			} catch (error) {
+				console.error("Error Fetching Backend Events:", error);
+			}
 		};
 		fetchEvents();
-	}, []);
+	}, [backendNews,backendEvents]);
 
 	console.log("these are the backend events" + backendEvents);
 	// console.log(backendEvents)

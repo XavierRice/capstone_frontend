@@ -6,13 +6,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const NewsApi = ({ onLoad }) => {
-
-    const [newsArticles, setNewsArticles] = useState([]);
+    const [heldRes, setHeldRes] = useState(null)
+    const [newsApiArticles, setNewsApiArticles] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [selectedKeyword, setSelectedKeyword] = useState("lgbt");
-    const NewsApiKey = import.meta.env.VITE_APP_NEWSAPI_KEY 
-
+    const [selectedKeyword, setSelectedKeyword] = useState(null);
+    const NewsApiKey =  import.meta.env.VITE_X_NEWSAPI_KEY
     const keywordOptions = [
         { value: "equality", label: "equality" },
         { value: "politics", label: "politics" },
@@ -22,7 +21,6 @@ const NewsApi = ({ onLoad }) => {
         { value: "ukraine", label: "ukraine" },
         { value: "palestine", label: "palestine" },
         { value: "israel", label: "israel" },
-
     ];
 
     useEffect(() => {
@@ -41,12 +39,14 @@ const NewsApi = ({ onLoad }) => {
         try {
             const response = await fetch(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=${NewsApiKey}`);
             if (!response.ok) {
+                setHeldRes(response)
                 throw new Error(`Failed to fetch news articles for keyword: ${keyword}`);
             }
             const data = await response.json();
+            setHeldRes(data)
             // Filter out articles with no image
             const filteredArticles = data.articles.filter(article => article.urlToImage);
-            setNewsArticles(filteredArticles);
+            setNewsApiArticles(filteredArticles);
         } catch (error) {
             setError(error.message);
         } finally {
@@ -73,7 +73,7 @@ const NewsApi = ({ onLoad }) => {
                 </Row>
                 {loading && <div>Loading...</div>}
                 {error && <div>Error: {error}</div>}
-                {!loading && !error && <NewsCar newsArticles={newsArticles} />}
+                {!loading && !error && <NewsCar newsArticles={newsApiArticles} />}
             </Container>
         </div>
     );
