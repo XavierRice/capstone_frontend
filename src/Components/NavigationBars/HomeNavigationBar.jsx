@@ -1,18 +1,21 @@
 import React, { useState } from "react";
+// import { useHistory } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import { useAuthDataProvider } from "../../Provider/AuthProv";
 function MainNavigationBar({ scrolling = false }) {
+	// const history = useHistory(); // hook to access the history instance
 	const { user, logout } = useAuthDataProvider();
 
 	const [getInvolvedExpanded, setGetInvolvedExpanded] = useState(false);
 	const [aboutUsExpanded, setAboutUsExpanded] = useState(false);
 
-	const handleLogout = () => {
+	const handleLogout = async () => {
 		console.log("youve logged out" + token);
-		logout(); // Call the logout function
+		await logout(); // Call the logout function
+		// history.push('/discover/users/login')
 	};
 
 	const handleGetInvolvedMouseEnter = () => {
