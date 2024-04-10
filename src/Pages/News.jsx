@@ -50,7 +50,10 @@ const News = () => {
 		}
 	};
 	return (
-		<div className="mt-5 p-3">
+		<div className="mt-2 p-3">
+			<div className="d-flex justify-content-center fs-1" style={{ color: "" }}>
+				News
+			</div>
 			{loading ? (
 				<div className="loader-wrapper">
 					<div className="loader"></div>

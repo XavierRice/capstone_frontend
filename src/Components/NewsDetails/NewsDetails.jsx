@@ -37,7 +37,6 @@ const NewsDetails = () => {
 	console.log(relatedEvents);
 
 	const handleReleatedClick = (event) => {
-		
 		navigate("/discover/events-details", { state: { event: event } });
 	};
 

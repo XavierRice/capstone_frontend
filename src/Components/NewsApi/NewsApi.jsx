@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const NewsApi = ({ onLoad }) => {
+
     const [newsArticles, setNewsArticles] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -76,6 +77,7 @@ const NewsApi = ({ onLoad }) => {
             </Container>
         </div>
     );
+
 };
 
 export default NewsApi;
