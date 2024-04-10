@@ -25,7 +25,8 @@ const NewsDetails = () => {
 				const resposeBackend = await axios.get(`${backend}/events`);
 				fetchEventsData = resposeBackend.data.data;
 				console.log(resposeBackend);
-				setReleatedEvents(fetchEventsData);
+
+				setReleatedEvents(fetchEventsData.reverse());
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			}
