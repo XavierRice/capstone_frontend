@@ -80,10 +80,10 @@ function Homepage({ backendEvents }) {
 							color: "#ffffff",
 							cursor: "pointer",
 							position: "absolute",
-							top: "55%",
+							top: "12%",
 							left: "50%",
 							transform: "translate(-50%, -50%)",
-							zIndex: 10,
+							// zIndex: 10,
 						}}
 					>
 						Start Event
