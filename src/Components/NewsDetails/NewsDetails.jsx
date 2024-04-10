@@ -60,7 +60,7 @@ const NewsDetails = () => {
 						<MdEmail className="m-2" />
 					</Link>
 				</div>
-				<hr />
+				{/* <hr /> */}
 				<Col md={6} sm={10} lg={8}>
 					<div style={{ marginLeft: "15%" }}>
 						<div className="">
@@ -89,7 +89,7 @@ const NewsDetails = () => {
 				</Col>
 				<Col md={2} sm={10} lg={3}>
 					<div className="">
-						<div className="d-flex justify-content-center fw-semibold fs-4 mb-4">
+						<div className="d-flex justify-content-center fw-semibold fs-4 mb-4 purple-underline">
 							Related Events
 						</div>
 

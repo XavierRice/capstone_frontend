@@ -38,8 +38,9 @@
 	padding: 5px;
 	/* z-index: 1; */
 }
+
 .box:hover .related-image-text {
-	color: #bc73e6; /* Change text color when the parent box is hovered */
+	color: #bc73e6;
 }
 
 /* Adjust box size for smaller screens */
@@ -71,4 +72,8 @@
 
 .box .event-title {
 	font-size: 1.5vw; /* Example using viewport units (vw) */
+}
+
+.purple-underline {
+	border-bottom: #bc73e6 solid 5px;
 }
