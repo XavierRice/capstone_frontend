@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import usePlacesAutocomplete, {
 	getGeocode,
 	getLatLng,
@@ -109,7 +113,48 @@ const CivicInfo = () => {
     });
 
 	return (
-		<div>
+        <Container className="main-content py-5 justify-content-center mx-5 ">
+        <Row className="justify-content-center">
+            <Col md={6}>
+                <Form.Group controlId="event_location" ref={ref} className="mb-4">
+                    <Form.Label className="display-6 text-center mb-4">
+                        Find all the representatives around you
+                    </Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={value}
+                        onChange={handleInput}
+                        disabled={!ready}
+                        placeholder="What's your address?"
+                        className="mb-3"
+                    />
+                    {status === "OK" && <ul>{renderSuggestions()}</ul>}
+                </Form.Group>
+            </Col>
+        </Row>
+        <Row className="row-cols-1 row-cols-md-3 g-4 justify-content-center">
+            {civicOfficials.map((official, index) => (
+                <Col key={index}>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title>{official.name}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">{official.party}</Card.Subtitle>
+                            <Card.Text>Email: {official.email ? official.email : "N/A"}</Card.Text>
+                            <Card.Text>Channel ID: {official.channels && official.channels.length > 0 ? official.channels[0].id : "N/A"}</Card.Text>
+                            <Card.Link href={official.url ? official.url : "#"}>FOR MORE INFO</Card.Link>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            ))}
+        </Row>
+    </Container>
+    )
+
+};
+
+export default CivicInfo;
+
+{/* <div>
 			<Form.Group
 				className="mb-3 d-flex justify-content-center"
 				controlId="event_location"
@@ -133,29 +178,24 @@ const CivicInfo = () => {
 
 			<div>
 				{/* card */}
-				{civicOfficials.map((official, index) => (
-					<div key={index}>
-						<div>Party: {official.party}</div>
-						<div>Name: {official.name}</div>
-						<div>Email: {official.email ? official.email : "N/A"}</div>
-						<div>
-							Channel ID:{" "}
-							{official.channels && official.channels.length > 0
-								? official.channels[0].id
-								: "N/A"}
-						</div>
-						<p>
-							FOR MORE INFO:{" "}
-							<a href={official.url ? official.url : "#"}>
-								{official.url ? official.url : "Unavailable"}
-							</a>
-						</p>
-					</div>
-				))}
-			</div>
-		</div>
-	);
-
-};
-
-export default CivicInfo;
+		// 		{civicOfficials.map((official, index) => (
+		// 			<div key={index}>
+		// 				<div>Party: {official.party}</div>
+		// 				<div>Name: {official.name}</div>
+		// 				<div>Email: {official.email ? official.email : "N/A"}</div>
+		// 				<div>
+		// 					Channel ID:{" "}
+		// 					{official.channels && official.channels.length > 0
+								// ? official.channels[0].id
+		// 						: "N/A"}
+		// 				</div>
+		// 				<p>
+		// 					FOR MORE INFO:{" "}
+		// 					<a href={official.url ? official.url : "#"}>
+		// 						{official.url ? official.url : "Unavailable"}
+		// 					</a>
+		// 				</p>
+		// 			</div>
+		// 		))}
+		// 	</div>
+		// </div> */}
