@@ -137,7 +137,7 @@ function EventDetailsPage() {
 
 	const displayMap = locationName && lat && lng;
 
-	let imageSrc = event.logo_url || event.event_photo || defaultImage;
+	let imageSrc = event.featureImageUrl ||event.logo_url || event.event_photo || defaultImage;
 	const eventDate = formatDate(date);
 	const firstName = fetchedUser?.first_name;
 

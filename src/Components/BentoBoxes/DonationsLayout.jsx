@@ -89,7 +89,7 @@ function DonationsLayout({ backendEvents }) {
 									handleDonationNavigate;
 								}}
 							>
-								Donate now <FaArrowRight className="mx-2" />
+								Donate now <FaArrowRight className="mx-3" />
 							</span>
 						</div>
 					</div>
@@ -107,7 +107,7 @@ function DonationsLayout({ backendEvents }) {
 								Why should we care and participate?
 							</div>
 							<span className=" donate-btn " onClick={handleFundraiseNavigate}>
-								Learn more <FaArrowRight className="mx-2" />
+								Learn more <FaArrowRight className="mx-3" />
 							</span>
 						</div>
 					</div>
@@ -122,18 +122,18 @@ function DonationsLayout({ backendEvents }) {
 							<img src={Play} alt="Climate Image" className="climate-image" />
 						</div>
 						<div className="bottom-half ">
-							<div className="fw-bold title fs-4 d-flex justify-content-center">
+							<div className=" fw-bold title fs-4 d-flex justify-content-center">
 								How Impactify works
 							</div>
 							<div className=" d-flex justify-content-center">
 								Watch a video to learn more
 							</div>
-
+								<div style={{height:"30px"}}></div>
 							<span
 								className=" donate-btn d-flex justify-content-center"
 								onClick={handleInfoNavigate}
 							>
-								Play <FaArrowRight className="mx-2" />
+								Play <FaArrowRight className="mx-3" />
 							</span>
 						</div>
 					</div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
-// import VoterTools from './VoterTools'
+import VoterTools from './VoterTools.jsx'
 import CivicInfo from "./CivicInfo";
 
 const VoterModal = () => {
@@ -50,7 +50,7 @@ const VoterModal = () => {
 				</Modal.Footer>
 			</Modal>
 			{userResponse === "yes" && <CivicInfo />}
-			{/* {userResponse === 'no' && <VoterTools />} */}
+			{userResponse === 'no' && <VoterTools />}
 		</>
 	);
 };
