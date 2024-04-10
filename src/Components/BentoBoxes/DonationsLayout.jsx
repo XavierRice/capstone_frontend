@@ -82,7 +82,7 @@ function DonationsLayout({ backendEvents }) {
 								You can donate to fundraisers on this page to help fleeing
 								families.
 							</div>
-
+							<div style={{height:"30px"}}></div>
 							<span
 								className="donate-btn "
 								onClick={() => {
@@ -106,6 +106,7 @@ function DonationsLayout({ backendEvents }) {
 							<div className="m-2 d-flex justify-content-center ">
 								Why should we care and participate?
 							</div>
+							<div style={{height:"30px"}}></div>
 							<span className=" donate-btn " onClick={handleFundraiseNavigate}>
 								Learn more <FaArrowRight className="mx-3" />
 							</span>
