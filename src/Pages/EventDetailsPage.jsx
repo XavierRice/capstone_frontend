@@ -152,16 +152,10 @@ function EventDetailsPage() {
 			) : (
 				<>
 					<div className="display-6 d-flex justify-content-center">{title}</div>
-					<div className="d-flex justify-content-center my-3">
-						<span className="fw-bold mx-2 span_color1">{eventKeyword}</span>
-						<span className="fw-bold ">Hosted by:</span>
-						<span className="fw-bold mx-2 span_color1">
-							<h5>{firstName}</h5>
-						</span>
-					</div>
+					<div className="d-flex justify-content-center my-3"></div>
 					<Row
 						className="mx-3 d-flex justify-content-center"
-						style={{ height: "100vh" }}
+						// style={{ height: "100vh" }}
 					>
 						<Col sm={11} md={6}>
 							<Row style={{ height: "30%", marginBottom: "5%" }}>
