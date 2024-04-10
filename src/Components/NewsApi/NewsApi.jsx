@@ -70,18 +70,28 @@ const NewsApi = ({ onLoad }) => {
 	return (
 		<div>
 			<Row className="mb-3 ">
-				<Form.Group as={Col} controlId="event_keyword mx-3">
+				<Form.Group
+					as={Col}
+					controlId="event_keyword mx-3"
+					// style={{ width: "50%" }}
+				>
 					<Form.Label className=" mt-4 fs-4 d-flex justify-content-center">
-						Filter by Category
+						Filter topics by category
 					</Form.Label>
 
-					<Select
-						onChange={handleKeywords}
-						options={keywordOptions}
-						className="py-4"
-						classNamePrefix="select"
-						name="event_keywords"
-					/>
+					<div
+						className="d-flex   
+						justify-content-center"
+					>
+						<Select
+							onChange={handleKeywords}
+							options={keywordOptions}
+							className="py-3 "
+							style={{ width: "50vw" }}
+							classNamePrefix="select"
+							name="event_keywords"
+						/>
+					</div>
 				</Form.Group>
 			</Row>
 			<Row>

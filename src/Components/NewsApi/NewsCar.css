@@ -31,3 +31,9 @@
 .card-body {
 	background-color: #fff; /* Default background color */
 }
+
+.slick-next,
+.slick-prev {
+	right: -25px;
+	top: 160px;
+}
