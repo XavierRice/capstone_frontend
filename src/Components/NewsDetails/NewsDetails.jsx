@@ -68,13 +68,13 @@ const NewsDetails = () => {
 						{/* <span className="mr-2">Written by</span>
 						<span className="mx-3">Published at</span> */}
 						<div className="icons">
-							<Link to="#" style={{ color: "purple" }}>
+							<Link to="#" style={{ color: "#630f76" }}>
 								<FaFacebookF className="m-2" />
 							</Link>
-							<Link to="#" style={{ color: "purple" }}>
+							<Link to="#" style={{ color: "#630f76" }}>
 								<FaTwitter className="m-2" />
 							</Link>
-							<Link to="#" style={{ color: "purple" }}>
+							<Link to="#" style={{ color: "#630f76" }}>
 								<MdEmail className="m-2" />
 							</Link>
 						</div>
@@ -95,7 +95,11 @@ const NewsDetails = () => {
 
 						{!article ? (
 							paragraphs.map((paragraph, index) => (
-								<p key={index} className=" my-3" style={{ marginRight: "5px" }}>
+								<p
+									key={index}
+									className=" my-3"
+									style={{ marginRight: "28px" }}
+								>
 									{paragraph}
 								</p>
 							))
