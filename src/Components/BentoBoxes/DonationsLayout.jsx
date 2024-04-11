@@ -27,11 +27,20 @@ function DonationsLayout({ backendEvents }) {
 	};
 
 	return (
-		<Container fluid style={{ width: "85%", height: "80%", marginTop: "0px" }}>
+		<Container
+			fluid
+			style={{
+				width: "85%",
+				height: "60vh",
+				marginTop: "0px",
+				// padding: "70px",
+			}}
+			className="donations-container"
+		>
 			{/* <div className="fw-semibold  d-flex justify-content-center fs-2 my-2 mx-4">
 				Make a positive impact in your preferred way
 			</div> */}
-			<Row xs={1} md={12} lg={8} className="" style={{ width: "100vw" }}>
+			<Row xs={1} md={12} lg={8} className="" style={{ width: "95vw" }}>
 				<Col>
 					<div className="item ">
 						<div className="top-box-grid">

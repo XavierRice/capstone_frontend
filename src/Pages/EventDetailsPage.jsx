@@ -131,6 +131,12 @@ function EventDetailsPage() {
 		}
 	};
 
+	const formatTime = (timeString) => {
+		const options = { hour: "numeric", minute: "2-digit", hour12: true };
+		const time = new Date(`1970-01-01T${timeString}`);
+		return time.toLocaleTimeString("en-US", options);
+	};
+
 	const hasRequiredKeys = ["event_location", "lat", "lng"].every((key) =>
 		Object.keys(event).includes(key)
 	);
@@ -158,30 +164,39 @@ function EventDetailsPage() {
 						// style={{ height: "100vh" }}
 					>
 						<Col sm={11} md={6}>
-							<Row style={{ height: "30%", marginBottom: "5%" }}>
+							<Row style={{ height: "30%", marginBottom: "3%" }}>
 								<img src={imageSrc} alt="Event" className="image" />
 							</Row>
-							<Row style={{ height: "10%" }} className="">
+							<Row style={{ height: "12vh" }} className="">
 								<Col sm={6} md={6} className="">
-									<div className="m-3">
-										<CiCalendar className="" />
-										<span className="fw-bold fs-5 ">Time</span>
-										<span className="fw-bold fs-6 d-block">{eventDate}</span>
-										<span className="fw-bold fs-6 d-block">{time}</span>
+									<div className="m-2">
+										<CiLocationOn className=" my-2" />
+										<span className="fw-bold fs-5 ">Location</span>
+										<span className="fw-bold fs-6 d-block">{locationName}</span>
+										{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
+											Map
+										</div> */}
 									</div>
 								</Col>
 								<Col sm={6} md={6}>
-									<div className="m-3">
-										<CiLocationOn className=" " />
-										<span className="fw-bold fs-5 ">Location</span>
-										<span className="fw-bold fs-6 d-block">{locationName}</span>
-										<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
-											Map
+									<div className="m-2">
+										<div className="m-2">
+											<CiCalendar className="" />
+											<span className="fw-bold fs-5 ">Time</span>
+											<span className="fw-bold fs-6 d-block my-2">
+												{eventDate}
+											</span>
+											<span className="fw-bold fs-6 d-block">
+												{formatTime(time)}
+											</span>
 										</div>
+										{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
+											Map
+										</div> */}
 									</div>
 								</Col>
 							</Row>
-							<Row className="mb-2">
+							<Row className="my-2 ">
 								<div className="fs-4 fw-bold my-">About this event</div>
 								<div className=" my-2">{event_details}</div>
 							</Row>
@@ -199,15 +214,15 @@ function EventDetailsPage() {
 							</Row>
 							<hr className="my-4" />
 							<Row className="map-row mb-5">
-								<div className="map-controls">
+								<div className="map-controls  mb-3">
 									<button
-										className="rounded-button"
+										className="rounded-button btn mr-3"
 										onClick={() => setTravelMode("DRIVING")}
 									>
 										Driving
 									</button>
 									<button
-										className="rounded-button"
+										className="rounded-button btn mx-3"
 										onClick={() => setTravelMode("WALKING")}
 									>
 										Walking

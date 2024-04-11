@@ -13,7 +13,7 @@ const GoogleMap = ({ location, lat, lng, travelMode }) => {
 	return (
 		<div
 			style={{
-				height: "80vh",
+				height: "60vh",
 				width: "120%",
 				maxWidth: "1200px",
 				margin: "auto",

@@ -40,30 +40,38 @@ const NewsDetails = () => {
 		navigate("/discover/events-details", { state: { event: event } });
 	};
 
+	const formatDate = (dateString) => {
+		const options = { month: "long", day: "numeric" };
+		const date = new Date(dateString);
+		return date.toLocaleDateString("en-US", options);
+	};
+
+	// Function to format the event time
+	const formatTime = (timeString) => {
+		const options = { hour: "numeric", minute: "2-digit", hour12: true };
+		const time = new Date(`1970-01-01T${timeString}`);
+		return time.toLocaleTimeString("en-US", options);
+	};
+
 	// console.log(article)
 	const paragraphs = news?.news_content.split(/\n\n/);
 	const articleText = article?.content.repeat(16);
 	// console.log(articleText)
 	return (
-		<div className="d-flex m-5 news-details-container" style={{}}>
+		<div className="d-flex  news-details-container" style={{}}>
 			<Row>
-				<h4 className=" d-flex display-6 mb-4 ">
-					{news?.news_title || article.title}
-				</h4>
-				<div className="icons">
-					<Link to="#" style={{ color: "purple" }}>
-						<FaFacebookF className="m-2" />
-					</Link>
-					<Link to="#" style={{ color: "purple" }}>
-						<FaTwitter className="m-2" />
-					</Link>
-					<Link to="#" style={{ color: "purple" }}>
-						<MdEmail className="m-2" />
-					</Link>
-				</div>
-				<hr />
+				{/* <hr /> */}
 				<Col md={6} sm={10} lg={8}>
-					<div style={{ marginLeft: "15%" }}>
+					<div>
+						<h4 className=" d-flex fs-2 mb-2 ">
+							{news?.news_title || article.title}
+						</h4>
+						<div className="my-3">
+							<span className="mr-2">Written by</span>
+							<span className="mx-3">Published at</span>
+						</div>
+					</div>
+					<div style={{}}>
 						<div className="">
 							<img
 								src={news?.news_image || article.urlToImage}
@@ -76,10 +84,26 @@ const NewsDetails = () => {
 								alt="News"
 							/>
 						</div>
+						<div className="share-icons mt-3">
+							<Link to="#" style={{ color: "#630f76" }}>
+								<FaFacebookF className="mx-2" />
+							</Link>
+							<Link to="#" style={{ color: "#630f76" }}>
+								<FaTwitter className="mx-2" />
+							</Link>
+							<Link to="#" style={{ color: "#630f76" }}>
+								<MdEmail className="mx-2" />
+							</Link>
+						</div>
+						<hr style={{ width: "54vw" }} />
 
 						{!article ? (
 							paragraphs.map((paragraph, index) => (
-								<p key={index} className=" my-3" style={{ marginRight: "10%" }}>
+								<p
+									key={index}
+									className=" my-3"
+									style={{ marginRight: "28px" }}
+								>
 									{paragraph}
 								</p>
 							))
@@ -89,10 +113,11 @@ const NewsDetails = () => {
 					</div>
 				</Col>
 				<Col md={2} sm={10} lg={3}>
-					<div className="">
-						<div className="d-flex justify-content-center fw-semibold fs-4 mb-4">
+					<div className="" style={{ marginTop: "9.55vh" }}>
+						<div className="d-flex justify-content-center fw-semibold fs-4 ">
 							Related Events
 						</div>
+						<div className="purple-underline mb-4" style={{}}></div>
 
 						{relatedEvents?.slice(0, 3).map((event, index) => (
 							<div
@@ -107,7 +132,7 @@ const NewsDetails = () => {
 									alt={`Event ${index + 1}`}
 									className="releated-event-image p-3"
 									style={{
-										borderRadius: "10%",
+										borderRadius: "25px",
 									}}
 								/>
 
@@ -118,7 +143,19 @@ const NewsDetails = () => {
 										handleReleatedClick(event);
 									}}
 								>
-									<div className="pb-3 event-title">{event.event_title}</div>
+									<div className="row mb-2">
+										<div className="col-6">
+											<div className="">{formatDate(event.event_date)}</div>
+										</div>
+										<div className="col-6">
+											<div className="">{formatTime(event.event_time)}</div>
+										</div>
+									</div>
+									<div className="col-12 text-center">
+										<div className="pb-3 event-title fw-semibold">
+											{event.event_title}
+										</div>
+									</div>
 								</div>
 							</div>
 						))}

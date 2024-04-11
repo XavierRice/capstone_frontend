@@ -190,11 +190,6 @@ body {
 
 .dropdown-item:focus,
 .dropdown-item:hover {
-	background-color: rgba(
-		128,
-		128,
-		128,
-		0.089
-	) !important; /* Apply your desired background color */
-	color: #630f76 !important; /* Apply your desired text color */
+	background-color: rgba(128, 128, 128, 0.089) !important;
+	color: #630f76 !important;
 }
