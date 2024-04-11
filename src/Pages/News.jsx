@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import NewsApi from "../Components/NewsApi/NewsApi"; // Import NewsApi component
 import { Col, Row } from "react-bootstrap";
+import loading from "../Components/LoadingState/LoadingState";
 
 const News = () => {
 	const [loading, setLoading] = useState(true);
