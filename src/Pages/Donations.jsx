@@ -9,6 +9,7 @@ import ClimateBuy from "../Components/Stripe/ClimateBuy";
 import climateUser from "../assets/climateUser.jpg";
 import guyUser from "../assets/guyUser.jpg";
 import ukraineUser from "../assets/ukraineUser.jpg";
+import loader from "../Components/LoadingState/LoadingState";
 
 import "./Donations.css";
 
@@ -27,9 +28,7 @@ function Donations() {
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			} finally {
-				setTimeout(() => {
-					setLoading(false);
-				}, 6000);
+				setLoading(false);
 			}
 		};
 		fetchData();
@@ -37,12 +36,9 @@ function Donations() {
 
 	if (loading) {
 		return (
-			<Container
-				fluid
-				className="donations-container d-flex justify-content-center align-items-center"
-			>
-				<Spinner animation="border" variant="primary" />
-			</Container>
+			<div className="loader-wrapper">
+				<div className="loader"></div>
+			</div>
 		);
 	}
 	console.log(donationsData);
@@ -54,8 +50,8 @@ function Donations() {
 	const donate3Amount = donationsData[2]?.donation_amount;
 
 	return (
-		<Container fluid className="donations-container">
-			<div className="d-flex justify-content-center display-6 m-2">
+		<div fluid className="donations-container">
+			<div className="d-flex justify-content-center display-6 mb-2">
 				Featured Donations
 			</div>
 			<p className="d-flex justify-content-center mb-4">
@@ -157,7 +153,7 @@ function Donations() {
 					</Card>
 				</Col>
 			</Row>
-		</Container>
+		</div>
 	);
 }
 

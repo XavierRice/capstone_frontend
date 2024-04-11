@@ -18,6 +18,7 @@ import {
 } from "react-icons/ci";
 import { IoMegaphoneSharp } from "react-icons/io5";
 import { AuthData } from "../Provider/AuthProv";
+import loader from "../Components/LoadingState/LoadingState";
 
 function EventDetailsPage() {
 	const navigate = useNavigate();
@@ -87,9 +88,8 @@ function EventDetailsPage() {
 				console.error("Error Fetching Backend Events:", error);
 			} finally {
 				// Step 2: Delay transition to false for loading state
-				setTimeout(() => {
-					setLoading(false);
-				}, 3000);
+
+				setLoading(false);
 			}
 		};
 		fetchUser();
@@ -150,19 +150,16 @@ function EventDetailsPage() {
 	let eventKeyword = event.event_keywords[0];
 
 	return (
-		<Container fluid className="my-3 event-details-container">
+		<div className="my-4 event-details-container" styles={{}}>
 			{loading ? (
-				<div className="loader-wrapper d-flex justify-content-center">
+				<div className="loader-wrapper">
 					<div className="loader"></div>
 				</div>
 			) : (
 				<>
 					<div className="display-6 d-flex justify-content-center">{title}</div>
 					<div className="d-flex justify-content-center my-3"></div>
-					<Row
-						className="mx-3 d-flex justify-content-center"
-						// style={{ height: "100vh" }}
-					>
+					<Row className="mx-3 d-flex justify-content-center">
 						<Col sm={11} md={6}>
 							<Row style={{ height: "30%", marginBottom: "3%" }}>
 								<img src={imageSrc} alt="Event" className="image" />
@@ -371,7 +368,7 @@ function EventDetailsPage() {
 					</Row>
 				</>
 			)}
-		</Container>
+		</div>
 	);
 }
 
