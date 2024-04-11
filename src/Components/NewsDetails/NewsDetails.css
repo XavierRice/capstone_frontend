@@ -21,11 +21,12 @@
 	/* overflow: hidden; */
 }
 
-.icons {
-	/* display: flex; */
+.share-icons {
+	display: flex;
 
-	/* justify-content: end; */
-	margin-bottom: 1%;
+	justify-content: end;
+	/* margin-bottom: 1%; */
+	margin-right: 60px;
 }
 .releated-event-image {
 	width: 100%;

@@ -65,18 +65,9 @@ const NewsDetails = () => {
 						<h4 className=" d-flex fs-2 mb-2 ">
 							{news?.news_title || article.title}
 						</h4>
-						{/* <span className="mr-2">Written by</span>
-						<span className="mx-3">Published at</span> */}
-						<div className="icons">
-							<Link to="#" style={{ color: "#630f76" }}>
-								<FaFacebookF className="m-2" />
-							</Link>
-							<Link to="#" style={{ color: "#630f76" }}>
-								<FaTwitter className="m-2" />
-							</Link>
-							<Link to="#" style={{ color: "#630f76" }}>
-								<MdEmail className="m-2" />
-							</Link>
+						<div className="my-3">
+							<span className="mr-2">Written by</span>
+							<span className="mx-3">Published at</span>
 						</div>
 					</div>
 					<div style={{}}>
@@ -92,6 +83,18 @@ const NewsDetails = () => {
 								alt="News"
 							/>
 						</div>
+						<div className="share-icons mt-3">
+							<Link to="#" style={{ color: "#630f76" }}>
+								<FaFacebookF className="mx-2" />
+							</Link>
+							<Link to="#" style={{ color: "#630f76" }}>
+								<FaTwitter className="mx-2" />
+							</Link>
+							<Link to="#" style={{ color: "#630f76" }}>
+								<MdEmail className="mx-2" />
+							</Link>
+						</div>
+						<hr style={{ width: "54vw" }} />
 
 						{!article ? (
 							paragraphs.map((paragraph, index) => (

@@ -61,7 +61,7 @@ function Homepage({ backendEvents }) {
 	return (
 		<div className="d-flex justify-content-center align-items-center parallax-container">
 			<Parallax
-				pages={4.3}
+				pages={4.4}
 				ref={parallaxRef}
 				className="parallax-container"
 				style={{
@@ -121,7 +121,7 @@ function Homepage({ backendEvents }) {
 				</ParallaxLayer>
 				{/* page 2 */}
 				<ParallaxLayer
-					offset={1.6}
+					offset={1.64}
 					speed={0}
 					factor={1}
 					className=" d-flex justify-content-center"
@@ -139,7 +139,7 @@ function Homepage({ backendEvents }) {
 				</ParallaxLayer>
 				{/* page 3 */}
 				<ParallaxLayer
-					offset={2.45}
+					offset={2.47}
 					speed={0}
 					factor={0.5}
 					className=" d-flex justify-content-center"
@@ -158,7 +158,7 @@ function Homepage({ backendEvents }) {
 					<DonationsLayout backendEvents={backendEvents} />
 				</ParallaxLayer>
 
-				<ParallaxLayer offset={3.98} factor={1}>
+				<ParallaxLayer offset={4.05} factor={1}>
 					<Footer />
 				</ParallaxLayer>
 			</Parallax>
