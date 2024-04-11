@@ -166,8 +166,8 @@ function EventDetailsPage() {
 							</Row>
 							<Row style={{ height: "12vh" }} className="">
 								<Col sm={6} md={6} className="">
-									<div className="m-2">
-										<CiLocationOn className=" my-2" />
+									<div className="mx-2 my-4">
+										<CiLocationOn className=" " />
 										<span className="fw-bold fs-5 ">Location</span>
 										<span className="fw-bold fs-6 d-block">{locationName}</span>
 										{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
@@ -176,7 +176,7 @@ function EventDetailsPage() {
 									</div>
 								</Col>
 								<Col sm={6} md={6}>
-									<div className="m-2">
+									<div className="mx-2 my-4">
 										<div className="m-2">
 											<CiCalendar className="" />
 											<span className="fw-bold fs-5 ">Time</span>
