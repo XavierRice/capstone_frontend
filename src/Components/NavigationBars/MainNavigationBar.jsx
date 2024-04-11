@@ -12,6 +12,8 @@ import {
 } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Logo from "../Logo";
+
 function MainNavigationBar() {
 	const [isResponsive, setIsResponsive] = useState(false);
 
@@ -31,39 +33,52 @@ function MainNavigationBar() {
 				aria-controls="basic-navbar-nav"
 				className="outline-none"
 			/>
-			<Link to="/">
+			<Link to="/search">
 				<div className="mx-3">
-					<FaSearch className="" style={{ marginRight: "2px" }} />
+					<FaSearch className="" style={{ marginRight: "4px" }} />
 					Search
 				</div>
 			</Link>
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
 					<NavDropdown
-						title="For Individuals"
+						title="Get Involved"
 						id="basic-nav-dropdown"
 						className="mx-3"
 					>
-						<NavDropdown.Item href="#news">About us</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/news">News</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/events">
 							All Events
 						</NavDropdown.Item>
-						<NavDropdown.Item href="/discover/donations">Donations</NavDropdown.Item>
-						<NavDropdown.Item href="#votingtoolkit">
+						<NavDropdown.Item href="/discover/donations">
+							Donations
+						</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/voting">
 							Voting Toolkit
 						</NavDropdown.Item>
-						<NavDropdown.Item href="#aboutus">About Us</NavDropdown.Item>
 					</NavDropdown>
 				</Nav>
-				<Navbar.Brand className="mx-auto display-2" href="/">
-					Impactify
+				<Navbar.Brand
+					className="mx-auto display-2"
+					style={{ paddingTop: "0", paddingBottom: "0" }}
+					href="/"
+				>
+					<Logo />
 				</Navbar.Brand>
 				<Nav className="ml-auto">
-					<Nav.Link href="#howitworks" className="mx-3">
-						How It Works
-					</Nav.Link>
-					<Nav.Link href="#signin" className="mx-3">
+					<NavDropdown
+						title="About us"
+						id="basic-nav-dropdown"
+						className="mx-3"
+					>
+						<NavDropdown.Item href="/howitworks" className="">
+							How It Works
+						</NavDropdown.Item>
+						<NavDropdown.Item href="/aboutus" className="">
+							About us
+						</NavDropdown.Item>
+					</NavDropdown>
+					<Nav.Link href="/discover/users/login" className="mx-3">
 						Sign In
 					</Nav.Link>
 					<Link to="/discover/create-event">
@@ -85,10 +100,14 @@ function MainNavigationBar() {
 				aria-controls="basic-navbar-nav"
 				className="outline-none"
 			/>
-			<Navbar.Brand className="mx-auto display-2" href="/">
-				Impactify
+			<Navbar.Brand
+				className="mx-auto display-2"
+				style={{ paddingTop: "0", paddingBottom: "0" }}
+				href="/"
+			>
+				<Logo />
 			</Navbar.Brand>
-			<Link to="/">
+			<Link to="/search">
 				<div className="mx-3">
 					<FaSearch className="" style={{ marginRight: "2px" }} />
 					Search
@@ -98,15 +117,11 @@ function MainNavigationBar() {
 				<Row className="w-100">
 					<Col md={6}>
 						<Nav className="ml-auto">
-							<Nav.Link href="#howitworks" className="mx-3 mt-3">
+							<Nav.Link href="/howitworks" className="mx-3 mt-3">
 								How It Works
 							</Nav.Link>
-							<Nav.Link href="#signin" className="mx-3">
+							<Nav.Link href="/discover/users/login" className="mx-3">
 								Sign In
-							</Nav.Link>
-
-							<Nav.Link className="mx-3 " href="#news">
-								About us
 							</Nav.Link>
 						</Nav>
 					</Col>
@@ -116,16 +131,18 @@ function MainNavigationBar() {
 							<Nav.Link href="/discover/events">All Events</Nav.Link>
 
 							<Nav.Link href="#donations">Donations</Nav.Link>
-							<Nav.Link href="#votingtoolkit">Voting Toolkit</Nav.Link>
+							<Nav.Link href="/discover/voting">Voting Toolkit</Nav.Link>
 						</Nav>
 					</Col>
 				</Row>
-				<Button
-					variant=""
-					className="w-100 m-3 btn rounded-pill start-event-btn"
-				>
-					Start Event
-				</Button>
+				<Link to="discover/create-event">
+					<Button
+						variant=""
+						className="w-100 m-3 btn rounded-pill start-event-btn"
+					>
+						Start Event
+					</Button>
+				</Link>
 			</Navbar.Collapse>
 		</>
 	);

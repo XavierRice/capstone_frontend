@@ -5,12 +5,13 @@ import "../App.css";
 import NewsApi from "../Components/NewsApi/NewsApi"; // Import NewsApi component
 import { Col, Row } from "react-bootstrap";
 
-
 const News = () => {
 	const [loading, setLoading] = useState(true);
 	const [newsData, setNewsData] = useState([]);
+	const [newsApiData, setNewsApiData] = useState([]);
 	const navigate = useNavigate();
-	const backend = import.meta.env.VITE_BACKEND_URL
+	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+
 	useEffect(() => {
 		fetchData();
 	}, []);
@@ -30,35 +31,35 @@ const News = () => {
 		}
 	}
 	console.log(newsData);
-  
+
 	const handleImageLoad = () => {
-
-      setLoading(false);
-    } catch (e) {
-      console.error("Error fetching data:", e);
-    }
-  }
-
-  const handleImageLoad = () => {
-    setLoading(false);
-  };
+		setLoading(false);
+	};
 
 	const handleCardClick = (id) => {
 		const selectedNews = newsData.find((news) => news.news_id === id);
 		navigate(`/discover/news-details/${id}`, { state: { news: selectedNews } });
 	};
 
-	console.log(newsData[0]);
-
-
+	// console.log(newsData[0]);
+	const handleNewsApiLoad = (status) => {
+		if (status === "loading") {
+			setLoading(true); // Set loading state to true when News API component is loading
+		} else {
+			setLoading(false); // Set loading state to false when News API component finishes loading
+		}
+	};
 	return (
-		<div>
+		<div className="mt-5 p-3">
 			{loading ? (
 				<div className="loader-wrapper">
 					<div className="loader"></div>
 				</div>
 			) : (
 				<Row className="d-flex justify-content-center">
+					<div className=" mx-3 fs-4 m-3 d-flex justify-content-center">
+						Trending Topics
+					</div>
 					{newsData.map((news) => (
 						<Col key={news.news_id} sm={6} md={3}>
 							<Card
@@ -71,10 +72,11 @@ const News = () => {
 							/>
 						</Col>
 					))}
+
+					<Col>
+						<NewsApi onLoad={handleNewsApiLoad} />
+					</Col>
 				</Row>
-      <div>
-        <NewsApi /> 
-      </div>
 			)}
 		</div>
 	);

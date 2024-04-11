@@ -6,7 +6,7 @@ import "./Footer.css";
 
 function Footer() {
 	return (
-		<footer className="bg-light">
+		<footer className="bg-light ">
 			<div className="px-5">
 				<Row className="gy-5">
 					<Col lg={8} className="">
@@ -15,23 +15,23 @@ function Footer() {
 								<h5 className=" footer-title-01">About</h5>
 								<ul className="list-unstyled footer-link-01">
 									<li>
-										<a className="" href="#">
-											About Us
+										<a className="" href="/discover/news">
+											Get informed
+										</a>
+									</li>
+									<li>
+										<a className="" href="/discover/voting">
+											Voting Tool Kit
+										</a>
+									</li>
+									<li>
+										<a className="" href="/discover/events">
+											Get involved
 										</a>
 									</li>
 									<li>
 										<a className="" href="#">
-											Blog
-										</a>
-									</li>
-									<li>
-										<a className="" href="#">
-											Our Ingredients
-										</a>
-									</li>
-									<li>
-										<a className="" href="#">
-											Our Resellers
+											Our Contributors
 										</a>
 									</li>
 								</ul>
@@ -41,28 +41,24 @@ function Footer() {
 								<h5 className=" footer-title-01">Connect</h5>
 								<ul className="list-unstyled footer-link-01">
 									<li>
+										<a className="" href="/aboutus">
+											About Us
+										</a>
+									</li>
+									<li>
 										<a className="" href="#">
 											Contact Us
 										</a>
 									</li>
 									<li>
-										<a className="" href="#">
+										<a className="" href="/discover/facts">
 											FAQs
 										</a>
 									</li>
-									<li>
-										<a className="" href="#">
-											Offers & Kits
-										</a>
-									</li>
+
 									<li>
 										<a className="" href="#">
 											Get the App
-										</a>
-									</li>
-									<li>
-										<a className="" href="#">
-											Store Locator
 										</a>
 									</li>
 								</ul>
@@ -97,7 +93,7 @@ function Footer() {
 					</p>
 				</Row>
 			</div>
-			<div className="footer-bottom small py-3 border-top border-white border-opacity-10">
+			<div className="footer-bottom small py-4 border-top border-white border-opacity-10">
 				<div></div>
 			</div>
 		</footer>

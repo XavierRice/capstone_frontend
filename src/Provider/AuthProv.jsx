@@ -1,6 +1,7 @@
 import React, { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
 
+
 export const AuthData = createContext();
 
 export function useAuthDataProvider() {
@@ -8,8 +9,8 @@ export function useAuthDataProvider() {
 }
 
 function AuthProv({ children }) {
+
   const [token, setToken] = useState(localStorage.getItem('token'));
-  
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem('user')
     return savedUser ? JSON.parse(savedUser) : null
@@ -39,9 +40,17 @@ function AuthProv({ children }) {
 
   const isAuthenticated = !!user && !!token;
 
+  const logout = () => {
+    setToken(null);
+    setUser(null);
+    localStorage.removeItem('token'); 
+    localStorage.removeItem('user'); 
+   
+  };
+
   return (
     <AuthData.Provider
-      value={{ API, user, setUser, token, setToken, isAuthenticated }}
+      value={{ API, user, setUser, token, setToken, isAuthenticated, logout }}
     >
       {children}
     </AuthData.Provider>

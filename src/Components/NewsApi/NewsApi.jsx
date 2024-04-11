@@ -1,62 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import Card from '../Card/Card'; // Import the Card component
-import './NewsApi.css'; // Import CSS for styling
-import { Container, Row, Col } from 'react-bootstrap'; // Import Container, Row, and Col from react-bootstrap
+import React, { useState, useEffect } from "react";
+import Select from "react-select";
+import { Container, Row, Col, Form } from "react-bootstrap";
+import NewsCar from "./NewsCar";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const NewsApi = () => {
-  const [newsArticles, setNewsArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [keywords, setKeywords] = useState(['ukraine', 'palestine', 'global warming', 'global issues', 'donations']); // Default keywords
+const NewsApi = ({ onLoad }) => {
+    const [newsArticles, setNewsArticles] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [selectedKeyword, setSelectedKeyword] = useState("lgbt");
+    const NewsApiKey = import.meta.env.VITE_APP_NEWSAPI_KEY 
 
-  useEffect(() => {
-    fetchNewsArticles();
-  }, [keywords]); 
+    const keywordOptions = [
+        { value: "equality", label: "equality" },
+        { value: "politics", label: "politics" },
+        { value: "global issues", label: "global issues" },
+        { value: "lgbt rights", label: "lgbt rights" },
+        { value: "global warming", label: "global warming" },
+        { value: "ukraine", label: "ukraine" },
+        { value: "palestine", label: "palestine" },
+        { value: "israel", label: "israel" },
 
-  const fetchNewsArticles = async () => {
-    try {
-      let allArticles = [];
-      for (const keyword of keywords) {
-        const response = await fetch(`https://newsapi.org/v2/everything?q=everything&apiKey=${import.meta.env.VITE_APP_NEWSAPI_KEY}`);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch news articles for keyword: ${keyword}`);
+    ];
+
+    useEffect(() => {
+        if (selectedKeyword) {
+            fetchNewsArticles(selectedKeyword);
         }
-        const data = await response.json();
-        allArticles = allArticles.concat(data.articles);
-      }
-      setNewsArticles(allArticles);
-      setLoading(false);
-    } catch (error) {
-      setError(error.message);
-      setLoading(false);
-    }
-  };
+    }, [selectedKeyword]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+    const handleKeywords = (selectedOption) => {
+        setSelectedKeyword(selectedOption.value);
+    };
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+    const fetchNewsArticles = async (keyword) => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await fetch(`https://newsapi.org/v2/everything?q=${keyword}&apiKey=${NewsApiKey}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch news articles for keyword: ${keyword}`);
+            }
+            const data = await response.json();
+            // Filter out articles with no image
+            const filteredArticles = data.articles.filter(article => article.urlToImage);
+            setNewsArticles(filteredArticles);
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-  return (
-    <Container>
-      <Row xs={1} sm={2} md={3} lg={4} xl={4} xxl={4} className="g-4">
-        {newsArticles.map(article => (
-          <Col key={article.url}>
-            <Card
-              title={article.title}
-              imageSrc={article.urlToImage}
-              text={article.description}
-              updatedAt={article.publishedAt}
-              onClick={() => window.open(article.url, '_blank')} // Open the article link in a new tab
-            />
-          </Col>
-        ))}
-      </Row>
-    </Container>
-  );
+    return (
+        <div>
+            <Container>
+                <Row className="mb-3">
+                    <Form.Group as={Col} controlId="event_keyword mx-3">
+                        <Form.Label className="mt-4 fs-4 d-flex justify-content-center">
+                            Filter by Category
+                        </Form.Label>
+                        <Select
+                            onChange={handleKeywords}
+                            options={keywordOptions}
+                            className="py-4"
+                            classNamePrefix="select"
+                            name="event_keywords"
+                        />
+                    </Form.Group>
+                </Row>
+                {loading && <div>Loading...</div>}
+                {error && <div>Error: {error}</div>}
+                {!loading && !error && <NewsCar newsArticles={newsArticles} />}
+            </Container>
+        </div>
+    );
 };
 
 export default NewsApi;

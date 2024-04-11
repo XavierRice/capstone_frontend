@@ -12,13 +12,35 @@ import ProofHero from "../Components/SocialProof/ProofHero";
 import DonationsLayout from "../Components/BentoBoxes/DonationsLayout";
 import CardLayout from "../Components/BentoBoxes/CardsLayout/Cards";
 import Footer from "../Components/Footer/Footer";
-import { AuthData } from '../Provider/AuthProv'
+import AllEventsBlock from "../Components/AllEventsBlock/AllEventsBlock";
+import InfoBlock from "../Components/InfoBlock";
+import factsImg from "../assets/facts1.jpg";
+import tag1 from "../assets/Tag1.jpg";
+import Voice from "../assets/newimg.svg";
+import Midsection from "../assets/Midsection.svg";
+import { AuthData } from "../Provider/AuthProv";
+import { useAdaptiveTriggers } from "../Hooks/AdaptiveConfig";
+import "./Homepage.css";
 
-function Homepage() {
-	const { user } = useContext(AuthData)
+function Homepage({ backendEvents }) {
+	const { user } = useContext(AuthData);
+	console.log("Homepage events:", backendEvents);
 	const [isResponsive, setIsResponsive] = useState(false);
 
-	console.log(user)
+	const adaptiveWidth = useAdaptiveTriggers({
+		onSmallEnter: () =>
+			console.log("its small, apply small parallax props now"),
+		onExtraSmallEnter: () =>
+			console.log("its extra small, apply extra small parallax props now"),
+		onMediumEnter: () =>
+			console.log("its medium, apply medium parallax props now"),
+		onLargeEnter: () =>
+			console.log("its large, apply large parallax props now"),
+		onExtraLargeEnter: () =>
+			console.log("its extra large, apply extra large parallax props now"),
+	});
+
+	//console.log(adaptiveWidth);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -39,7 +61,7 @@ function Homepage() {
 	return (
 		<div className="d-flex justify-content-center align-items-center parallax-container">
 			<Parallax
-				pages={4.5}
+				pages={4.3}
 				ref={parallaxRef}
 				className="parallax-container"
 				style={{
@@ -51,16 +73,24 @@ function Homepage() {
 					backgroundRepeat: "no-repeat",
 				}}
 			>
-				<div className="btn top-50 start-50 translate-middle my-5 btn-class">
-					<Button
+				<div
+					className="btn top-50 start-50 translate-middle my-5 btn-class position-abosolu"
+					// style={{ zIndex: "10 !important" }}
+				>
+					{/* <Button
 						variant=""
 						style={{
 							color: "#ffffff",
 							cursor: "pointer",
+							position: "absolute",
+							top: "55%",
+							left: "50%",
+							transform: "translate(-50%, -50%)",
+							zIndex: 10,
 						}}
 					>
 						Start Event
-					</Button>
+					</Button> */}
 				</div>
 				{/* navigation */}
 				<ParallaxLayer
@@ -78,49 +108,60 @@ function Homepage() {
 						<MainNavigationBar scrolling={scrolling} />
 					)}
 				</ParallaxLayer>
-
+				{/* page 1 */}
 				<ParallaxLayer
 					offset={0.7}
 					speed={0}
-					factor={2}
+					factor={1.1}
 					style={{ backgroundColor: "white", borderRadius: "30px" }}
 					className=" d-flex justify-content-center"
 				>
-					<DonationsLayout />
+					<AllEventsBlock backendEvents={backendEvents} />
 				</ParallaxLayer>
+				{/* page 2 */}
 				<ParallaxLayer
-					offset={1.7}
-					speed={0}
-					factor={1.2}
-					className=" d-flex justify-content-center"
-					style={{ backgroundColor: "white" }}
-				>
-					<TrustAndSafety />
-				</ParallaxLayer>
-				<ParallaxLayer
-					offset={2.1}
+					offset={1.6}
 					speed={0}
 					factor={1}
 					className=" d-flex justify-content-center"
+					style={{ background: `white` }}
+				>
+					<div
+						style={{
+							height: "92%",
+							width: "100%",
+							backgroundRepeat: "no-repeat",
+							backgroundSize: "100%",
+							backgroundImage: `url(${Voice})`,
+						}}
+					></div>
+				</ParallaxLayer>
+				{/* page 3 */}
+				<ParallaxLayer
+					offset={2.45}
+					speed={0}
+					factor={0.5}
+					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
-					<CardLayout />
+					<InfoBlock />
 				</ParallaxLayer>
+				{/* page 4 */}
 				<ParallaxLayer
-					offset={3}
+					offset={2.87}
 					speed={0}
 					factor={1.4}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
-					<ProofHero />
+					<DonationsLayout backendEvents={backendEvents} />
 				</ParallaxLayer>
 
-				<ParallaxLayer offset={4.28} factor={1}>
+				<ParallaxLayer offset={3.98} factor={1}>
 					<Footer />
 				</ParallaxLayer>
 			</Parallax>
-			{isResponsive && (
+			{/* {isResponsive && (
 				<div className="sticky-footer">
 					<Button
 						className="btn"
@@ -133,7 +174,7 @@ function Homepage() {
 						Start Event
 					</Button>
 				</div>
-			)}
+			)} */}
 		</div>
 	);
 }
