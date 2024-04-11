@@ -9,7 +9,7 @@ function SearchBar({ onSearch }) {
 	const [searchInput, setSearchInput] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
-	const newsAPIKey = import.meta.env.VITE_APP_NEWSAPI_KEY;
+	const newsAPIKey = import.meta.env.VITE_X_NEWSAPI_KEY;
 	const navigate = useNavigate();
 	//no api keys shared
 
@@ -60,9 +60,9 @@ function SearchBar({ onSearch }) {
 
 			navigate(`/search-results?keyword=${searchInput}`, {
 				state: {
-					eventsData: eventsResponse.data.data,
-					newsData: newsResponse.data.data,
-					newsAPIResponse: newsAPIResponse.data.articles,
+					eventsData: eventsResponse?.data.data,
+					newsData: newsResponse?.data.data,
+					newsAPIResponse: newsAPIResponse?.data.articles,
 				},
 			});
 		} catch (error) {
