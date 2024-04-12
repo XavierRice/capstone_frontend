@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useAsyncError, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import {
 	FacebookShareButton,
 	EmailShareButton,
@@ -78,6 +78,7 @@ function EventDetailsPage() {
 	};
 
 	const { event } = location.state;
+	console.log(event)
 	const eventUserId = event?.user_id;
 
 	console.log(eventUserId);

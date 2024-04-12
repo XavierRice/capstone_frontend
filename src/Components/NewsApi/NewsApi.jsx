@@ -12,7 +12,7 @@ const NewsApi = ({ onLoad }) => {
 	const [error, setError] = useState(null);
 	const [selectedKeyword, setSelectedKeyword] = useState("politics");
 	const NewsApiKey =
-		import.meta.env.VITE_X_NEWSAPI_KEY || "34f016ffbcd9498fa866ebfdcfd61e73";
+		import.meta.env.VITE_X_NEWSAPI_KEY || import.meta.env.VITE_APP_NEWSAPI_KEY;
 	const keywordOptions = [
 		{ value: "equality", label: "equality" },
 		{ value: "politics", label: "politics" },

@@ -84,9 +84,9 @@ const Events = () => {
 
 	const handleCardClick = (eventObj) => {
 		console.log("you clicked me", eventObj);
-		setClickedEvent(eventObj)
-		axios.get(`${backend}/events/${eventObj.event_id}`).then(res => setFetchedEvent(res.data)).catch(err => console.log(err))
-		 navigate("/discover/events-details", { state: { event: fetchedEvent } });
+		// setClickedEvent(eventObj)
+		// axios.get(`${backend}/events/${eventObj.event_id}`).then(res => setFetchedEvent(res.data)).catch(err => console.log(err))
+		 navigate(`/discover/event-details/${eventObj.event_id}`, { state: { event: eventObj } });
 	};
 
 	const handleImageLoad = () => {
@@ -122,7 +122,7 @@ const Events = () => {
 									className="border-0"
 									cardObj={eventObj}
 									tag={"Event"}
-									cardClick={() => handleCardClick(eventObj)}
+									cardClick={() => handleCardClick(eventObj.id)}
 								/>
 							</Col>
 						))}
