@@ -51,9 +51,9 @@ const News = () => {
 		}
 	};
 	return (
-		<div className=" p-3" style={{ paddingLeft: "9%", paddingRight: "9%" }}>
+		<div className=" pt-4 " style={{ marginLeft: "5%", marginRight: "5%" }}>
 			<div
-				className="d-flex justify-content-center fs-2 m-3"
+				className="d-flex justify-content-center fs-2 mb-4"
 				style={{ color: "#630f76" }}
 			>
 				News & Buzz

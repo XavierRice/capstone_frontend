@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useAsyncError, useNavigate } from "react-router";
+import {
+	FacebookShareButton,
+	EmailShareButton,
+	TwitterShareButton,
+} from "react-share";
 import axios from "axios";
 import "./EventDetailsPage.css";
 import { useLocation } from "react-router";
@@ -143,7 +148,11 @@ function EventDetailsPage() {
 
 	const displayMap = locationName && lat && lng;
 
-	let imageSrc = event.featureImageUrl ||event.logo_url || event.event_photo || defaultImage;
+	let imageSrc =
+		event.featureImageUrl ||
+		event.logo_url ||
+		event.event_photo ||
+		defaultImage;
 	const eventDate = formatDate(date);
 	const firstName = fetchedUser?.first_name;
 
@@ -168,8 +177,10 @@ function EventDetailsPage() {
 								<Col sm={6} md={6} className="">
 									<div className="mx-2 my-4">
 										<CiLocationOn className=" " />
-										<span className="fw-bold fs-5 ">Location</span>
-										<span className="fw-bold fs-6 d-block">{locationName}</span>
+										<span className="fw-bold fs-5 mx-2">Location</span>
+										<span className="fw-bold fs-6 d-block p-2">
+											{locationName}
+										</span>
 										{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
 											Map
 										</div> */}
@@ -179,7 +190,7 @@ function EventDetailsPage() {
 									<div className="mx-2 my-4">
 										<div className="m-2">
 											<CiCalendar className="" />
-											<span className="fw-bold fs-5 ">Time</span>
+											<span className="fw-bold fs-5 mx-2">Time</span>
 											<span className="fw-bold fs-6 d-block my-2">
 												{eventDate}
 											</span>
@@ -350,15 +361,21 @@ function EventDetailsPage() {
 								</div>
 								<div className="btn-action btn mx-4">
 									<CiFacebook />
-									<span className="mx-5 ">Share on Facebook</span>
+									<FacebookShareButton url="impactify.com" className="mx-5 ">
+										Share on Facebook
+									</FacebookShareButton>
 								</div>
 								<div className="btn-action btn m-4">
 									<CiTwitter />
-									<span className="mx-5 ">Share on Twitter</span>
+									<TwitterShareButton url="Impactify.com" className="mx-5 ">
+										Share on Twitter
+									</TwitterShareButton>
 								</div>
 								<div className="btn-action btn mx-4">
 									<MdAlternateEmail />
-									<span className="mx-5 ">Share via email</span>
+									<EmailShareButton url="impactify.com" className="mx-5 ">
+										Share via email
+									</EmailShareButton>
 								</div>
 							</Row>
 							<div className="d-flex justify-content-center my-3 fw-bold link">

@@ -140,15 +140,6 @@ const EventForm = () => {
 
 	console.log(stripeId);
 
-	// console.log(user_event)
-	// useEffect(() => {
-	//   fetch(`${backend}/events/${user_id}`)
-	//     .then((res) => res.json())
-	//     .then((res) => {
-
-	//     })
-	// })
-
 	return (
 		<Form className="" onSubmit={handleSubmit}>
 			<div>

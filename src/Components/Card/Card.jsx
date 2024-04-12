@@ -8,7 +8,7 @@ const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
 		<div onClick={onClick} style={{ cursor: "pointer" }}>
 			<div className="card border-0  bg-light border-none ">
 				<img
-					className=" p-2"
+					className=" p-2 card-img"
 					src={imageSrc}
 					alt="Card image"
 					onLoad={onLoad}

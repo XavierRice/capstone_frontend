@@ -39,9 +39,6 @@ function CardNew({ cardObj, tag, imageLoad, cardClick }) {
 					<span className="badge rounded-pill card-pill">{tag}</span>
 					<h5 className="card-title">{reducedCard.card_title}</h5>
 					<p className="card-text">{reducedCard.card_text}</p>
-					{/* <p className="card-text">
-                <small className="text-muted">Last updated {updatedAt}</small>
-            </p> */}
 				</div>
 			</div>
 		</div>
@@ -49,14 +46,3 @@ function CardNew({ cardObj, tag, imageLoad, cardClick }) {
 }
 
 export default CardNew;
-
-/* <Card style={{ width: '18rem', position: 'relative' }}>
-        <span className="badge rounded-pill custom-pill">{reducedCard.card_keywords[0]} </span> 
-      <Card.Img variant="top" src={reducedCard.card_photo} />
-      <Card.Body className='card-body'>
-        <Card.Title>{reducedCard.card_title}</Card.Title>
-        <Card.Text>
-          {reducedCard.card}
-        </Card.Text>
-      </Card.Body>
-    </Card>*/

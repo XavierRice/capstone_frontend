@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import {
+	FacebookShareButton,
+	EmailShareButton,
+	TwitterShareButton,
+} from "react-share";
 import RelatedEvents from "../RelatedEvents";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
@@ -9,8 +13,8 @@ import { CiTwitter } from "react-icons/ci";
 import { MdEmail } from "react-icons/md";
 import { Col, Row } from "react-bootstrap";
 import loader from "../LoadingState/LoadingState";
+import axios from "axios";
 import "./NewsDetails.css";
-
 const NewsDetails = () => {
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [relatedEvents, setReleatedEvents] = useState([]);
@@ -78,8 +82,7 @@ const NewsDetails = () => {
 										{news?.news_title || article.title}
 									</h4>
 									<div className="my-3">
-										<span className="mr-2">Written by</span>
-										<span className="mx-3">Published at</span>
+										<span className="mx-2">By {news?.news_author}</span>
 									</div>
 								</div>
 								<div style={{}}>
@@ -96,15 +99,21 @@ const NewsDetails = () => {
 										/>
 									</div>
 									<div className="share-icons mt-3">
-										<Link to="#" style={{ color: "#630f76" }}>
-											<FaFacebookF className="mx-2" />
-										</Link>
-										<Link to="#" style={{ color: "#630f76" }}>
-											<FaTwitter className="mx-2" />
-										</Link>
-										<Link to="#" style={{ color: "#630f76" }}>
-											<MdEmail className="mx-2" />
-										</Link>
+										<div to="#" style={{ color: "#630f76" }}>
+											<FacebookShareButton url="Impactify.com">
+												<FaFacebookF className="mx-2" />
+											</FacebookShareButton>
+										</div>
+										<div to="#" style={{ color: "#630f76" }}>
+											<TwitterShareButton url="Impactify.com">
+												<FaTwitter className="mx-2" />
+											</TwitterShareButton>
+										</div>
+										<div to="#" style={{ color: "#630f76" }}>
+											<EmailShareButton url="Impactify.com">
+												<MdEmail className="mx-2" />
+											</EmailShareButton>
+										</div>
 									</div>
 									<hr style={{ width: "54vw" }} />
 
