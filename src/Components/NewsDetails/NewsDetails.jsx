@@ -82,8 +82,7 @@ const NewsDetails = () => {
 										{news?.news_title || article.title}
 									</h4>
 									<div className="my-3">
-										<span className="mr-2">Written by</span>
-										<span className="mx-3">Published at</span>
+										<span className="mx-2">By {news?.news_author}</span>
 									</div>
 								</div>
 								<div style={{}}>

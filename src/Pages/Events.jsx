@@ -42,10 +42,10 @@ const Events = () => {
 						},
 					}
 				);
-				console.log("mobloize"+responseMoblize)
+				console.log("mobloize" + responseMoblize);
 				const events = responseMoblize.data.data;
 				fetchedImageEvents = events
-					.filter((event) => event.featured_image_url )
+					.filter((event) => event.featured_image_url)
 					.map(
 						({
 							id,
@@ -75,11 +75,11 @@ const Events = () => {
 		};
 		fetchEvents();
 	}, []);
-console.log(imageEvents)
+	console.log(imageEvents);
 
 	useEffect(() => {
-		setAllEvents([...eventsData, ]);
-	}, [eventsData, ]);
+		setAllEvents([...eventsData]);
+	}, [eventsData]);
 
 	const handleCardClick = (eventData) => {
 		console.log("you clicked me", eventData);
@@ -97,7 +97,7 @@ console.log(imageEvents)
 		: allEvents;
 
 	return (
-		<div className="">
+		<div className="" style={{ marginLeft: "5%", marginRight: "5%" }}>
 			{loading ? (
 				<div className="loader-wrapper">
 					<div className="loader"></div>
@@ -109,15 +109,18 @@ console.log(imageEvents)
 					</Row>
 					<Row className="d-flex justify-content-center">
 						{allEvents.map((event, index) => (
-							<Col key={`${event.id||index+"A"}-events-${index}`|| index} sm={6} md={3}>
-								<div className="p-3">
-									<CardNew
-										className="border-0"
-										cardObj={event}
-										tag={"Event"}
-										cardClick={() => handleCardClick(event)}
-									/>
-								</div>
+							<Col
+								key={`${event.id || index + "A"}-events-${index}` || index}
+								sm={6}
+								md={3}
+								className="pb-3"
+							>
+								<CardNew
+									className="border-0"
+									cardObj={event}
+									tag={"Event"}
+									cardClick={() => handleCardClick(event)}
+								/>
 							</Col>
 						))}
 					</Row>
@@ -125,6 +128,5 @@ console.log(imageEvents)
 			)}
 		</div>
 	);
-
 };
 export default Events;
