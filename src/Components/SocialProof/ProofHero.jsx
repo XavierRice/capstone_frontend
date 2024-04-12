@@ -63,9 +63,6 @@ const ProofHero = () => {
 					{/* Column for Video */}
 					<div className="col-md-6 p-3" style={{ cursor: "pointer" }}>
 						<div className=" p-3" onClick={() => setShowVideo(!showVideo)}>
-							{/* <div className="d-flex justify-content-center">
-							<Button>Press Play</Button>
-						</div> */}
 							{showVideo ? (
 								<div className="d-flex justify-content-center">
 									<ReactPlayer
@@ -88,11 +85,6 @@ const ProofHero = () => {
 					</div>
 				</div>
 			</div>
-			{/* <div className="text-center mt-3">
-				<button onClick={handleButtonClick}>
-					{showVideo ? "Hide Video" : "Show Video"}
-				</button>
-			</div> */}
 		</div>
 	);
 };
