@@ -51,9 +51,9 @@ const News = () => {
 		}
 	};
 	return (
-		<div className="mt-2 p-3">
+		<div className=" pt-4 " style={{ marginLeft: "5%", marginRight: "5%" }}>
 			<div
-				className="d-flex justify-content-center fs-2"
+				className="d-flex justify-content-center fs-2 mb-4"
 				style={{ color: "#630f76" }}
 			>
 				News & Buzz
@@ -64,11 +64,11 @@ const News = () => {
 				</div>
 			) : (
 				<Row className="d-flex justify-content-center">
-					<div className=" mx-3 fs-4 m-3 d-flex justify-content-center">
+					{/* <div className=" mx-3 fs-4 m-3 d-flex justify-content-center">
 						Trending Topics
-					</div>
+					</div> */}
 					{newsData.map((news) => (
-						<Col key={news.news_id} sm={6} md={3}>
+						<Col key={news.news_id} sm={6} md={3} className="pb-4">
 							<Card
 								id={news.news_id}
 								title={news.news_title}

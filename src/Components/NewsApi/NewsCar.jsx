@@ -78,9 +78,9 @@ const NewsCar = ({ newsArticles }) => {
 				>
 					<Card className="border-0">
 						<Card.Img
-							className="bg-light"
+							className="bg-light p-2"
 							variant="top"
-							style={{ padding: "5%" }}
+							style={{ borderRadius: "15px" }}
 							src={article.urlToImage || NoImage}
 							alt={article.title}
 						/>
