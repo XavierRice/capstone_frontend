@@ -51,7 +51,7 @@ const News = () => {
 		}
 	};
 	return (
-		<div className=" p-4" style={{ marginLeft: "5%", marginRight: "5%" }}>
+		<div className=" pt-4 " style={{ marginLeft: "5%", marginRight: "5%" }}>
 			<div
 				className="d-flex justify-content-center fs-2 mb-4"
 				style={{ color: "#630f76" }}
