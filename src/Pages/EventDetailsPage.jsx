@@ -159,6 +159,7 @@ function EventDetailsPage() {
 	let eventKeyword = event.event_keywords[0];
 
 	return (
+	
 		<div className="my-4 event-details-container" styles={{}}>
 			{loading ? (
 				<div className="loader-wrapper">

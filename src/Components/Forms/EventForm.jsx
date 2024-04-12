@@ -13,9 +13,9 @@ import KeywordsIcons from "./KeywordsIcons";
 
 const backend = import.meta.env.VITE_BACKEND_URL;
 
-const EventForm = () => {
-	const { user } = useContext(AuthData);
-	let { user_id } = useParams();
+const EventForm = ({user}) => {
+	// const { user } = useContext(AuthData);
+	// let { user_id } = useParams();
 	const naviagte = useNavigate();
 
 	const [isDonation, setIsDonation] = useState(false);
@@ -25,7 +25,7 @@ const EventForm = () => {
 	const [lng, setLng] = useState(0);
 	const [stripeId, setStripeId] = useState("");
 	const [error, setError] = useState(false);
-	const [userId, setUserId] = useState(user_id);
+	const [userId, setUserId] = useState(user.user_id);
 	const [user_keywords, setUserKeywords] = useState([]);
 	const [user_event, setUser_Event] = useState({
 		user_id: userId,
