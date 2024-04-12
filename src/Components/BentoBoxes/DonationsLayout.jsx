@@ -13,7 +13,7 @@ import nowar from "../../assets/nowar.svg";
 
 function DonationsLayout({ backendEvents }) {
 	const navigate = useNavigate();
-	console.log("donationeevents", backendEvents);
+	// console.log("donationeevents", backendEvents);
 	const ukraineEvent = backendEvents[7];
 	const handleDonationNavigate = () => {
 		navigate("/discover/events-details", { state: { event: ukraineEvent } });

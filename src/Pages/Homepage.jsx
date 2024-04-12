@@ -24,7 +24,7 @@ import "./Homepage.css";
 
 function Homepage({ backendEvents }) {
 	const { user } = useContext(AuthData);
-	console.log("Homepage events:", backendEvents);
+	// console.log("Homepage events:", backendEvents);
 	const [isResponsive, setIsResponsive] = useState(false);
 
 	const adaptiveWidth = useAdaptiveTriggers({
