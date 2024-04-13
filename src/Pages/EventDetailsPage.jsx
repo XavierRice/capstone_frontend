@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import {
 	FacebookShareButton,
@@ -22,15 +22,18 @@ import {
 	CiTwitter,
 } from "react-icons/ci";
 import { IoMegaphoneSharp } from "react-icons/io5";
-import { AuthData } from "../Provider/AuthProv";
+import { useAuthDataProvider } from "../Provider/AuthProv";
 import loader from "../Components/LoadingState/LoadingState";
 
 function EventDetailsPage() {
-	const navigate = useNavigate();
 	const location = useLocation();
-	const { user } = useContext(AuthData);
-	const backend = import.meta.env.VITE_BACKEND_URL;
+    const { selectedEvent} = location.state || {};
+	const eventUserId = selectedEvent?.user_id;
 
+	const navigate = useNavigate();
+	const { user } = useAuthDataProvider()
+	const backend = import.meta.env.VITE_BACKEND_URL;
+	const [featuredEvent, setFeatureEvent] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	const [showDonationButton, setShowDonationButton] = useState(false);
@@ -44,17 +47,6 @@ function EventDetailsPage() {
 		email: "",
 		mobile: "",
 	});
-
-	useEffect(() => {
-		if (fetchedUser) {
-			setRegisteredGuest({
-				name: fetchedUser.first_name || "",
-				lastname: fetchedUser.last_name || "",
-				email: fetchedUser.email || "",
-				mobile: "",
-			});
-		}
-	}, [user]);
 
 	const handleTextChange = (event) => {
 		const { name, value } = event.target;
@@ -77,19 +69,15 @@ function EventDetailsPage() {
 		setChecked(!checked);
 	};
 
-	const { event } = location.state;
-	console.log(event)
-	const eventUserId = event?.user_id;
-
-	console.log(eventUserId);
 
 	useEffect(() => {
 		const fetchUser = async () => {
 			try {
-				const response = await axios.get(`${backend}/users/${eventUserId}`);
+				const response = await axios.get(`${backend}/users/${selectedEvent.user_id}`);
 				let user = response.data;
 				console.log(user);
 				setFetchedUser(user);
+				setLoading(true)
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			} finally {
@@ -99,11 +87,23 @@ function EventDetailsPage() {
 			}
 		};
 		fetchUser();
-	}, [backend, eventUserId]);
+	}, []);
 
 	useEffect(() => {
+		if (fetchedUser) {
+			setRegisteredGuest({
+				name: fetchedUser.first_name || "",
+				lastname: fetchedUser.last_name || "",
+				email: fetchedUser.email || "",
+				mobile: "",
+			});
+		}
+	}, [user]);
+
+	useEffect(() => {
+		console.log(selectedEvent)
 		console.log(fetchedUser);
-	}, [fetchedUser]);
+	}, [fetchedUser, selectedEvent]);
 
 	const {
 		event_id,
@@ -113,13 +113,13 @@ function EventDetailsPage() {
 		event_time: time,
 		event_details,
 		event_location: locationName,
-		event_photo,
+		event_photo: image,
 		lat,
 		lng,
 		is_virtual: isVirtual = false,
 		stripe_id,
 		rsvp = true, // Provide a default value in case it's missing
-	} = event;
+	} = selectedEvent;
 
 	useEffect(() => {
 		if (stripe_id) {
@@ -144,23 +144,23 @@ function EventDetailsPage() {
 	};
 
 	const hasRequiredKeys = ["event_location", "lat", "lng"].every((key) =>
-		Object.keys(event).includes(key)
+		Object.keys(selectedEvent).includes(key)
 	);
 
 	const displayMap = locationName && lat && lng;
 
 	let imageSrc =
-		event.featureImageUrl ||
-		event.logo_url ||
-		event.event_photo ||
+		image ||
+		selectedEvent.logo_url ||
+		selectedEvent.event_photo ||
 		defaultImage;
-	const eventDate = formatDate(date);
+	// const eventDate = formatDate(date);
 	const firstName = fetchedUser?.first_name;
 
-	let eventKeyword = event.event_keywords[0];
+	let eventKeyword = selectedEvent.event_keywords[0];
 
 	return (
-	
+
 		<div className="my-4 event-details-container" styles={{}}>
 			{loading ? (
 				<div className="loader-wrapper">
@@ -181,7 +181,7 @@ function EventDetailsPage() {
 										<CiLocationOn className=" " />
 										<span className="fw-bold fs-5 mx-2">Location</span>
 										<span className="fw-bold fs-6 d-block p-2">
-											{locationName}
+											{/* {locationName || 'unavilable' } */}
 										</span>
 										{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
 											Map
@@ -194,10 +194,10 @@ function EventDetailsPage() {
 											<CiCalendar className="" />
 											<span className="fw-bold fs-5 mx-2">Time</span>
 											<span className="fw-bold fs-6 d-block my-2">
-												{eventDate}
+												{eventDate || 'unavilable'}
 											</span>
 											<span className="fw-bold fs-6 d-block">
-												{formatTime(time)}
+												{/* {formatTime(time) || selectedEvent.event_time} */}
 											</span>
 										</div>
 										{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
@@ -208,7 +208,7 @@ function EventDetailsPage() {
 							</Row>
 							<Row className="my-2 ">
 								<div className="fs-4 fw-bold my-">About this event</div>
-								<div className=" my-2">{event_details}</div>
+								{/* <div className=" my-2">{event_details}</div> */}
 							</Row>
 							<hr className="my-4" />
 							<Row>
@@ -238,14 +238,14 @@ function EventDetailsPage() {
 										Walking
 									</button>
 								</div>
-								<div className="">
+								{/* <div className="">
 									<GoogleMap
 										location={locationName}
 										lat={lat}
 										lng={lng}
 										travelMode={travelMode}
 									/>
-								</div>
+								</div> */}
 							</Row>
 						</Col>
 						<Col sm={11} md={4} className="">
@@ -363,19 +363,19 @@ function EventDetailsPage() {
 								</div>
 								<div className="btn-action btn mx-4">
 									<CiFacebook />
-									<FacebookShareButton url="impactify.com" className="mx-5 ">
+									<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
 										Share on Facebook
 									</FacebookShareButton>
 								</div>
 								<div className="btn-action btn m-4">
 									<CiTwitter />
-									<TwitterShareButton url="Impactify.com" className="mx-5 ">
+									<TwitterShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
 										Share on Twitter
 									</TwitterShareButton>
 								</div>
 								<div className="btn-action btn mx-4">
 									<MdAlternateEmail />
-									<EmailShareButton url="impactify.com" className="mx-5 ">
+									<EmailShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
 										Share via email
 									</EmailShareButton>
 								</div>

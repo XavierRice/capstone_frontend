@@ -98,7 +98,7 @@ function Content({backendEvents}) {
 				<Route path="/discover/events-details/:id" element={<EventDetailsPage />} />
 				<Route path="/search-results" element={<SearchResultPage />} />
 				<Route path="/discover/news" element={<News />} />
-				<Route path="/discover/events/" element={<Events  backendEvents={backendEvents}/>} />
+				<Route path="/discover/events" element={<Events  backendEvents={backendEvents}/>} />
 				<Route path="/discover/donations" element={<Donations />} />
 				<Route path="/discover/users/login" element={<LoginPage />} />
 				<Route path="/discover/users/signup" element={<SignUpPage />} />
