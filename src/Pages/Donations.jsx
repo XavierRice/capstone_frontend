@@ -66,10 +66,12 @@ function Donations() {
 							borderRadius: "15px",
 							marginBottom: "33px",
 							alignItems: "center",
+							maxHeight: "478px",
+							minHeight: "478px",
 						}}
 					>
 						<Donation1 />
-						<div className="donation-info mt-4">
+						<div className="donation-info mt-2">
 							<p className="fw-semibold mt-2 d-flex justify-content-center ">
 								Beatrice Li
 							</p>
@@ -78,7 +80,11 @@ function Donations() {
 									src={climateUser}
 									alt="userpic"
 									className="img-fluid p-2"
-									style={{ width: "85%", height: "auto", borderRadius: "15px" }}
+									style={{
+										width: "85%",
+										height: "auto",
+										borderRadius: "15px",
+									}}
 								/>
 							</div>
 							<div className="m-4 ">
@@ -97,8 +103,10 @@ function Donations() {
 						className="card"
 						style={{
 							borderRadius: "15px",
-							marginBottom: "33px",
+
 							alignItems: "center",
+							maxHeight: "478px",
+							minHeight: "478px",
 						}}
 					>
 						<ClimateBuy />
@@ -128,7 +136,8 @@ function Donations() {
 						className="card"
 						style={{
 							borderRadius: "15px",
-							marginBottom: "33px",
+							maxHeight: "478px",
+							minHeight: "478px",
 							alignItems: "center",
 						}}
 					>
@@ -142,10 +151,10 @@ function Donations() {
 									src={ukraineUser}
 									alt="userpic"
 									className="img-fluid p-2"
-									style={{ width: "60%", height: "25vh", borderRadius: "15px" }}
+									style={{ width: "60%", height: "28vh", borderRadius: "15px" }}
 								/>
 							</div>
-							<p className="m-4">{donate3}</p>
+							<p className="m-3">{donate3}</p>
 							<div className=" d-flex justify-content-center">
 								<Progressbar donateAmount={donate3Amount} />
 							</div>
