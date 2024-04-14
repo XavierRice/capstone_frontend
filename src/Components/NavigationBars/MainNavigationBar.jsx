@@ -24,7 +24,7 @@ function MainNavigationBar() {
 		await logout();
 	};
 	
-	console.log(user)
+	// console.log(user)
 	useEffect(() => {
 		const handleResize = () => {
 			setIsResponsive(window.innerWidth <= 991);

@@ -31,8 +31,9 @@ function AuthProv({ children }) {
   }, [token])
 
   useEffect(() => {
-    if(user) {
+    if (user) {
       localStorage.setItem('user', JSON.stringify(user));
+      console.log('user auth', user)
     } else {
       localStorage.removeItem('user')
     }
@@ -43,9 +44,9 @@ function AuthProv({ children }) {
   const logout = () => {
     setToken(null);
     setUser(null);
-    localStorage.removeItem('token'); 
-    localStorage.removeItem('user'); 
-   
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+
   };
 
   return (

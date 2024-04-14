@@ -33,6 +33,7 @@ import SearchPage from "./Pages/Search/SearchPage";
 
 //NEWIMPORTS
 import FundraiseFacts from "./Pages/Fundraise/FundraiseFacts";
+import DetailsTest from "./Pages/Test/DetailsTest";
 
 function App() {
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
@@ -43,7 +44,7 @@ function App() {
 			try {
 				const response = await axios.get(`${backend}/events`);
 				let events = response.data.data;
-				 setBackendEvents(events);
+				setBackendEvents(events);
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			}
@@ -77,7 +78,7 @@ function App() {
 					element={
 						<>
 							<MainNavigationBar />
-							<Content  backendEvents={backendEvents}/>
+							<Content backendEvents={backendEvents} />
 							<Footer className="footer" />
 						</>
 					}
@@ -87,7 +88,7 @@ function App() {
 	);
 }
 
-function Content({backendEvents}) {
+function Content({ backendEvents }) {
 	return (
 		<div>
 			<Routes>
@@ -96,15 +97,16 @@ function Content({backendEvents}) {
 					element={<NewsDetailsPage />}
 				/>
 				<Route path="/discover/events-details/:id" element={<EventDetailsPage />} />
+				{/* <Route path="/discover/events-details/:id" element={<DetailsTest />} /> */}
 				<Route path="/search-results" element={<SearchResultPage />} />
 				<Route path="/discover/news" element={<News />} />
-				<Route path="/discover/events/" element={<Events  backendEvents={backendEvents}/>} />
+				<Route path="/discover/events" element={<Events backendEvents={backendEvents} />} />
 				<Route path="/discover/donations" element={<Donations />} />
 				<Route path="/discover/users/login" element={<LoginPage />} />
 				<Route path="/discover/users/signup" element={<SignUpPage />} />
 				<Route path="/discover/thankyou" element={<ThankYou />} />
 				<Route path="/discover/create-event" element={<CreateEventPage />} />
-				<Route path="/discover/test" element={<CivicInfo />} />
+				<Route path="/discover/test/:id" element={<DetailsTest/>} />
 				<Route path="/discover/facts" element={<FundraiseFacts />} />
 				<Route
 					path="/discover/create-event/donation"

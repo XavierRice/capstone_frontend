@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-// import {
-// 	FacebookShareButton,
-// 	EmailShareButton,
-// 	TwitterShareButton,
-// } from "react-share";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+	FacebookShareButton, EmailShareButton, TelegramShareButton
+} from 'react-share'
 import axios from "axios";
-import "./EventDetailsPage.css";
-
 import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
-import StripeBuy from "../Components/Stripe/StripeBuy";
-import GoogleMap from "../Components/Maps/GoogleMap";
-import defaultImage from "../assets/NoImage.jpg";
-import Event4Strip from "../Components/Stripe/Event4Stripe";
 import { MdAlternateEmail } from "react-icons/md";
 import { GoQuestion } from "react-icons/go";
 import {
@@ -21,21 +13,25 @@ import {
 	CiFacebook,
 	CiTwitter,
 } from "react-icons/ci";
+import StripeBuy from "../../Components/Stripe/StripeBuy";
+import GoogleMap from '../../Components/Maps/GoogleMap';
+import defaultImage from '../../assets/NoImage.jpg'
+import Event4Strip from "../../Components/Stripe/Event4Stripe";
 import { IoMegaphoneSharp } from "react-icons/io5";
-import { useAuthDataProvider } from "../Provider/AuthProv";
-import loader from "../Components/LoadingState/LoadingState";
+import { useAuthDataProvider } from '../../Provider/AuthProv'
+import loader from "../../Components/LoadingState/LoadingState"
 
-function EventDetailsPage() {
 
-	let location = useLocation();
+const DetailsTest = () => {
+	const [theEvent, setTheEvent] = useState(null)
+	const location = useLocation();
 	const navigate = useNavigate();
-	const { event } = location.state || { event: {} };
-	const eventUserId = event?.user_id;
-
 	const { user } = useAuthDataProvider()
 	const backend = import.meta.env.VITE_BACKEND_URL;
-	// const [featuredEvent, setFeatureEvent] = useState(null);
-	const [loading, setLoading] = useState(true);
+
+	const { event } = location.state || { event: {} };
+	const eventUserId = event?.user_id;
+	const [loading, setLoading] = useState(false);
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	// const [showDonationButton, setShowDonationButton] = useState(false);
 	const [showThankYouModal, setShowThankYouModal] = useState(false);
@@ -49,26 +45,44 @@ function EventDetailsPage() {
 		mobile: "",
 	});
 
-	// const handleTextChange = (event) => {
-	// 	const { name, value } = event.target;
-	// 	setRegisteredGuest({ ...registeredGuest, [name]: value });
-	// };
+	const handleTextChange = (event) => {
+		const { name, value } = event.target;
+		setRegisteredGuest({ ...registeredGuest, [name]: value });
+	}
 
-// const handleTextChange = (event) => {
-	// 	const { name, value } = event.target;
-	// 	setRegisteredGuest({ ...registeredGuest, [name]: value });
-	// }
+	const handleCloseOut = () => {
+		setTimeout(() => {
+			setShowThankYouModal(false); // Close the modal
+			navigate("/"); // Redirect to another page
+		}, 1000);
+	};
 
-	// const handleCloseOut = () => {
-	// 	setTimeout(() => {
-	// 		setShowThankYouModal(false); // Close the modal
-	// 		navigate("/"); // Redirect to another page
-	// 	}, 1000);
-	// };
+	const handleCheckboxChange = () => {
+		setChecked(!checked);
+	};
+	console.log("dtailestest", event)
 
-	// const handleCheckboxChange = () => {
-	// 	setChecked(!checked);
-	// };
+
+	const {
+		event_id,
+		user_id,
+		event_title: title,
+		event_date: date,
+		event_time: time,
+		event_details,
+		event_location: locationName,
+		event_photo: image,
+		lat,
+		lng,
+		is_virtual: isVirtual = false,
+		stripe_id,
+		rsvp = true, // Provide a default value in case it's missing
+	} = event;
+
+	useEffect(() => {
+		setTheEvent(event)
+	}, [])
+
 
 
 	useEffect(() => {
@@ -91,6 +105,7 @@ function EventDetailsPage() {
 		fetchUser();
 	}, []);
 
+
 	useEffect(() => {
 		if (fetchedUser) {
 			setRegisteredGuest({
@@ -100,50 +115,13 @@ function EventDetailsPage() {
 				mobile: "",
 			});
 		}
-	}, [fetchedUser]);
-
-	useEffect(() => {
-		console.log(event)
-		console.log(fetchedUser);
-	}, [fetchedUser, event]);
-
-	const {
-		event_id,
-		user_id,
-		event_title: title,
-		event_date: date,
-		event_time: time,
-		event_details,
-		event_location: locationName,
-		event_photo: image,
-		lat,
-		lng,
-		is_virtual: isVirtual = false,
-		stripe_id,
-		rsvp = true, // Provide a default value in case it's missing
-	} = event;
+	}, []);
 
 	useEffect(() => {
 		if (stripe_id) {
-			setBuyButtonId(stripe_id.toString());
+			setBuyButtonId(stripe_id);
 		}
 	}, [stripe_id]);
-
-	const formatDate = (timestamp) => {
-		if (typeof timestamp === "number") {
-			const date = new Date(timestamp * 1000);
-			return date.toLocaleDateString();
-		} else {
-			const cleanedupTimeStamp = timestamp?.toString()?.slice(0, -14);
-			return cleanedupTimeStamp;
-		}
-	};
-
-	const formatTime = (timeString) => {
-		const options = { hour: "numeric", minute: "2-digit", hour12: true };
-		const time = new Date(`1970-01-01T${timeString}`);
-		return time.toLocaleTimeString("en-US", options);
-	};
 
 	const hasRequiredKeys = ["event_location", "lat", "lng"].every((key) =>
 		Object.keys(event).includes(key)
@@ -158,14 +136,16 @@ function EventDetailsPage() {
 		defaultImage;
 	// const eventDate = formatDate(date);
 	const firstName = fetchedUser?.first_name;
-
 	let eventKeyword = event.event_keywords[0];
 
+
 	return (
+
 		<>
 			<h1>LMAO</h1>
 			<div className="my-4 event-details-container" styles={{}}>
-				{loading ? (
+			<h1>LMAO</h1>
+			{loading ? (
 					<div className="loader-wrapper">
 						<div className="loader"></div>
 					</div>
@@ -184,15 +164,15 @@ function EventDetailsPage() {
 											<CiLocationOn className=" " />
 											<span className="fw-bold fs-5 mx-2">Location</span>
 											<span className="fw-bold fs-6 d-block p-2">
-												{/* {locationName || 'unavilable' } */}
+												{locationName || 'unavilable' }
 											</span>
-											{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
+											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
 											Map
-										</div> */}
+										</div>
 										</div>
 									</Col>
 									<Col sm={6} md={6}>
-										<div className="mx-2 my-4">
+										{/* <div className="mx-2 my-4">
 											<div className="m-2">
 												<CiCalendar className="" />
 												<span className="fw-bold fs-5 mx-2">Time</span>
@@ -200,18 +180,18 @@ function EventDetailsPage() {
 													{eventDate || 'unavilable'}
 												</span>
 												<span className="fw-bold fs-6 d-block">
-													{/* {formatTime(time) || event.event_time} */}
+													{formatTime(time) || event.event_time}
 												</span>
 											</div>
-											{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
+											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
 											Map
-										</div> */}
 										</div>
+										</div> */}
 									</Col>
 								</Row>
 								<Row className="my-2 ">
 									<div className="fs-4 fw-bold my-">About this event</div>
-									{/* <div className=" my-2">{event_details}</div> */}
+									<div className=" my-2">{event_details}</div>
 								</Row>
 								<hr className="my-4" />
 								<Row>
@@ -241,14 +221,14 @@ function EventDetailsPage() {
 											Walking
 										</button>
 									</div>
-									{/* <div className="">
+									<div className="">
 									<GoogleMap
 										location={locationName}
 										lat={lat}
 										lng={lng}
 										travelMode={travelMode}
 									/>
-								</div> */}
+								</div>
 								</Row>
 							</Col>
 							<Col sm={11} md={4} className="">
@@ -318,12 +298,12 @@ function EventDetailsPage() {
 											</Form.Group>
 										</Form>
 										<div className="d-flex justify-content-center">
-											<button
+											{/* <button
 												className="btn fluid btn-register my-4"
 												onClick={handleEventRegister}
 											>
 												Register
-											</button>
+											</button> */}
 										</div>
 										<span className="d-block d-flex justify-content-center mb-3">
 											Powered by Impactify
@@ -390,9 +370,10 @@ function EventDetailsPage() {
 						</Row>
 					</>
 				)}
+
 			</div>
 		</>
 	);
-}
+};
 
-export default EventDetailsPage;
+export default DetailsTest;
