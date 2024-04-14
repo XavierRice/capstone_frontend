@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 function MainContent({ backendEvents }) {
 	const navigate = useNavigate();
 	// console.log(`This is maincontent:`, backendEvents);
-
+	const [selectedEvent, setSelectedEvent] = useState({})
 	const [startIndex, setStartIndex] = useState(0);
 	const eventsPerPage = 4;
 
@@ -22,7 +22,9 @@ function MainContent({ backendEvents }) {
 
 	const handleContentClick = (eventObj) => {
 		console.log("you clicked me", eventObj);
-		navigate(`/discover/event-details/${eventObj.event_id}`, { state: { event: eventObj } });
+		let selected = backendEvents.find((bkdEnvts) => bkdEnvts.event_id === eventObj.event_id);
+		setSelectedEvent(selected)
+		navigate(`/discover/eventdetails/${eventObj.event_id}`, { state: { event: selectedEvent } });
 	};
 
 	return (

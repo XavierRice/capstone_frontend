@@ -31,9 +31,9 @@ const DetailsTest = () => {
 
 	const { event } = location.state || { event: {} };
 	const eventUserId = event?.user_id;
-	const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(true);
 	const [travelMode, setTravelMode] = useState("DRIVING");
-	// const [showDonationButton, setShowDonationButton] = useState(false);
+	const [showDonationButton, setShowDonationButton] = useState(false);
 	const [showThankYouModal, setShowThankYouModal] = useState(false);
 	const [fetchedUser, setFetchedUser] = useState(null);
 	const [checked, setChecked] = useState(false);
@@ -151,9 +151,8 @@ const DetailsTest = () => {
 	return (
 
 		<>
-			<h1>LMAO</h1>
 			<div className="my-4 event-details-container" styles={{}}>
-			<h1>LMAO</h1>
+		
 			{loading ? (
 					<div className="loader-wrapper">
 						<div className="loader"></div>

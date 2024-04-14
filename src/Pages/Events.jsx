@@ -88,10 +88,7 @@ const Events = ({ backendEvents }) => {
 		console.log(eventObj)
 		const selectedEvent = backendEvents.find((bkdEnvts) => bkdEnvts.event_id === eventObj.event_id);
 		setClickedEvent(selectedEvent)
-
-		// navigate(`/discover/events-details/${eventObj.event_id}`);
-		// navigate(`/discover/events-details/${eventObj.event_id}`, { state: { event: selectedEvent } });
-		navigate(`/discover/test/${eventObj.event_id}`, { state: { event: selectedEvent } });
+		navigate(`/discover/eventdetails/${eventObj.event_id}`, { state: { event: selectedEvent } });
 		// navigate('/discover/test')
 	};
 

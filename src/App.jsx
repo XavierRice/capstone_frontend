@@ -94,7 +94,7 @@ function Content({ backendEvents }) {
 			<Routes>
 				<Route
 					path="/discover/news-details/:id"
-					element={<NewsDetailsPage />}
+					element={<NewsDetailsPage  />}
 				/>
 				<Route path="/discover/events-details/:id" element={<EventDetailsPage />} />
 				{/* <Route path="/discover/events-details/:id" element={<DetailsTest />} /> */}
@@ -106,7 +106,7 @@ function Content({ backendEvents }) {
 				<Route path="/discover/users/signup" element={<SignUpPage />} />
 				<Route path="/discover/thankyou" element={<ThankYou />} />
 				<Route path="/discover/create-event" element={<CreateEventPage />} />
-				<Route path="/discover/test/:id" element={<DetailsTest/>} />
+				<Route path="/discover/eventdetails/:id" element={<DetailsTest/>} />
 				<Route path="/discover/facts" element={<FundraiseFacts />} />
 				<Route
 					path="/discover/create-event/donation"

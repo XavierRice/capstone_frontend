@@ -18,6 +18,7 @@ import "./NewsDetails.css";
 const NewsDetails = () => {
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [relatedEvents, setReleatedEvents] = useState([]);
+	const [selectedEvent, setSeletedEvent] = useState({})
 	const [loading, setLoading] = useState(true);
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -44,8 +45,11 @@ const NewsDetails = () => {
 
 	// console.log(relatedEvents);
 
-	const handleReleatedClick = (event) => {
-		navigate("/discover/events-details", { state: { event: event } });
+	const handleReleatedClick = (eventObj) => {
+		
+		let selected = relatedEvents.find((releated) => releated.event_id === eventObj.event_id)
+		setSeletedEvent(selected)
+		navigate(`/discover/eventdetails/${eventObj.event_id}`, { state: { event: selectedEvent } });
 	};
 
 	const formatDate = (dateString) => {
@@ -139,16 +143,16 @@ const NewsDetails = () => {
 									</div>
 									<div className="purple-underline mb-4" style={{}}></div>
 
-									{relatedEvents?.slice(0, 3).map((event, index) => (
+									{relatedEvents?.slice(0, 3).map((eventObj, index) => (
 										<div
 											key={index}
 											className="box mx-4 card mb-3"
 											onClick={() => {
-												handleReleatedClick(event);
+												handleReleatedClick(eventObj);
 											}}
 										>
 											<img
-												src={event.event_photo}
+												src={eventObj.event_photo}
 												alt={`Event ${index + 1}`}
 												className="releated-event-image p-3"
 												style={{
@@ -160,24 +164,24 @@ const NewsDetails = () => {
 												key={index}
 												className="mx-4 bottom"
 												onClick={() => {
-													handleReleatedClick(event);
+													handleReleatedClick(eventObj);
 												}}
 											>
 												<div className="row mb-2">
 													<div className="col-6">
 														<div className="">
-															{formatDate(event.event_date)}
+															{formatDate(eventObj.event_date)}
 														</div>
 													</div>
 													<div className="col-6">
 														<div className="">
-															{formatTime(event.event_time)}
+															{formatTime(eventObj.event_time)}
 														</div>
 													</div>
 												</div>
 												<div className="col-12 text-center">
 													<div className="pb-3 event-title fw-semibold">
-														{event.event_title}
+														{eventObj.event_title}
 													</div>
 												</div>
 											</div>
