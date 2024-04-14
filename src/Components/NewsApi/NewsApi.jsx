@@ -96,9 +96,9 @@ const NewsApi = ({ onLoad }) => {
 		<div>
 			<div className=" mx-auto align-items-center  justify-content-center">
 				<Row className="mb-3 d-flex justify-content-center">
-					<Col xs={12} md={2}>
+					<Col xs={12} md={3}>
 						<Form.Group controlId="event_keyword">
-							<Form.Label className="mt-4 fs-4 d-flex justify-content-center ml-4">
+							<Form.Label className=" mt-2 fs-4 d-flex justify-content-center ">
 								Filter by Category
 							</Form.Label>
 						</Form.Group>
@@ -108,7 +108,7 @@ const NewsApi = ({ onLoad }) => {
 							<Select
 								onChange={handleKeywords}
 								options={keywordOptions}
-								className="py-4"
+								className="py-2"
 								classNamePrefix="select"
 								name="event_keywords"
 							/>

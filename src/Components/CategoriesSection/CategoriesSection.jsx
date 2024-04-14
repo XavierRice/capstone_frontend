@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useNavigate, Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import { Container, Row, Col } from "react-bootstrap";
 import { GiWorld } from "react-icons/gi";
@@ -15,41 +15,38 @@ function CategoriesSection({ onSelectCategory }) {
 	const [selectedCategory, setSelectedCategory] = useState(null);
 
 	// const navigateCategories = (category) => {
-    //     console.log('Category pressed:', category);
-    //     switch (category) {
-    //         case 'Local':
+	//     console.log('Category pressed:', category);
+	//     switch (category) {
+	//         case 'Local':
 	// 			console.log("you clicked me")
-    //             return navigate('/discover/events');
-    //         case 'Coming Up':
-    //             return navigate('/');
-    //         case 'Global Issues':
-    //             return navigate('/discover/news');
-    //         case 'Politics':
-    //             return navigate('/');
-    //         case 'Community':
-    //             return navigate('/discover/events');
-    //         case 'Donation':
-    //             return navigate('/discover/donations');
-    //         case 'All':
-    //             return navigate('/');
-    //         default:
-    //             console.log('Unknown category:', category);
-                
-    //     }
-    // };
-	
-	const handleClick = (category) => {
-		console.log('HERE I AM')
-		onSelectCategory(category);
-		navigateCategories(category)
+	//             return navigate('/discover/events');
+	//         case 'Coming Up':
+	//             return navigate('/');
+	//         case 'Global Issues':
+	//             return navigate('/discover/news');
+	//         case 'Politics':
+	//             return navigate('/');
+	//         case 'Community':
+	//             return navigate('/discover/events');
+	//         case 'Donation':
+	//             return navigate('/discover/donations');
+	//         case 'All':
+	//             return navigate('/');
+	//         default:
+	//             console.log('Unknown category:', category);
 
+	//     }
+	// };
+
+	const handleClick = (category) => {
+		console.log("HERE I AM");
+		onSelectCategory(category);
+		navigateCategories(category);
 	};
 
-
-
 	const testClick = (category) => {
-		console.log("ME" + category)
-	}
+		console.log("ME" + category);
+	};
 
 	return (
 		<div className="">
@@ -61,20 +58,16 @@ function CategoriesSection({ onSelectCategory }) {
 				<Col sm={10} xs={7} className="text-center">
 					<div className="categories-container d-flex justify-content-center">
 						<Row>
-							<Link
-
-							to={'discover/events'} key={"Popular-1"}
-								className={`mx-3 categories-container ${
-									selectedCategory === "Local" ? "selected" : ""
-								}`}
-								// onClick={() =>testClick("This")}
-
+							<div
+								to={"discover/events"}
+								key={"Popular-1"}
+								className={`mx-3 categories-container `}
 							>
 								<IoLocationOutline
 									style={{ fontSize: "44px", color: "#630f76" }}
 								/>
 								<div className="fs-6 fw-semibold">Local</div>
-							</Link>
+							</div>
 						</Row>
 						<Row>
 							<div
@@ -91,10 +84,9 @@ function CategoriesSection({ onSelectCategory }) {
 							</div>
 						</Row>
 						<Row>
-							<Link
-							to={ 'discover/news'}
-							key={"Popular-3"}
-
+							<div
+								to={"discover/news"}
+								key={"Popular-3"}
 								className={`mx-3 ${
 									selectedCategory === "Global Issues" ? "selected" : ""
 								}`}
@@ -102,11 +94,11 @@ function CategoriesSection({ onSelectCategory }) {
 							>
 								<GiWorld style={{ fontSize: "44px", color: "#630f76" }} />
 								<div className="fs-6 fw-semibold">Global</div>
-							</Link>
+							</div>
 						</Row>
 						<Row>
 							<div
-							key={"Popular-4"}
+								key={"Popular-4"}
 								className={`mx-3 ${
 									selectedCategory === "Politics" ? "selected" : ""
 								}`}
@@ -120,7 +112,7 @@ function CategoriesSection({ onSelectCategory }) {
 						</Row>
 						<Row>
 							<div
-							key={"Popular-5"}
+								key={"Popular-5"}
 								className={`mx-3 ${
 									selectedCategory === "Community" ? "selected" : ""
 								}`}
@@ -131,9 +123,9 @@ function CategoriesSection({ onSelectCategory }) {
 							</div>
 						</Row>
 						<Row>
-							<Link
-							to={'discover/donations'}
-							key={"Popular-6"}
+							<div
+								to={"discover/donations"}
+								key={"Popular-6"}
 								className={`mx-3 ${
 									selectedCategory === "Donation" ? "selected" : ""
 								}`}
@@ -141,11 +133,11 @@ function CategoriesSection({ onSelectCategory }) {
 							>
 								<BiDonateHeart style={{ fontSize: "44px", color: "#630f76" }} />
 								<div className="fs-6 fw-semibold">Donation</div>
-							</Link>
+							</div>
 						</Row>
 						<Row>
 							<div
-							key={"Popular-7"}
+								key={"Popular-7"}
 								className={`mx-3 ${
 									selectedCategory === "All" ? "selected" : ""
 								}`}

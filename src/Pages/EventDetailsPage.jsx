@@ -248,11 +248,11 @@ function EventDetailsPage() {
 						</Col>
 						<Col sm={11} md={4} className="">
 							<Row
-								className="attend-event p-2 m-1 custom-bg justify-content-center"
+								className="attend-event p-2 my-1 custom-bg justify-content-center"
 								style={{ borderRadius: "15px" }}
 							>
 								{stripe_id != null ? (
-									<div className="m-1">
+									<div className="m-1" style={{ marginLeft: "0px" }}>
 										<StripeBuy buyButtonId={buyButtonId} />
 									</div>
 								) : (

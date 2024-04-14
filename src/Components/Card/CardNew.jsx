@@ -27,18 +27,35 @@ function CardNew({ cardObj, tag, imageLoad, cardClick }) {
 			style={{ cursor: "pointer" }}
 			className="card border-0"
 		>
-			<div className={` ${styleClick ? "card-clicked" : ""}`}>
+			<div
+				className={`bg-light ${styleClick ? "card-clicked" : ""}`}
+				style={{ borderRadius: "15px 15px 0px 0px" }}
+			>
 				<img
-					className="card-img-top p-2 bg-light"
+					className="card-img-top p-2"
 					src={reducedCard.card_photo}
 					alt="Card image"
 					onLoad={imageLoad}
-					style={{ borderRadius: "15px" }}
+					style={{ borderRadius: "15px 15px", minHeight: "200px" }}
 				/>
-				<div className="card-body bg-light">
+				<div className=" bg-light">
 					<span className="badge rounded-pill card-pill">{tag}</span>
-					<h5 className="card-title">{reducedCard.card_title}</h5>
-					<p className="card-text">{reducedCard.card_text}</p>
+					<h5
+						className="card-title d-flex justify-content-center"
+						style={{ overflow: "hidden", maxHeight: "30px" }}
+					>
+						{reducedCard.card_title}
+					</h5>
+					<p
+						className="card-text "
+						style={{
+							minHeight: "67px",
+							overflow: "hidden",
+							margin: "8px",
+						}}
+					>
+						{reducedCard.card_text}
+					</p>
 				</div>
 			</div>
 		</div>
