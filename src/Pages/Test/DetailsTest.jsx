@@ -18,7 +18,7 @@ import GoogleMap from '../../Components/Maps/GoogleMap';
 import defaultImage from '../../assets/NoImage.jpg'
 import Event4Strip from "../../Components/Stripe/Event4Stripe";
 import { IoMegaphoneSharp } from "react-icons/io5";
- import { useAuthDataProvider } from '../../Provider/AuthProv'
+import { useAuthDataProvider } from '../../Provider/AuthProv'
 import loader from "../../Components/LoadingState/LoadingState"
 import { useEffect, useState } from "react";
 
@@ -43,14 +43,11 @@ const DetailsTest = () => {
 	const { id } = useParams();
 	const { user, eventId } = useAuthDataProvider()
 	const backend = import.meta.env.VITE_BACKEND_URL;
-	
-	// // const { event } = location?.state || { event: {} };
-	// // const eventUserId = event?.user_id;
 	const [loading, setLoading] = useState(true);
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	const [showDonationButton, setShowDonationButton] = useState(false);
 	const [showThankYouModal, setShowThankYouModal] = useState(false);
-	const [fetchedUser, setFetchedUser] = useState(null);
+	const [User, setUser] = useState(null);
 	const [checked, setChecked] = useState(false);
 	const [buyButtonId, setBuyButtonId] = useState(null);
 	const [registeredGuest, setRegisteredGuest] = useState({
@@ -102,35 +99,20 @@ const DetailsTest = () => {
 	} = theEvent;
 
 	useEffect(() => {
-			axios.get(`${backend}/events/${id}`).then(res => {
-				setTheEvent(res.data)
-				try {
-					// const response = axios.get(`${backend}/users/${res.data.user_id}`);
-					// let user = response.data;
-					// console.log("eventsDetailsPage", user);
-					// setFetchedUser(user);
-					// setLoading(true)
-				} catch (error) {
-					console.error("Error Fetching Backend Events:", error);
-				} finally {
-					// Step 2: Delay transition to false for loading state
-	
-					setLoading(false);
-				}
-			}).catch(err => console.error(err))
-
-
-	
+		axios.get(`${backend}/events/${id}`).then(res => {
+			setTheEvent(res.data)
+		}
+		).catch(error => console.error(error)).finally(setLoading(false))
 	}, [])
 
 	// useEffect(() => {
 
-	// 	const fetchUser = async () => {
+	// 	const fetchUser = async (userid) => {
 	// 		try {
 	// 			const response = await axios.get(`${backend}/users/${theEvent.user_id}`);
-	// 			let user = response.data;
-	// 			console.log("eventsDetailsPage", user);
-	// 			setFetchedUser(user);
+	// 			let userProfile = response.data;
+	// 			console.log("eventsDetailsPage", userProfile);
+	// 			setFetchedUser(userProfile);
 	// 			setLoading(true)
 	// 		} catch (error) {
 	// 			console.error("Error Fetching Backend Events:", error);
@@ -144,16 +126,24 @@ const DetailsTest = () => {
 	// }, []);
 
 
-	useEffect(() => {
-		if (fetchedUser) {
-			setRegisteredGuest({
-				name: fetchedUser.first_name || "",
-				lastname: fetchedUser.last_name || "",
-				email: fetchedUser.email || "",
-				mobile: "",
-			});
-		}
-	}, []);
+	// useEffect(() => {
+		
+	// 	async function fetchUserData() {
+	// 		if (user) {
+	// 			try {
+	// 				const response = await axios.get(`${backend}/users/${user.user_id}`);
+	// 				const userProfile = response.data;
+	// 				console.log("User profile fetched:", userProfile);
+					
+	// 			} catch (error) {
+	// 				console.error("Error fetching user data:", error);
+	// 			} finally {
+	// 				setLoading(false); 
+	// 			}
+	// 		}
+	// 	}
+	// 	fetchUserData();
+	// }, []); // Dependency array is empty, runs only on the component mount
 
 	useEffect(() => {
 		if (stripe_id) {
@@ -173,17 +163,14 @@ const DetailsTest = () => {
 		theEvent.event_photo ||
 		defaultImage;
 
-	// const eventDate = theEvent.event_date.slice(0, 10)
-	// const firstName = fetchedUser?.first_name;
-	// let eventKeyword = theEvent.event_keywords[0];
 
 
 	return (
 
 		<>
 			<div className="my-4 event-details-container" styles={{}}>
-		
-			{loading ? (
+
+				{loading ? (
 					<div className="loader-wrapper">
 						<div className="loader"></div>
 					</div>
@@ -193,7 +180,7 @@ const DetailsTest = () => {
 						<div className="d-flex justify-content-center my-3"></div>
 						<Row className="mx-3 d-flex justify-content-center">
 							<Col sm={11} md={6}>
-								<Row style={{ height: "30%", marginBottom: "3%" }}>
+								<Row style={{ height: "30%", marginBottom: "7%" }}>
 									<img src={imageSrc} alt="Event" className="image" />
 								</Row>
 								<Row style={{ height: "12vh" }} className="">
@@ -202,11 +189,11 @@ const DetailsTest = () => {
 											<CiLocationOn className=" " />
 											<span className="fw-bold fs-5 mx-2">Location</span>
 											<span className="fw-bold fs-6 d-block p-2">
-												{locationName || 'unavilable' }
+												{locationName || 'unavilable'}
 											</span>
 											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
-											Map
-										</div>
+												Map
+											</div>
 										</div>
 									</Col>
 									<Col sm={6} md={6}>
@@ -214,16 +201,16 @@ const DetailsTest = () => {
 											<div className="m-2">
 												<CiCalendar className="" />
 												<span className="fw-bold fs-5 mx-2">Time</span>
-												{/* <span className="fw-bold fs-6 d-block my-2">
-													{eventDate}
-												</span> */}
-												{/* <span className="fw-bold fs-6 d-block">
-													{theEvent.event_time}
-												</span> */}
+												<span className="fw-bold fs-6 d-block my-2">
+													{theEvent?.event_date.slice(0, 10)}
+												</span>
+												<span className="fw-bold fs-6 d-block">
+													{theEvent?.event_time.slice(0,5)}pm
+												</span>
 											</div>
 											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
-											Map
-										</div>
+												Map
+											</div>
 										</div>
 									</Col>
 								</Row>
@@ -260,13 +247,13 @@ const DetailsTest = () => {
 										</button>
 									</div>
 									<div className="">
-									<GoogleMap
-										location={locationName}
-										lat={lat}
-										lng={lng}
-										travelMode={travelMode}
-									/>
-								</div>
+										<GoogleMap
+											location={locationName}
+											lat={lat}
+											lng={lng}
+											travelMode={travelMode}
+										/>
+									</div>
 								</Row>
 							</Col>
 							<Col sm={11} md={4} className="">
@@ -331,7 +318,7 @@ const DetailsTest = () => {
 													placeholder="mobile number"
 													value={registeredGuest.mobile}
 													name="mobile"
-													// onClick={() => handleTextChange(event)}
+												// onClick={() => handleTextChange(event)}
 												/>
 											</Form.Group>
 										</Form>
@@ -379,27 +366,27 @@ const DetailsTest = () => {
 								</div>
 								<Row>
 									<div className="btn-action btn m-4">
-									<IoMegaphoneSharp />
-									<span className="mx-3 ">Log in to promote this action</span>
-								</div>
-								<div className="btn-action btn mx-4">
-									<CiFacebook />
-									<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
-										Share on Facebook
-									</FacebookShareButton>
-								</div>
-								<div className="btn-action btn m-4">
-									<CiTwitter />
-									<TwitterShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
-										Share on Twitter
-									</TwitterShareButton>
-								</div>
-								<div className="btn-action btn mx-4">
-									<MdAlternateEmail />
-									<EmailShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
-										Share via email
-									</EmailShareButton>
-								</div>
+										<IoMegaphoneSharp />
+										<span className="mx-3 ">Log in to promote this action</span>
+									</div>
+									<div className="btn-action btn mx-4">
+										<CiFacebook />
+										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+											Share on Facebook
+										</FacebookShareButton>
+									</div>
+									<div className="btn-action btn m-4">
+										<CiTwitter />
+										<TwitterShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+											Share on Twitter
+										</TwitterShareButton>
+									</div>
+									<div className="btn-action btn mx-4">
+										<MdAlternateEmail />
+										<EmailShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+											Share via email
+										</EmailShareButton>
+									</div>
 								</Row>
 								<div className="d-flex justify-content-center my-3 fw-bold link">
 									<a href="#">Contact organization</a>
