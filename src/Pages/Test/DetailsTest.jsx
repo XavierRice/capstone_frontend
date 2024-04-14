@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-	FacebookShareButton, EmailShareButton, TelegramShareButton
+	FacebookShareButton, EmailShareButton, TwitterShareButton
 } from 'react-share'
 import axios from "axios";
 import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
@@ -50,6 +50,12 @@ const DetailsTest = () => {
 		setRegisteredGuest({ ...registeredGuest, [name]: value });
 	}
 
+
+	const handleEventRegister = () => {
+		console.log("you've registered");
+		setShowThankYouModal(true);
+	};
+
 	const handleCloseOut = () => {
 		setTimeout(() => {
 			setShowThankYouModal(false); // Close the modal
@@ -60,6 +66,9 @@ const DetailsTest = () => {
 	const handleCheckboxChange = () => {
 		setChecked(!checked);
 	};
+
+
+
 	console.log("dtailestest", event)
 
 
@@ -134,7 +143,7 @@ const DetailsTest = () => {
 		event.logo_url ||
 		event.event_photo ||
 		defaultImage;
-	// const eventDate = formatDate(date);
+	const eventDate = date.slice(0, 10)
 	const firstName = fetchedUser?.first_name;
 	let eventKeyword = event.event_keywords[0];
 
@@ -172,21 +181,21 @@ const DetailsTest = () => {
 										</div>
 									</Col>
 									<Col sm={6} md={6}>
-										{/* <div className="mx-2 my-4">
+										<div className="mx-2 my-4">
 											<div className="m-2">
 												<CiCalendar className="" />
 												<span className="fw-bold fs-5 mx-2">Time</span>
 												<span className="fw-bold fs-6 d-block my-2">
-													{eventDate || 'unavilable'}
+													{eventDate}
 												</span>
 												<span className="fw-bold fs-6 d-block">
-													{formatTime(time) || event.event_time}
+													{event.event_time}
 												</span>
 											</div>
 											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
 											Map
 										</div>
-										</div> */}
+										</div>
 									</Col>
 								</Row>
 								<Row className="my-2 ">
@@ -298,12 +307,12 @@ const DetailsTest = () => {
 											</Form.Group>
 										</Form>
 										<div className="d-flex justify-content-center">
-											{/* <button
+											<button
 												className="btn fluid btn-register my-4"
 												onClick={handleEventRegister}
 											>
 												Register
-											</button> */}
+											</button>
 										</div>
 										<span className="d-block d-flex justify-content-center mb-3">
 											Powered by Impactify
@@ -340,7 +349,7 @@ const DetailsTest = () => {
 									</div>
 								</div>
 								<Row>
-									{/* <div className="btn-action btn m-4">
+									<div className="btn-action btn m-4">
 									<IoMegaphoneSharp />
 									<span className="mx-3 ">Log in to promote this action</span>
 								</div>
@@ -361,7 +370,7 @@ const DetailsTest = () => {
 									<EmailShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
 										Share via email
 									</EmailShareButton>
-								</div> */}
+								</div>
 								</Row>
 								<div className="d-flex justify-content-center my-3 fw-bold link">
 									<a href="#">Contact organization</a>
