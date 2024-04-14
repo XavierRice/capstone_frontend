@@ -4,11 +4,13 @@ import { Col, Row, Button } from "react-bootstrap";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import { useNavigate } from "react-router";
+// import { useAuthDataProvider } from "../Provider/AuthProv";
 
 function MainContent({ backendEvents }) {
+	// const { setEventId } = useAuthDataProvider()
 	const navigate = useNavigate();
 	// console.log(`This is maincontent:`, backendEvents);
-
+	const [selectedEvent, setSelectedEvent] = useState({})
 	const [startIndex, setStartIndex] = useState(0);
 	const eventsPerPage = 4;
 
@@ -22,7 +24,10 @@ function MainContent({ backendEvents }) {
 
 	const handleContentClick = (eventObj) => {
 		console.log("you clicked me", eventObj);
-		navigate(`/discover/event-details/${eventObj.event_id}`, { state: { event: eventObj } });
+		let selected = backendEvents.find((bkdEnvts) => bkdEnvts.event_id === eventObj.event_id);
+		setSelectedEvent(selected)
+		// setEventId(eventObj.event_id)
+		navigate(`/discover/eventdetails/${eventObj.event_id}`, { state: { event: selectedEvent } });
 	};
 
 	return (

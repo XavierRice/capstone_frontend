@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+// import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
-	FacebookShareButton, EmailShareButton, TelegramShareButton
+	FacebookShareButton, EmailShareButton, TwitterShareButton
 } from 'react-share'
 import axios from "axios";
 import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
@@ -18,22 +18,37 @@ import GoogleMap from '../../Components/Maps/GoogleMap';
 import defaultImage from '../../assets/NoImage.jpg'
 import Event4Strip from "../../Components/Stripe/Event4Stripe";
 import { IoMegaphoneSharp } from "react-icons/io5";
-import { useAuthDataProvider } from '../../Provider/AuthProv'
+ import { useAuthDataProvider } from '../../Provider/AuthProv'
 import loader from "../../Components/LoadingState/LoadingState"
-
+import { useEffect, useState } from "react";
 
 const DetailsTest = () => {
-	const [theEvent, setTheEvent] = useState(null)
+	const [theEvent, setTheEvent] = useState({
+		event_id: "",
+		user_id: "",
+		event_title: "",
+		event_date: "",
+		event_time: "",
+		event_details: "",
+		event_location: "",
+		event_photo: "",
+		lat: "",
+		lng: "",
+		is_virtual: false,
+		stripe_id: "",
+		rsvp: false, // Provide a default value in case it's missing
+	});
 	const location = useLocation();
 	const navigate = useNavigate();
-	const { user } = useAuthDataProvider()
+	const { id } = useParams();
+	const { user, eventId } = useAuthDataProvider()
 	const backend = import.meta.env.VITE_BACKEND_URL;
-
-	const { event } = location.state || { event: {} };
-	const eventUserId = event?.user_id;
-	const [loading, setLoading] = useState(false);
+	
+	// // const { event } = location?.state || { event: {} };
+	// // const eventUserId = event?.user_id;
+	const [loading, setLoading] = useState(true);
 	const [travelMode, setTravelMode] = useState("DRIVING");
-	// const [showDonationButton, setShowDonationButton] = useState(false);
+	const [showDonationButton, setShowDonationButton] = useState(false);
 	const [showThankYouModal, setShowThankYouModal] = useState(false);
 	const [fetchedUser, setFetchedUser] = useState(null);
 	const [checked, setChecked] = useState(false);
@@ -50,6 +65,12 @@ const DetailsTest = () => {
 		setRegisteredGuest({ ...registeredGuest, [name]: value });
 	}
 
+
+	const handleEventRegister = () => {
+		console.log("you've registered");
+		setShowThankYouModal(true);
+	};
+
 	const handleCloseOut = () => {
 		setTimeout(() => {
 			setShowThankYouModal(false); // Close the modal
@@ -60,7 +81,8 @@ const DetailsTest = () => {
 	const handleCheckboxChange = () => {
 		setChecked(!checked);
 	};
-	console.log("dtailestest", event)
+
+	// console.log("dtailestest", event)
 
 
 	const {
@@ -77,33 +99,49 @@ const DetailsTest = () => {
 		is_virtual: isVirtual = false,
 		stripe_id,
 		rsvp = true, // Provide a default value in case it's missing
-	} = event;
+	} = theEvent;
 
 	useEffect(() => {
-		setTheEvent(event)
+			axios.get(`${backend}/events/${id}`).then(res => {
+				setTheEvent(res.data)
+				try {
+					// const response = axios.get(`${backend}/users/${res.data.user_id}`);
+					// let user = response.data;
+					// console.log("eventsDetailsPage", user);
+					// setFetchedUser(user);
+					// setLoading(true)
+				} catch (error) {
+					console.error("Error Fetching Backend Events:", error);
+				} finally {
+					// Step 2: Delay transition to false for loading state
+	
+					setLoading(false);
+				}
+			}).catch(err => console.error(err))
+
+
+	
 	}, [])
 
+	// useEffect(() => {
 
+	// 	const fetchUser = async () => {
+	// 		try {
+	// 			const response = await axios.get(`${backend}/users/${theEvent.user_id}`);
+	// 			let user = response.data;
+	// 			console.log("eventsDetailsPage", user);
+	// 			setFetchedUser(user);
+	// 			setLoading(true)
+	// 		} catch (error) {
+	// 			console.error("Error Fetching Backend Events:", error);
+	// 		} finally {
+	// 			// Step 2: Delay transition to false for loading state
 
-	useEffect(() => {
-
-		const fetchUser = async () => {
-			try {
-				const response = await axios.get(`${backend}/users/${event.user_id}`);
-				let user = response.data;
-				console.log("eventsDetailsPage", user);
-				setFetchedUser(user);
-				setLoading(true)
-			} catch (error) {
-				console.error("Error Fetching Backend Events:", error);
-			} finally {
-				// Step 2: Delay transition to false for loading state
-
-				setLoading(false);
-			}
-		};
-		fetchUser();
-	}, []);
+	// 			setLoading(false);
+	// 		}
+	// 	};
+	// 	fetchUser();
+	// }, []);
 
 
 	useEffect(() => {
@@ -124,27 +162,27 @@ const DetailsTest = () => {
 	}, [stripe_id]);
 
 	const hasRequiredKeys = ["event_location", "lat", "lng"].every((key) =>
-		Object.keys(event).includes(key)
+		Object.keys(theEvent).includes(key)
 	);
 
 	const displayMap = locationName && lat && lng;
 
 	let imageSrc =
 		image ||
-		event.logo_url ||
-		event.event_photo ||
+		theEvent.logo_url ||
+		theEvent.event_photo ||
 		defaultImage;
-	// const eventDate = formatDate(date);
-	const firstName = fetchedUser?.first_name;
-	let eventKeyword = event.event_keywords[0];
+
+	// const eventDate = theEvent.event_date.slice(0, 10)
+	// const firstName = fetchedUser?.first_name;
+	// let eventKeyword = theEvent.event_keywords[0];
 
 
 	return (
 
 		<>
-			<h1>LMAO</h1>
 			<div className="my-4 event-details-container" styles={{}}>
-			<h1>LMAO</h1>
+		
 			{loading ? (
 					<div className="loader-wrapper">
 						<div className="loader"></div>
@@ -172,21 +210,21 @@ const DetailsTest = () => {
 										</div>
 									</Col>
 									<Col sm={6} md={6}>
-										{/* <div className="mx-2 my-4">
+										<div className="mx-2 my-4">
 											<div className="m-2">
 												<CiCalendar className="" />
 												<span className="fw-bold fs-5 mx-2">Time</span>
-												<span className="fw-bold fs-6 d-block my-2">
-													{eventDate || 'unavilable'}
-												</span>
-												<span className="fw-bold fs-6 d-block">
-													{formatTime(time) || event.event_time}
-												</span>
+												{/* <span className="fw-bold fs-6 d-block my-2">
+													{eventDate}
+												</span> */}
+												{/* <span className="fw-bold fs-6 d-block">
+													{theEvent.event_time}
+												</span> */}
 											</div>
 											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
 											Map
 										</div>
-										</div> */}
+										</div>
 									</Col>
 								</Row>
 								<Row className="my-2 ">
@@ -293,17 +331,17 @@ const DetailsTest = () => {
 													placeholder="mobile number"
 													value={registeredGuest.mobile}
 													name="mobile"
-													onClick={() => handleTextChange(event)}
+													// onClick={() => handleTextChange(event)}
 												/>
 											</Form.Group>
 										</Form>
 										<div className="d-flex justify-content-center">
-											{/* <button
+											<button
 												className="btn fluid btn-register my-4"
 												onClick={handleEventRegister}
 											>
 												Register
-											</button> */}
+											</button>
 										</div>
 										<span className="d-block d-flex justify-content-center mb-3">
 											Powered by Impactify
@@ -340,7 +378,7 @@ const DetailsTest = () => {
 									</div>
 								</div>
 								<Row>
-									{/* <div className="btn-action btn m-4">
+									<div className="btn-action btn m-4">
 									<IoMegaphoneSharp />
 									<span className="mx-3 ">Log in to promote this action</span>
 								</div>
@@ -361,7 +399,7 @@ const DetailsTest = () => {
 									<EmailShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
 										Share via email
 									</EmailShareButton>
-								</div> */}
+								</div>
 								</Row>
 								<div className="d-flex justify-content-center my-3 fw-bold link">
 									<a href="#">Contact organization</a>
@@ -370,7 +408,6 @@ const DetailsTest = () => {
 						</Row>
 					</>
 				)}
-
 			</div>
 		</>
 	);
