@@ -8,13 +8,13 @@ import "./Events.css";
 import MainContent from "../Components/MainContent";
 import CategoriesSection from "../Components/CategoriesSection/CategoriesSection";
 
-const Events = ({backendEvents}) => {
+const Events = ({ backendEvents }) => {
 	const [clickedEvent, setClickedEvent] = useState(null)
 	const [loading, setLoading] = useState(true);
 	const [eventsData, setEventsData] = useState([]);
 	const [mobilizeEvents, setMobilizeEvents] = useState([]);
 	const [imageEvents, setImageEvents] = useState(null);
-	const [fetchedEvent, setFetchedEvent] = useState([]);
+	// const [fetchedEvent, setFetchedEvent] = useState([]);
 	const [selectedCategory, setSelectedCategory] = useState(null);
 	const [allEvents, setAllEvents] = useState([]);
 	const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Events = ({backendEvents}) => {
 			try {
 				const resposeBackend = await axios.get(`${backend}/events`);
 				fetchEventsData = resposeBackend.data.data;
-		
+
 				setEventsData(fetchEventsData);
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
@@ -43,7 +43,7 @@ const Events = ({backendEvents}) => {
 						},
 					}
 				);
-			
+
 				const events = responseMoblize.data.data;
 				fetchedImageEvents = events
 					.filter((event) => event.featured_image_url)
@@ -83,12 +83,16 @@ const Events = ({backendEvents}) => {
 	}, [eventsData]);
 
 	const handleCardClick = (eventObj) => {
-		// console.log("you clicked me", eventObj);
-		// setClickedEvent(eventObj)
+
 		// axios.get(`${backend}/events/${eventObj.event_id}`).then(res => setFetchedEvent(res.data)).catch(err => console.log(err))
+		console.log(eventObj)
 		const selectedEvent = backendEvents.find((bkdEnvts) => bkdEnvts.event_id === eventObj.event_id);
 		setClickedEvent(selectedEvent)
-		navigate(`/discover/event-details/${eventObj.event_id}`, { state: { event: selectedEvent } });
+
+		// navigate(`/discover/events-details/${eventObj.event_id}`);
+		// navigate(`/discover/events-details/${eventObj.event_id}`, { state: { event: selectedEvent } });
+		navigate(`/discover/test/${eventObj.event_id}`, { state: { event: selectedEvent } });
+		// navigate('/discover/test')
 	};
 
 	const handleImageLoad = () => {
@@ -97,8 +101,8 @@ const Events = ({backendEvents}) => {
 
 	const filteredEvents = selectedCategory
 		? allEvents.filter((event) =>
-				event.event_keywords.includes(selectedCategory)
-			)
+			event.event_keywords.includes(selectedCategory)
+		)
 		: allEvents;
 
 	return (

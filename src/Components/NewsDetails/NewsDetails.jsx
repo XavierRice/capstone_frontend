@@ -42,7 +42,7 @@ const NewsDetails = () => {
 		fetchEvents();
 	}, [news, article]);
 
-	console.log(relatedEvents);
+	// console.log(relatedEvents);
 
 	const handleReleatedClick = (event) => {
 		navigate("/discover/events-details", { state: { event: event } });
