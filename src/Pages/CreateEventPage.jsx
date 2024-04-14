@@ -28,14 +28,14 @@ function CreateEventPage() {
 						>
 							Create an event and grow your community
 						</div>
-						<Col sm={10} md={5} lg={5}>
+						<Col sm={10} md={5} lg={6}>
 							<img
 								src={createImg}
 								alt="Create Image"
 								style={{ height: "70%", width: "100%" }}
 							/>
 						</Col>
-						<Col sm={10} md={7} lg={7}>
+						<Col sm={10} md={7} lg={6}>
 							<EventForm user={user} />
 						</Col>
 					</Row>

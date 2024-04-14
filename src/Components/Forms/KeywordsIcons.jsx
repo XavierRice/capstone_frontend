@@ -42,12 +42,12 @@ function KeywordsIcons() {
 			className="bg-light"
 		>
 			<div
-				className="d-flex justify-content-center my-4 fs-3 pt-3"
+				className="d-flex justify-content-center my-4 fs-4 pt-3"
 				style={{ fontFamily: "sans-serif" }}
 			>
 				Select type of event
 			</div>
-			<Col className="" style={{ paddingLeft: "30px" }}>
+			<Col className="" style={{ paddingLeft: "15px", paddingRight: "15px" }}>
 				<Row
 					style={{
 						height: "16vh",
