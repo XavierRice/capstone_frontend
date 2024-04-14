@@ -4,8 +4,10 @@ import { Col, Row, Button } from "react-bootstrap";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import { useNavigate } from "react-router";
+// import { useAuthDataProvider } from "../Provider/AuthProv";
 
 function MainContent({ backendEvents }) {
+	// const { setEventId } = useAuthDataProvider()
 	const navigate = useNavigate();
 	// console.log(`This is maincontent:`, backendEvents);
 	const [selectedEvent, setSelectedEvent] = useState({})
@@ -24,6 +26,7 @@ function MainContent({ backendEvents }) {
 		console.log("you clicked me", eventObj);
 		let selected = backendEvents.find((bkdEnvts) => bkdEnvts.event_id === eventObj.event_id);
 		setSelectedEvent(selected)
+		// setEventId(eventObj.event_id)
 		navigate(`/discover/eventdetails/${eventObj.event_id}`, { state: { event: selectedEvent } });
 	};
 

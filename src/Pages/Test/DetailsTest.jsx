@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+// import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
 	FacebookShareButton, EmailShareButton, TwitterShareButton
 } from 'react-share'
@@ -18,19 +18,34 @@ import GoogleMap from '../../Components/Maps/GoogleMap';
 import defaultImage from '../../assets/NoImage.jpg'
 import Event4Strip from "../../Components/Stripe/Event4Stripe";
 import { IoMegaphoneSharp } from "react-icons/io5";
-import { useAuthDataProvider } from '../../Provider/AuthProv'
+ import { useAuthDataProvider } from '../../Provider/AuthProv'
 import loader from "../../Components/LoadingState/LoadingState"
-
+import { useEffect, useState } from "react";
 
 const DetailsTest = () => {
-	const [theEvent, setTheEvent] = useState(null)
+	const [theEvent, setTheEvent] = useState({
+		event_id: "",
+		user_id: "",
+		event_title: "",
+		event_date: "",
+		event_time: "",
+		event_details: "",
+		event_location: "",
+		event_photo: "",
+		lat: "",
+		lng: "",
+		is_virtual: false,
+		stripe_id: "",
+		rsvp: false, // Provide a default value in case it's missing
+	});
 	const location = useLocation();
 	const navigate = useNavigate();
-	const { user } = useAuthDataProvider()
+	const { id } = useParams();
+	const { user, eventId } = useAuthDataProvider()
 	const backend = import.meta.env.VITE_BACKEND_URL;
-
-	const { event } = location.state || { event: {} };
-	const eventUserId = event?.user_id;
+	
+	// // const { event } = location?.state || { event: {} };
+	// // const eventUserId = event?.user_id;
 	const [loading, setLoading] = useState(true);
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	const [showDonationButton, setShowDonationButton] = useState(false);
@@ -67,9 +82,7 @@ const DetailsTest = () => {
 		setChecked(!checked);
 	};
 
-
-
-	console.log("dtailestest", event)
+	// console.log("dtailestest", event)
 
 
 	const {
@@ -86,33 +99,49 @@ const DetailsTest = () => {
 		is_virtual: isVirtual = false,
 		stripe_id,
 		rsvp = true, // Provide a default value in case it's missing
-	} = event;
+	} = theEvent;
 
 	useEffect(() => {
-		setTheEvent(event)
+			axios.get(`${backend}/events/${id}`).then(res => {
+				setTheEvent(res.data)
+				try {
+					// const response = axios.get(`${backend}/users/${res.data.user_id}`);
+					// let user = response.data;
+					// console.log("eventsDetailsPage", user);
+					// setFetchedUser(user);
+					// setLoading(true)
+				} catch (error) {
+					console.error("Error Fetching Backend Events:", error);
+				} finally {
+					// Step 2: Delay transition to false for loading state
+	
+					setLoading(false);
+				}
+			}).catch(err => console.error(err))
+
+
+	
 	}, [])
 
+	// useEffect(() => {
 
+	// 	const fetchUser = async () => {
+	// 		try {
+	// 			const response = await axios.get(`${backend}/users/${theEvent.user_id}`);
+	// 			let user = response.data;
+	// 			console.log("eventsDetailsPage", user);
+	// 			setFetchedUser(user);
+	// 			setLoading(true)
+	// 		} catch (error) {
+	// 			console.error("Error Fetching Backend Events:", error);
+	// 		} finally {
+	// 			// Step 2: Delay transition to false for loading state
 
-	useEffect(() => {
-
-		const fetchUser = async () => {
-			try {
-				const response = await axios.get(`${backend}/users/${event.user_id}`);
-				let user = response.data;
-				console.log("eventsDetailsPage", user);
-				setFetchedUser(user);
-				setLoading(true)
-			} catch (error) {
-				console.error("Error Fetching Backend Events:", error);
-			} finally {
-				// Step 2: Delay transition to false for loading state
-
-				setLoading(false);
-			}
-		};
-		fetchUser();
-	}, []);
+	// 			setLoading(false);
+	// 		}
+	// 	};
+	// 	fetchUser();
+	// }, []);
 
 
 	useEffect(() => {
@@ -133,19 +162,20 @@ const DetailsTest = () => {
 	}, [stripe_id]);
 
 	const hasRequiredKeys = ["event_location", "lat", "lng"].every((key) =>
-		Object.keys(event).includes(key)
+		Object.keys(theEvent).includes(key)
 	);
 
 	const displayMap = locationName && lat && lng;
 
 	let imageSrc =
 		image ||
-		event.logo_url ||
-		event.event_photo ||
+		theEvent.logo_url ||
+		theEvent.event_photo ||
 		defaultImage;
-	const eventDate = date.slice(0, 10)
-	const firstName = fetchedUser?.first_name;
-	let eventKeyword = event.event_keywords[0];
+
+	// const eventDate = theEvent.event_date.slice(0, 10)
+	// const firstName = fetchedUser?.first_name;
+	// let eventKeyword = theEvent.event_keywords[0];
 
 
 	return (
@@ -184,12 +214,12 @@ const DetailsTest = () => {
 											<div className="m-2">
 												<CiCalendar className="" />
 												<span className="fw-bold fs-5 mx-2">Time</span>
-												<span className="fw-bold fs-6 d-block my-2">
+												{/* <span className="fw-bold fs-6 d-block my-2">
 													{eventDate}
-												</span>
-												<span className="fw-bold fs-6 d-block">
-													{event.event_time}
-												</span>
+												</span> */}
+												{/* <span className="fw-bold fs-6 d-block">
+													{theEvent.event_time}
+												</span> */}
 											</div>
 											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
 											Map
@@ -301,7 +331,7 @@ const DetailsTest = () => {
 													placeholder="mobile number"
 													value={registeredGuest.mobile}
 													name="mobile"
-													onClick={() => handleTextChange(event)}
+													// onClick={() => handleTextChange(event)}
 												/>
 											</Form.Group>
 										</Form>
@@ -378,7 +408,6 @@ const DetailsTest = () => {
 						</Row>
 					</>
 				)}
-
 			</div>
 		</>
 	);

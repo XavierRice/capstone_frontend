@@ -9,7 +9,7 @@ export function useAuthDataProvider() {
 }
 
 function AuthProv({ children }) {
-
+  const [ eventId, setEventId]= useState(null)
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem('user')
@@ -51,7 +51,7 @@ function AuthProv({ children }) {
 
   return (
     <AuthData.Provider
-      value={{ API, user, setUser, token, setToken, isAuthenticated, logout }}
+      value={{ API, user, setUser, token, setToken, isAuthenticated, logout ,eventId, setEventId}}
     >
       {children}
     </AuthData.Provider>
