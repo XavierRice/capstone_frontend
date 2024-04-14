@@ -241,14 +241,7 @@ function EventDetailsPage() {
 											Walking
 										</button>
 									</div>
-									{/* <div className="">
-									<GoogleMap
-										location={locationName}
-										lat={lat}
-										lng={lng}
-										travelMode={travelMode}
-									/>
-								</div> */}
+								
 								</Row>
 							</Col>
 							<Col sm={11} md={4} className="">

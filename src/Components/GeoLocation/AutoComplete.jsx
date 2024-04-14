@@ -67,15 +67,14 @@ const AutoComplete = ({ setLocation, setLat, setLng, lat, lng }) => {
 
 	return (
 		<Form.Group className="mb-3 fs-5" controlId="event_location" ref={ref}>
-			<Form.Label className="d-flex justify-content-center">
-				Location
-			</Form.Label>
+			<Form.Label className="">Location</Form.Label>
 			<Form.Control
 				type="text"
 				value={value}
 				onChange={handleInput}
 				placeholder="Location"
 				disabled={!ready}
+				style={{ maxWidth: "260px" }}
 			/>
 			{status === "OK" && <ul>{renderSuggestions()}</ul>}
 		</Form.Group>
