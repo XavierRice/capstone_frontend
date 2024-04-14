@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-// import {
-// 	FacebookShareButton,
-// 	EmailShareButton,
-// 	TwitterShareButton,
-// } from "react-share";
+// import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+	FacebookShareButton, EmailShareButton, TwitterShareButton
+} from 'react-share'
 import axios from "axios";
-import "./EventDetailsPage.css";
-
 import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
-import StripeBuy from "../Components/Stripe/StripeBuy";
-import GoogleMap from "../Components/Maps/GoogleMap";
-import defaultImage from "../assets/NoImage.jpg";
-import Event4Strip from "../Components/Stripe/Event4Stripe";
 import { MdAlternateEmail } from "react-icons/md";
 import { GoQuestion } from "react-icons/go";
 import {
@@ -21,25 +13,41 @@ import {
 	CiFacebook,
 	CiTwitter,
 } from "react-icons/ci";
+import StripeBuy from "../../Components/Stripe/StripeBuy";
+import GoogleMap from '../../Components/Maps/GoogleMap';
+import defaultImage from '../../assets/NoImage.jpg'
+import Event4Strip from "../../Components/Stripe/Event4Stripe";
 import { IoMegaphoneSharp } from "react-icons/io5";
-import { useAuthDataProvider } from "../Provider/AuthProv";
-import loader from "../Components/LoadingState/LoadingState";
+import { useAuthDataProvider } from '../../Provider/AuthProv'
+import loader from "../../Components/LoadingState/LoadingState"
+import { useEffect, useState } from "react";
 
-function EventDetailsPage() {
-
-	let location = useLocation();
+const DetailsTest = () => {
+	const [theEvent, setTheEvent] = useState({
+		event_id: "",
+		user_id: "",
+		event_title: "",
+		event_date: "",
+		event_time: "",
+		event_details: "",
+		event_location: "",
+		event_photo: "",
+		lat: "",
+		lng: "",
+		is_virtual: false,
+		stripe_id: "",
+		rsvp: false, // Provide a default value in case it's missing
+	});
+	const location = useLocation();
 	const navigate = useNavigate();
-	const { event } = location.state || { event: {} };
-	const eventUserId = event?.user_id;
-
-	const { user } = useAuthDataProvider()
+	const { id } = useParams();
+	const { user, eventId } = useAuthDataProvider()
 	const backend = import.meta.env.VITE_BACKEND_URL;
-	// const [featuredEvent, setFeatureEvent] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [travelMode, setTravelMode] = useState("DRIVING");
-	// const [showDonationButton, setShowDonationButton] = useState(false);
+	const [showDonationButton, setShowDonationButton] = useState(false);
 	const [showThankYouModal, setShowThankYouModal] = useState(false);
-	const [fetchedUser, setFetchedUser] = useState(null);
+	const [User, setUser] = useState(null);
 	const [checked, setChecked] = useState(false);
 	const [buyButtonId, setBuyButtonId] = useState(null);
 	const [registeredGuest, setRegisteredGuest] = useState({
@@ -49,63 +57,30 @@ function EventDetailsPage() {
 		mobile: "",
 	});
 
-	// const handleTextChange = (event) => {
-	// 	const { name, value } = event.target;
-	// 	setRegisteredGuest({ ...registeredGuest, [name]: value });
-	// };
-
-// const handleTextChange = (event) => {
-	// 	const { name, value } = event.target;
-	// 	setRegisteredGuest({ ...registeredGuest, [name]: value });
-	// }
-
-	// const handleCloseOut = () => {
-	// 	setTimeout(() => {
-	// 		setShowThankYouModal(false); // Close the modal
-	// 		navigate("/"); // Redirect to another page
-	// 	}, 1000);
-	// };
-
-	// const handleCheckboxChange = () => {
-	// 	setChecked(!checked);
-	// };
+	const handleTextChange = (event) => {
+		const { name, value } = event.target;
+		setRegisteredGuest({ ...registeredGuest, [name]: value });
+	}
 
 
-	useEffect(() => {
+	const handleEventRegister = () => {
+		console.log("you've registered");
+		setShowThankYouModal(true);
+	};
 
-		const fetchUser = async () => {
-			try {
-				const response = await axios.get(`${backend}/users/${event.user_id}`);
-				let user = response.data;
-				console.log("eventsDetailsPage", user);
-				setFetchedUser(user);
-				setLoading(true)
-			} catch (error) {
-				console.error("Error Fetching Backend Events:", error);
-			} finally {
-				// Step 2: Delay transition to false for loading state
+	const handleCloseOut = () => {
+		setTimeout(() => {
+			setShowThankYouModal(false); // Close the modal
+			navigate("/"); // Redirect to another page
+		}, 1000);
+	};
 
-				setLoading(false);
-			}
-		};
-		fetchUser();
-	}, []);
+	const handleCheckboxChange = () => {
+		setChecked(!checked);
+	};
 
-	useEffect(() => {
-		if (fetchedUser) {
-			setRegisteredGuest({
-				name: fetchedUser.first_name || "",
-				lastname: fetchedUser.last_name || "",
-				email: fetchedUser.email || "",
-				mobile: "",
-			});
-		}
-	}, [fetchedUser]);
+	// console.log("dtailestest", event)
 
-	useEffect(() => {
-		console.log(event)
-		console.log(fetchedUser);
-	}, [fetchedUser, event]);
 
 	const {
 		event_id,
@@ -121,50 +96,80 @@ function EventDetailsPage() {
 		is_virtual: isVirtual = false,
 		stripe_id,
 		rsvp = true, // Provide a default value in case it's missing
-	} = event;
+	} = theEvent;
+
+	useEffect(() => {
+		axios.get(`${backend}/events/${id}`).then(res => {
+			setTheEvent(res.data)
+		}
+		).catch(error => console.error(error)).finally(setLoading(false))
+	}, [])
+
+	// useEffect(() => {
+
+	// 	const fetchUser = async (userid) => {
+	// 		try {
+	// 			const response = await axios.get(`${backend}/users/${theEvent.user_id}`);
+	// 			let userProfile = response.data;
+	// 			console.log("eventsDetailsPage", userProfile);
+	// 			setFetchedUser(userProfile);
+	// 			setLoading(true)
+	// 		} catch (error) {
+	// 			console.error("Error Fetching Backend Events:", error);
+	// 		} finally {
+	// 			// Step 2: Delay transition to false for loading state
+
+	// 			setLoading(false);
+	// 		}
+	// 	};
+	// 	fetchUser();
+	// }, []);
+
+
+	// useEffect(() => {
+		
+	// 	async function fetchUserData() {
+	// 		if (user) {
+	// 			try {
+	// 				const response = await axios.get(`${backend}/users/${user.user_id}`);
+	// 				const userProfile = response.data;
+	// 				console.log("User profile fetched:", userProfile);
+					
+	// 			} catch (error) {
+	// 				console.error("Error fetching user data:", error);
+	// 			} finally {
+	// 				setLoading(false); 
+	// 			}
+	// 		}
+	// 	}
+	// 	fetchUserData();
+	// }, []); // Dependency array is empty, runs only on the component mount
 
 	useEffect(() => {
 		if (stripe_id) {
-			setBuyButtonId(stripe_id.toString());
+			setBuyButtonId(stripe_id);
 		}
 	}, [stripe_id]);
 
-	const formatDate = (timestamp) => {
-		if (typeof timestamp === "number") {
-			const date = new Date(timestamp * 1000);
-			return date.toLocaleDateString();
-		} else {
-			const cleanedupTimeStamp = timestamp?.toString()?.slice(0, -14);
-			return cleanedupTimeStamp;
-		}
-	};
-
-	const formatTime = (timeString) => {
-		const options = { hour: "numeric", minute: "2-digit", hour12: true };
-		const time = new Date(`1970-01-01T${timeString}`);
-		return time.toLocaleTimeString("en-US", options);
-	};
-
 	const hasRequiredKeys = ["event_location", "lat", "lng"].every((key) =>
-		Object.keys(event).includes(key)
+		Object.keys(theEvent).includes(key)
 	);
 
 	const displayMap = locationName && lat && lng;
 
 	let imageSrc =
 		image ||
-		event.logo_url ||
-		event.event_photo ||
+		theEvent.logo_url ||
+		theEvent.event_photo ||
 		defaultImage;
-	// const eventDate = formatDate(date);
-	const firstName = fetchedUser?.first_name;
 
-	let eventKeyword = event.event_keywords[0];
+
 
 	return (
+
 		<>
-			<h1>LMAO</h1>
 			<div className="my-4 event-details-container" styles={{}}>
+
 				{loading ? (
 					<div className="loader-wrapper">
 						<div className="loader"></div>
@@ -175,7 +180,7 @@ function EventDetailsPage() {
 						<div className="d-flex justify-content-center my-3"></div>
 						<Row className="mx-3 d-flex justify-content-center">
 							<Col sm={11} md={6}>
-								<Row style={{ height: "30%", marginBottom: "3%" }}>
+								<Row style={{ height: "30%", marginBottom: "7%" }}>
 									<img src={imageSrc} alt="Event" className="image" />
 								</Row>
 								<Row style={{ height: "12vh" }} className="">
@@ -184,11 +189,11 @@ function EventDetailsPage() {
 											<CiLocationOn className=" " />
 											<span className="fw-bold fs-5 mx-2">Location</span>
 											<span className="fw-bold fs-6 d-block p-2">
-												{/* {locationName || 'unavilable' } */}
+												{locationName || 'unavilable'}
 											</span>
-											{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
-											Map
-										</div> */}
+											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
+												Map
+											</div>
 										</div>
 									</Col>
 									<Col sm={6} md={6}>
@@ -197,21 +202,21 @@ function EventDetailsPage() {
 												<CiCalendar className="" />
 												<span className="fw-bold fs-5 mx-2">Time</span>
 												<span className="fw-bold fs-6 d-block my-2">
-													{eventDate || 'unavilable'}
+													{theEvent?.event_date.slice(0, 10)}
 												</span>
 												<span className="fw-bold fs-6 d-block">
-													{/* {formatTime(time) || event.event_time} */}
+													{theEvent?.event_time.slice(0,5)}pm
 												</span>
 											</div>
-											{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
-											Map
-										</div> */}
+											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
+												Map
+											</div>
 										</div>
 									</Col>
 								</Row>
 								<Row className="my-2 ">
 									<div className="fs-4 fw-bold my-">About this event</div>
-									{/* <div className=" my-2">{event_details}</div> */}
+									<div className=" my-2">{event_details}</div>
 								</Row>
 								<hr className="my-4" />
 								<Row>
@@ -241,7 +246,14 @@ function EventDetailsPage() {
 											Walking
 										</button>
 									</div>
-								
+									<div className="">
+										<GoogleMap
+											location={locationName}
+											lat={lat}
+											lng={lng}
+											travelMode={travelMode}
+										/>
+									</div>
 								</Row>
 							</Col>
 							<Col sm={11} md={4} className="">
@@ -306,7 +318,7 @@ function EventDetailsPage() {
 													placeholder="mobile number"
 													value={registeredGuest.mobile}
 													name="mobile"
-													onClick={() => handleTextChange(event)}
+												// onClick={() => handleTextChange(event)}
 												/>
 											</Form.Group>
 										</Form>
@@ -353,28 +365,28 @@ function EventDetailsPage() {
 									</div>
 								</div>
 								<Row>
-									{/* <div className="btn-action btn m-4">
-									<IoMegaphoneSharp />
-									<span className="mx-3 ">Log in to promote this action</span>
-								</div>
-								<div className="btn-action btn mx-4">
-									<CiFacebook />
-									<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
-										Share on Facebook
-									</FacebookShareButton>
-								</div>
-								<div className="btn-action btn m-4">
-									<CiTwitter />
-									<TwitterShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
-										Share on Twitter
-									</TwitterShareButton>
-								</div>
-								<div className="btn-action btn mx-4">
-									<MdAlternateEmail />
-									<EmailShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
-										Share via email
-									</EmailShareButton>
-								</div> */}
+									<div className="btn-action btn m-4">
+										<IoMegaphoneSharp />
+										<span className="mx-3 ">Log in to promote this action</span>
+									</div>
+									<div className="btn-action btn mx-4">
+										<CiFacebook />
+										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+											Share on Facebook
+										</FacebookShareButton>
+									</div>
+									<div className="btn-action btn m-4">
+										<CiTwitter />
+										<TwitterShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+											Share on Twitter
+										</TwitterShareButton>
+									</div>
+									<div className="btn-action btn mx-4">
+										<MdAlternateEmail />
+										<EmailShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+											Share via email
+										</EmailShareButton>
+									</div>
 								</Row>
 								<div className="d-flex justify-content-center my-3 fw-bold link">
 									<a href="#">Contact organization</a>
@@ -386,6 +398,6 @@ function EventDetailsPage() {
 			</div>
 		</>
 	);
-}
+};
 
-export default EventDetailsPage;
+export default DetailsTest;

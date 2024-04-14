@@ -8,12 +8,13 @@ import "./Events.css";
 import MainContent from "../Components/MainContent";
 import CategoriesSection from "../Components/CategoriesSection/CategoriesSection";
 
-const Events = () => {
+const Events = ({ backendEvents }) => {
+	const [clickedEvent, setClickedEvent] = useState(null)
 	const [loading, setLoading] = useState(true);
 	const [eventsData, setEventsData] = useState([]);
 	const [mobilizeEvents, setMobilizeEvents] = useState([]);
-	const [imageEvents, setImageEvents] = useState([]);
-	const [clickedEvents, setClickedEvents] = useState([]);
+	const [imageEvents, setImageEvents] = useState(null);
+	// const [fetchedEvent, setFetchedEvent] = useState([]);
 	const [selectedCategory, setSelectedCategory] = useState(null);
 	const [allEvents, setAllEvents] = useState([]);
 	const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Events = () => {
 			try {
 				const resposeBackend = await axios.get(`${backend}/events`);
 				fetchEventsData = resposeBackend.data.data;
-				console.log(resposeBackend);
+
 				setEventsData(fetchEventsData);
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
@@ -42,7 +43,7 @@ const Events = () => {
 						},
 					}
 				);
-				console.log("mobloize" + responseMoblize);
+
 				const events = responseMoblize.data.data;
 				fetchedImageEvents = events
 					.filter((event) => event.featured_image_url)
@@ -81,9 +82,14 @@ const Events = () => {
 		setAllEvents([...eventsData]);
 	}, [eventsData]);
 
-	const handleCardClick = (eventData) => {
-		console.log("you clicked me", eventData);
-		navigate("/discover/events-details", { state: { event: eventData } });
+	const handleCardClick = (eventObj) => {
+
+		// axios.get(`${backend}/events/${eventObj.event_id}`).then(res => setFetchedEvent(res.data)).catch(err => console.log(err))
+		console.log(eventObj)
+		const selectedEvent = backendEvents.find((bkdEnvts) => bkdEnvts.event_id === eventObj.event_id);
+		setClickedEvent(selectedEvent)
+		navigate(`/discover/eventdetails/${eventObj.event_id}`, { state: { event: selectedEvent } });
+		// navigate('/discover/test')
 	};
 
 	const handleImageLoad = () => {
@@ -92,8 +98,8 @@ const Events = () => {
 
 	const filteredEvents = selectedCategory
 		? allEvents.filter((event) =>
-				event.event_keywords.includes(selectedCategory)
-			)
+			event.event_keywords.includes(selectedCategory)
+		)
 		: allEvents;
 
 	return (
@@ -108,18 +114,18 @@ const Events = () => {
 						<CategoriesSection />
 					</Row>
 					<Row className="d-flex justify-content-center">
-						{allEvents.map((event, index) => (
+						{allEvents.map((eventObj, index) => (
 							<Col
-								key={`${event.id || index + "A"}-events-${index}` || index}
+								key={`${eventObj.id || index + "A"}-events-${index}` || index}
 								sm={6}
 								md={3}
 								className="pb-3"
 							>
 								<CardNew
 									className="border-0"
-									cardObj={event}
+									cardObj={eventObj}
 									tag={"Event"}
-									cardClick={() => handleCardClick(event)}
+									cardClick={() => handleCardClick(eventObj)}
 								/>
 							</Col>
 						))}

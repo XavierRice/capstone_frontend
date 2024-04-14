@@ -4,11 +4,13 @@ import { Col, Row, Button } from "react-bootstrap";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import CategoriesSection from "./CategoriesSection/CategoriesSection";
 import { useNavigate } from "react-router";
+// import { useAuthDataProvider } from "../Provider/AuthProv";
 
 function MainContent({ backendEvents }) {
+	// const { setEventId } = useAuthDataProvider()
 	const navigate = useNavigate();
-	console.log(`This is maincontent:`, backendEvents);
-
+	// console.log(`This is maincontent:`, backendEvents);
+	const [selectedEvent, setSelectedEvent] = useState({})
 	const [startIndex, setStartIndex] = useState(0);
 	const eventsPerPage = 4;
 
@@ -20,9 +22,12 @@ function MainContent({ backendEvents }) {
 		setStartIndex((prevIndex) => Math.max(prevIndex - eventsPerPage, 0));
 	};
 
-	const handleContentClick = (event) => {
-		console.log("you clicked me", event);
-		navigate("/discover/events-details", { state: { event: event } });
+	const handleContentClick = (eventObj) => {
+		console.log("you clicked me", eventObj);
+		let selected = backendEvents.find((bkdEnvts) => bkdEnvts.event_id === eventObj.event_id);
+		setSelectedEvent(selected)
+		// setEventId(eventObj.event_id)
+		navigate(`/discover/eventdetails/${eventObj.event_id}`, { state: { event: selectedEvent } });
 	};
 
 	return (
@@ -54,19 +59,19 @@ function MainContent({ backendEvents }) {
 					<Row style={{ paddingRight: "0px", paddingLeft: "0px" }}>
 						{backendEvents
 							?.slice(startIndex, startIndex + eventsPerPage)
-							.map((event) => (
+							.map((eventObj) => (
 								<Col
-									key={event.event_id + "main"}
+									key={eventObj.event_id + "main"}
 									xs={3}
 									md={3}
 									lg={3}
 									className=""
 								>
 									<Card
-										title={event.event_title}
-										imageSrc={event.event_photo}
-										text={event.event_details}
-										onClick={() => handleContentClick(event)}
+										title={eventObj.event_title}
+										imageSrc={eventObj.event_photo}
+										text={eventObj.event_details}
+										onClick={() => handleContentClick(eventObj)}
 									/>
 								</Col>
 							))}

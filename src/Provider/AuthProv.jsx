@@ -9,7 +9,7 @@ export function useAuthDataProvider() {
 }
 
 function AuthProv({ children }) {
-
+  const [ eventId, setEventId]= useState(null)
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem('user')
@@ -31,8 +31,9 @@ function AuthProv({ children }) {
   }, [token])
 
   useEffect(() => {
-    if(user) {
+    if (user) {
       localStorage.setItem('user', JSON.stringify(user));
+      console.log('user auth', user)
     } else {
       localStorage.removeItem('user')
     }
@@ -43,14 +44,14 @@ function AuthProv({ children }) {
   const logout = () => {
     setToken(null);
     setUser(null);
-    localStorage.removeItem('token'); 
-    localStorage.removeItem('user'); 
-   
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+
   };
 
   return (
     <AuthData.Provider
-      value={{ API, user, setUser, token, setToken, isAuthenticated, logout }}
+      value={{ API, user, setUser, token, setToken, isAuthenticated, logout ,eventId, setEventId}}
     >
       {children}
     </AuthData.Provider>

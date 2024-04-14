@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import EventForm from "../Components/Forms/EventForm";
 import User_loginMod from "../Components/UserModals/User_loginMod";
-import { AuthData } from "../Provider/AuthProv";
+import { useAuthDataProvider } from "../Provider/AuthProv";
 import createImg from "../assets/createImg.png";
 
 function CreateEventPage() {
-	const { isAuthenticated } = useContext(AuthData);
+	
+	const { isAuthenticated, user, token } = useAuthDataProvider() 
 	const [showLogin, setShowLogin] = useState(!isAuthenticated);
-	const { user, token } = useContext(AuthData);
+	// const { user, token } = useContext(AuthData);
 
 	const handleClose = () => setShowLogin(false);
 	console.log(user, token);
