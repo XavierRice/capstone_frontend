@@ -53,10 +53,13 @@ const News = () => {
 	return (
 		<div className=" pt-4 " style={{ marginLeft: "5%", marginRight: "5%" }}>
 			<div
-				className="d-flex justify-content-center fs-2 mb-4"
+				className="d-flex justify-content-center fs-2 mb-1 "
 				style={{ color: "#630f76" }}
 			>
 				News & Buzz
+			</div>
+			<div className="d-flex justify-content-center mb-4">
+				<p> Learn more about events happening around the world</p>
 			</div>
 			{loading ? (
 				<div className="loader-wrapper">

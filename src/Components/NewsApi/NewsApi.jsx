@@ -93,12 +93,15 @@ const NewsApi = ({ onLoad }) => {
 	};
 
 	return (
-		<div>
-			<div className=" mx-auto align-items-center  justify-content-center">
+		<div className="">
+			<div className=" mx-auto align-items-center  justify-content-center ">
 				<Row className="mb-3 d-flex justify-content-center">
 					<Col xs={12} md={3}>
 						<Form.Group controlId="event_keyword">
-							<Form.Label className=" mt-2 fs-4 d-flex justify-content-center ">
+							<Form.Label
+								className=" mb-2 fs-4 d-flex justify-content-center "
+								style={{ paddingLeft: "90px" }}
+							>
 								Filter by Category
 							</Form.Label>
 						</Form.Group>
@@ -108,7 +111,7 @@ const NewsApi = ({ onLoad }) => {
 							<Select
 								onChange={handleKeywords}
 								options={keywordOptions}
-								className="py-2"
+								className="pb-3"
 								classNamePrefix="select"
 								name="event_keywords"
 							/>
