@@ -66,7 +66,7 @@ function DonationsLayout({ backendEvents }) {
 									resources to help you make an impact.
 								</div>
 
-								<div className="py-3">
+								<div className="py-2" style={{ paddingLeft: "50px" }}>
 									<span
 										className=" donate-btn "
 										onClick={() => {
@@ -97,22 +97,27 @@ function DonationsLayout({ backendEvents }) {
 					<div className="item mid-right item-small ">
 						<div
 							className="top-half"
-							style={{ display: "flex", justifyContent: "center" }}
+							style={{
+								display: "flex",
+								justifyContent: "center",
+							}}
 						>
 							<img
 								src={nowar}
 								alt="Climate Image"
-								className="climate-image"
-								style={{ minHeight: "170px" }}
+								className="climate-image "
+								style={{ minHeight: "170px", paddingTop: "10px" }}
 							/>
 						</div>
 						<div className="bottom-half">
-							<div className="fw-bold title fs-4  d-flex justify-content-center  mx-2 p-1">
+							<div
+								className="fw-bold title fs-4  d-flex justify-content-center  mx-2 "
+								style={{ paddingTop: "5px" }}
+							>
 								Crisis in Ukraine
 							</div>
-							<div className="mx-4">
-								You can donate to fundraisers on this page to help fleeing
-								families.
+							<div className="mx-2 d-flex justify-content-center">
+								Learn more about the crisis in Ukraine
 							</div>
 
 							<span
@@ -167,10 +172,11 @@ function DonationsLayout({ backendEvents }) {
 						</div>
 						<div className="bottom-half ">
 							<div className="d-flex justify-content-center m-1">
-								<div className=" fw-bold title fs-4 ">How Impactify works</div>
+								<div className=" fw-bold  fs-4 ">How Impactify works</div>
 							</div>
-							<div className=" d-flex justify-content-center">
-								Watch a video to learn more
+							<div className="d-flex justify-content-center"></div>
+							<div className="mx-2 ">
+								Watch a video to learn more about our purpose
 							</div>
 
 							<span

@@ -1,12 +1,8 @@
-/* 
-
-	display: flex;
+/* display: flex;
 
 	width: 80%;
 	height: 80%;
-}
-
-
+} */
 
 .little-squares-container {
 	margin-top: 2%;
@@ -35,11 +31,11 @@
 	flex: 1;
 	background-size: cover;
 	background-position: center;
-} */
-/* 
+}
+
 .card-content {
 	padding: 20px;
-} */
+}
 
 .little-square {
 	border-radius: 20px;
