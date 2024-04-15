@@ -17,9 +17,12 @@ const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
 					onLoad={onLoad}
 					style={{ borderRadius: "15px 15px", minHeight: "213px" }}
 				/>
-				<div className="card-body bg-light ">
+				<div
+					className="card-body bg-light "
+					style={{ margin: "0px", padding: "10px" }}
+				>
 					<h5
-						className="card-title align-content-center"
+						className="card-title d-flex justify-content-center"
 						style={{
 							margin: 0,
 						}}
@@ -27,7 +30,7 @@ const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
 						{title}
 					</h5>
 					<p
-						className="card-text my-2"
+						className="card-text my-2 "
 						style={{ overflow: "hidden", maxHeight: "72px" }}
 					>
 						{text}
