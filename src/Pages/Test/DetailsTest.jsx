@@ -261,7 +261,7 @@ const DetailsTest = () => {
 								>
 									{stripe_id != null ? (
 										<div className="m-1">
-											<StripeBuy buyButtonId={buyButtonId} />
+											<StripeBuy buyButtonId={theEvent.stripe_id} />
 										</div>
 									) : (
 										<></>
