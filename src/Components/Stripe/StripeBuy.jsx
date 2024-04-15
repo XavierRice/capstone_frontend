@@ -6,7 +6,7 @@ const StripeBuy = ({ buyButtonId }) => {
 	return (
 		<div style={{ display: "flex", justifyContent: "center" }}>
 			<stripe-buy-button
-				buy-button-id={`${buyButtonId}`}
+				buy-button-id={buyButtonId}
 				publishable-key={stripePublishKey}
 			></stripe-buy-button>
 		</div>

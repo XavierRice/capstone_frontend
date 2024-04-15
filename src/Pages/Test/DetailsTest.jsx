@@ -1,4 +1,5 @@
-// import React, { useState, useEffect } from "react";
+import {  Suspense, lazy ,useEffect, useState } from "react";
+
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
 	FacebookShareButton, EmailShareButton, TwitterShareButton
@@ -20,9 +21,9 @@ import Event4Strip from "../../Components/Stripe/Event4Stripe";
 import { IoMegaphoneSharp } from "react-icons/io5";
 import { useAuthDataProvider } from '../../Provider/AuthProv'
 import loader from "../../Components/LoadingState/LoadingState"
-import { useEffect, useState } from "react";
-
+const LazyStripeBuy = lazy(()=> import('../../Components/Stripe/StripeBuy'))
 const DetailsTest = () => {
+
 	const [theEvent, setTheEvent] = useState({
 		event_id: "",
 		user_id: "",
@@ -261,7 +262,10 @@ const DetailsTest = () => {
 								>
 									{stripe_id != null ? (
 										<div className="m-1">
-											<StripeBuy buyButtonId={theEvent.stripe_id} />
+											<Suspense fallback={<div>Loading...</div>}>
+											<LazyStripeBuy buyButtonId={theEvent.stripe_id} />
+											</Suspense>
+											
 										</div>
 									) : (
 										<></>
