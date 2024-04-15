@@ -191,9 +191,7 @@ const DetailsTest = () => {
 											<span className="fw-bold fs-6 d-block p-2">
 												{locationName || 'unavilable'}
 											</span>
-											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
-												Map
-											</div>
+
 										</div>
 									</Col>
 									<Col sm={6} md={6}>
@@ -208,9 +206,9 @@ const DetailsTest = () => {
 													{theEvent?.event_time.slice(0,5)}pm
 												</span>
 											</div>
-											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
+											{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
 												Map
-											</div>
+											</div> */}
 										</div>
 									</Col>
 								</Row>
