@@ -1,4 +1,4 @@
-# Frontend for Civic Engagement App 🎨
+# Frontend for Impactify 🎨
 
 Welcome to the frontend repository of the Civic Engagement App! This frontend is built using React to provide an intuitive user interface for interacting with events and donations.
 
