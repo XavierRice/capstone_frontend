@@ -97,7 +97,7 @@ function MainNavigationBar({ scrolling = false }) {
 							About us
 						</NavDropdown.Item>
 					</NavDropdown>
-					{!user ? (
+					{user ? (
 						<Nav.Link href="/discover/users/login" className="">
 							<div
 								onClick={handleLogout}
