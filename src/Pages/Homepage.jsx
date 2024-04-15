@@ -24,7 +24,7 @@ import "./Homepage.css";
 
 function Homepage({ backendEvents }) {
 	const { user } = useContext(AuthData);
-	// console.log("Homepage events:", backendEvents);
+	console.log("Homepage events:", backendEvents);
 	const [isResponsive, setIsResponsive] = useState(false);
 
 	const adaptiveWidth = useAdaptiveTriggers({
@@ -149,16 +149,16 @@ function Homepage({ backendEvents }) {
 				</ParallaxLayer>
 				{/* page 4 */}
 				<ParallaxLayer
-					offset={2.87}
+					offset={2.9}
 					speed={0}
-					factor={1.4}
+					factor={1.2}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
 					<DonationsLayout backendEvents={backendEvents} />
 				</ParallaxLayer>
 
-				<ParallaxLayer offset={4.05} factor={1}>
+				<ParallaxLayer offset={4.01} factor={1.1}>
 					<Footer />
 				</ParallaxLayer>
 			</Parallax>

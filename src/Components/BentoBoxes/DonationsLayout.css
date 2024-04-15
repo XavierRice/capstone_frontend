@@ -51,8 +51,8 @@
 
 .mid-left .top {
 	background: rgba(107, 96, 109, 0.449);
-	max-height: 75%;
-	min-height: 68%;
+	/* max-height: 75%; */
+	min-height: 70%;
 	border-radius: 15px 15px 0px 0px;
 }
 
@@ -83,7 +83,7 @@ span {
 	margin-right: 5%;
 	display: flex;
 	justify-content: center;
-	margin-top: 10px;
+	/* margin-top: 10px; */
 	margin-bottom: 10px;
 	padding: 8px 16px;
 }

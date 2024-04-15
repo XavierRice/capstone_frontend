@@ -7,7 +7,7 @@ const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
 	return (
 		<div onClick={onClick} style={{ cursor: "pointer", marginBottom: "20px" }}>
 			<div
-				className="card border-0  bg-light border-none "
+				className="card border-0  bg-light border-none bg-light"
 				style={{ minHeight: "342px", maxHeight: "342px", borderRadius: "15px" }}
 			>
 				<img
@@ -15,11 +15,20 @@ const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
 					src={imageSrc}
 					alt="Card image"
 					onLoad={onLoad}
-					style={{ borderRadius: "15px 15px", minHeight: "213px" }}
+					style={{
+						borderRadius: "15px 15px",
+						minHeight: "213px",
+						maxHeight: "213px",
+					}}
 				/>
 				<div
 					className="card-body bg-light "
-					style={{ margin: "0px", padding: "10px" }}
+					style={{
+						margin: "0px",
+						padding: "10px",
+						minHeight: "40px",
+						maxHeight: "40px",
+					}}
 				>
 					<h5
 						className="card-title d-flex justify-content-center"
@@ -31,7 +40,13 @@ const Card = ({ title, imageSrc, text, updatedAt, onLoad, onClick }) => {
 					</h5>
 					<p
 						className="card-text my-2 "
-						style={{ overflow: "hidden", maxHeight: "72px" }}
+						style={{
+							display: "flex",
+							flexDirection: "column",
+							paddingBottom: "5px",
+							// maxHeight: "40px",
+							overflow: "hidden",
+						}}
 					>
 						{text}
 					</p>
