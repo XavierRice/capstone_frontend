@@ -66,8 +66,8 @@ function Donations() {
 							borderRadius: "15px",
 							marginBottom: "33px",
 							alignItems: "center",
-							maxHeight: "478px",
-							minHeight: "478px",
+							// maxHeight: "478px",
+							// minHeight: "478px",
 						}}
 					>
 						<Donation1 />
@@ -105,8 +105,8 @@ function Donations() {
 							borderRadius: "15px",
 
 							alignItems: "center",
-							maxHeight: "478px",
-							minHeight: "478px",
+							// maxHeight: "478px",
+							// minHeight: "478px",
 						}}
 					>
 						<ClimateBuy />
@@ -136,8 +136,8 @@ function Donations() {
 						className="card"
 						style={{
 							borderRadius: "15px",
-							maxHeight: "478px",
-							minHeight: "478px",
+							// maxHeight: "478px",
+							// minHeight: "478px",
 							alignItems: "center",
 						}}
 					>
