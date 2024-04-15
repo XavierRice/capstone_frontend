@@ -16,7 +16,7 @@ function DonationsLayout({ backendEvents }) {
 	// console.log("donationeevents", backendEvents);
 	const ukraineEvent = backendEvents[7];
 	const handleDonationNavigate = () => {
-	 navigate('discover/donate')
+		navigate("discover/donate");
 	};
 	const handleInfoNavigate = () => {
 		navigate("/howitworks");
@@ -116,15 +116,13 @@ function DonationsLayout({ backendEvents }) {
 							>
 								Crisis in Ukraine
 							</div>
-							<div className="mx-2 d-flex justify-content-center">
+							<div className="mx-2 d-flex justify-content-center ">
 								Learn more about the crisis in Ukraine
 							</div>
 
 							<span
-								className="donate-btn"
-								onClick={() => 
-									navigate('discover/donations')
-								}
+								className="donate-btn mt-2"
+								onClick={() => navigate("discover/donations")}
 							>
 								Donate now <FaArrowRight className="mx-3 " />
 							</span>
@@ -150,7 +148,10 @@ function DonationsLayout({ backendEvents }) {
 								Why should we care and participate?
 							</div>
 
-							<span className=" donate-btn " onClick={handleFundraiseNavigate}>
+							<span
+								className=" donate-btn mt-1"
+								onClick={handleFundraiseNavigate}
+							>
 								Learn more <FaArrowRight className="mx-3" />
 							</span>
 						</div>
@@ -180,7 +181,7 @@ function DonationsLayout({ backendEvents }) {
 							</div>
 
 							<span
-								className=" donate-btn d-flex justify-content-center"
+								className=" donate-btn d-flex justify-content-center mt-2"
 								onClick={handleInfoNavigate}
 							>
 								Play <FaArrowRight className="mx-3" />
