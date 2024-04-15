@@ -25,7 +25,7 @@ function CardNew({ cardObj, tag, imageLoad, cardClick }) {
 		<div
 			onClick={cardClick}
 			style={{ cursor: "pointer" }}
-			className="card border-0"
+			className="card border-0 bg-light "
 		>
 			<div
 				className={`bg-light ${styleClick ? "card-clicked" : ""}`}
@@ -36,7 +36,11 @@ function CardNew({ cardObj, tag, imageLoad, cardClick }) {
 					src={reducedCard.card_photo}
 					alt="Card image"
 					onLoad={imageLoad}
-					style={{ borderRadius: "15px 15px", minHeight: "200px" }}
+					style={{
+						borderRadius: "15px 15px",
+						minHeight: "200px",
+						maxHeight: "200px",
+					}}
 				/>
 				<div className=" bg-light">
 					<span className="badge rounded-pill card-pill">{tag}</span>

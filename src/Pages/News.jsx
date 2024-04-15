@@ -76,7 +76,7 @@ const News = () => {
 								id={news.news_id}
 								title={news.news_title}
 								imageSrc={news.news_image}
-								text={news.text}
+								text={news.news}
 								onLoad={handleImageLoad}
 								onClick={() => handleCardClick(news.news_id)}
 							/>
