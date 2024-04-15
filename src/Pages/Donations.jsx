@@ -9,6 +9,7 @@ import ClimateBuy from "../Components/Stripe/ClimateBuy";
 import climateUser from "../assets/climateUser.jpg";
 import guyUser from "../assets/guyUser.jpg";
 import ukraineUser from "../assets/ukraineUser.jpg";
+import loader from "../Components/LoadingState/LoadingState";
 
 import "./Donations.css";
 
@@ -27,9 +28,7 @@ function Donations() {
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			} finally {
-				setTimeout(() => {
-					setLoading(false);
-				}, 6000);
+				setLoading(false);
 			}
 		};
 		fetchData();
@@ -37,12 +36,9 @@ function Donations() {
 
 	if (loading) {
 		return (
-			<Container
-				fluid
-				className="donations-container d-flex justify-content-center align-items-center"
-			>
-				<Spinner animation="border" variant="primary" />
-			</Container>
+			<div className="loader-wrapper">
+				<div className="loader"></div>
+			</div>
 		);
 	}
 	console.log(donationsData);
@@ -54,8 +50,8 @@ function Donations() {
 	const donate3Amount = donationsData[2]?.donation_amount;
 
 	return (
-		<Container fluid className="donations-container">
-			<div className="d-flex justify-content-center display-6 m-2">
+		<div fluid className="donations-container">
+			<div className="d-flex justify-content-center display-6 mb-2">
 				Featured Donations
 			</div>
 			<p className="d-flex justify-content-center mb-4">
@@ -70,10 +66,12 @@ function Donations() {
 							borderRadius: "15px",
 							marginBottom: "33px",
 							alignItems: "center",
+							maxHeight: "478px",
+							minHeight: "478px",
 						}}
 					>
 						<Donation1 />
-						<div className="donation-info mt-4">
+						<div className="donation-info mt-2">
 							<p className="fw-semibold mt-2 d-flex justify-content-center ">
 								Beatrice Li
 							</p>
@@ -82,7 +80,11 @@ function Donations() {
 									src={climateUser}
 									alt="userpic"
 									className="img-fluid p-2"
-									style={{ width: "85%", height: "auto", borderRadius: "15px" }}
+									style={{
+										width: "85%",
+										height: "auto",
+										borderRadius: "15px",
+									}}
 								/>
 							</div>
 							<div className="m-4 ">
@@ -101,8 +103,10 @@ function Donations() {
 						className="card"
 						style={{
 							borderRadius: "15px",
-							marginBottom: "33px",
+
 							alignItems: "center",
+							maxHeight: "478px",
+							minHeight: "478px",
 						}}
 					>
 						<ClimateBuy />
@@ -132,7 +136,8 @@ function Donations() {
 						className="card"
 						style={{
 							borderRadius: "15px",
-							marginBottom: "33px",
+							maxHeight: "478px",
+							minHeight: "478px",
 							alignItems: "center",
 						}}
 					>
@@ -146,10 +151,10 @@ function Donations() {
 									src={ukraineUser}
 									alt="userpic"
 									className="img-fluid p-2"
-									style={{ width: "60%", height: "25vh", borderRadius: "15px" }}
+									style={{ width: "60%", height: "28vh", borderRadius: "15px" }}
 								/>
 							</div>
-							<p className="m-4">{donate3}</p>
+							<p className="m-3">{donate3}</p>
 							<div className=" d-flex justify-content-center">
 								<Progressbar donateAmount={donate3Amount} />
 							</div>
@@ -157,7 +162,7 @@ function Donations() {
 					</Card>
 				</Col>
 			</Row>
-		</Container>
+		</div>
 	);
 }
 

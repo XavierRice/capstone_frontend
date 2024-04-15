@@ -91,7 +91,7 @@ body {
 
 /* ---------------------loading state site wide-------------------------- */
 
-.loader-wrapper {
+/* .loader-wrapper {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -118,7 +118,7 @@ body {
 	align-items: center;
 	height: 100vh;
 	width: 100vw;
-}
+} */
 
 /* .loader {
 	width: 150px;
@@ -190,11 +190,6 @@ body {
 
 .dropdown-item:focus,
 .dropdown-item:hover {
-	background-color: rgba(
-		128,
-		128,
-		128,
-		0.089
-	) !important; /* Apply your desired background color */
-	color: #630f76 !important; /* Apply your desired text color */
+	background-color: rgba(128, 128, 128, 0.089) !important;
+	color: #630f76 !important;
 }

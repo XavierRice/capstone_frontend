@@ -1,4 +1,4 @@
-.new_card {
+/* .new_card {
 	width: 18rem;
 	margin: auto;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -7,12 +7,9 @@
 		background-color 0.3s,
 		box-shadow 0.3s,
 		border-color 0.3s;
-}
+} */
 
-.card-clicked {
-	background-color: #bc9ec1;
-}
-
+/* 
 div.d-flex.justify-content-center.align-items-center.new_card {
 	width: 18rem;
 	margin: auto;
@@ -23,8 +20,8 @@ div.d-flex.justify-content-center.align-items-center.new_card {
 	transition:
 		background-color 0.3s,
 		box-shadow 0.3s;
-}
-
+} */
+/* 
 div.d-flex.justify-content-center.align-items-center .new_card:hover {
 	background-color: #bc9ec1 !important;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
@@ -53,4 +50,4 @@ div.d-flex.justify-content-center.align-items-center .new_card:hover {
 .card {
 	--bs-card-border-width: 0 !important
 ;
-}
+} */

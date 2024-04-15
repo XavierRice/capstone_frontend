@@ -89,9 +89,6 @@ const ProofHero = () => {
 						)}
 					</span>
 				</span>
-				<div>
-					<button>Create</button>
-				</div>
 			</div>
 		</div>
 	);

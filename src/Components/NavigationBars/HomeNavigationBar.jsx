@@ -64,9 +64,7 @@ function MainNavigationBar({ scrolling = false }) {
 						onMouseLeave={handleGetInvolvedMouseLeave}
 					>
 						<NavDropdown.Item href="/discover/news">News</NavDropdown.Item>
-						<NavDropdown.Item href="/discover/events">
-							All Events
-						</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/events">Events</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/donations">
 							Donations
 						</NavDropdown.Item>

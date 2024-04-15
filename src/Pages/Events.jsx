@@ -8,12 +8,13 @@ import "./Events.css";
 import MainContent from "../Components/MainContent";
 import CategoriesSection from "../Components/CategoriesSection/CategoriesSection";
 
-const Events = () => {
+const Events = ({ backendEvents }) => {
+	const [clickedEvent, setClickedEvent] = useState(null)
 	const [loading, setLoading] = useState(true);
 	const [eventsData, setEventsData] = useState([]);
 	const [mobilizeEvents, setMobilizeEvents] = useState([]);
-	const [imageEvents, setImageEvents] = useState([]);
-	const [clickedEvents, setClickedEvents] = useState([]);
+	const [imageEvents, setImageEvents] = useState(null);
+	// const [fetchedEvent, setFetchedEvent] = useState([]);
 	const [selectedCategory, setSelectedCategory] = useState(null);
 	const [allEvents, setAllEvents] = useState([]);
 	const navigate = useNavigate();
@@ -28,7 +29,7 @@ const Events = () => {
 			try {
 				const resposeBackend = await axios.get(`${backend}/events`);
 				fetchEventsData = resposeBackend.data.data;
-				console.log(resposeBackend);
+
 				setEventsData(fetchEventsData);
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
@@ -42,10 +43,10 @@ const Events = () => {
 						},
 					}
 				);
-				console.log("mobloize"+responseMoblize)
+
 				const events = responseMoblize.data.data;
 				fetchedImageEvents = events
-					.filter((event) => event.featured_image_url )
+					.filter((event) => event.featured_image_url)
 					.map(
 						({
 							id,
@@ -75,15 +76,20 @@ const Events = () => {
 		};
 		fetchEvents();
 	}, []);
-console.log(imageEvents)
+	console.log(imageEvents);
 
 	useEffect(() => {
-		setAllEvents([...eventsData, ]);
-	}, [eventsData, ]);
+		setAllEvents([...eventsData]);
+	}, [eventsData]);
 
-	const handleCardClick = (eventData) => {
-		console.log("you clicked me", eventData);
-		navigate("/discover/events-details", { state: { event: eventData } });
+	const handleCardClick = (eventObj) => {
+
+		// axios.get(`${backend}/events/${eventObj.event_id}`).then(res => setFetchedEvent(res.data)).catch(err => console.log(err))
+		console.log(eventObj)
+		const selectedEvent = backendEvents.find((bkdEnvts) => bkdEnvts.event_id === eventObj.event_id);
+		setClickedEvent(selectedEvent)
+		navigate(`/discover/eventdetails/${eventObj.event_id}`, { state: { event: selectedEvent } });
+		// navigate('/discover/test')
 	};
 
 	const handleImageLoad = () => {
@@ -92,12 +98,12 @@ console.log(imageEvents)
 
 	const filteredEvents = selectedCategory
 		? allEvents.filter((event) =>
-				event.event_keywords.includes(selectedCategory)
-			)
+			event.event_keywords.includes(selectedCategory)
+		)
 		: allEvents;
 
 	return (
-		<div className="">
+		<div className="" style={{ marginLeft: "5%", marginRight: "5%" }}>
 			{loading ? (
 				<div className="loader-wrapper">
 					<div className="loader"></div>
@@ -108,16 +114,19 @@ console.log(imageEvents)
 						<CategoriesSection />
 					</Row>
 					<Row className="d-flex justify-content-center">
-						{allEvents.map((event, index) => (
-							<Col key={`${event.id||index+"A"}-events-${index}`|| index} sm={6} md={3}>
-								<div className="p-3">
-									<CardNew
-										className="border-0"
-										cardObj={event}
-										tag={"Event"}
-										cardClick={() => handleCardClick(event)}
-									/>
-								</div>
+						{allEvents.map((eventObj, index) => (
+							<Col
+								key={`${eventObj.id || index + "A"}-events-${index}` || index}
+								sm={6}
+								md={3}
+								className="pb-3"
+							>
+								<CardNew
+									className="border-0"
+									cardObj={eventObj}
+									tag={"Event"}
+									cardClick={() => handleCardClick(eventObj)}
+								/>
 							</Col>
 						))}
 					</Row>
@@ -125,6 +134,5 @@ console.log(imageEvents)
 			)}
 		</div>
 	);
-
 };
 export default Events;

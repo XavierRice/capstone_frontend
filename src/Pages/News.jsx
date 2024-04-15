@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import NewsApi from "../Components/NewsApi/NewsApi"; // Import NewsApi component
 import { Col, Row } from "react-bootstrap";
+import loading from "../Components/LoadingState/LoadingState";
 
 const News = () => {
 	const [loading, setLoading] = useState(true);
@@ -50,23 +51,32 @@ const News = () => {
 		}
 	};
 	return (
-		<div className="mt-5 p-3">
+		<div className=" pt-4 " style={{ marginLeft: "5%", marginRight: "5%" }}>
+			<div
+				className="d-flex justify-content-center fs-2 mb-1 "
+				style={{ color: "#630f76" }}
+			>
+				News & Buzz
+			</div>
+			<div className="d-flex justify-content-center mb-4">
+				<p> Learn more about events happening around the world</p>
+			</div>
 			{loading ? (
 				<div className="loader-wrapper">
 					<div className="loader"></div>
 				</div>
 			) : (
 				<Row className="d-flex justify-content-center">
-					<div className=" mx-3 fs-4 m-3 d-flex justify-content-center">
+					{/* <div className=" mx-3 fs-4 m-3 d-flex justify-content-center">
 						Trending Topics
-					</div>
+					</div> */}
 					{newsData.map((news) => (
-						<Col key={news.news_id} sm={6} md={3}>
+						<Col key={news.news_id} sm={6} md={3} className="pb-4">
 							<Card
 								id={news.news_id}
 								title={news.news_title}
 								imageSrc={news.news_image}
-								text={news.text}
+								text={news.news}
 								onLoad={handleImageLoad}
 								onClick={() => handleCardClick(news.news_id)}
 							/>

@@ -13,9 +13,9 @@ import KeywordsIcons from "./KeywordsIcons";
 
 const backend = import.meta.env.VITE_BACKEND_URL;
 
-const EventForm = () => {
-	const { user } = useContext(AuthData);
-	let { user_id } = useParams();
+const EventForm = ({user}) => {
+	// const { user } = useContext(AuthData);
+	// let { user_id } = useParams();
 	const naviagte = useNavigate();
 
 	const [isDonation, setIsDonation] = useState(false);
@@ -25,7 +25,7 @@ const EventForm = () => {
 	const [lng, setLng] = useState(0);
 	const [stripeId, setStripeId] = useState("");
 	const [error, setError] = useState(false);
-	const [userId, setUserId] = useState(user_id);
+	const [userId, setUserId] = useState(user.user_id);
 	const [user_keywords, setUserKeywords] = useState([]);
 	const [user_event, setUser_Event] = useState({
 		user_id: userId,
@@ -140,150 +140,167 @@ const EventForm = () => {
 
 	console.log(stripeId);
 
-	// console.log(user_event)
-	// useEffect(() => {
-	//   fetch(`${backend}/events/${user_id}`)
-	//     .then((res) => res.json())
-	//     .then((res) => {
-
-	//     })
-	// })
-
 	return (
-		<Form className="" onSubmit={handleSubmit}>
+		<div className="flex">
 			<div>
 				<KeywordsIcons />
 			</div>
+			<Form className="bg-light rounded" onSubmit={handleSubmit}>
+				<div className="px-5 pt-5">
+					<Row className="">
+						{/* <h3>Welcome, {user}! Please fill out the form to create your event.</h3> */}
+						<Form.Group
+							as={Col}
+							controlId="event_title"
+							className="fs-5 mb-3"
+							// style={{ marginRight: "15px" }}
+						>
+							<Form.Label>Event Title</Form.Label>
+							<Form.Control
+								style={{ maxWidth: "260px" }}
+								type="title"
+								placeholder="Enter title"
+								onChange={handleTextChange}
+							/>
+						</Form.Group>
 
-			<Row className="">
-				{/* <h3>Welcome, {user}! Please fill out the form to create your event.</h3> */}
+						<Col>
+							{" "}
+							<AutoComplete
+								className=""
+								setLocation={setLocation}
+								setLat={setLat}
+								setLng={setLng}
+								lat={lat}
+								lng={lng}
+							/>
+						</Col>
+					</Row>
 
-				<Form.Group as={Col} controlId="event_title" className="fs-5 mb-3">
-					<Form.Label className="d-flex justify-content-center">
-						Event Title
-					</Form.Label>
-					<Form.Control
-						type="title"
-						placeholder="Enter title"
-						onChange={handleTextChange}
-					/>
-				</Form.Group>
-			</Row>
+					<Row>
+						<Form.Group as={Col} controlId="event_date" className="fs-5 mb-3">
+							<Form.Label>Event Date</Form.Label>
+							<Form.Control
+								type="date"
+								placeholder="12/12/2024"
+								onChange={handleTextChange}
+							/>
+						</Form.Group>
 
-			<Row>
-				<Form.Group as={Col} controlId="event_date" className="fs-5 mb-3">
-					<Form.Label className="d-flex justify-content-center">
-						Event Date
-					</Form.Label>
-					<Form.Control
-						type="date"
-						placeholder="12/12/2024"
-						onChange={handleTextChange}
-					/>
-				</Form.Group>
+						<Form.Group
+							as={Col}
+							controlId="event_time"
+							className="fs-5 mb-3 mx-3"
+						>
+							<Form.Label>Start Time</Form.Label>
 
-				<Form.Group as={Col} controlId="event_time" className="fs-5 mb-3 mx-3">
-					<Form.Label className="d-flex justify-content-center">
-						Start Time
-					</Form.Label>
+							<Form.Control
+								type="time"
+								placeholder="???"
+								value={user_event.event_time}
+								onChange={handleTextChange}
+							/>
+						</Form.Group>
+					</Row>
 
-					<Form.Control
-						type="time"
-						placeholder="???"
-						value={user_event.event_time}
-						onChange={handleTextChange}
-					/>
-				</Form.Group>
-			</Row>
+					<Form.Group className="fs-5 mb-3" controlId="event_details">
+						<Form.Label>Description</Form.Label>
+						<Form.Control
+							as="textarea"
+							placeholder="Description"
+							onChange={handleTextChange}
+						/>
+					</Form.Group>
 
-			<AutoComplete
-				setLocation={setLocation}
-				setLat={setLat}
-				setLng={setLng}
-				lat={lat}
-				lng={lng}
-			/>
+					<Row className="fs-5 mb-3">
+						<Form.Group as={Col} controlId="event_keyword">
+							<Form.Label>Keywords</Form.Label>
+							<Select
+								isMulti
+								onChange={handleKeywords}
+								options={keywordOptions}
+								className="basic-mulit-select custom-text-dark"
+								classNamePrefix="select"
+								components={{ Input: CreatableSelectInput }}
+								name="event_keywords"
+							/>
+						</Form.Group>
 
-			<Form.Group className="fs-5 mb-3" controlId="event_details">
-				<Form.Label className="d-flex justify-content-center">
-					Description
-				</Form.Label>
-				<Form.Control
-					as="textarea"
-					placeholder="Description"
-					onChange={handleTextChange}
-				/>
-			</Form.Group>
+						<Form.Group
+							as={Col}
+							controlId="event_photo"
+							className="fs-5 mb-3 mx-2"
+						>
+							<Form.Label>Photo</Form.Label>
+							<Form.Control
+								type="text"
+								onChange={handleTextChange}
+								name="event_photo"
+								placeholder="insert image url"
+							/>
+						</Form.Group>
+					</Row>
 
-			<Row className="fs-5 mb-3">
-				<Form.Group as={Col} controlId="event_keyword">
-					<Form.Label className="d-flex justify-content-center">
-						Keywords
-					</Form.Label>
-					<Select
-						isMulti
-						onChange={handleKeywords}
-						options={keywordOptions}
-						className="basic-mulit-select custom-text-dark"
-						classNamePrefix="select"
-						components={{ Input: CreatableSelectInput }}
-						name="event_keywords"
-					/>
-				</Form.Group>
+					<Row className="mt-4">
+						<Form.Group as={Col} className="mb-3" controlId="is_virtual">
+							<Form.Label className="d-flex justify-content-center">
+								Is this event virtual?
+							</Form.Label>
+							<Row>
+								<Col>
+									<Form.Check
+										type="checkbox"
+										label="Yes"
+										onChange={handleIsVirtual}
+										checked={user_event.is_virtual}
+										name="is_virtual"
+									/>
+								</Col>
+								<Col>
+									<Form.Check
+										type="checkbox"
+										label="No"
+										onChange={handleIsVirtual}
+										checked={user_event.is_virtual}
+										name="is_virtual"
+									/>
+								</Col>
+							</Row>
+						</Form.Group>
 
-				<Form.Group as={Col} controlId="event_photo" className="fs-5 mb-3 mx-2">
-					<Form.Label className="d-flex justify-content-center">
-						Photo
-					</Form.Label>
-					<Form.Control
-						type="text"
-						onChange={handleTextChange}
-						name="event_photo"
-						placeholder="insert image url"
-					/>
-				</Form.Group>
-			</Row>
+						<Form.Group as={Col} className=" mx-5" controlId="rsvp">
+							<Form.Label className="d-flex justify-content-center">
+								RSVP?
+							</Form.Label>
+							<Row>
+								<Col>
+									<Form.Check type="checkbox" label="Yes" name="rsvp" />
+								</Col>
+								<Col>
+									<Form.Check type="checkbox" label="No" name="rsvp" />
+								</Col>
+							</Row>
+						</Form.Group>
 
-			<Row className="mt-4">
-				<Form.Group as={Col} className="mb-3" controlId="is_virtual">
-					<Form.Label className="d-flex justify-content-center">
-						Virtual Event
-					</Form.Label>
-					<Form.Check
-						type="checkbox"
-						label="Is this event virtual?"
-						onChange={handleIsVirtual}
-						checked={user_event.is_virtual}
-						name="is_virtual"
-					/>
-				</Form.Group>
+						<Form.Group as={Col}>
+							<Is_donation
+								setStripeId={setStripeId}
+								isDonation={isDonation}
+								setIsDonation={setIsDonation}
+								stripeId={stripeId}
+							/>
+						</Form.Group>
+					</Row>
+				</div>
 
-				<Form.Group
-					as={Col}
-					className=" mx-5"
-					controlId="rsvp"
-					onChange={handleRSVP}
-					checked={user_event.rsvp}
-				>
-					<Form.Label>RSVP?</Form.Label>
-					<Form.Check type="checkbox" label="yes" name="rsvp" />
-					<Form.Check type="checkbox" label="no" name="rsvp" />
-				</Form.Group>
-
-				<Form.Group as={Col}>
-					<Is_donation
-						setStripeId={setStripeId}
-						isDonation={isDonation}
-						setIsDonation={setIsDonation}
-						stripeId={stripeId}
-					/>
-				</Form.Group>
-
-				<Button variant="primary" type="submit">
-					Submit
-				</Button>
-			</Row>
-		</Form>
+				<hr />
+				<div className="d-flex justify-content-end pb-3 px-3">
+					<Button variant="primary" type="submit">
+						Submit
+					</Button>
+				</div>
+			</Form>
+		</div>
 	);
 };
 

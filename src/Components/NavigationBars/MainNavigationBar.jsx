@@ -23,8 +23,8 @@ function MainNavigationBar() {
 		console.log("youve logged out" + token);
 		await logout();
 	};
-	
-	console.log(user)
+
+
 	useEffect(() => {
 		const handleResize = () => {
 			setIsResponsive(window.innerWidth <= 991);
@@ -55,9 +55,7 @@ function MainNavigationBar() {
 						className="mx-3"
 					>
 						<NavDropdown.Item href="/discover/news">News</NavDropdown.Item>
-						<NavDropdown.Item href="/discover/events">
-							All Events
-						</NavDropdown.Item>
+						<NavDropdown.Item href="/discover/events">Events</NavDropdown.Item>
 						<NavDropdown.Item href="/discover/donations">
 							Donations
 						</NavDropdown.Item>
@@ -89,7 +87,7 @@ function MainNavigationBar() {
 					{user ? (
 						<Nav.Link href="/discover/users/login" className="">
 							<div
-								onClick={()=>handleLogout()}
+								onClick={() => handleLogout()}
 								style={{
 									color: "#630f76",
 									borderRadius: "15px",
@@ -150,7 +148,7 @@ function MainNavigationBar() {
 					<Col md={6}>
 						<Nav>
 							<Nav.Link href="/discover/news">News</Nav.Link>
-							<Nav.Link href="/discover/events">All Events</Nav.Link>
+							<Nav.Link href="/discover/events">Events</Nav.Link>
 
 							<Nav.Link href="#donations">Donations</Nav.Link>
 							<Nav.Link href="/discover/voting">Voting Toolkit</Nav.Link>

@@ -17,7 +17,7 @@ const NewsCar = ({ newsArticles }) => {
 		return (
 			<div
 				className={className}
-				style={{ ...style, display: "block", background: "red" }}
+				style={{ ...style, display: "block", background: "purple" }}
 				onClick={onClick}
 			/>
 		);
@@ -28,7 +28,7 @@ const NewsCar = ({ newsArticles }) => {
 		return (
 			<div
 				className={className}
-				style={{ ...style, display: "block", background: "green" }}
+				style={{ ...style, display: "block", background: "purple" }}
 				onClick={onClick}
 			/>
 		);
@@ -40,8 +40,8 @@ const NewsCar = ({ newsArticles }) => {
 		speed: 500,
 		slidesToShow: 4,
 		slidesToScroll: 1,
-		nextArrow: <SampleNextArrow />,
-		prevArrow: <SamplePrevArrow />,
+		// nextArrow: <SampleNextArrow />,
+		// prevArrow: <SamplePrevArrow />,
 		responsive: [
 			{
 				breakpoint: 1024,
@@ -72,22 +72,31 @@ const NewsCar = ({ newsArticles }) => {
 		<Slider {...settings}>
 			{newsArticles.map((article, i) => (
 				<div
-					className="bg-light"
+					className="bg-light mb-5"
 					key={`${i}-${article.source?.id}`}
 					onClick={() => handleArticleClick(article, i)}
 				>
-					<Card className="border-0">
+					<Card className="border-0 ">
 						<Card.Img
-							className="bg-light"
+							className="bg-light p-2"
 							variant="top"
-							style={{ padding: "5%" }}
+							style={{
+								borderRadius: "15px",
+								minHeight: "200px",
+								maxHeight: "200px",
+							}}
 							src={article.urlToImage || NoImage}
 							alt={article.title}
 						/>
-						<Card.Body className="bg-light">
+						<Card.Body
+							className="bg-light"
+							style={{
+								minHeight: "140px",
+								maxHeight: "140px",
+								overflow: "hidden",
+							}}
+						>
 							<Card.Title>{article.title}</Card.Title>
-							<Card.Text>{article.description}</Card.Text>
-							{/* <Card.Text>{article.content}</Card.Text> */}
 						</Card.Body>
 					</Card>
 				</div>

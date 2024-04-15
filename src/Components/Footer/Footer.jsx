@@ -65,14 +65,17 @@ function Footer() {
 							</Col>
 						</Row>
 					</Col>
-					<Col lg={4} key={'footer-newsletter'}>
+					<Col lg={4} key={"footer-newsletter"}>
 						<h5 className=" footer-title-01 fs-5">
 							Subscribe to our newsletter
 						</h5>
-						<div key={'footergroup'} id="footer-email">
-							<form className="d-flex flex-row my-3 p-1 bg-white input-group" key={'Suscribe-Form'}>
+						<div key={"footergroup"} id="footer-email">
+							<form
+								className="d-flex flex-row my-3 p-1 bg-white input-group"
+								key={"Suscribe-Form"}
+							>
 								<input
-									key={'footer-email'}
+									key={"footer-email"}
 									type="email"
 									className="form-control rounded border-0"
 									placeholder="Your Email"
@@ -93,9 +96,6 @@ function Footer() {
 						</a>
 					</p>
 				</Row>
-			</div>
-			<div className="footer-bottom small py-4 border-top border-white border-opacity-10">
-				<div></div>
 			</div>
 		</footer>
 	);

@@ -61,7 +61,7 @@ function Homepage({ backendEvents }) {
 	return (
 		<div className="d-flex justify-content-center align-items-center parallax-container">
 			<Parallax
-				pages={4.3}
+				pages={4.4}
 				ref={parallaxRef}
 				className="parallax-container"
 				style={{
@@ -74,20 +74,20 @@ function Homepage({ backendEvents }) {
 				}}
 			>
 				<div>
-					<Button
+					<div
 						variant=""
 						style={{
 							color: "#ffffff",
 							cursor: "pointer",
 							position: "absolute",
-							top: "55%",
+							top: "12%",
 							left: "50%",
 							transform: "translate(-50%, -50%)",
-							zIndex: 10,
+							// zIndex: 10,
 						}}
 					>
-						Start Event
-					</Button>
+						{/* Start Event */}
+					</div>
 				</div>
 
 				{/* navigation */}
@@ -121,7 +121,7 @@ function Homepage({ backendEvents }) {
 				</ParallaxLayer>
 				{/* page 2 */}
 				<ParallaxLayer
-					offset={1.6}
+					offset={1.64}
 					speed={0}
 					factor={1}
 					className=" d-flex justify-content-center"
@@ -139,7 +139,7 @@ function Homepage({ backendEvents }) {
 				</ParallaxLayer>
 				{/* page 3 */}
 				<ParallaxLayer
-					offset={2.45}
+					offset={2.47}
 					speed={0}
 					factor={0.5}
 					className=" d-flex justify-content-center"
@@ -149,16 +149,16 @@ function Homepage({ backendEvents }) {
 				</ParallaxLayer>
 				{/* page 4 */}
 				<ParallaxLayer
-					offset={2.87}
+					offset={2.9}
 					speed={0}
-					factor={1.4}
+					factor={1.2}
 					className=" d-flex justify-content-center"
 					style={{ backgroundColor: "white" }}
 				>
 					<DonationsLayout backendEvents={backendEvents} />
 				</ParallaxLayer>
 
-				<ParallaxLayer offset={3.98} factor={1}>
+				<ParallaxLayer offset={4.01} factor={1.1}>
 					<Footer />
 				</ParallaxLayer>
 			</Parallax>

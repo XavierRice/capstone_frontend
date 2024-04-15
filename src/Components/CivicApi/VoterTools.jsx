@@ -1,51 +1,47 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const VoterTools = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
+	const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    const vitStyles = document.createElement('link');
-    vitStyles.rel = 'stylesheet';
-    vitStyles.type = 'text/css';
-    vitStyles.href = 'https://votinginfotool.org/css/compiled/vit.css';
-    document.head.appendChild(vitStyles);
+	useEffect(() => {
+		const vitStyles = document.createElement("link");
+		vitStyles.rel = "stylesheet";
+		vitStyles.type = "text/css";
+		vitStyles.href = "https://votinginfotool.org/css/compiled/vit.css";
+		document.head.appendChild(vitStyles);
 
-    const script = document.createElement('script');
-    script.src = 'https://votinginfotool.org/js/compiled/app.js';
-    script.onload = () => {
-      const config = {
-        "logo": {"type":"default"},
-        "official-only": true
-      };
-      
-      const loadVIT = () => {
-        if (typeof vit !== 'undefined' && document.getElementById('_vit')){
-          vit.core.init("_vit", config);
-          setIsLoaded(true); // Set isLoaded to true when the script is loaded and the widget is initialized
-        } else {
-          setTimeout(loadVIT, 500);
-        }
-      };
-      
-      loadVIT();
-    };
+		const script = document.createElement("script");
+		script.src = "https://votinginfotool.org/js/compiled/app.js";
+		script.onload = () => {
+			const config = {
+				logo: { type: "default" },
+				"official-only": true,
+			};
 
-    document.body.appendChild(script);
+			const loadVIT = () => {
+				if (typeof vit !== "undefined" && document.getElementById("_vit")) {
+					vit.core.init("_vit", config);
+					setIsLoaded(true); // Set isLoaded to true when the script is loaded and the widget is initialized
+				} else {
+					setTimeout(loadVIT, 500);
+				}
+			};
 
-    return () => {
-      document.head.removeChild(vitStyles);
-    };
-  }, []);
+			loadVIT();
+		};
 
-  if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
+		document.body.appendChild(script);
 
-  return (
-    <div id="vit-size-container" className="vit-size-container" style={{width: '100%', height: '100%'}}>
-      <div id="_vit"></div>
-    </div>
-  );
+		return () => {
+			document.head.removeChild(vitStyles);
+		};
+	}, []);
+
+	if (!isLoaded) {
+		return <div>Loading...</div>;
+	}
+
+	return <div id="vit-size-container" className="vit-size-container"></div>;
 };
 
 export default VoterTools;
