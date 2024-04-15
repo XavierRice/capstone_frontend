@@ -6,7 +6,7 @@ import "./Footer.css";
 
 function Footer() {
 	return (
-		<footer className="bg-light ">
+		<footer className="bg-light " style={{ height: "100%" }}>
 			<div className="px-5">
 				<Row className="gy-5">
 					<Col lg={8} className="">

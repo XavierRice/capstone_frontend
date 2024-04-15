@@ -92,7 +92,12 @@ function DonationsLayout({ backendEvents }) {
 					md={4}
 					lg={4}
 					className=""
-					style={{ paddingLeft: "0px", paddingRight: "0px" }}
+					style={{
+						paddingLeft: "0px",
+						paddingRight: "0px",
+						display: "flex",
+						width: "calc(33.33333333% - 7px) ",
+					}}
 				>
 					<div className="item mid-right item-small ">
 						<div
@@ -136,7 +141,12 @@ function DonationsLayout({ backendEvents }) {
 					md={4}
 					lg={4}
 					className=""
-					style={{ paddingLeft: "0px", paddingRight: "0px" }}
+					style={{
+						paddingLeft: "0px",
+						paddingRight: "0px",
+						display: "flex",
+						width: "calc(33.33333333% - 7px) ",
+					}}
 				>
 					<div className="item mid-left  item-small">
 						<div className="top top-half d-flex justify-content-center ">
@@ -161,7 +171,12 @@ function DonationsLayout({ backendEvents }) {
 					md={4}
 					lg={4}
 					className=""
-					style={{ paddingLeft: "0px", paddingRight: "0px" }}
+					style={{
+						paddingLeft: "0px",
+						paddingRight: "0px",
+						display: "flex",
+						width: "calc(33.33333333% - 7px) ",
+					}}
 				>
 					<div className="item item-small ">
 						<div
