@@ -68,7 +68,7 @@ function InfoBlock() {
 							</div>
 							<div className="category-item mx-3">
 								<Link
-									to="/discover/donate"
+									to="/discover/donations"
 									className="d-block text-decoration-none"
 								>
 									<BiDonateHeart
