@@ -16,7 +16,7 @@ function DonationsLayout({ backendEvents }) {
 	// console.log("donationeevents", backendEvents);
 	const ukraineEvent = backendEvents[7];
 	const handleDonationNavigate = () => {
-		navigate("/discover/events-details", { state: { event: ukraineEvent } });
+	 navigate('discover/donate')
 	};
 	const handleInfoNavigate = () => {
 		navigate("/howitworks");
@@ -70,7 +70,7 @@ function DonationsLayout({ backendEvents }) {
 									<span
 										className=" donate-btn "
 										onClick={() => {
-											navigate("/discover/test");
+											navigate("/discover/voting");
 										}}
 									>
 										Learn more <FaArrowRight className="mx-3 " />
@@ -117,9 +117,9 @@ function DonationsLayout({ backendEvents }) {
 
 							<span
 								className="donate-btn"
-								onClick={() => {
-									handleDonationNavigate;
-								}}
+								onClick={() => 
+									navigate('discover/donations')
+								}
 							>
 								Donate now <FaArrowRight className="mx-3 " />
 							</span>

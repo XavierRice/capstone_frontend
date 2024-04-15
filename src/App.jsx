@@ -34,6 +34,7 @@ import SearchPage from "./Pages/Search/SearchPage";
 //NEWIMPORTS
 import FundraiseFacts from "./Pages/Fundraise/FundraiseFacts";
 import DetailsTest from "./Pages/Test/DetailsTest";
+import VoterInfoW from "./Components/CivicApi/VoterInfoW";
 
 function App() {
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
@@ -102,12 +103,14 @@ function Content({ backendEvents }) {
 				<Route path="/discover/news" element={<News />} />
 				<Route path="/discover/events" element={<Events backendEvents={backendEvents} />} />
 				<Route path="/discover/donations" element={<Donations />} />
+				<Route path="/discover/test" element={<VoterInfoW />} />
 				<Route path="/discover/users/login" element={<LoginPage />} />
 				<Route path="/discover/users/signup" element={<SignUpPage />} />
 				<Route path="/discover/thankyou" element={<ThankYou />} />
 				<Route path="/discover/create-event" element={<CreateEventPage />} />
 				<Route path="/discover/eventdetails/:id" element={<DetailsTest/>} />
 				<Route path="/discover/facts" element={<FundraiseFacts />} />
+				<Route path="/discover/voting" element={<VoterModal />} />
 				<Route
 					path="/discover/create-event/donation"
 					element={<StripeDonation />}
