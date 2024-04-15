@@ -47,6 +47,7 @@ const DetailsTest = () => {
 	const [travelMode, setTravelMode] = useState("DRIVING");
 	const [showDonationButton, setShowDonationButton] = useState(false);
 	const [showThankYouModal, setShowThankYouModal] = useState(false);
+	const [eventCreator, setEventCreator] = useState(null)
 	const [User, setUser] = useState(null);
 	const [checked, setChecked] = useState(false);
 	const [buyButtonId, setBuyButtonId] = useState(null);
@@ -79,9 +80,6 @@ const DetailsTest = () => {
 		setChecked(!checked);
 	};
 
-	// console.log("dtailestest", event)
-
-
 	const {
 		event_id,
 		user_id,
@@ -99,51 +97,27 @@ const DetailsTest = () => {
 	} = theEvent;
 
 	useEffect(() => {
-		axios.get(`${backend}/events/${id}`).then(res => {
-			setTheEvent(res.data)
-		}
-		).catch(error => console.error(error)).finally(setLoading(false))
-	}, [])
+		setLoading(true);
 
-	// useEffect(() => {
+		const fetchData = async () => {
+			try {
+			
+				const eventResponse = await axios.get(`${backend}/events/${id}`);
+				setTheEvent(eventResponse.data);
 
-	// 	const fetchUser = async (userid) => {
-	// 		try {
-	// 			const response = await axios.get(`${backend}/users/${theEvent.user_id}`);
-	// 			let userProfile = response.data;
-	// 			console.log("eventsDetailsPage", userProfile);
-	// 			setFetchedUser(userProfile);
-	// 			setLoading(true)
-	// 		} catch (error) {
-	// 			console.error("Error Fetching Backend Events:", error);
-	// 		} finally {
-	// 			// Step 2: Delay transition to false for loading state
+				const userResponse = await axios.get(`${backend}/users/${eventResponse.data.user_id}`);
+				console.log(userResponse.data);  // Log user data
+				setEventCreator(userResponse.data)
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			} finally {
+				setLoading(false);  // Ensure loading state is turned off after operations
+			}
+		};
+	
+		fetchData();  // Execute the fetchData function
+	}, [id, backend]);  // Dependency array to ensure useEffect reacts to changes in `id` and `backend`
 
-	// 			setLoading(false);
-	// 		}
-	// 	};
-	// 	fetchUser();
-	// }, []);
-
-
-	// useEffect(() => {
-		
-	// 	async function fetchUserData() {
-	// 		if (user) {
-	// 			try {
-	// 				const response = await axios.get(`${backend}/users/${user.user_id}`);
-	// 				const userProfile = response.data;
-	// 				console.log("User profile fetched:", userProfile);
-					
-	// 			} catch (error) {
-	// 				console.error("Error fetching user data:", error);
-	// 			} finally {
-	// 				setLoading(false); 
-	// 			}
-	// 		}
-	// 	}
-	// 	fetchUserData();
-	// }, []); // Dependency array is empty, runs only on the component mount
 
 	useEffect(() => {
 		if (stripe_id) {
@@ -177,7 +151,13 @@ const DetailsTest = () => {
 				) : (
 					<>
 						<div className="display-6 d-flex justify-content-center">{title}</div>
-						<div className="d-flex justify-content-center my-3"></div>
+						<div className="d-flex justify-content-center my-3">
+						<span className="fw-bold mx-2 span_color1">{theEvent.event_Keywords}</span>
+						<span className="fw-bold ">Hosted by:</span>
+						<span className="fw-bold mx-2 span_color1">
+							<h5>{eventCreator.first_name}</h5>
+						</span>
+						</div>
 						<Row className="mx-3 d-flex justify-content-center">
 							<Col sm={11} md={6}>
 								<Row style={{ height: "30%", marginBottom: "7%" }}>
@@ -188,6 +168,7 @@ const DetailsTest = () => {
 										<div className="mx-2 my-4">
 											<CiLocationOn className=" " />
 											<span className="fw-bold fs-5 mx-2">Location</span>
+											
 											<span className="fw-bold fs-6 d-block p-2">
 												{locationName || 'unavilable'}
 											</span>
@@ -371,19 +352,19 @@ const DetailsTest = () => {
 									</div>
 									<div className="btn-action btn mx-4">
 										<CiFacebook />
-										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${theEvent.event_id}`} title={`${theEvent.event_title}`} className="mx-5 ">
 											Share on Facebook
 										</FacebookShareButton>
 									</div>
 									<div className="btn-action btn m-4">
 										<CiTwitter />
-										<TwitterShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+										<TwitterShareButton url={`https://impactify.netlify.app/discover/events-details/${theEvent.event_id}`}  title={`${theEvent.event_title}`} className="mx-5 ">
 											Share on Twitter
 										</TwitterShareButton>
 									</div>
 									<div className="btn-action btn mx-4">
 										<MdAlternateEmail />
-										<EmailShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+										<EmailShareButton url={`https://impactify.netlify.app/discover/events-details/${theEvent.event_id}`} title={`${theEvent.event_title}`} className="mx-5 ">
 											Share via email
 										</EmailShareButton>
 									</div>
