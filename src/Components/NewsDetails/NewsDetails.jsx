@@ -33,7 +33,7 @@ const NewsDetails = () => {
 				fetchEventsData = resposeBackend.data.data;
 				console.log(resposeBackend);
 
-				setReleatedEvents(fetchEventsData.reverse());
+				setReleatedEvents(fetchEventsData);
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			} finally {
@@ -143,7 +143,7 @@ const NewsDetails = () => {
 									</div>
 									<div className="purple-underline mb-4" style={{}}></div>
 
-									{relatedEvents?.slice(0, 3).map((eventObj, index) => (
+									{relatedEvents.slice(7, 10).map((eventObj, index) => (
 										<div
 											key={index}
 											className="box mx-4 card mb-3"
