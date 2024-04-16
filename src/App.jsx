@@ -16,7 +16,7 @@ import Homepage from "./Pages/Homepage";
 import useScrollPosition from "./Hooks/ScrollPositionProvider";
 import StripePaymentEvent from "./Components/Stripe/StripePaymentEvent";
 import StripeBuy from "./Components/Stripe/StripeBuy";
-import ProofHero from "./Components/SocialProof/ProofHero-copy";
+import ProofHero from "./Components/SocialProof/ProofHero";
 import ThankYou from "./Pages/ThankYou/ThankYou";
 import CardNew from "./Components/Card/CardNew";
 import SearchResultPage from "./Pages/SearchResultPage";
@@ -25,13 +25,8 @@ import SignUpPage from "./Pages/SignupPage";
 import LoginPage from "./Pages/LoginPage";
 import CivicInfo from "./Components/CivicApi/CivicInfo";
 import VoterModal from "./Components/CivicApi/VoterModal";
-
-//import SearchResultPage from "./Pages/Search/SearchPage";
 import NewsApi from "./Components/NewsApi/NewsApi";
-
 import SearchPage from "./Pages/Search/SearchPage";
-
-//NEWIMPORTS
 import FundraiseFacts from "./Pages/Fundraise/FundraiseFacts";
 import DetailsTest from "./Pages/Test/DetailsTest";
 import VoterInfoW from "./Components/CivicApi/VoterInfoW";
@@ -39,7 +34,7 @@ import VoterInfoW from "./Components/CivicApi/VoterInfoW";
 function App() {
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [backendEvents, setBackendEvents] = useState([]);
-	const [backendNews, setBackendNews] = useState([])
+	const [backendNews, setBackendNews] = useState([]);
 	useEffect(() => {
 		const fetchEvents = async () => {
 			try {
@@ -61,8 +56,6 @@ function App() {
 		fetchEvents();
 	}, []);
 
-	// console.log("these are the backend events" + backendEvents);
-	// console.log(backendEvents)
 	return (
 		<Router>
 			<Routes>
@@ -95,17 +88,20 @@ function Content({ backendEvents }) {
 			<Routes>
 				<Route
 					path="/discover/news-details/:id"
-					element={<NewsDetailsPage  />}
+					element={<NewsDetailsPage />}
 				/>
 				<Route path="/search-results" element={<SearchResultPage />} />
 				<Route path="/discover/news" element={<News />} />
-				<Route path="/discover/events" element={<Events backendEvents={backendEvents} />} />
+				<Route
+					path="/discover/events"
+					element={<Events backendEvents={backendEvents} />}
+				/>
 				<Route path="/discover/donations" element={<Donations />} />
 				<Route path="/discover/users/login" element={<LoginPage />} />
 				<Route path="/discover/users/signup" element={<SignUpPage />} />
 				<Route path="/discover/thankyou" element={<ThankYou />} />
 				<Route path="/discover/create-event" element={<CreateEventPage />} />
-				<Route path="/discover/eventdetails/:id" element={<DetailsTest/>} />
+				<Route path="/discover/eventdetails/:id" element={<DetailsTest />} />
 				<Route path="/discover/facts" element={<FundraiseFacts />} />
 				<Route path="/discover/voting" element={<VoterModal />} />
 				<Route

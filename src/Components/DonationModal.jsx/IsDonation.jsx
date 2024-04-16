@@ -37,7 +37,7 @@ function Is_donation({ isDonation, setIsDonation, handleStripeId, stripeId }) {
 				<Form.Check
 					type="checkbox"
 					checked={isDonation}
-					label="Yes, im am."
+					label="Yes, I am."
 					onChange={handleChange}
 					name="is_donation"
 				/>

@@ -34,12 +34,12 @@ function KeywordsIcons() {
 			style={{
 				height: "40vh",
 				width: "100%",
-				borderRadius: "15px",
+				// borderRadius: "15px",
 				marginBottom: "30px",
 				marginTop: "30px",
 				color: "#630f76",
 			}}
-			className="bg-light"
+			className="bg-light rounded"
 		>
 			<div
 				className="d-flex justify-content-center my-4 fs-4 pt-3"
@@ -142,7 +142,6 @@ function KeywordsIcons() {
 					</Col>
 				</Row>
 			</Col>
-			<div></div>
 		</div>
 	);
 }

@@ -3,7 +3,6 @@ import ReactPlayer from "react-player";
 import "./ProofHero.css";
 import socialProof from "../../assets/proofhero.png";
 import ImpactVid from "../../assets/ImpactVid.mp4";
-import { Button } from "react-bootstrap";
 
 const ProofHero = () => {
 	const [showVideo, setShowVideo] = useState(false);
@@ -14,28 +13,27 @@ const ProofHero = () => {
 	};
 
 	return (
-		<div className="bg-light">
-			<div className="row ">
-				{/* Column for Text */}
-				<div className=" p-3 ">
-					<h4 className="display-6 text-center m-4 ">How Impactify works</h4>
-					<p
-						className="fs-"
-						style={{ paddingLeft: "11%", paddingRight: "11%" }}
-					>
-						Discover a world of meaningful engagement with Impactify. Here's how
-						it works: Dive into a curated collection of news articles to stay
-						informed about pressing issues. Then, take action by sharing,
-						attending, creating, or donating directly through our platform.
-						Impactify is your trusted resource for finding impactful ways to get
-						involved and make a difference. Join us in shaping a better
-						tomorrow, one step at a time.
-					</p>
-				</div>
+		<div className="mb-4">
+			<div className="bg-light">
+				<span className="m-3 ">
+					<h4 className="display-6 d-flex justify-content-center m-4 ">
+						How Impactify works
+					</h4>
 
-				<div className="row ">
-					<div className="col-md-6 p-2">
-						<div className="text fs-6 bg-text">
+					<div style={{ paddingLeft: "15%", paddingRight: "15%" }}>
+						<p
+							className="d-flex justify-content-center fs-5 mb-4"
+							style={{ paddingLeft: "5%", paddingRight: "5%" }}
+						>
+							Discover a world of meaningful engagement with Impactify. Here's
+							how it works: Dive into a curated collection of news articles to
+							stay informed about pressing issues. Then, take action by sharing,
+							attending, creating, or donating directly through our platform.
+							Impactify is your trusted resource for fin ding impactful ways to
+							get involved and make a difference. Join us in shaping a better
+							tomorrow, one step at a time.
+						</p>
+						<div className="bg-text mb-3 fs-6" style={{}}>
 							<p>
 								In 2023, we witnessed a significant shift in charitable
 								contributions, totaling $319.04 billion, marking a notable
@@ -60,30 +58,37 @@ const ProofHero = () => {
 							</p>
 						</div>
 					</div>
-					{/* Column for Video */}
-					<div className="col-md-6 p-3" style={{ cursor: "pointer" }}>
-						<div className=" p-3" onClick={() => setShowVideo(!showVideo)}>
-							{showVideo ? (
-								<div className="d-flex justify-content-center">
-									<ReactPlayer
-										ref={playerRef}
-										url={ImpactVid}
-										playing={showVideo}
-										controls
-										width="100%"
-										height="auto"
-									/>
-								</div>
-							) : (
-								<img
-									src={socialProof}
-									alt="Social Proof"
-									className="img-fluid mb-3"
+
+					<span
+						className="d-flex justify-content-center "
+						style={{}}
+						onClick={() => setShowVideo(!showVideo)}
+					>
+						{showVideo ? (
+							<div className="d-flex justify-content-center mt-4">
+								<ReactPlayer
+									ref={playerRef}
+									url={ImpactVid}
+									playing={showVideo}
+									controls
+									width="80%"
+									height="100%"
 								/>
-							)}
-						</div>
-					</div>
-				</div>
+							</div>
+						) : (
+							<img
+								src={socialProof}
+								alt="Social Proof"
+								className="mt-3"
+								style={{
+									width: "80%",
+									paddingLeft: "5% ",
+									paddingRight: "5% ",
+								}}
+							/>
+						)}
+					</span>
+				</span>
 			</div>
 		</div>
 	);

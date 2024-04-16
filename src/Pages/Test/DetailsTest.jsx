@@ -1,4 +1,5 @@
-// import React, { useState, useEffect } from "react";
+import {  Suspense, lazy ,useEffect, useState } from "react";
+
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
 	FacebookShareButton, EmailShareButton, TwitterShareButton
@@ -20,9 +21,9 @@ import Event4Strip from "../../Components/Stripe/Event4Stripe";
 import { IoMegaphoneSharp } from "react-icons/io5";
 import { useAuthDataProvider } from '../../Provider/AuthProv'
 import loader from "../../Components/LoadingState/LoadingState"
-import { useEffect, useState } from "react";
-
+const LazyStripeBuy = lazy(()=> import('../../Components/Stripe/StripeBuy'))
 const DetailsTest = () => {
+
 	const [theEvent, setTheEvent] = useState({
 		event_id: "",
 		user_id: "",
@@ -51,10 +52,10 @@ const DetailsTest = () => {
 	const [checked, setChecked] = useState(false);
 	const [buyButtonId, setBuyButtonId] = useState(null);
 	const [registeredGuest, setRegisteredGuest] = useState({
-		firstname: "",
-		lastname: "",
-		email: "",
-		mobile: "",
+		firstname: "Daryna",
+		lastname: "Vershinina",
+		email: "example@email.com",
+		mobile: "612-867-5309",
 	});
 
 	const handleTextChange = (event) => {
@@ -88,6 +89,7 @@ const DetailsTest = () => {
 		event_title: title,
 		event_date: date,
 		event_time: time,
+		event_keywords,
 		event_details,
 		event_location: locationName,
 		event_photo: image,
@@ -261,7 +263,10 @@ const DetailsTest = () => {
 								>
 									{stripe_id != null ? (
 										<div className="m-1">
-											<StripeBuy buyButtonId={buyButtonId} />
+											<Suspense fallback={<div>Loading...</div>}>
+											<LazyStripeBuy buyButtonId={theEvent.stripe_id} />
+											</Suspense>
+											
 										</div>
 									) : (
 										<></>
@@ -369,7 +374,7 @@ const DetailsTest = () => {
 									</div>
 									<div className="btn-action btn mx-4">
 										<CiFacebook />
-										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`}   className="mx-5 ">
 											Share on Facebook
 										</FacebookShareButton>
 									</div>
