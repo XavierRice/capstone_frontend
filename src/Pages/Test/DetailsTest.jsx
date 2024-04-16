@@ -374,7 +374,7 @@ const DetailsTest = () => {
 									</div>
 									<div className="btn-action btn mx-4">
 										<CiFacebook />
-										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} hashtag={`${theEvent.event_keywords[0]}`}  className="mx-5 ">
+										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`}   className="mx-5 ">
 											Share on Facebook
 										</FacebookShareButton>
 									</div>
