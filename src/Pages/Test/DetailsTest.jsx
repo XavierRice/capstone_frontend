@@ -1,4 +1,5 @@
-// import React, { useState, useEffect } from "react";
+import {  Suspense, lazy ,useEffect, useState } from "react";
+
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
 	FacebookShareButton, EmailShareButton, TwitterShareButton
@@ -20,9 +21,9 @@ import Event4Strip from "../../Components/Stripe/Event4Stripe";
 import { IoMegaphoneSharp } from "react-icons/io5";
 import { useAuthDataProvider } from '../../Provider/AuthProv'
 import loader from "../../Components/LoadingState/LoadingState"
-import { useEffect, useState } from "react";
-
+const LazyStripeBuy = lazy(()=> import('../../Components/Stripe/StripeBuy'))
 const DetailsTest = () => {
+
 	const [theEvent, setTheEvent] = useState({
 		event_id: "",
 		user_id: "",
@@ -191,9 +192,7 @@ const DetailsTest = () => {
 											<span className="fw-bold fs-6 d-block p-2">
 												{locationName || 'unavilable'}
 											</span>
-											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
-												Map
-											</div>
+
 										</div>
 									</Col>
 									<Col sm={6} md={6}>
@@ -208,9 +207,9 @@ const DetailsTest = () => {
 													{theEvent?.event_time.slice(0,5)}pm
 												</span>
 											</div>
-											<div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
+											{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
 												Map
-											</div>
+											</div> */}
 										</div>
 									</Col>
 								</Row>
@@ -263,7 +262,10 @@ const DetailsTest = () => {
 								>
 									{stripe_id != null ? (
 										<div className="m-1">
-											<StripeBuy buyButtonId={buyButtonId} />
+											<Suspense fallback={<div>Loading...</div>}>
+											<LazyStripeBuy buyButtonId={theEvent.stripe_id} />
+											</Suspense>
+											
 										</div>
 									) : (
 										<></>

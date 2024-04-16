@@ -29,6 +29,7 @@ import NewsApi from "./Components/NewsApi/NewsApi";
 import SearchPage from "./Pages/Search/SearchPage";
 import FundraiseFacts from "./Pages/Fundraise/FundraiseFacts";
 import DetailsTest from "./Pages/Test/DetailsTest";
+import VoterInfoW from "./Components/CivicApi/VoterInfoW";
 
 function App() {
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
@@ -89,8 +90,6 @@ function Content({ backendEvents }) {
 					path="/discover/news-details/:id"
 					element={<NewsDetailsPage />}
 				/>
-				{/* <Route path="/discover/events-details/:id" element={<EventDetailsPage />} /> */}
-				{/* <Route path="/discover/events-details/:id" element={<DetailsTest />} /> */}
 				<Route path="/search-results" element={<SearchResultPage />} />
 				<Route path="/discover/news" element={<News />} />
 				<Route
@@ -104,6 +103,7 @@ function Content({ backendEvents }) {
 				<Route path="/discover/create-event" element={<CreateEventPage />} />
 				<Route path="/discover/eventdetails/:id" element={<DetailsTest />} />
 				<Route path="/discover/facts" element={<FundraiseFacts />} />
+				<Route path="/discover/voting" element={<VoterModal />} />
 				<Route
 					path="/discover/create-event/donation"
 					element={<StripeDonation />}
