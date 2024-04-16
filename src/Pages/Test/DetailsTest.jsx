@@ -52,10 +52,10 @@ const DetailsTest = () => {
 	const [checked, setChecked] = useState(false);
 	const [buyButtonId, setBuyButtonId] = useState(null);
 	const [registeredGuest, setRegisteredGuest] = useState({
-		firstname: "",
-		lastname: "",
-		email: "",
-		mobile: "",
+		firstname: "Daryna",
+		lastname: "Vershinina",
+		email: "example@email.com",
+		mobile: "612-867-5309",
 	});
 
 	const handleTextChange = (event) => {
@@ -89,6 +89,7 @@ const DetailsTest = () => {
 		event_title: title,
 		event_date: date,
 		event_time: time,
+		event_keywords,
 		event_details,
 		event_location: locationName,
 		event_photo: image,
@@ -373,7 +374,7 @@ const DetailsTest = () => {
 									</div>
 									<div className="btn-action btn mx-4">
 										<CiFacebook />
-										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} hashtag={`${theEvent.event_keywords[0]}`}  className="mx-5 ">
 											Share on Facebook
 										</FacebookShareButton>
 									</div>
