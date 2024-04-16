@@ -89,7 +89,7 @@ function Footer() {
 							</form>
 						</div>
 					</Col>
-					<p className="m-0 ">
+					<p className="m-0 mt-3 mb-4">
 						© 2023 Copyright by{" "}
 						<a className="text-reset" href="#">
 							Impactify

@@ -11,9 +11,9 @@ import Row from "react-bootstrap/Row";
 import "./EventForm.css";
 import KeywordsIcons from "./KeywordsIcons";
 
-const backend = import.meta.env.VITE_BACKEND_URL;
+const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 
-const EventForm = ({user}) => {
+const EventForm = ({ user }) => {
 	// const { user } = useContext(AuthData);
 	// let { user_id } = useParams();
 	const naviagte = useNavigate();

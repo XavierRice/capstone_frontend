@@ -18,7 +18,7 @@ import "./NewsDetails.css";
 const NewsDetails = () => {
 	const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 	const [relatedEvents, setReleatedEvents] = useState([]);
-	const [selectedEvent, setSeletedEvent] = useState({})
+	const [selectedEvent, setSeletedEvent] = useState({});
 	const [loading, setLoading] = useState(true);
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -46,10 +46,13 @@ const NewsDetails = () => {
 	// console.log(relatedEvents);
 
 	const handleReleatedClick = (eventObj) => {
-		
-		let selected = relatedEvents.find((releated) => releated.event_id === eventObj.event_id)
-		setSeletedEvent(selected)
-		navigate(`/discover/eventdetails/${eventObj.event_id}`, { state: { event: selectedEvent } });
+		let selected = relatedEvents.find(
+			(releated) => releated.event_id === eventObj.event_id
+		);
+		setSeletedEvent(selected);
+		navigate(`/discover/eventdetails/${eventObj.event_id}`, {
+			state: { event: selectedEvent },
+		});
 	};
 
 	const formatDate = (dateString) => {
@@ -137,7 +140,7 @@ const NewsDetails = () => {
 								</div>
 							</Col>
 							<Col md={2} sm={10} lg={3}>
-								<div className="" style={{ marginTop: "9.55vh" }}>
+								<div className="" style={{ marginTop: "9.5vh" }}>
 									<div className="d-flex justify-content-center fw-semibold fs-4 ">
 										Related Events
 									</div>
@@ -167,8 +170,11 @@ const NewsDetails = () => {
 													handleReleatedClick(eventObj);
 												}}
 											>
-												<div className="row mb-2">
-													<div className="col-6">
+												<div
+													className="row mb-2 d-flex justify-content-center"
+													style={{ paddingLeft: "15px" }}
+												>
+													<div className="col-4">
 														<div className="">
 															{formatDate(eventObj.event_date)}
 														</div>
