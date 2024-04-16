@@ -145,7 +145,7 @@ const EventForm = ({ user }) => {
 			<div>
 				<KeywordsIcons />
 			</div>
-			<Form className="bg-light rounded" onSubmit={handleSubmit}>
+			<Form className="bg-light " onSubmit={handleSubmit}>
 				<div className="px-5 pt-5">
 					<Row className="">
 						{/* <h3>Welcome, {user}! Please fill out the form to create your event.</h3> */}
@@ -212,15 +212,15 @@ const EventForm = ({ user }) => {
 						/>
 					</Form.Group>
 
-					<Row className="fs-5 mb-3">
+					<Row className=" mb-3">
 						<Form.Group as={Col} controlId="event_keyword">
-							<Form.Label>Keywords</Form.Label>
+							<Form.Label className="fs-5">Keywords</Form.Label>
 							<Select
 								isMulti
 								onChange={handleKeywords}
 								options={keywordOptions}
-								className="basic-mulit-select custom-text-dark"
-								classNamePrefix="select"
+								className=""
+								// classNamePrefix="select"
 								components={{ Input: CreatableSelectInput }}
 								name="event_keywords"
 							/>
@@ -236,7 +236,7 @@ const EventForm = ({ user }) => {
 								type="text"
 								onChange={handleTextChange}
 								name="event_photo"
-								placeholder="insert image url"
+								placeholder="Insert image url"
 							/>
 						</Form.Group>
 					</Row>
@@ -260,8 +260,8 @@ const EventForm = ({ user }) => {
 									<Form.Check
 										type="checkbox"
 										label="No"
-										onChange={handleIsVirtual}
-										checked={user_event.is_virtual}
+										// onChange={handleIsVirtual}
+										// checked={user_event.is_virtual}
 										name="is_virtual"
 									/>
 								</Col>
