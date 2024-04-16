@@ -111,7 +111,7 @@ function DonationsLayout({ backendEvents }) {
 								src={nowar}
 								alt="Climate Image"
 								className="climate-image "
-								style={{ minHeight: "170px", paddingTop: "10px" }}
+								style={{ minHeight: "170px", paddingTop: "15px" }}
 							/>
 						</div>
 						<div className="bottom-half">
