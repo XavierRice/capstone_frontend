@@ -1,9 +1,11 @@
-import {  Suspense, lazy ,useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import {
-	FacebookShareButton, EmailShareButton, TwitterShareButton
-} from 'react-share'
+	FacebookShareButton,
+	EmailShareButton,
+	TwitterShareButton,
+} from "react-share";
 import axios from "axios";
 import { Container, Row, Col, Button, Form, Modal } from "react-bootstrap";
 import { MdAlternateEmail } from "react-icons/md";
@@ -15,15 +17,14 @@ import {
 	CiTwitter,
 } from "react-icons/ci";
 import StripeBuy from "../../Components/Stripe/StripeBuy";
-import GoogleMap from '../../Components/Maps/GoogleMap';
-import defaultImage from '../../assets/NoImage.jpg'
+import GoogleMap from "../../Components/Maps/GoogleMap";
+import defaultImage from "../../assets/NoImage.jpg";
 import Event4Strip from "../../Components/Stripe/Event4Stripe";
 import { IoMegaphoneSharp } from "react-icons/io5";
-import { useAuthDataProvider } from '../../Provider/AuthProv'
-import loader from "../../Components/LoadingState/LoadingState"
-const LazyStripeBuy = lazy(()=> import('../../Components/Stripe/StripeBuy'))
+import { useAuthDataProvider } from "../../Provider/AuthProv";
+import loader from "../../Components/LoadingState/LoadingState";
+const LazyStripeBuy = lazy(() => import("../../Components/Stripe/StripeBuy"));
 const DetailsTest = () => {
-
 	const [theEvent, setTheEvent] = useState({
 		event_id: "",
 		user_id: "",
@@ -42,7 +43,7 @@ const DetailsTest = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const { id } = useParams();
-	const { user, eventId } = useAuthDataProvider()
+	const { user, eventId } = useAuthDataProvider();
 	const backend = import.meta.env.VITE_BACKEND_URL;
 	const [loading, setLoading] = useState(true);
 	const [travelMode, setTravelMode] = useState("DRIVING");
@@ -61,8 +62,7 @@ const DetailsTest = () => {
 	const handleTextChange = (event) => {
 		const { name, value } = event.target;
 		setRegisteredGuest({ ...registeredGuest, [name]: value });
-	}
-
+	};
 
 	const handleEventRegister = () => {
 		console.log("you've registered");
@@ -82,7 +82,6 @@ const DetailsTest = () => {
 
 	// console.log("dtailestest", event)
 
-
 	const {
 		event_id,
 		user_id,
@@ -101,11 +100,14 @@ const DetailsTest = () => {
 	} = theEvent;
 
 	useEffect(() => {
-		axios.get(`${backend}/events/${id}`).then(res => {
-			setTheEvent(res.data)
-		}
-		).catch(error => console.error(error)).finally(setLoading(false))
-	}, [])
+		axios
+			.get(`${backend}/events/${id}`)
+			.then((res) => {
+				setTheEvent(res.data);
+			})
+			.catch((error) => console.error(error))
+			.finally(setLoading(false));
+	}, []);
 
 	// useEffect(() => {
 
@@ -127,20 +129,19 @@ const DetailsTest = () => {
 	// 	fetchUser();
 	// }, []);
 
-
 	// useEffect(() => {
-		
+
 	// 	async function fetchUserData() {
 	// 		if (user) {
 	// 			try {
 	// 				const response = await axios.get(`${backend}/users/${user.user_id}`);
 	// 				const userProfile = response.data;
 	// 				console.log("User profile fetched:", userProfile);
-					
+
 	// 			} catch (error) {
 	// 				console.error("Error fetching user data:", error);
 	// 			} finally {
-	// 				setLoading(false); 
+	// 				setLoading(false);
 	// 			}
 	// 		}
 	// 	}
@@ -160,40 +161,34 @@ const DetailsTest = () => {
 	const displayMap = locationName && lat && lng;
 
 	let imageSrc =
-		image ||
-		theEvent.logo_url ||
-		theEvent.event_photo ||
-		defaultImage;
-
-
+		image || theEvent.logo_url || theEvent.event_photo || defaultImage;
 
 	return (
-
 		<>
 			<div className="my-4 event-details-container" styles={{}}>
-
 				{loading ? (
 					<div className="loader-wrapper">
 						<div className="loader"></div>
 					</div>
 				) : (
 					<>
-						<div className="display-6 d-flex justify-content-center">{title}</div>
+						<div className="display-6 d-flex justify-content-center">
+							{title}
+						</div>
 						<div className="d-flex justify-content-center my-3"></div>
 						<Row className="mx-3 d-flex justify-content-center">
 							<Col sm={11} md={6}>
-								<Row style={{ height: "30%", marginBottom: "7%" }}>
+								<Row style={{ marginBottom: "7%" }}>
 									<img src={imageSrc} alt="Event" className="image" />
 								</Row>
-								<Row style={{ height: "12vh" }} className="">
+								<Row style={{}} className="">
 									<Col sm={6} md={6} className="">
 										<div className="mx-2 my-4">
 											<CiLocationOn className=" " />
 											<span className="fw-bold fs-5 mx-2">Location</span>
 											<span className="fw-bold fs-6 d-block p-2">
-												{locationName || 'unavilable'}
+												{locationName || "unavilable"}
 											</span>
-
 										</div>
 									</Col>
 									<Col sm={6} md={6}>
@@ -205,7 +200,7 @@ const DetailsTest = () => {
 													{theEvent?.event_date.slice(0, 10)}
 												</span>
 												<span className="fw-bold fs-6 d-block">
-													{theEvent?.event_time.slice(0,5)}pm
+													{theEvent?.event_time.slice(0, 5)}pm
 												</span>
 											</div>
 											{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
@@ -264,9 +259,8 @@ const DetailsTest = () => {
 									{stripe_id != null ? (
 										<div className="m-1">
 											<Suspense fallback={<div>Loading...</div>}>
-											<LazyStripeBuy buyButtonId={theEvent.stripe_id} />
+												<LazyStripeBuy buyButtonId={theEvent.stripe_id} />
 											</Suspense>
-											
 										</div>
 									) : (
 										<></>
@@ -321,7 +315,7 @@ const DetailsTest = () => {
 													placeholder="mobile number"
 													value={registeredGuest.mobile}
 													name="mobile"
-												// onClick={() => handleTextChange(event)}
+													// onClick={() => handleTextChange(event)}
 												/>
 											</Form.Group>
 										</Form>
@@ -374,19 +368,28 @@ const DetailsTest = () => {
 									</div>
 									<div className="btn-action btn mx-4">
 										<CiFacebook />
-										<FacebookShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`}   className="mx-5 ">
+										<FacebookShareButton
+											url={`https://impactify.netlify.app/discover/events-details/${user_id}`}
+											className="mx-5 "
+										>
 											Share on Facebook
 										</FacebookShareButton>
 									</div>
 									<div className="btn-action btn m-4">
 										<CiTwitter />
-										<TwitterShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+										<TwitterShareButton
+											url={`https://impactify.netlify.app/discover/events-details/${user_id}`}
+											className="mx-5 "
+										>
 											Share on Twitter
 										</TwitterShareButton>
 									</div>
 									<div className="btn-action btn mx-4">
 										<MdAlternateEmail />
-										<EmailShareButton url={`https://impactify.netlify.app/discover/events-details/${user_id}`} className="mx-5 ">
+										<EmailShareButton
+											url={`https://impactify.netlify.app/discover/events-details/${user_id}`}
+											className="mx-5 "
+										>
 											Share via email
 										</EmailShareButton>
 									</div>

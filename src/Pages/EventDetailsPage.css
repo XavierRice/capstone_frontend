@@ -24,10 +24,10 @@
 	color: #d5e673;
 }
 .custom-bg {
-    background-color: #4e2855; /* Replace #skyblue with your desired color */
+	background-color: #4e2855; /* Replace #skyblue with your desired color */
 }
 .adjust-right {
-    margin-left: 150px; /* Adjust this value as needed */
+	margin-left: 150px; /* Adjust this value as needed */
 }
 .custom-signup-btn:hover {
 	background-color: #d5e673;
@@ -43,7 +43,7 @@
 }
 
 .span_color1 {
- color: #bc94c1;
+	color: #bc94c1;
 }
 .custom-signup-btn:hover {
 	background-color: #d5e673;
@@ -226,4 +226,8 @@
 
 .privacy {
 	color: green; /* Change this to the desired color for Privacy Policy */
+}
+
+.height-fit {
+	height: fit-content;
 }

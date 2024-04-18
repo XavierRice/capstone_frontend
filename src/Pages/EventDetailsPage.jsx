@@ -26,13 +26,12 @@ import { useAuthDataProvider } from "../Provider/AuthProv";
 import loader from "../Components/LoadingState/LoadingState";
 
 function EventDetailsPage() {
-
 	let location = useLocation();
 	const navigate = useNavigate();
 	const { event } = location.state || { event: {} };
 	const eventUserId = event?.user_id;
 
-	const { user } = useAuthDataProvider()
+	const { user } = useAuthDataProvider();
 	const backend = import.meta.env.VITE_BACKEND_URL;
 	// const [featuredEvent, setFeatureEvent] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -54,7 +53,7 @@ function EventDetailsPage() {
 	// 	setRegisteredGuest({ ...registeredGuest, [name]: value });
 	// };
 
-// const handleTextChange = (event) => {
+	// const handleTextChange = (event) => {
 	// 	const { name, value } = event.target;
 	// 	setRegisteredGuest({ ...registeredGuest, [name]: value });
 	// }
@@ -70,16 +69,14 @@ function EventDetailsPage() {
 	// 	setChecked(!checked);
 	// };
 
-
 	useEffect(() => {
-
 		const fetchUser = async () => {
 			try {
 				const response = await axios.get(`${backend}/users/${event.user_id}`);
 				let user = response.data;
 				console.log("eventsDetailsPage", user);
 				setFetchedUser(user);
-				setLoading(true)
+				setLoading(true);
 			} catch (error) {
 				console.error("Error Fetching Backend Events:", error);
 			} finally {
@@ -103,7 +100,7 @@ function EventDetailsPage() {
 	}, [fetchedUser]);
 
 	useEffect(() => {
-		console.log(event)
+		console.log(event);
 		console.log(fetchedUser);
 	}, [fetchedUser, event]);
 
@@ -151,11 +148,7 @@ function EventDetailsPage() {
 
 	const displayMap = locationName && lat && lng;
 
-	let imageSrc =
-		image ||
-		event.logo_url ||
-		event.event_photo ||
-		defaultImage;
+	let imageSrc = image || event.logo_url || event.event_photo || defaultImage;
 	// const eventDate = formatDate(date);
 	const firstName = fetchedUser?.first_name;
 
@@ -171,46 +164,42 @@ function EventDetailsPage() {
 					</div>
 				) : (
 					<>
-						<div className="display-6 d-flex justify-content-center">{title}</div>
-						<div className="d-flex justify-content-center my-3"></div>
+						<div className="display-6 d-flex justify-content-center">
+							{title}
+						</div>
+
 						<Row className="mx-3 d-flex justify-content-center">
 							<Col sm={11} md={6}>
-								<Row style={{ height: "30%", marginBottom: "3%" }}>
+								<Row style={{}}>
 									<img src={imageSrc} alt="Event" className="image" />
 								</Row>
 								<Row style={{ height: "12vh" }} className="">
 									<Col sm={6} md={6} className="">
-										<div className="mx-2 my-4">
+										<div className="mx-2 my-2">
 											<CiLocationOn className=" " />
 											<span className="fw-bold fs-5 mx-2">Location</span>
 											<span className="fw-bold fs-6 d-block p-2">
 												{/* {locationName || 'unavilable' } */}
 											</span>
-											{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
-											Map
-										</div> */}
 										</div>
 									</Col>
 									<Col sm={6} md={6}>
-										<div className="mx-2 my-4">
+										<div className="mx-2 my-2">
 											<div className="m-2">
 												<CiCalendar className="" />
 												<span className="fw-bold fs-5 mx-2">Time</span>
 												<span className="fw-bold fs-6 d-block my-2">
-													{eventDate || 'unavilable'}
+													{eventDate || "unavilable"}
 												</span>
 												<span className="fw-bold fs-6 d-block">
 													{/* {formatTime(time) || event.event_time} */}
 												</span>
 											</div>
-											{/* <div className="fs-5 my-1 text-decoration-underline fw-bold text-secondary">
-											Map
-										</div> */}
 										</div>
 									</Col>
 								</Row>
 								<Row className="my-2 ">
-									<div className="fs-4 fw-bold my-">About this event</div>
+									<div className="fs-4 fw-bold mt-4">About this event</div>
 									{/* <div className=" my-2">{event_details}</div> */}
 								</Row>
 								<hr className="my-4" />
@@ -241,7 +230,6 @@ function EventDetailsPage() {
 											Walking
 										</button>
 									</div>
-								
 								</Row>
 							</Col>
 							<Col sm={11} md={4} className="">
