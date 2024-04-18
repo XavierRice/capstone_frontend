@@ -52,8 +52,8 @@ const DetailsTest = () => {
 	const [checked, setChecked] = useState(false);
 	const [buyButtonId, setBuyButtonId] = useState(null);
 	const [registeredGuest, setRegisteredGuest] = useState({
-		firstname: "Daryna",
-		lastname: "Vershinina",
+		firstname: "Nicole",
+		lastname: "Rodriguez",
 		email: "example@email.com",
 		mobile: "612-867-5309",
 	});

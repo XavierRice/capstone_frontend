@@ -10,7 +10,7 @@ import climateUser from "../assets/climateUser.jpg";
 import guyUser from "../assets/guyUser.jpg";
 import ukraineUser from "../assets/ukraineUser.jpg";
 import loader from "../Components/LoadingState/LoadingState";
-
+import DarynaDon from '../assets/DarynaDon.png'
 import "./Donations.css";
 
 function Donations() {
@@ -73,7 +73,7 @@ function Donations() {
 						<Donation1 />
 						<div className="donation-info mt-2">
 							<p className="fw-semibold mt-2 d-flex justify-content-center ">
-								Beatrice Li
+							Beatrice Li
 							</p>
 							<div className="d-flex justify-content-center ">
 								<img
@@ -81,8 +81,8 @@ function Donations() {
 									alt="userpic"
 									className="img-fluid p-2"
 									style={{
-										width: "85%",
-										height: "auto",
+										width: "65%",
+										height: "28vh",
 										borderRadius: "15px",
 									}}
 								/>
@@ -144,11 +144,11 @@ function Donations() {
 						<UkraineBuy />
 						<div className="donation-info">
 							<p className="fw-semibold mt-2 d-flex justify-content-center ">
-								Anastasia Melnyk
+							Daryna Vershinina
 							</p>
 							<div className=" d-flex justify-content-center">
 								<img
-									src={ukraineUser}
+									src={DarynaDon}
 									alt="userpic"
 									className="img-fluid p-2"
 									style={{ width: "60%", height: "28vh", borderRadius: "15px" }}
