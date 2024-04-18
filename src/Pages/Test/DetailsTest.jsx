@@ -178,7 +178,7 @@ const DetailsTest = () => {
 						<div className="d-flex justify-content-center my-3"></div>
 						<Row className="mx-3 d-flex justify-content-center">
 							<Col sm={11} md={6}>
-								<Row style={{ marginBottom: "7%" }}>
+								<Row style={{}}>
 									<img src={imageSrc} alt="Event" className="image" />
 								</Row>
 								<Row style={{}} className="">
