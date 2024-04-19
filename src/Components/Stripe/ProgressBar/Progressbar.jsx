@@ -3,13 +3,13 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import "./Progressbar.css";
 
 const Progressbar = ({ donateAmount }) => {
-	const [donationGoal, setDonationGoal] = useState(500);
+	const [donationGoal, setDonationGoal] = useState(175.00);
 	const [verifiedFunds, setVerifiedFunds] = useState(0);
 	const [currentAmount, setCurrentAmount] = useState(50);
 	//WEBHOOK INTERGRATION FETCH HERE FOR VerifiedFunds/CURRENT AMOUNT FROM STRIPE
 
 	useEffect(() => {
-		setDonationGoal(donateAmount + 10);
+		setDonationGoal(donateAmount + 10.00);
 	}, [donateAmount]);
 
 	const percentage = Math.min((currentAmount / donationGoal) * 100, 100);

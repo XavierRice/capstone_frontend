@@ -146,7 +146,7 @@ const NewsDetails = () => {
 									</div>
 									<div className="purple-underline mb-4" style={{}}></div>
 
-									{relatedEvents.slice(7, 10).map((eventObj, index) => (
+									{relatedEvents.slice(4, 8).map((eventObj, index) => (
 										<div
 											key={index}
 											className="box mx-4 card mb-3"

@@ -123,7 +123,7 @@ function CategoriesSection({ onSelectCategory }) {
 							</div>
 						</Row>
 						<Row>
-							<div
+							<Link
 								to={"discover/donations"}
 								key={"Popular-6"}
 								className={`mx-3 ${
@@ -133,7 +133,7 @@ function CategoriesSection({ onSelectCategory }) {
 							>
 								<BiDonateHeart style={{ fontSize: "44px", color: "#630f76" }} />
 								<div className="fs-6 fw-semibold">Donation</div>
-							</div>
+							</Link>
 						</Row>
 						<Row>
 							<div
